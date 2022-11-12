@@ -26,15 +26,15 @@ const actions = {
         result: 0x08
     },
     changeCurrentTime: {
+        init: 0x10,
+        update: 0x11
+    },
+    changeSocketId: {
         init: 0x20,
         update: 0x21
     },
-    changeSocketId: {
-        init: 0x30,
-        update: 0x31
-    },
-    changeDiscussionMember: 0x41,
-    start: 0x51
+    changeDiscussionMember: 0x31,
+    start: 0x41
 };
 
 function getTimeStamp(offset = 0) {
@@ -234,7 +234,8 @@ export default function Discussion({ postId, userId }) {
 
             case 'notifySocketIdResponse':
                 dispatch({
-                    type: actions.changeSocketId.update, payload: {
+                    type: actions.changeSocketId.update,
+                    payload: {
                         socketId: data.socketId
                     }
                 });
@@ -272,7 +273,8 @@ export default function Discussion({ postId, userId }) {
 
             case 'notifyStartRequest':
                 dispatch({
-                    type: actions.start, payload: {
+                    type: actions.start,
+                    payload: {
                         finishTime: data.finishTime,
                         discussionTimeLimit: data.discussionTimeLimit
                     }
@@ -283,7 +285,8 @@ export default function Discussion({ postId, userId }) {
                 fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + data.postId, { method: "GET" })
                     .then((res) => res.json())
                     .then((data) => dispatch({
-                        type: actions.changeDiscussionMember, payload: {
+                        type: actions.changeDiscussionMember,
+                        payload: {
                             post: data
                         }
                     }))
@@ -538,6 +541,7 @@ export default function Discussion({ postId, userId }) {
             let result = false;
 
             if ('none' !== data.socketId) {
+
                 result = await joinDiscussion(data.joinType, data.postId, data.socketId, data.userId);
 
                 if (false === result) {
