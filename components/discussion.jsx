@@ -532,29 +532,34 @@ export default function Discussion({ postId, userId }) {
         }
     }, [data.currentTime]);
 
-    useEffect(async () => {
+    useEffect(() => {
 
-        let result = false;
+        async function changeSocketId() {
 
-        if ('none' !== data.socketId) {
-            result = await joinDiscussion(data.joinType, data.postId, data.socketId, data.userId);
-        }
+            let result = false;
 
-        if (false === result) {
-            if (socket.current && socket.current.readyState === 1) {
-                socket.current.close();
+            if ('none' !== data.socketId) {
+                result = await joinDiscussion(data.joinType, data.postId, data.socketId, data.userId);
             }
-            await updateSelect('参加できませんでした。＿|￣|○');
+
+            if (false === result) {
+                if (socket.current && socket.current.readyState === 1) {
+                    socket.current.close();
+                }
+                await updateSelect('参加できませんでした。＿|￣|○');
+            }
+
         }
+        changeSocketId();
 
     }, [data.socketId]);
 
-    useEffect(async () => {
+    useEffect(() => {
 
         switch (data.state) {
 
             case process.env.userState.none:
-                await updateSelect('');
+                updateSelect('');
                 break;
 
             case process.env.userState.join:
