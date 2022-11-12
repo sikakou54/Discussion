@@ -43,7 +43,6 @@ function getTimeStamp(offset = 0) {
 
 const reducer = (state, action) => {
 
-
     switch (action.type) {
 
         /******************************
@@ -540,15 +539,14 @@ export default function Discussion({ postId, userId }) {
 
             if ('none' !== data.socketId) {
                 result = await joinDiscussion(data.joinType, data.postId, data.socketId, data.userId);
-            }
 
-            if (false === result) {
-                if (socket.current && socket.current.readyState === 1) {
-                    socket.current.close();
+                if (false === result) {
+                    if (socket.current && socket.current.readyState === 1) {
+                        socket.current.close();
+                    }
+                    await updateSelect('参加できませんでした。＿|￣|○');
                 }
-                await updateSelect('参加できませんでした。＿|￣|○');
             }
-
         }
         changeSocketId();
 

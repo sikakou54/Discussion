@@ -11,7 +11,6 @@ export default function DiscussionManager() {
     const router = useRouter();
     const { postId, userId } = router.query;
 
-
     if (undefined !== postId && undefined !== userId) {
 
         return (
