@@ -282,7 +282,7 @@ export default function Discussion({ postId, userId }) {
                 break;
 
             case 'notifyDiscussionStatus':
-                fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + data.postId, { method: "GET" })
+                fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + data.postId, { method: "GET", body: { country: 'jpn' } })
                     .then((res) => res.json())
                     .then((data) => dispatch({
                         type: actions.changeDiscussionMember,
@@ -466,7 +466,7 @@ export default function Discussion({ postId, userId }) {
 
     async function updateSelect(message) {
 
-        const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + data.postId, { method: "GET" });
+        const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + data.postId, { method: "GET", body: { country: 'jpn' } });
         if (res.ok) {
             const post = await res.json();
             dispatch({
@@ -500,7 +500,6 @@ export default function Discussion({ postId, userId }) {
     useEffect(() => {
 
         if (0 !== data.currentTime && true === data.isStarted) {
-
             if (data.finishTime <= data.currentTime) {
                 dispatch({ type: actions.changeState.finish });
             } else {
@@ -591,7 +590,7 @@ export default function Discussion({ postId, userId }) {
             {data.state === process.env.userState.join ? < Join /> : null}
             {data.state === process.env.userState.standby ? <Standby /> : null}
             {data.state === process.env.userState.ready ? <Ready /> : null}
-            {data.state === process.env.userState.online ? < Online finishTime={data.finishTime} currentTime={data.currentTime}/> : null}
+            {data.state === process.env.userState.online ? < Online finishTime={data.finishTime} currentTime={data.currentTime} /> : null}
             {data.state === process.env.userState.finish ? <Finish /> : null}
             {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} /> : null}
             {data.state === process.env.userState.votingDone ? <div>votingDone</div> : null}
