@@ -2,7 +2,8 @@ export default function Ready() {
 
     return (
         <div>
-            Ready
+            <div>討論の準備を行います</div>
+            <div>スピーカの方はマイクを’オン’にして下さい</div>
         </div>
     );
 }

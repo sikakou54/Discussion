@@ -2,7 +2,8 @@ export default function Finish() {
 
     return (
         <div>
-            Finish
+            <div>討論終了</div>
+            <div>投票の準備をしています</div>
         </div>
     );
 }

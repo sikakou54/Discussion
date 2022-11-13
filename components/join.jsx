@@ -1,8 +1,6 @@
 export default function Join() {
 
     return (
-        <div>
-            Join
-        </div>
+        <div>参加を問い合わせしています</div>
     );
 }
