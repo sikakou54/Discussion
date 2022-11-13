@@ -56,7 +56,7 @@ export async function getServerSideProps(/*{ params, query }*/) {
 
     // データフェッチ
     const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussions", { method: "GET", body: { country: 'jpn' } });
-    const posts = await res.json()
+    const posts = await res.json();
     //console.log(posts);
 
     // Postsに渡す
