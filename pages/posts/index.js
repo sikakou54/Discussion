@@ -57,9 +57,9 @@ export default function Posts({ posts }) {
 export async function getServerSideProps(/*{ params, query }*/) {
 
     // データフェッチ
-    const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussions", { method: "GET" });
+    const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussions", { method: "GET", body: { country: 'jpn' } });
     const posts = await res.json()
-    console.log(posts);
+    //console.log(posts);
 
     // Postsに渡す
     return { props: { posts: posts.Items } }
