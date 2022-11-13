@@ -282,7 +282,7 @@ export default function Discussion({ postId, userId }) {
                 break;
 
             case 'notifyDiscussionStatus':
-                fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + data.postId, { method: "GET", body: { country: 'jpn' } })
+                fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId, { method: "GET" })
                     .then((res) => res.json())
                     .then((data) => dispatch({
                         type: actions.changeDiscussionMember,
@@ -466,7 +466,7 @@ export default function Discussion({ postId, userId }) {
 
     async function updateSelect(message) {
 
-        const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + data.postId, { method: "GET", body: { country: 'jpn' } });
+        const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId, { method: "GET" });
         if (res.ok) {
             const post = await res.json();
             dispatch({

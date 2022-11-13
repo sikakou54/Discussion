@@ -52,13 +52,19 @@ export default function Posts({ posts }) {
 }
 
 //SSR
-export async function getServerSideProps(/*{ params, query }*/) {
+export async function getServerSideProps() {
+
+    let posts = [];
 
     // データフェッチ
-    const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussions", { method: "GET", body: { country: 'jpn' } });
-    const posts = await res.json();
-    //console.log(posts);
+    const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn', { method: 'GET' });
+    if (res.ok) {
+        posts = await res.json();
+        posts = posts.Items;
+    } else {
+        console.log(res);
+    }
 
     // Postsに渡す
-    return { props: { posts: posts.Items } }
+    return { props: { posts: posts } }
 }

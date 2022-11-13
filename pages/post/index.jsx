@@ -9,30 +9,6 @@ export default function Post() {
     const router = useRouter();
     const userId = router.query.userId;
 
-    /**
-        async function _onPost() {
-            console.log(title, detail);
-            for (let i = 100; i < 201; i++) {
-                const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/setDiscussion", {
-                    method: "POST",
-                    body: JSON.stringify({
-                        userId: userId,
-                        title: title + "-" + i,
-                        detail: detail + "-" + i
-                    })
-                });
-                const data = await res.json();
-                console.log(data);
-            }
-            Router.push({
-                pathname: "posts",
-                query: {
-                    userId: userId
-                }
-            });
-        }
-     */
-
     function onPost() {
         console.log(title, detail);
         fetch(process.env.awsApiGatewayHttpApiEndPoint + "/setDiscussion", {
@@ -78,15 +54,4 @@ export default function Post() {
             </div>
         </div>
     );
-}
-
-//SSR
-export async function getServerSideProps() {
-
-    // データフェッチ
-    const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussions", { method: "GET" });
-    const posts = await res.json()
-
-    // Postsに渡す
-    return { props: { posts } }
 }
