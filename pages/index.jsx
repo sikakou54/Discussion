@@ -14,9 +14,7 @@ export default function Home() {
         <Link href={'/signIn'}>ログインはこちら</Link>
       </main>
 
-      <footer className={styles.footer}>
-        <button onClick={setUserNotify}>setUserNotify</button>
-      </footer>
+      <footer className={styles.footer}></footer>
     </div>
   )
 }
