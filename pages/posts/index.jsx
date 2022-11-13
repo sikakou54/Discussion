@@ -54,17 +54,18 @@ export default function Posts({ posts }) {
 //SSR
 export async function getServerSideProps() {
 
-    let posts = [];
+    let posts = {};
+    let items = [];
 
     // データフェッチ
     const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn', { method: 'GET' });
     if (res.ok) {
         posts = await res.json();
-        posts = posts.Items;
+        items = posts.Items;
     } else {
         console.log(res);
     }
 
     // Postsに渡す
-    return { props: { posts: posts } }
+    return { props: { posts: items } }
 }
