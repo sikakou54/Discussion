@@ -34,7 +34,12 @@ const actions = {
         update: 0x21
     },
     changeDiscussionMember: 0x31,
-    start: 0x41
+    start: 0x41,
+    timer: {
+        timeout: 0x51,
+        reset: 0x52
+    },
+    vote: 0x61
 };
 
 function getTimeStamp(offset = 0) {
@@ -74,6 +79,8 @@ const reducer = (state, action) => {
                 ...state,
                 state: process.env.userState.standby,
                 isStarted: false,
+                isVote: false,
+                isTimerEnable: false,
             };
 
         // ready
@@ -98,14 +105,21 @@ const reducer = (state, action) => {
         case actions.changeState.finish:
             return {
                 ...state,
-                state: process.env.userState.finish
+                state: process.env.userState.finish,
+                isStarted: false,
+                isTimerEnable: false
             };
 
         // vote
         case actions.changeState.vote:
             return {
                 ...state,
-                state: process.env.userState.vote
+                state: process.env.userState.vote,
+                isVote: true,
+                isTimerEnable: true,
+                isTimeout: false,
+                limitTime: action.payload.limitTime,
+                currentTime: getTimeStamp()
             };
 
         // votingDone
@@ -113,7 +127,8 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 state: process.env.userState.votingDone,
-                judge: action.payload.judge
+                isVote: false,
+                isTimerEnable: false,
             };
 
         // result
@@ -164,9 +179,10 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isStarted: true,
-                finishTime: action.payload.finishTime,
-                currentTime: getTimeStamp(),
-                discussionTimeLimit: action.payload.discussionTimeLimit
+                isTimerEnable: true,
+                isTimeout: false,
+                limitTime: action.payload.limitTime,
+                currentTime: getTimeStamp()
             };
 
         /******************************
@@ -176,6 +192,30 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 post: action.payload.post
+            };
+
+        /******************************
+         * timeout
+         ******************************/
+        case actions.timer.timeout:
+            return {
+                ...state,
+                isTimeout: true
+            };
+
+        case actions.timer.reset:
+            return {
+                ...state,
+                isTimeout: false
+            };
+
+        /******************************
+         * vote
+         ******************************/
+        case actions.vote:
+            return {
+                ...state,
+                judge: action.payload.judge
             };
 
         default:
@@ -201,10 +241,12 @@ export default function Discussion({ postId, userId }) {
             negative: 0,
             watchers: 0
         },
+        isVote: false,
         isStarted: false,
-        finishTime: 0,
+        isTimeout: false,
+        isTimerEnable: false,
+        limitTime: 0,
         currentTime: 0,
-        discussionTimeLimit: 0,
         judge: 'draw',
         result: {
             win: 'none',
@@ -255,7 +297,12 @@ export default function Discussion({ postId, userId }) {
                 break;
 
             case 'notifyVoteRequest':
-                dispatch({ type: actions.changeState.vote });
+                dispatch({
+                    type: actions.changeState.vote,
+                    payload: {
+                        limitTime: data.limitTime
+                    }
+                });
                 break;
 
             case 'notifyResultRequest':
@@ -275,8 +322,7 @@ export default function Discussion({ postId, userId }) {
                 dispatch({
                     type: actions.start,
                     payload: {
-                        finishTime: data.finishTime,
-                        discussionTimeLimit: data.discussionTimeLimit
+                        limitTime: data.limitTime
                     }
                 });
                 break;
@@ -457,7 +503,7 @@ export default function Discussion({ postId, userId }) {
 
     function setVotindDone(judge) {
         dispatch({
-            type: actions.changeState.votingDone,
+            type: actions.vote,
             payload: {
                 judge: judge
             }
@@ -499,15 +545,33 @@ export default function Discussion({ postId, userId }) {
 
     useEffect(() => {
 
-        if (0 !== data.currentTime && true === data.isStarted) {
-            if (data.finishTime <= data.currentTime) {
-                dispatch({ type: actions.changeState.finish });
+        if (data.isTimerEnable) {
+            if (data.limitTime <= data.currentTime) {
+                dispatch({ type: actions.timer.timeout });
             } else {
                 setTimeout(discussionTimer, 500);
             }
         }
 
     }, [data.currentTime]);
+
+    useEffect(() => {
+
+        if (!data.isTimeout) {
+            return;
+        }
+
+        if (data.isTimerEnable) {
+            if (data.state === process.env.userState.online) {
+                dispatch({ type: actions.changeState.finish });
+            }
+
+            if (data.state === process.env.userState.vote && 3 === data.joinType) {
+                dispatch({ type: actions.changeState.votingDone });
+            }
+        }
+
+    }, [data.isTimeout]);
 
     useEffect(() => {
 
@@ -583,6 +647,12 @@ export default function Discussion({ postId, userId }) {
         }
     }, [data.isStarted]);
 
+    useEffect(() => {
+        if (true === data.isVote) {
+            setTimeout(discussionTimer, 500);
+        }
+    }, [data.isVote]);
+
     return (
         <div>
             {null !== data.post ? <div>{data.post.positive.userId}/{data.post.negative.userId}/{data.post.watchers.length}</div> : null}
@@ -590,9 +660,9 @@ export default function Discussion({ postId, userId }) {
             {data.state === process.env.userState.join ? < Join /> : null}
             {data.state === process.env.userState.standby ? <Standby /> : null}
             {data.state === process.env.userState.ready ? <Ready /> : null}
-            {data.state === process.env.userState.online ? < Online finishTime={data.finishTime} currentTime={data.currentTime} /> : null}
+            {data.state === process.env.userState.online ? < Online finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
             {data.state === process.env.userState.finish ? <Finish /> : null}
-            {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} /> : null}
+            {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
             {data.state === process.env.userState.votingDone ? <div>votingDone</div> : null}
         </div>
     );
