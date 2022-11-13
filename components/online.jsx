@@ -1,8 +1,8 @@
-export default function Online() {
-
+export default function Online({ finishTime, currentTime }) {
     return (
         <div>
-            Online
+            <div>time:{finishTime - currentTime}</div>
+            <div>Online</div>
         </div>
     );
 }

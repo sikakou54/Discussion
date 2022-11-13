@@ -319,23 +319,9 @@ export default function Discussion({ postId, userId }) {
         let result = false;
         let response = null;
 
-        switch (_type) {
-
-            case 1:
-                api = 'joinDiscussionPositive';
-                break;
-
-            case 2:
-                api = 'joinDiscussionNegative';
-                break;
-
-            case 3:
-                api = 'joinDiscussionWatcher';
-                break;
-
-            default:
-                break;
-        }
+        if (_type === 1) api = 'joinDiscussionPositive';
+        if (_type === 2) api = 'joinDiscussionNegative';
+        if (_type === 3) api = 'joinDiscussionWatcher';
 
         if ('' !== api) {
 
@@ -359,23 +345,9 @@ export default function Discussion({ postId, userId }) {
 
         let api = '';
 
-        switch (_type) {
-
-            case 1:
-                api = 'setDiscussionPositiveState';
-                break;
-
-            case 2:
-                api = 'setDiscussionNegativeState';
-                break;
-
-            case 3:
-                api = 'setDiscussionWatcherState';
-                break;
-
-            default:
-                break;
-        }
+        if (_type === 1) api = 'setDiscussionPositiveState';
+        if (_type === 2) api = 'setDiscussionNegativeState';
+        if (_type === 3) api = 'setDiscussionWatcherState';
 
         if ('' !== api) {
             await fetch(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
@@ -493,6 +465,7 @@ export default function Discussion({ postId, userId }) {
     }
 
     async function updateSelect(message) {
+
         const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + data.postId, { method: "GET" });
         if (res.ok) {
             const post = await res.json();
@@ -514,12 +487,14 @@ export default function Discussion({ postId, userId }) {
     }
 
     useEffect(() => {
+
         return () => {
             if (socket.current && socket.current.readyState === 1) {
                 socket.current.close();
                 socket.current = null;
             }
         };
+
     }, []);
 
     useEffect(() => {
@@ -532,6 +507,7 @@ export default function Discussion({ postId, userId }) {
                 setTimeout(discussionTimer, 500);
             }
         }
+
     }, [data.currentTime]);
 
     useEffect(() => {
@@ -610,19 +586,12 @@ export default function Discussion({ postId, userId }) {
 
     return (
         <div>
-            {
-                /*
-                    <div>{JSON.stringify(data.post)}</div>
-                    <div>{data.state}/positive:{data.attendees.positive}/negative:{data.attendees.negative}/watchers:{data.attendees.watchers}</div>
-                 */
-            }
             {null !== data.post ? <div>{data.post.positive.userId}/{data.post.negative.userId}/{data.post.watchers.length}</div> : null}
-            <div>time:{data.finishTime - data.currentTime}</div>
             {data.state === process.env.userState.select ? <Select title={data.post.title} detail={data.post.detail} onJoin={onJoin} onCancel={onCancel} message={data.message} /> : null}
             {data.state === process.env.userState.join ? < Join /> : null}
             {data.state === process.env.userState.standby ? <Standby /> : null}
             {data.state === process.env.userState.ready ? <Ready /> : null}
-            {data.state === process.env.userState.online ? < Online /> : null}
+            {data.state === process.env.userState.online ? < Online finishTime={data.finishTime} currentTime={data.currentTime}/> : null}
             {data.state === process.env.userState.finish ? <Finish /> : null}
             {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} /> : null}
             {data.state === process.env.userState.votingDone ? <div>votingDone</div> : null}
