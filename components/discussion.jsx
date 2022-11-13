@@ -7,6 +7,8 @@ import Standby from './standby';
 import Ready from './ready';
 import Finish from './finish';
 import Vote from './vote';
+import votingDone from './votingDone';
+
 import {
     useMeetingManager,
     DeviceLabels
@@ -663,7 +665,7 @@ export default function Discussion({ postId, userId }) {
             {data.state === process.env.userState.online ? < Online finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
             {data.state === process.env.userState.finish ? <Finish /> : null}
             {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
-            {data.state === process.env.userState.votingDone ? <div>votingDone</div> : null}
+            {data.state === process.env.userState.votingDone ? <votingDone /> : null}
         </div>
     );
 }
