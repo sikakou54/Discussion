@@ -48,8 +48,6 @@ export default function Posts({ posts }) {
             </div>
             <button onClick={onPostClick}>投稿する</button>
         </div >
-
-
     );
 }
 
