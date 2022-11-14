@@ -276,7 +276,12 @@ async function apiFetchPost(url, params) {
         while (retry) {
             try {
                 res = await fetch(url, { method: 'POST', ...params });
-                if (503 !== res.status) {
+                if (res.ok) {
+                    resolve({
+                        status: true,
+                        data: null
+                    });
+                } else if (503 !== res.status) {
                     retry = false;
                 } else {
                     console.log('retry');
@@ -288,10 +293,6 @@ async function apiFetchPost(url, params) {
                 });
             }
         }
-        resolve({
-            status: true,
-            data: null
-        });
     });
 }
 
