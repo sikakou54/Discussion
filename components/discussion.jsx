@@ -244,15 +244,13 @@ async function apiFetchGet(url) {
                         status: true,
                         data: json
                     });
+                } else if (503 !== res.status) {
+                    resolve({
+                        status: false,
+                        data: res.statusText
+                    });
                 } else {
-                    if (503 !== res.status) {
-                        resolve({
-                            status: false,
-                            data: res.statusText
-                        });
-                    } else {
-                        console.log('apiFetchGet', 'retry');
-                    }
+                    console.log('apiFetchGet', 'retry');
                 }
 
             } catch (e) {
