@@ -240,11 +240,13 @@ async function apiFetchGet(url) {
                 res = await fetch(url, { method: 'GET' });
                 if (res.ok) {
                     json = await res.json();
+                    retry = false;
                     resolve({
                         status: true,
                         data: json
                     });
                 } else if (503 !== res.status) {
+                    retry = false;
                     resolve({
                         status: false,
                         data: res.statusText
@@ -255,6 +257,7 @@ async function apiFetchGet(url) {
 
             } catch (e) {
                 console.error('apiFetchGet', e);
+                retry = false;
                 resolve({
                     status: false,
                     data: null
@@ -276,6 +279,7 @@ async function apiFetchPost(url, params) {
             try {
                 res = await fetch(url, { method: 'POST', ...params });
                 if (res.ok) {
+                    retry = false;
                     resolve({
                         status: true,
                         data: null
@@ -287,6 +291,7 @@ async function apiFetchPost(url, params) {
                 }
             } catch (e) {
                 console.error('apiFetchPost', e);
+                retry = false;
                 resolve({
                     status: false,
                     data: e
