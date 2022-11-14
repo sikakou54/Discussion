@@ -286,6 +286,10 @@ async function apiFetchPost(url, params) {
                     });
                 } else if (503 !== res.status) {
                     retry = false;
+                    resolve({
+                        status: false,
+                        data: res.statusText
+                    });
                 } else {
                     console.log('apiFetchPost', 'retry');
                 }
