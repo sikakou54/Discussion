@@ -256,6 +256,7 @@ async function apiFetchGet(url) {
                 }
 
             } catch (e) {
+                console.error('apiFetchGet', e);
                 resolve({
                     status: false,
                     data: null
@@ -287,6 +288,7 @@ async function apiFetchPost(url, params) {
                     console.log('apiFetchPost', 'retry');
                 }
             } catch (e) {
+                console.error('apiFetchPost', e);
                 resolve({
                     status: false,
                     data: e
