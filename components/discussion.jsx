@@ -246,17 +246,18 @@ async function apiFetchGet(url) {
                         data: json
                     });
                 } else if (503 !== res.status) {
+                    console.error('apiFetchGet', url);
                     retry = false;
                     resolve({
                         status: false,
                         data: res.statusText
                     });
                 } else {
-                    console.log('apiFetchGet', 'retry');
+                    console.log('apiFetchGet', 'retry', url);
                 }
 
             } catch (e) {
-                console.error('apiFetchGet', e);
+                console.error('apiFetchGet', e, url);
                 retry = false;
                 resolve({
                     status: false,
@@ -285,16 +286,17 @@ async function apiFetchPost(url, params) {
                         data: null
                     });
                 } else if (503 !== res.status) {
+                    console.error('apiFetchPost', e, url, params);
                     retry = false;
                     resolve({
                         status: false,
                         data: res.statusText
                     });
                 } else {
-                    console.log('apiFetchPost', 'retry');
+                    console.log('apiFetchPost', 'retry', url, params);
                 }
             } catch (e) {
-                console.error('apiFetchPost', e);
+                console.error('apiFetchPost', e, url, params);
                 retry = false;
                 resolve({
                     status: false,
