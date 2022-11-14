@@ -283,7 +283,7 @@ async function apiFetchPost(url, params) {
                     retry = false;
                     resolve({
                         status: true,
-                        data: null
+                        data: res.body
                     });
                 } else if (503 !== res.status) {
                     console.error('apiFetchPost', e, url, params);
