@@ -466,18 +466,16 @@ export default function Discussion({ postId, userId }) {
                 break;
 
             case 'notifyDiscussionStatus':
-
-                apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId)
-                    .then((res) => {
-                        if (res.status) {
-                            dispatch({
-                                type: actions.changeDiscussionMember,
-                                payload: {
-                                    post: res.data
-                                }
-                            });
-                        }
-                    });
+                apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId).then((res) => {
+                    if (res.status) {
+                        dispatch({
+                            type: actions.changeDiscussionMember,
+                            payload: {
+                                post: res.data
+                            }
+                        });
+                    }
+                });
                 break;
 
             default:
@@ -510,20 +508,17 @@ export default function Discussion({ postId, userId }) {
         if (_type === 2) api = 'joinDiscussionNegative';
         if (_type === 3) api = 'joinDiscussionWatcher';
 
-        if ('' !== api) {
+        res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
+            body: JSON.stringify({
+                joinType: _type,
+                userId: _userId,
+                socketId: _socketId
+            })
+        });
 
-            res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
-                body: JSON.stringify({
-                    joinType: _type,
-                    userId: _userId,
-                    socketId: _socketId
-                })
-            });
-
-            if (!res.status) {
-                result = false;
-                console.error(res.data);
-            }
+        if (!res.status) {
+            result = false;
+            console.error(res.data);
         }
 
         return result;
@@ -538,18 +533,15 @@ export default function Discussion({ postId, userId }) {
         if (_type === 2) api = 'setDiscussionNegativeState';
         if (_type === 3) api = 'setDiscussionWatcherState';
 
-        if ('' !== api) {
+        res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
+            body: JSON.stringify({
+                state: _state,
+                socketId: _socketId
+            })
+        });
 
-            res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
-                body: JSON.stringify({
-                    state: _state,
-                    socketId: _socketId
-                })
-            });
-
-            if (!res.status) {
-                console.error(res.data);
-            }
+        if (!res.status) {
+            console.error(res.data);
         }
     }
 
