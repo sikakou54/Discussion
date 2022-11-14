@@ -7,7 +7,7 @@ import Standby from './standby';
 import Ready from './ready';
 import Finish from './finish';
 import Vote from './vote';
-import votingDone from './votingDone';
+import VotingDone from './votingDone';
 
 import {
     useMeetingManager,
@@ -227,6 +227,74 @@ const reducer = (state, action) => {
     }
 };
 
+async function apiFetchGetJson(url) {
+
+    return new Promise(async (resolve) => {
+
+        let res = null;
+        let retry = true;
+        let json = null;
+
+        while (retry) {
+            try {
+                res = await fetch(url, { method: 'GET' });
+                if (res.ok) {
+                    json = await res.json();
+                    resolve({
+                        status: true,
+                        data: json
+                    });
+                } else {
+                    if (503 !== res.status) {
+                        resolve({
+                            status: false,
+                            data: res.statusText
+                        });
+                    } else {
+                        console.log('retry');
+                    }
+                }
+
+            } catch (e) {
+                resolve({
+                    status: false,
+                    data: e
+                });
+            }
+        }
+
+    });
+}
+
+async function apiFetchPost(url, params) {
+
+    return new Promise(async (resolve) => {
+
+        let res = null;
+        let retry = true;
+
+        while (retry) {
+            try {
+                res = await fetch(url, { method: 'POST', ...params });
+                if (503 !== res.status) {
+                    retry = false;
+                } else {
+                    console.log('retry');
+                }
+            } catch (e) {
+                resolve({
+                    status: false,
+                    data: e
+                });
+            }
+        }
+        resolve({
+            status: true,
+            data: null
+        });
+    });
+}
+
 export default function Discussion({ postId, userId }) {
 
     const socket = useRef(null);
@@ -259,16 +327,16 @@ export default function Discussion({ postId, userId }) {
     });
     const meetingManager = useMeetingManager();
 
-    function webSocketOpen(event) {
+    async function webSocketOpen(event) {
         console.log('open', event);
         socket.current.send(JSON.stringify({ action: 'getSocketId', data: '-' }));
     }
 
-    function webSocketClose(event) {
+    async function webSocketClose(event) {
         console.log('close', event);
     }
 
-    function webSocketMessage(event) {
+    async function webSocketMessage(event) {
 
         const { notify, data } = JSON.parse(event.data);
 
@@ -330,15 +398,18 @@ export default function Discussion({ postId, userId }) {
                 break;
 
             case 'notifyDiscussionStatus':
-                fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId, { method: "GET" })
-                    .then((res) => res.json())
-                    .then((data) => dispatch({
-                        type: actions.changeDiscussionMember,
-                        payload: {
-                            post: data
+
+                apiFetchGetJson(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId)
+                    .then((res) => {
+                        if (res.status) {
+                            dispatch({
+                                type: actions.changeDiscussionMember,
+                                payload: {
+                                    post: res.data
+                                }
+                            });
                         }
-                    }))
-                    .catch((e) => { console.log(e); });
+                    });
                 break;
 
             default:
@@ -364,8 +435,8 @@ export default function Discussion({ postId, userId }) {
     async function joinDiscussion(_type, _postId, _socketId, _userId) {
 
         let api = '';
-        let result = false;
-        let response = null;
+        let result = true;
+        let res = null;
 
         if (_type === 1) api = 'joinDiscussionPositive';
         if (_type === 2) api = 'joinDiscussionNegative';
@@ -373,16 +444,17 @@ export default function Discussion({ postId, userId }) {
 
         if ('' !== api) {
 
-            response = await fetch(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
-                method: 'POST', body: JSON.stringify({
+            res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
+                body: JSON.stringify({
                     joinType: _type,
                     userId: _userId,
                     socketId: _socketId
                 })
             });
 
-            if (response.ok) {
-                result = true;
+            if (!res.status) {
+                result = false;
+                console.error(res.data);
             }
         }
 
@@ -392,28 +464,39 @@ export default function Discussion({ postId, userId }) {
     async function setDiscussionState(_type, _postId, _socketId, _state) {
 
         let api = '';
+        let res = null;
 
         if (_type === 1) api = 'setDiscussionPositiveState';
         if (_type === 2) api = 'setDiscussionNegativeState';
         if (_type === 3) api = 'setDiscussionWatcherState';
 
         if ('' !== api) {
-            await fetch(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
-                method: 'POST', body: JSON.stringify({
+
+            res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
+                body: JSON.stringify({
                     state: _state,
                     socketId: _socketId
                 })
             });
+
+            if (!res.status) {
+                console.error(res.data);
+            }
         }
     }
 
     async function setVote(_postId, _socketId, _judge) {
-        await fetch(process.env.awsApiGatewayHttpApiEndPoint + '/setVote/' + _postId, {
-            method: 'POST', body: JSON.stringify({
+
+        let res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setVote/' + _postId, {
+            body: JSON.stringify({
                 socketId: _socketId,
                 judge: _judge
             })
         });
+
+        if (!res.status) {
+            console.error(res.data);
+        }
     }
 
     function onJoin(type) {
@@ -514,13 +597,12 @@ export default function Discussion({ postId, userId }) {
 
     async function updateSelect(message) {
 
-        const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId, { method: "GET" });
-        if (res.ok) {
-            const post = await res.json();
+        const res = await apiFetchGetJson(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId);
+        if (res.status) {
             dispatch({
                 type: actions.changeState.select,
                 payload: {
-                    post,
+                    post: res.data,
                     message: message
                 }
             });
@@ -665,7 +747,7 @@ export default function Discussion({ postId, userId }) {
             {data.state === process.env.userState.online ? < Online finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
             {data.state === process.env.userState.finish ? <Finish /> : null}
             {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
-            {data.state === process.env.userState.votingDone ? <votingDone /> : null}
+            {data.state === process.env.userState.votingDone ? <VotingDone /> : null}
         </div>
     );
 }
