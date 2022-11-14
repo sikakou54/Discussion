@@ -227,7 +227,7 @@ const reducer = (state, action) => {
     }
 };
 
-async function apiFetchGetJson(url) {
+async function apiFetchGet(url) {
 
     return new Promise(async (resolve) => {
 
@@ -251,14 +251,14 @@ async function apiFetchGetJson(url) {
                             data: res.statusText
                         });
                     } else {
-                        console.log('retry');
+                        console.log('apiFetchGet', 'retry');
                     }
                 }
 
             } catch (e) {
                 resolve({
                     status: false,
-                    data: e
+                    data: null
                 });
             }
         }
@@ -284,7 +284,7 @@ async function apiFetchPost(url, params) {
                 } else if (503 !== res.status) {
                     retry = false;
                 } else {
-                    console.log('retry');
+                    console.log('apiFetchPost', 'retry');
                 }
             } catch (e) {
                 resolve({
@@ -400,7 +400,7 @@ export default function Discussion({ postId, userId }) {
 
             case 'notifyDiscussionStatus':
 
-                apiFetchGetJson(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId)
+                apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId)
                     .then((res) => {
                         if (res.status) {
                             dispatch({
@@ -598,7 +598,7 @@ export default function Discussion({ postId, userId }) {
 
     async function updateSelect(message) {
 
-        const res = await apiFetchGetJson(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId);
+        const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId);
         if (res.status) {
             dispatch({
                 type: actions.changeState.select,
