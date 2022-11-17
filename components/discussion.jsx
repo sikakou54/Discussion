@@ -165,6 +165,17 @@ const reducer = (state, action) => {
                 judge: action.payload.judge
             };
 
+        // atendees
+        case actions.attendees:
+            return {
+                ...state,
+                attendees: {
+                    positive: action.payload.positive,
+                    negative: action.payload.negative,
+                    watchers: action.payload.watchers
+                }
+            };
+
         default:
             return {
                 ...state
@@ -179,7 +190,11 @@ export default function Discussion({ discussion, userId }) {
         state: process.env.userState.none,
         userId: userId,
         postId: discussion.postId,
-        discussion: discussion,
+        attendees: {
+            positive: discussion.positive,
+            negative: discussion.negative,
+            watchers: discussion.watchers
+        },
         joinType: 0,
         socketId: 'none',
         meetingSessionConfiguration: {},
@@ -270,6 +285,14 @@ export default function Discussion({ discussion, userId }) {
                 break;
 
             case 'notifyDiscussionStatus':
+                dispatch({
+                    type: actions.attendees,
+                    payload: {
+                        positive: data.attendees.positive,
+                        negative: data.attendees.negative,
+                        watchers: data.attendees.watchers
+                    }
+                });
                 break;
 
             default:
@@ -581,8 +604,10 @@ export default function Discussion({ discussion, userId }) {
 
     return (
         <div>
-            {null !== data.discussion ? <div>{data.discussion.positive.userId}/{data.discussion.negative.userId}/{data.discussion.watchers.length}</div> : null}
-            {data.state === process.env.userState.select ? <Select title={data.discussion.title} detail={data.discussion.detail} onJoin={onJoin} onCancel={onCancel} message={data.message} /> : null}
+            <h1>{discussion.title}</h1>
+            <p>{discussion.detail}</p>
+            <div>{data.attendees.positive ? data.attendees.positive.userId : 'none'}/{data.attendees.negative ? data.attendees.negative.userId : 'none'}/{data.attendees.watchers.length}</div>
+            {data.state === process.env.userState.select ? <Select onJoin={onJoin} onCancel={onCancel} message={data.message} /> : null}
             {data.state === process.env.userState.join ? < Join /> : null}
             {data.state === process.env.userState.standby ? <Standby /> : null}
             {data.state === process.env.userState.ready ? <Ready /> : null}

@@ -18,7 +18,7 @@ export const actions = {
         init: 0x20,
         update: 0x21
     },
-    changeDiscussionMember: 0x31,
+    attendees: 0x31,
     start: 0x41,
     timer: {
         timeout: 0x51,

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Select({ title, detail, onJoin, onCancel, message }) {
+export default function Select({ onJoin, onCancel, message }) {
 
     const [type, setType] = useState(0);
 
@@ -16,8 +16,6 @@ export default function Select({ title, detail, onJoin, onCancel, message }) {
 
     return (
         <div>
-            <h1>{title}</h1>
-            <p>{detail}</p>
             <div>
                 <input onClick={() => { setType(1) }} type="button" value={"肯定"} />
                 <input onClick={() => { setType(2) }} type="button" value={"否定"} />
