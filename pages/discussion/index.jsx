@@ -3,7 +3,7 @@ import {
     lightTheme,
 } from 'amazon-chime-sdk-component-library-react';
 import { ThemeProvider } from "styled-components";
-import Discussion from '../../components/Discussion';
+import Discussion from '../../components/discussion';
 
 export default function DiscussionManager({ discussion, userId }) {
     return (
