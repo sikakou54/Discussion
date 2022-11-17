@@ -37,11 +37,11 @@ export async function apiFetchPost(url, params) {
                     // リトライしない
                     retry = false;
 
-                    console.error('apiFetchPost', e, url, params);
+                    console.error('apiFetchPost', res.status, res.statusText, url, params);
 
                 } else {
                     //503の場合はエラーとしリトライする
-                    console.log('apiFetchPost', 'retry', url, params);
+                    console.log('apiFetchPost', 'retry', res.status, res.statusText, url, params);
                 }
 
             } catch (e) {
@@ -107,11 +107,11 @@ export async function apiFetchGet(url) {
                     // リトライしない
                     retry = false;
 
-                    console.error('apiFetchGet', url);
+                    console.error('apiFetchGet', res.status, res.statusText, url);
 
                 } else {
                     //503の場合はエラーとしリトライする
-                    console.log('apiFetchGet', 'retry', url);
+                    console.log('apiFetchGet', 'retry', res.status, res.statusText, url);
                 }
 
             } catch (e) {
