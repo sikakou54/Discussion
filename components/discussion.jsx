@@ -44,6 +44,11 @@ const reducer = (state, action) => {
                 isStarted: false,
                 isVote: false,
                 isTimerEnable: false,
+                attendees: {
+                    positive: action.payload.attendees.positive,
+                    negative: action.payload.attendees.negative,
+                    watchers: action.payload.attendees.watchers
+                }
             };
 
         // ready
@@ -54,6 +59,11 @@ const reducer = (state, action) => {
                 meetingSessionConfiguration: {
                     Meeting: action.payload.config.Meeting,
                     Attendee: action.payload.config.Attendee,
+                },
+                attendees: {
+                    positive: action.payload.attendees.positive,
+                    negative: action.payload.attendees.negative,
+                    watchers: action.payload.attendees.watchers
                 }
             };
 
@@ -82,7 +92,12 @@ const reducer = (state, action) => {
                 isTimerEnable: true,
                 isTimeout: false,
                 limitTime: action.payload.limitTime,
-                currentTime: getTimeStamp()
+                currentTime: getTimeStamp(),
+                attendees: {
+                    positive: action.payload.attendees.positive,
+                    negative: action.payload.attendees.negative,
+                    watchers: action.payload.attendees.watchers
+                }
             };
 
         // votingDone
@@ -103,6 +118,11 @@ const reducer = (state, action) => {
                     win: action.payload.result.win,
                     positive: action.payload.result.positive,
                     negative: action.payload.result.negative
+                },
+                attendees: {
+                    positive: action.payload.attendees.positive,
+                    negative: action.payload.attendees.negative,
+                    watchers: action.payload.attendees.watchers
                 }
             };
 
@@ -135,13 +155,12 @@ const reducer = (state, action) => {
                 isTimerEnable: true,
                 isTimeout: false,
                 limitTime: action.payload.limitTime,
-                currentTime: getTimeStamp()
-            };
-
-        // changeDiscussionMember
-        case actions.changeDiscussionMember:
-            return {
-                ...state,
+                currentTime: getTimeStamp(),
+                attendees: {
+                    positive: action.payload.attendees.positive,
+                    negative: action.payload.attendees.negative,
+                    watchers: action.payload.attendees.watchers
+                }
             };
 
         // timer.timeout
@@ -149,13 +168,6 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isTimeout: true
-            };
-
-        // timer.reset
-        case actions.timer.reset:
-            return {
-                ...state,
-                isTimeout: false
             };
 
         // vote
@@ -236,8 +248,7 @@ export default function Discussion({ discussion, userId }) {
                 dispatch({
                     type: actions.changeSocketId.update,
                     payload: {
-                        socketId: data.socketId,
-                        attendees
+                        socketId: data.socketId
                     }
                 });
                 break;

@@ -11,18 +11,15 @@ export const actions = {
         result: 0x08
     },
     changeCurrentTime: {
-        init: 0x10,
         update: 0x11
     },
     changeSocketId: {
-        init: 0x20,
         update: 0x21
     },
     attendees: 0x31,
     start: 0x41,
     timer: {
-        timeout: 0x51,
-        reset: 0x52
+        timeout: 0x51
     },
     vote: 0x61
 };
