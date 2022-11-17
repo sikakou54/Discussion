@@ -238,7 +238,6 @@ export default function Discussion({ discussion, userId }) {
     async function webSocketMessage(event) {
 
         const { notify, data } = JSON.parse(event.data);
-        const { attendees } = data;
 
         console.log('message', notify, data);
 
@@ -257,7 +256,7 @@ export default function Discussion({ discussion, userId }) {
                 dispatch({
                     type: actions.state.standby,
                     payload: {
-                        attendees
+                        attendees: data.attendees
                     }
                 });
                 break;
@@ -267,7 +266,7 @@ export default function Discussion({ discussion, userId }) {
                     type: actions.state.ready,
                     payload: {
                         config: data.config,
-                        attendees
+                        attendees: data.attendees
                     }
                 });
                 break;
@@ -277,7 +276,7 @@ export default function Discussion({ discussion, userId }) {
                     type: actions.state.vote,
                     payload: {
                         limitTime: data.limitTime,
-                        attendees
+                        attendees: data.attendees
                     }
                 });
                 break;
@@ -291,7 +290,7 @@ export default function Discussion({ discussion, userId }) {
                             positive: data.result.positive,
                             negative: data.result.negative
                         },
-                        attendees
+                        attendees: data.attendees
                     }
                 });
                 break;
@@ -301,7 +300,7 @@ export default function Discussion({ discussion, userId }) {
                     type: actions.start,
                     payload: {
                         limitTime: data.limitTime,
-                        attendees
+                        attendees: data.attendees
                     }
                 });
                 break;
@@ -310,7 +309,7 @@ export default function Discussion({ discussion, userId }) {
                 dispatch({
                     type: actions.attendees,
                     payload: {
-                        attendees
+                        attendees: data.attendees
                     }
                 });
                 break;
@@ -605,7 +604,6 @@ export default function Discussion({ discussion, userId }) {
             if (data.state === process.env.userState.online) {
                 dispatch({ type: actions.state.finish });
             }
-
             if (data.state === process.env.userState.vote && 3 === data.joinType) {
                 dispatch({ type: actions.state.votingDone });
             }
