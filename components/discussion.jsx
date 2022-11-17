@@ -314,6 +314,10 @@ export default function Discussion({ discussion, userId }) {
                 });
                 break;
 
+            case 'notifyJoinImpossibleRequest':
+                await updateSelect('現在投票です。参加できません。');
+                break;
+
             default:
                 break;
         }
@@ -495,6 +499,13 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function updateSelect(message) {
+
+        // ソケットを切断する
+        if (socket.current && socket.current.readyState === 1) {
+            socket.current.close();
+        }
+
+        // 選択画面に遷移する
         dispatch({
             type: actions.state.select,
             payload: {
@@ -524,10 +535,7 @@ export default function Discussion({ discussion, userId }) {
 
                 result = await joinDiscussion(data.joinType, data.postId, data.socketId, data.userId);
 
-                if (false === result) {
-                    if (socket.current && socket.current.readyState === 1) {
-                        socket.current.close();
-                    }
+                if (!result) {
                     await updateSelect('参加できませんでした。＿|￣|○');
                 }
             }
