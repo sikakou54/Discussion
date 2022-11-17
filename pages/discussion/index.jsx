@@ -4,24 +4,48 @@ import {
 } from 'amazon-chime-sdk-component-library-react';
 import { ThemeProvider } from "styled-components";
 import Discussion from '../../components/Discussion';
-import { useRouter } from 'next/router';
 
-export default function DiscussionManager() {
+export default function DiscussionManager({ discussion, userId, }) {
 
-    const router = useRouter();
-    const { postId, userId } = router.query;
+    return (
+        < ThemeProvider theme={lightTheme} >
+            <MeetingProvider>
+                <Discussion discussion={discussion} userId={userId} />
+            </MeetingProvider>
+        </ThemeProvider >
+    );
+}
 
-    if (undefined !== postId && undefined !== userId) {
+//SSR
+export async function getServerSideProps({ query }) {
 
-        return (
-            < ThemeProvider theme={lightTheme} >
-                <MeetingProvider>
-                    <Discussion postId={postId} userId={userId} />
-                </MeetingProvider>
-            </ThemeProvider >
-        );
+    let discussion = null;
+    const { postId, userId } = query;
 
-    } else {
-        return null;
+    try {
+
+        if (undefined !== postId && undefined !== userId) {
+
+            // call getDiscussion api
+            const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + postId);
+            if (res.ok) {
+                discussion = await res.json();
+            }
+        }
+
+    } catch (e) {
+        discussion = null;
     }
+
+    if (null !== discussion) {
+        return {
+            props: {
+                discussion,
+                userId,
+            }
+        }
+    } else {
+        return { notFound: true };
+    }
+
 }

@@ -8,67 +8,28 @@ import Ready from './Ready';
 import Finish from './Finish';
 import Vote from './Vote';
 import VotingDone from './VotingDone';
-
+import { apiFetchPost, getTimeStamp } from '../api/api';
+import { actions } from '../define/define';
 import {
     useMeetingManager,
     DeviceLabels
 } from 'amazon-chime-sdk-component-library-react';
 import { MeetingSessionConfiguration } from 'amazon-chime-sdk-js';
 
-const actions = {
-    changeState: {
-        select: 0x00,
-        join: 0x01,
-        standby: 0x02,
-        ready: 0x03,
-        online: 0x04,
-        finish: 0x05,
-        vote: 0x06,
-        votingDone: 0x07,
-        result: 0x08
-    },
-    changeCurrentTime: {
-        init: 0x10,
-        update: 0x11
-    },
-    changeSocketId: {
-        init: 0x20,
-        update: 0x21
-    },
-    changeDiscussionMember: 0x31,
-    start: 0x41,
-    timer: {
-        timeout: 0x51,
-        reset: 0x52
-    },
-    vote: 0x61
-};
-
-function getTimeStamp(offset = 0) {
-    return (new Date()).getTime() + offset;
-}
-
 const reducer = (state, action) => {
 
     switch (action.type) {
 
-        /******************************
-         * changeState
-         ******************************/
-
         // select
-        case actions.changeState.select:
+        case actions.state.select:
             return {
                 ...state,
                 state: process.env.userState.select,
-                post: {
-                    ...(action.payload.post)
-                },
                 message: action.payload.message
             };
 
         // join
-        case actions.changeState.join:
+        case actions.state.join:
             return {
                 ...state,
                 state: process.env.userState.join,
@@ -76,7 +37,7 @@ const reducer = (state, action) => {
             };
 
         // standby
-        case actions.changeState.standby:
+        case actions.state.standby:
             return {
                 ...state,
                 state: process.env.userState.standby,
@@ -86,7 +47,7 @@ const reducer = (state, action) => {
             };
 
         // ready
-        case actions.changeState.ready:
+        case actions.state.ready:
             return {
                 ...state,
                 state: process.env.userState.ready,
@@ -97,14 +58,14 @@ const reducer = (state, action) => {
             };
 
         // online
-        case actions.changeState.online:
+        case actions.state.online:
             return {
                 ...state,
                 state: process.env.userState.online
             };
 
         // finish
-        case actions.changeState.finish:
+        case actions.state.finish:
             return {
                 ...state,
                 state: process.env.userState.finish,
@@ -113,7 +74,7 @@ const reducer = (state, action) => {
             };
 
         // vote
-        case actions.changeState.vote:
+        case actions.state.vote:
             return {
                 ...state,
                 state: process.env.userState.vote,
@@ -125,7 +86,7 @@ const reducer = (state, action) => {
             };
 
         // votingDone
-        case actions.changeState.votingDone:
+        case actions.state.votingDone:
             return {
                 ...state,
                 state: process.env.userState.votingDone,
@@ -134,7 +95,7 @@ const reducer = (state, action) => {
             };
 
         // result
-        case actions.changeState.result:
+        case actions.state.result:
             return {
                 ...state,
                 state: process.env.userState.result,
@@ -144,10 +105,6 @@ const reducer = (state, action) => {
                     negative: action.payload.result.negative
                 }
             };
-
-        /******************************
-         * changeCurrentTime
-         ******************************/
 
         // update
         case actions.changeCurrentTime.update:
@@ -163,10 +120,6 @@ const reducer = (state, action) => {
                 currentTime: 0
             };
 
-        /******************************
-         * changeSocketId
-         ******************************/
-
         // update
         case actions.changeSocketId.update:
             return {
@@ -174,9 +127,7 @@ const reducer = (state, action) => {
                 socketId: action.payload.socketId
             };
 
-        /******************************
-         * start
-         ******************************/
+        // start
         case actions.start:
             return {
                 ...state,
@@ -187,33 +138,27 @@ const reducer = (state, action) => {
                 currentTime: getTimeStamp()
             };
 
-        /******************************
-         * changeDiscussionMember
-         ******************************/
+        // changeDiscussionMember
         case actions.changeDiscussionMember:
             return {
                 ...state,
-                post: action.payload.post
             };
 
-        /******************************
-         * timeout
-         ******************************/
+        // timer.timeout
         case actions.timer.timeout:
             return {
                 ...state,
                 isTimeout: true
             };
 
+        // timer.reset
         case actions.timer.reset:
             return {
                 ...state,
                 isTimeout: false
             };
 
-        /******************************
-         * vote
-         ******************************/
+        // vote
         case actions.vote:
             return {
                 ...state,
@@ -227,158 +172,19 @@ const reducer = (state, action) => {
     }
 };
 
-async function apiFetchGet(url) {
 
-    return new Promise(async (resolve) => {
 
-        let res = null;
-        let retry = true;
-        let json = null;
-        let obj = {};
-
-        while (retry) {
-
-            try {
-
-                // GETリクエスト
-                res = await fetch(url, { method: 'GET' });
-
-                // レスポンスが正常の場合
-                if (res.ok) {
-
-                    // jsonを取得する
-                    json = await res.json();
-
-                    // 戻り値を設定する
-                    obj = {
-                        status: true,
-                        data: json
-                    };
-
-                    // リトライしない
-                    retry = false;
-
-                    //503以外の場合はエラーとしリトライしない
-                } else if (503 !== res.status) {
-
-                    // 戻り値を設定する
-                    obj = {
-                        status: false,
-                        data: res.statusText
-                    };
-
-                    // リトライしない
-                    retry = false;
-
-                    console.error('apiFetchGet', url);
-
-                } else {
-                    //503の場合はエラーとしリトライする
-                    console.log('apiFetchGet', 'retry', url);
-                }
-
-            } catch (e) {
-
-                // 戻り値を設定する
-                obj = {
-                    status: false,
-                    data: e
-                };
-
-                // リトライしない
-                retry = false;
-
-                console.error('apiFetchGet', e, url);
-            }
-        }
-
-        // 返却する
-        resolve({ ...obj });
-    });
-}
-
-async function apiFetchPost(url, params) {
-
-    return new Promise(async (resolve) => {
-
-        let res = null;
-        let retry = true;
-        let obj = {};
-
-        while (retry) {
-
-            try {
-
-                // POSTリクエスト
-                res = await fetch(url, { method: 'POST', ...params });
-
-                // レスポンスが正常の場合
-                if (res.ok) {
-
-                    // 戻り値を設定する
-                    obj = {
-                        status: true,
-                        data: res.body
-                    }
-
-                    // リトライしない
-                    retry = false;
-
-                    //503以外の場合はエラーとしリトライしない
-                } else if (503 !== res.status) {
-
-                    // 戻り値を設定する
-                    obj = {
-                        status: false,
-                        data: res.statusText
-                    }
-
-                    // リトライしない
-                    retry = false;
-
-                    console.error('apiFetchPost', e, url, params);
-
-                } else {
-                    //503の場合はエラーとしリトライする
-                    console.log('apiFetchPost', 'retry', url, params);
-                }
-
-            } catch (e) {
-
-                // 戻り値を設定する
-                obj = {
-                    status: false,
-                    data: e
-                }
-
-                // リトライしない
-                retry = false;
-
-                console.error('apiFetchPost', e, url, params);
-            }
-        }
-
-        // 返却する
-        resolve({ ...obj });
-    });
-}
-
-export default function Discussion({ postId, userId }) {
+export default function Discussion({ discussion, userId }) {
 
     const socket = useRef(null);
     const [data, dispatch] = useReducer(reducer, {
         state: process.env.userState.none,
         userId: userId,
-        postId: postId,
-        post: null,
+        postId: discussion.postId,
+        discussion: discussion,
         joinType: 0,
         socketId: 'none',
         meetingSessionConfiguration: {},
-        attendees: {
-            positive: 0,
-            negative: 0,
-            watchers: 0
-        },
         isVote: false,
         isStarted: false,
         isTimeout: false,
@@ -422,12 +228,12 @@ export default function Discussion({ postId, userId }) {
                 break;
 
             case 'notifyStandbyRequest':
-                dispatch({ type: actions.changeState.standby });
+                dispatch({ type: actions.state.standby });
                 break;
 
             case 'notifyReadyRequest':
                 dispatch({
-                    type: actions.changeState.ready,
+                    type: actions.state.ready,
                     payload: {
                         config: data.config
                     }
@@ -436,7 +242,7 @@ export default function Discussion({ postId, userId }) {
 
             case 'notifyVoteRequest':
                 dispatch({
-                    type: actions.changeState.vote,
+                    type: actions.state.vote,
                     payload: {
                         limitTime: data.limitTime
                     }
@@ -445,7 +251,7 @@ export default function Discussion({ postId, userId }) {
 
             case 'notifyResultRequest':
                 dispatch({
-                    type: actions.changeState.result,
+                    type: actions.state.result,
                     payload: {
                         result: {
                             win: data.result.win,
@@ -466,16 +272,6 @@ export default function Discussion({ postId, userId }) {
                 break;
 
             case 'notifyDiscussionStatus':
-                apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId).then((res) => {
-                    if (res.status) {
-                        dispatch({
-                            type: actions.changeDiscussionMember,
-                            payload: {
-                                post: res.data
-                            }
-                        });
-                    }
-                });
                 break;
 
             default:
@@ -561,7 +357,7 @@ export default function Discussion({ postId, userId }) {
 
     function onJoin(type) {
         dispatch({
-            type: actions.changeState.join,
+            type: actions.state.join,
             payload: {
                 joinType: type
             }
@@ -590,7 +386,7 @@ export default function Discussion({ postId, userId }) {
         });
         await meetingManager.start();
 
-        dispatch({ type: actions.changeState.online });
+        dispatch({ type: actions.state.online });
     }
 
     async function changedStateJoin() {
@@ -656,24 +452,12 @@ export default function Discussion({ postId, userId }) {
     }
 
     async function updateSelect(message) {
-
-        const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + data.postId);
-        if (res.status) {
-            dispatch({
-                type: actions.changeState.select,
-                payload: {
-                    post: res.data,
-                    message: message
-                }
-            });
-        } else {
-            Router.push({
-                pathname: "posts",
-                query: {
-                    userId: data.userId
-                }
-            });
-        }
+        dispatch({
+            type: actions.state.select,
+            payload: {
+                message: message
+            }
+        });
     }
 
     useEffect(() => {
@@ -707,11 +491,11 @@ export default function Discussion({ postId, userId }) {
 
         if (data.isTimerEnable) {
             if (data.state === process.env.userState.online) {
-                dispatch({ type: actions.changeState.finish });
+                dispatch({ type: actions.state.finish });
             }
 
             if (data.state === process.env.userState.vote && 3 === data.joinType) {
-                dispatch({ type: actions.changeState.votingDone });
+                dispatch({ type: actions.state.votingDone });
             }
         }
 
@@ -799,8 +583,8 @@ export default function Discussion({ postId, userId }) {
 
     return (
         <div>
-            {null !== data.post ? <div>{data.post.positive.userId}/{data.post.negative.userId}/{data.post.watchers.length}</div> : null}
-            {data.state === process.env.userState.select ? <Select title={data.post.title} detail={data.post.detail} onJoin={onJoin} onCancel={onCancel} message={data.message} /> : null}
+            {null !== data.discussion ? <div>{data.discussion.positive.userId}/{data.discussion.negative.userId}/{data.discussion.watchers.length}</div> : null}
+            {data.state === process.env.userState.select ? <Select title={data.discussion.title} detail={data.discussion.detail} onJoin={onJoin} onCancel={onCancel} message={data.message} /> : null}
             {data.state === process.env.userState.join ? < Join /> : null}
             {data.state === process.env.userState.standby ? <Standby /> : null}
             {data.state === process.env.userState.ready ? <Ready /> : null}
