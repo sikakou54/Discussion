@@ -25,7 +25,6 @@ export async function getServerSideProps({ query }) {
     try {
 
         if (undefined !== postId && undefined !== userId) {
-
             // call getDiscussion api
             const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + postId);
             if (res.ok) {
@@ -43,7 +42,7 @@ export async function getServerSideProps({ query }) {
                 discussion,
                 userId,
             }
-        }
+        };
     } else {
         return { notFound: true };
     }

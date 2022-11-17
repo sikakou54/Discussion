@@ -172,8 +172,6 @@ const reducer = (state, action) => {
     }
 };
 
-
-
 export default function Discussion({ discussion, userId }) {
 
     const socket = useRef(null);
