@@ -2,7 +2,7 @@ import { useEffect, useRef, useReducer } from 'react';
 import Router from 'next/router';
 import Select from './select';
 import Online from './online';
-import Join from './Join';
+import Join from './join';
 import Standby from './standby';
 import Ready from './ready';
 import Finish from './finish';
