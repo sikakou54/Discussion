@@ -170,9 +170,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 attendees: {
-                    positive: action.payload.attendees.positive,
-                    negative: action.payload.attendees.negative,
-                    watchers: action.payload.attendees.watchers
+                    ...(action.payload.attendees)
                 }
             };
 
