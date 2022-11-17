@@ -170,9 +170,9 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 attendees: {
-                    positive: action.payload.positive,
-                    negative: action.payload.negative,
-                    watchers: action.payload.watchers
+                    positive: action.payload.attendees.positive,
+                    negative: action.payload.attendees.negative,
+                    watchers: action.payload.attendees.watchers
                 }
             };
 
@@ -226,6 +226,7 @@ export default function Discussion({ discussion, userId }) {
     async function webSocketMessage(event) {
 
         const { notify, data } = JSON.parse(event.data);
+        const { attendees } = data;
 
         console.log('message', notify, data);
 
@@ -235,20 +236,27 @@ export default function Discussion({ discussion, userId }) {
                 dispatch({
                     type: actions.changeSocketId.update,
                     payload: {
-                        socketId: data.socketId
+                        socketId: data.socketId,
+                        attendees
                     }
                 });
                 break;
 
             case 'notifyStandbyRequest':
-                dispatch({ type: actions.state.standby });
+                dispatch({
+                    type: actions.state.standby,
+                    payload: {
+                        attendees
+                    }
+                });
                 break;
 
             case 'notifyReadyRequest':
                 dispatch({
                     type: actions.state.ready,
                     payload: {
-                        config: data.config
+                        config: data.config,
+                        attendees
                     }
                 });
                 break;
@@ -257,7 +265,8 @@ export default function Discussion({ discussion, userId }) {
                 dispatch({
                     type: actions.state.vote,
                     payload: {
-                        limitTime: data.limitTime
+                        limitTime: data.limitTime,
+                        attendees
                     }
                 });
                 break;
@@ -270,7 +279,8 @@ export default function Discussion({ discussion, userId }) {
                             win: data.result.win,
                             positive: data.result.positive,
                             negative: data.result.negative
-                        }
+                        },
+                        attendees
                     }
                 });
                 break;
@@ -279,7 +289,8 @@ export default function Discussion({ discussion, userId }) {
                 dispatch({
                     type: actions.start,
                     payload: {
-                        limitTime: data.limitTime
+                        limitTime: data.limitTime,
+                        attendees
                     }
                 });
                 break;
@@ -288,9 +299,7 @@ export default function Discussion({ discussion, userId }) {
                 dispatch({
                     type: actions.attendees,
                     payload: {
-                        positive: data.attendees.positive,
-                        negative: data.attendees.negative,
-                        watchers: data.attendees.watchers
+                        attendees
                     }
                 });
                 break;
