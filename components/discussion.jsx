@@ -506,36 +506,6 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
-        if (data.isTimerEnable) {
-            if (data.limitTime <= data.currentTime) {
-                dispatch({ type: actions.timer.timeout });
-            } else {
-                setTimeout(discussionTimer, 500);
-            }
-        }
-
-    }, [data.currentTime]);
-
-    useEffect(() => {
-
-        if (!data.isTimeout) {
-            return;
-        }
-
-        if (data.isTimerEnable) {
-            if (data.state === process.env.userState.online) {
-                dispatch({ type: actions.state.finish });
-            }
-
-            if (data.state === process.env.userState.vote && 3 === data.joinType) {
-                dispatch({ type: actions.state.votingDone });
-            }
-        }
-
-    }, [data.isTimeout]);
-
-    useEffect(() => {
-
         async function changeSocketId() {
 
             let result = false;
@@ -601,6 +571,36 @@ export default function Discussion({ discussion, userId }) {
         }
 
     }, [data.state]);
+
+    useEffect(() => {
+
+        if (data.isTimerEnable) {
+            if (data.limitTime <= data.currentTime) {
+                dispatch({ type: actions.timer.timeout });
+            } else {
+                setTimeout(discussionTimer, 500);
+            }
+        }
+
+    }, [data.currentTime]);
+
+    useEffect(() => {
+
+        if (!data.isTimeout) {
+            return;
+        }
+
+        if (data.isTimerEnable) {
+            if (data.state === process.env.userState.online) {
+                dispatch({ type: actions.state.finish });
+            }
+
+            if (data.state === process.env.userState.vote && 3 === data.joinType) {
+                dispatch({ type: actions.state.votingDone });
+            }
+        }
+
+    }, [data.isTimeout]);
 
     useEffect(() => {
         if (true === data.isStarted) {
