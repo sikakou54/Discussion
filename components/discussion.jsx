@@ -228,7 +228,7 @@ export default function Discussion({ discussion, userId }) {
 
     async function webSocketOpen(event) {
         console.log('open', event);
-        socket.current.send(JSON.stringify({ action: 'getSocketId', data: '-' }));
+        socket.current.send(JSON.stringify({ action: 'getSocketId' }));
     }
 
     async function webSocketClose(event) {
