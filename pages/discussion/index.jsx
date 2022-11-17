@@ -6,7 +6,6 @@ import { ThemeProvider } from "styled-components";
 import Discussion from '../../components/Discussion';
 
 export default function DiscussionManager({ discussion, userId }) {
-
     return (
         < ThemeProvider theme={lightTheme} >
             <MeetingProvider>
