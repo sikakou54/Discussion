@@ -165,7 +165,7 @@ const reducer = (state, action) => {
                 judge: action.payload.judge
             };
 
-        // atendees
+        // attendees
         case actions.attendees:
             return {
                 ...state,
