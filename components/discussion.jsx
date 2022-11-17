@@ -325,17 +325,20 @@ export default function Discussion({ discussion, userId }) {
         if (_type === 2) api = 'joinDiscussionNegative';
         if (_type === 3) api = 'joinDiscussionWatcher';
 
-        res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
-            body: JSON.stringify({
-                joinType: _type,
-                userId: _userId,
-                socketId: _socketId
-            })
-        });
-
-        if (!res.status) {
+        try {
+            res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
+                body: JSON.stringify({
+                    joinType: _type,
+                    userId: _userId,
+                    socketId: _socketId
+                })
+            });
+            if (!res.status) {
+                result = false;
+            }
+        } catch (e) {
             result = false;
-            console.error(res.data);
+            console.error('joinDiscussion', e);
         }
 
         return result;
@@ -344,35 +347,35 @@ export default function Discussion({ discussion, userId }) {
     async function setDiscussionState(_type, _postId, _socketId, _state) {
 
         let api = '';
-        let res = null;
 
         if (_type === 1) api = 'setDiscussionPositiveState';
         if (_type === 2) api = 'setDiscussionNegativeState';
         if (_type === 3) api = 'setDiscussionWatcherState';
 
-        res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
-            body: JSON.stringify({
-                state: _state,
-                socketId: _socketId
-            })
-        });
-
-        if (!res.status) {
-            console.error(res.data);
+        try {
+            await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
+                body: JSON.stringify({
+                    state: _state,
+                    socketId: _socketId
+                })
+            });
+        } catch (e) {
+            console.error('setDiscussionState', e);
         }
+
     }
 
     async function setVote(_postId, _socketId, _judge) {
 
-        let res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setVote/' + _postId, {
-            body: JSON.stringify({
-                socketId: _socketId,
-                judge: _judge
-            })
-        });
-
-        if (!res.status) {
-            console.error(res.data);
+        try {
+            await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setVote/' + _postId, {
+                body: JSON.stringify({
+                    socketId: _socketId,
+                    judge: _judge
+                })
+            });
+        } catch (e) {
+            console.error('setVote', e);
         }
     }
 
