@@ -43,12 +43,7 @@ const reducer = (state, action) => {
                 state: process.env.userState.standby,
                 isStarted: false,
                 isVote: false,
-                isTimerEnable: false,
-                attendees: {
-                    positive: action.payload.attendees.positive,
-                    negative: action.payload.attendees.negative,
-                    watchers: action.payload.attendees.watchers
-                }
+                isTimerEnable: false
             };
 
         // ready
@@ -59,11 +54,6 @@ const reducer = (state, action) => {
                 meetingSessionConfiguration: {
                     Meeting: action.payload.config.Meeting,
                     Attendee: action.payload.config.Attendee,
-                },
-                attendees: {
-                    positive: action.payload.attendees.positive,
-                    negative: action.payload.attendees.negative,
-                    watchers: action.payload.attendees.watchers
                 }
             };
 
@@ -92,12 +82,7 @@ const reducer = (state, action) => {
                 isTimerEnable: true,
                 isTimeout: false,
                 limitTime: action.payload.limitTime,
-                currentTime: getTimeStamp(),
-                attendees: {
-                    positive: action.payload.attendees.positive,
-                    negative: action.payload.attendees.negative,
-                    watchers: action.payload.attendees.watchers
-                }
+                currentTime: getTimeStamp()
             };
 
         // votingDone
@@ -118,11 +103,6 @@ const reducer = (state, action) => {
                     win: action.payload.result.win,
                     positive: action.payload.result.positive,
                     negative: action.payload.result.negative
-                },
-                attendees: {
-                    positive: action.payload.attendees.positive,
-                    negative: action.payload.attendees.negative,
-                    watchers: action.payload.attendees.watchers
                 }
             };
 
@@ -155,12 +135,7 @@ const reducer = (state, action) => {
                 isTimerEnable: true,
                 isTimeout: false,
                 limitTime: action.payload.limitTime,
-                currentTime: getTimeStamp(),
-                attendees: {
-                    positive: action.payload.attendees.positive,
-                    negative: action.payload.attendees.negative,
-                    watchers: action.payload.attendees.watchers
-                }
+                currentTime: getTimeStamp()
             };
 
         // timer.timeout
@@ -255,9 +230,7 @@ export default function Discussion({ discussion, userId }) {
             case 'notifyStandbyRequest':
                 dispatch({
                     type: actions.state.standby,
-                    payload: {
-                        attendees: data.attendees
-                    }
+                    payload: null
                 });
                 break;
 
@@ -265,8 +238,7 @@ export default function Discussion({ discussion, userId }) {
                 dispatch({
                     type: actions.state.ready,
                     payload: {
-                        config: data.config,
-                        attendees: data.attendees
+                        config: data.config
                     }
                 });
                 break;
@@ -275,8 +247,7 @@ export default function Discussion({ discussion, userId }) {
                 dispatch({
                     type: actions.state.vote,
                     payload: {
-                        limitTime: data.limitTime,
-                        attendees: data.attendees
+                        limitTime: data.limitTime
                     }
                 });
                 break;
@@ -289,8 +260,7 @@ export default function Discussion({ discussion, userId }) {
                             win: data.result.win,
                             positive: data.result.positive,
                             negative: data.result.negative
-                        },
-                        attendees: data.attendees
+                        }
                     }
                 });
                 break;
@@ -299,8 +269,7 @@ export default function Discussion({ discussion, userId }) {
                 dispatch({
                     type: actions.start,
                     payload: {
-                        limitTime: data.limitTime,
-                        attendees: data.attendees
+                        limitTime: data.limitTime
                     }
                 });
                 break;
@@ -535,7 +504,14 @@ export default function Discussion({ discussion, userId }) {
 
                 result = await joinDiscussion(data.joinType, data.postId, data.socketId, data.userId);
 
-                if (!result) {
+                if (result) {
+                    socket.current.send(JSON.stringify({
+                        action: 'discussionJoinSuccess', data: {
+                            country: discussion.country,
+                            postId: discussion.postId
+                        }
+                    }));
+                } else {
                     await updateSelect('参加できませんでした。＿|￣|○');
                 }
             }
