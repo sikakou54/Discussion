@@ -293,6 +293,10 @@ export default function Discussion({ discussion, userId }) {
         }
     }
 
+    async function webSocketError(event) {
+        console.error('error', event);
+    }
+
     function setupWebSocket() {
 
         // websocket
@@ -306,6 +310,9 @@ export default function Discussion({ discussion, userId }) {
 
         // message
         socket.current.addEventListener('message', webSocketMessage);
+
+        // error
+        socket.current.addEventListener('error', webSocketError);
     }
 
     async function joinDiscussion(_type, _country, _postId, _socketId, _userId) {
