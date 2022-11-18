@@ -177,6 +177,7 @@ export default function Discussion({ discussion, userId }) {
         state: process.env.userState.none,
         userId: userId,
         postId: discussion.postId,
+        country: discussion.country,
         attendees: {
             positive: discussion.positive,
             negative: discussion.negative,
@@ -307,7 +308,7 @@ export default function Discussion({ discussion, userId }) {
         socket.current.addEventListener('message', webSocketMessage);
     }
 
-    async function joinDiscussion(_type, _postId, _socketId, _userId) {
+    async function joinDiscussion(_type, _country, _postId, _socketId, _userId) {
 
         let api = '';
         let result = true;
@@ -318,7 +319,7 @@ export default function Discussion({ discussion, userId }) {
         if (_type === 3) api = 'joinDiscussionWatcher';
 
         try {
-            res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
+            res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _country + '/' + _postId, {
                 body: JSON.stringify({
                     joinType: _type,
                     userId: _userId,
@@ -502,16 +503,9 @@ export default function Discussion({ discussion, userId }) {
 
             if ('none' !== data.socketId) {
 
-                result = await joinDiscussion(data.joinType, data.postId, data.socketId, data.userId);
+                result = await joinDiscussion(data.joinType, data.country, data.postId, data.socketId, data.userId);
 
-                if (result) {
-                    socket.current.send(JSON.stringify({
-                        action: 'discussionJoinSuccess', data: {
-                            country: discussion.country,
-                            postId: discussion.postId
-                        }
-                    }));
-                } else {
+                if (!result) {
                     await updateSelect('参加できませんでした。＿|￣|○');
                 }
             }
