@@ -3,7 +3,7 @@ export async function apiFetchPost(url, params) {
     return new Promise(async (resolve) => {
 
         let res = null;
-        let retry = 0;
+        let retry = true;
         let obj = {};
 
         while (retry) {
