@@ -43,7 +43,8 @@ const reducer = (state, action) => {
                 state: process.env.userState.standby,
                 isStarted: false,
                 isVote: false,
-                isTimerEnable: false
+                isTimerEnable: false,
+                currentTime: 0
             };
 
         // ready
