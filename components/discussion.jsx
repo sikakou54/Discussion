@@ -203,9 +203,17 @@ export default function Discussion({ discussion, userId }) {
     });
     const meetingManager = useMeetingManager();
 
+    async function sendMessage(action, data) {
+        if (socket.current && socket.current.readyState === 1) {
+            socket.current.send(JSON.stringify({ action, data }));
+        } else {
+            console.error('socket error', socket.current);
+        }
+    }
+
     async function webSocketOpen(event) {
         console.log('open', event);
-        socket.current.send(JSON.stringify({ action: 'getSocketId' }));
+        await sendMessage('getSocketId', null);
     }
 
     async function webSocketClose(event) {
@@ -286,7 +294,7 @@ export default function Discussion({ discussion, userId }) {
                 break;
 
             case 'notifyJoinImpossibleRequest':
-                await updateSelect('現在投票です。参加できません。');
+                await updateSelect('参加できません＿|￣|○');
                 break;
 
             default:
@@ -318,66 +326,48 @@ export default function Discussion({ discussion, userId }) {
 
     async function joinDiscussion(_type, _country, _postId, _socketId, _userId) {
 
-        let api = '';
-        let result = true;
-        let res = null;
+        let action = '';
 
-        if (_type === 1) api = 'joinDiscussionPositive';
-        if (_type === 2) api = 'joinDiscussionNegative';
-        if (_type === 3) api = 'joinDiscussionWatcher';
+        if (_type === 1) action = 'joinDiscussionPositive';
+        if (_type === 2) action = 'joinDiscussionNegative';
+        if (_type === 3) action = 'joinDiscussionWatcher';
 
-        try {
-            res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _country + '/' + _postId, {
-                body: JSON.stringify({
-                    joinType: _type,
-                    userId: _userId,
-                    socketId: _socketId
-                })
-            });
-            if (!res.status) {
-                result = false;
-            }
-        } catch (e) {
-            result = false;
-            console.error('joinDiscussion', e);
-        }
-
-        return result;
+        // 参加を通知する
+        await sendMessage(action, {
+            country: _country,
+            postId: _postId,
+            joinType: _type,
+            userId: _userId,
+            socketId: _socketId
+        });
     }
 
-    async function setDiscussionState(_type, _postId, _socketId, _state) {
+    async function setDiscussionState(_type, _country, _postId, _socketId, _state) {
 
-        let api = '';
+        let action = '';
 
-        if (_type === 1) api = 'setDiscussionPositiveState';
-        if (_type === 2) api = 'setDiscussionNegativeState';
-        if (_type === 3) api = 'setDiscussionWatcherState';
+        if (_type === 1) action = 'setDiscussionPositive';
+        if (_type === 2) action = 'setDiscussionNegative';
+        if (_type === 3) action = 'setDiscussionWatcher';
 
-        try {
-            await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/' + api + '/' + _postId, {
-                body: JSON.stringify({
-                    state: _state,
-                    socketId: _socketId
-                })
-            });
-        } catch (e) {
-            console.error('setDiscussionState', e);
-        }
-
+        // ユーザー状態を通知する
+        await sendMessage(action, {
+            country: _country,
+            postId: _postId,
+            socketId: _socketId,
+            state: _state
+        });
     }
 
-    async function setVote(_postId, _socketId, _judge) {
+    async function setVote(_country, _postId, _socketId, _judge) {
 
-        try {
-            await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setVote/' + _postId, {
-                body: JSON.stringify({
-                    socketId: _socketId,
-                    judge: _judge
-                })
-            });
-        } catch (e) {
-            console.error('setVote', e);
-        }
+        // 投票結果を通知する
+        await sendMessage('setVote', {
+            country: _country,
+            postId: _postId,
+            socketId: _socketId,
+            judge: _judge
+        });
     }
 
     function onJoin(type) {
@@ -420,31 +410,31 @@ export default function Discussion({ discussion, userId }) {
 
     async function changedStateStandby() {
         await meetingManager.leave();
-        await setDiscussionState(data.joinType, data.postId, data.socketId, process.env.userState.standby);
+        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.standby);
     }
 
     async function changedStateReady() {
-        await setDiscussionState(data.joinType, data.postId, data.socketId, process.env.userState.ready);
+        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.ready);
         await startMeeting(data.joinType);
     }
 
     async function changedStateOnline() {
-        await setDiscussionState(data.joinType, data.postId, data.socketId, process.env.userState.online);
+        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.online);
     }
 
     async function changedStateFinish() {
         await meetingManager.leave();
-        await setDiscussionState(data.joinType, data.postId, data.socketId, process.env.userState.finish);
+        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.finish);
     }
 
     async function changedStateVote() {
-        await setDiscussionState(data.joinType, data.postId, data.socketId, process.env.userState.vote);
+        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.vote);
     }
 
     async function changedStateVotingDone() {
         if (3 === data.joinType) {
             await setVote(data.postId, data.socketId, data.judge);
-            await setDiscussionState(data.joinType, data.postId, data.socketId, process.env.userState.votingDone);
+            await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.votingDone);
         }
     }
 
@@ -509,15 +499,11 @@ export default function Discussion({ discussion, userId }) {
 
         async function changeSocketId() {
 
-            let result = false;
+            //let result = false;
 
             if ('none' !== data.socketId) {
 
-                result = await joinDiscussion(data.joinType, data.country, data.postId, data.socketId, data.userId);
-
-                if (!result) {
-                    await updateSelect('参加できませんでした。＿|￣|○');
-                }
+                await joinDiscussion(data.joinType, data.country, data.postId, data.socketId, data.userId);
             }
         }
         changeSocketId();
