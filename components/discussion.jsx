@@ -442,8 +442,10 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function changedStateVotingDone() {
-        await setVote(data.postId, data.socketId, data.judge);
-        await setDiscussionState(data.joinType, data.postId, data.socketId, process.env.userState.votingDone);
+        if (3 === data.joinType) {
+            await setVote(data.postId, data.socketId, data.judge);
+            await setDiscussionState(data.joinType, data.postId, data.socketId, process.env.userState.votingDone);
+        }
     }
 
     async function changedStateResult() {
@@ -590,7 +592,7 @@ export default function Discussion({ discussion, userId }) {
             if (data.state === process.env.userState.online) {
                 dispatch({ type: actions.state.finish });
             }
-            if (data.state === process.env.userState.vote && 3 === data.joinType) {
+            if (data.state === process.env.userState.vote) {
                 dispatch({ type: actions.state.votingDone });
             }
         }
