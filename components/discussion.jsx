@@ -433,7 +433,7 @@ export default function Discussion({ discussion, userId }) {
 
     async function changedStateVotingDone() {
         if (3 === data.joinType) {
-            await setVote(data.postId, data.socketId, data.judge);
+            await setVote(data.country, data.postId, data.socketId, data.judge);
             await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.votingDone);
         }
     }
