@@ -427,7 +427,7 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function changedStateVote() {
-        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.vote);
+        //await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.vote);
     }
 
     async function changedStateVotingDone() {
