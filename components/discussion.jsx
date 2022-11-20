@@ -208,6 +208,7 @@ export default function Discussion({ discussion, userId }) {
             socket.current.send(JSON.stringify({ action, data }));
         } else {
             console.error('socket error', socket.current);
+            await updateSelect('通信エラーが発生したため退出しました');
         }
     }
 
