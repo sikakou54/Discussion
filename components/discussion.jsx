@@ -400,8 +400,6 @@ export default function Discussion({ discussion, userId }) {
             deviceLabels: labels
         });
         await meetingManager.start();
-
-        dispatch({ type: actions.state.online });
     }
 
     async function changedStateJoin() {
@@ -414,8 +412,9 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function changedStateReady() {
-        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.ready);
+        //await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.ready);
         await startMeeting(data.joinType);
+        dispatch({ type: actions.state.online });
     }
 
     async function changedStateOnline() {
