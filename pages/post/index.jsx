@@ -14,6 +14,7 @@ export default function Post() {
         fetch(process.env.awsApiGatewayHttpApiEndPoint + "/setDiscussion", {
             method: "POST",
             body: JSON.stringify({
+                country: 'jpn',
                 userId: userId,
                 title: title,
                 detail: detail,

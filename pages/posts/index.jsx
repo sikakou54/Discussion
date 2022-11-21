@@ -59,11 +59,10 @@ export async function getServerSideProps() {
 
     // データフェッチ
     const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn', { method: 'GET' });
+    //console.log(res);
     if (res.ok) {
         posts = await res.json();
-        items = posts.Items;
-    } else {
-        console.log(res);
+        items = posts;
     }
 
     // Postsに渡す

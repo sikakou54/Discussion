@@ -223,9 +223,10 @@ export default function Discussion({ discussion, userId }) {
 
     async function webSocketMessage(event) {
 
+        console.log('message', event);
         const { notify, data } = JSON.parse(event.data);
 
-        console.log('message', notify, data);
+        //console.log('message', notify, data);
 
         switch (notify) {
 
@@ -343,7 +344,7 @@ export default function Discussion({ discussion, userId }) {
         });
     }
 
-    async function setDiscussionState(_type, _country, _postId, _socketId, _state) {
+    async function setDiscussionState(_type, _country, _postId, _socketId, _userId, _state) {
 
         let action = '';
 
@@ -355,18 +356,20 @@ export default function Discussion({ discussion, userId }) {
         await sendMessage(action, {
             country: _country,
             postId: _postId,
+            userId: _userId,
             socketId: _socketId,
             state: _state
         });
     }
 
-    async function setVote(_country, _postId, _socketId, _judge) {
+    async function setVote(_country, _postId, _socketId, _userId, _judge) {
 
         // 投票結果を通知する
         await sendMessage('setVote', {
             country: _country,
             postId: _postId,
             socketId: _socketId,
+            userId: _userId,
             judge: _judge
         });
     }
@@ -384,7 +387,7 @@ export default function Discussion({ discussion, userId }) {
         Router.push({
             pathname: 'posts',
             query: {
-                userId: userId
+                userId: data.userId
             }
         });
     }
@@ -409,7 +412,7 @@ export default function Discussion({ discussion, userId }) {
 
     async function changedStateStandby() {
         await meetingManager.leave();
-        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.standby);
+        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, data.userId, process.env.userState.standby);
     }
 
     async function changedStateReady() {
@@ -419,12 +422,12 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function changedStateOnline() {
-        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.online);
+        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, data.userId, process.env.userState.online);
     }
 
     async function changedStateFinish() {
         await meetingManager.leave();
-        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.finish);
+        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, data.userId, process.env.userState.finish);
     }
 
     async function changedStateVote() {
@@ -433,8 +436,8 @@ export default function Discussion({ discussion, userId }) {
 
     async function changedStateVotingDone() {
         if (3 === data.joinType) {
-            await setVote(data.country, data.postId, data.socketId, data.judge);
-            await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.votingDone);
+            //await setVote(data.country, data.postId, data.socketId, data.userId, data.judge);
+            await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, data.userId, process.env.userState.votingDone);
         }
     }
 
@@ -498,8 +501,6 @@ export default function Discussion({ discussion, userId }) {
     useEffect(() => {
 
         async function changeSocketId() {
-
-            //let result = false;
 
             if ('none' !== data.socketId) {
 
@@ -596,6 +597,12 @@ export default function Discussion({ discussion, userId }) {
             setTimeout(discussionTimer, 500);
         }
     }, [data.isVote]);
+
+    useEffect(() => {
+        if ('draw' !== data.judge) {
+            setVote(data.country, data.postId, data.socketId, data.userId, data.judge);
+        }
+    }, [data.judge]);
 
     return (
         <div>
