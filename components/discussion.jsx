@@ -223,10 +223,9 @@ export default function Discussion({ discussion, userId }) {
 
     async function webSocketMessage(event) {
 
-        console.log('message', event);
         const { notify, data } = JSON.parse(event.data);
 
-        //console.log('message', notify, data);
+        console.log('message', notify, data);
 
         switch (notify) {
 
@@ -416,7 +415,6 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function changedStateReady() {
-        //await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.ready);
         await startMeeting(data.joinType);
         dispatch({ type: actions.state.online });
     }
@@ -430,13 +428,10 @@ export default function Discussion({ discussion, userId }) {
         await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, data.userId, process.env.userState.finish);
     }
 
-    async function changedStateVote() {
-        //await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, process.env.userState.vote);
-    }
+    async function changedStateVote() { }
 
     async function changedStateVotingDone() {
         if (3 === data.joinType) {
-            //await setVote(data.country, data.postId, data.socketId, data.userId, data.judge);
             await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, data.userId, process.env.userState.votingDone);
         }
     }
