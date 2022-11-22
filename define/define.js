@@ -10,17 +10,11 @@ export const actions = {
         votingDone: 0x07,
         result: 0x08
     },
-    changeCurrentTime: {
-        update: 0x10
-    },
-    changeSocketId: {
-        update: 0x20
-    },
+    changeCurrentTime: 0x10,
+    changeSocketId: 0x20,
     attendees: 0x30,
     start: 0x40,
-    timer: {
-        timeout: 0x50
-    },
+    timeout: 0x50,
     vote: 0x60,
     changeMeetingEventName: 0x70,
     changeWebsocketStatus: 0x80,

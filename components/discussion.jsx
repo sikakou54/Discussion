@@ -45,7 +45,8 @@ const reducer = (state, action) => {
                 isStarted: false,
                 isVote: false,
                 isTimerEnable: false,
-                currentTime: 0
+                currentTime: 0,
+                limitTime: 0
             };
 
         // ready
@@ -109,21 +110,14 @@ const reducer = (state, action) => {
             };
 
         // update
-        case actions.changeCurrentTime.update:
+        case actions.changeCurrentTime:
             return {
                 ...state,
                 currentTime: action.payload.currentTime
             };
 
-        // init
-        case actions.changeCurrentTime.init:
-            return {
-                ...state,
-                currentTime: 0
-            };
-
         // update
-        case actions.changeSocketId.update:
+        case actions.changeSocketId:
             return {
                 ...state,
                 socketId: action.payload.socketId
@@ -140,8 +134,8 @@ const reducer = (state, action) => {
                 currentTime: getTimeStamp()
             };
 
-        // timer.timeout
-        case actions.timer.timeout:
+        // timeout
+        case actions.timeout:
             return {
                 ...state,
                 isTimeout: true
@@ -164,6 +158,7 @@ const reducer = (state, action) => {
                     watchers: action.payload.attendees.watchers
                 }
             };
+
         case actions.changeMeetingEventName:
             return {
                 ...state,
@@ -264,7 +259,7 @@ export default function Discussion({ discussion, userId }) {
 
             case 'notifySocketIdResponse':
                 dispatch({
-                    type: actions.changeSocketId.update,
+                    type: actions.changeSocketId,
                     payload: {
                         socketId: data.socketId
                     }
@@ -480,7 +475,7 @@ export default function Discussion({ discussion, userId }) {
 
     function discussionTimer() {
         dispatch({
-            type: actions.changeCurrentTime.update,
+            type: actions.changeCurrentTime,
             payload: {
                 currentTime: getTimeStamp()
             }
@@ -594,7 +589,7 @@ export default function Discussion({ discussion, userId }) {
 
         if (data.isTimerEnable) {
             if (data.limitTime <= data.currentTime) {
-                dispatch({ type: actions.timer.timeout });
+                dispatch({ type: actions.timeout });
             } else {
                 setTimeout(discussionTimer, 500);
             }
