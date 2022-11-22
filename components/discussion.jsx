@@ -21,7 +21,6 @@ const reducer = (state, action) => {
 
     switch (action.type) {
 
-        // select
         case actions.state.select:
             return {
                 ...state,
@@ -29,7 +28,6 @@ const reducer = (state, action) => {
                 message: action.payload.message
             };
 
-        // join
         case actions.state.join:
             return {
                 ...state,
@@ -37,7 +35,6 @@ const reducer = (state, action) => {
                 joinType: action.payload.joinType
             };
 
-        // standby
         case actions.state.standby:
             return {
                 ...state,
@@ -49,7 +46,6 @@ const reducer = (state, action) => {
                 limitTime: 0
             };
 
-        // ready
         case actions.state.ready:
             return {
                 ...state,
@@ -60,14 +56,12 @@ const reducer = (state, action) => {
                 }
             };
 
-        // online
         case actions.state.online:
             return {
                 ...state,
                 state: process.env.userState.online
             };
 
-        // finish
         case actions.state.finish:
             return {
                 ...state,
@@ -76,7 +70,6 @@ const reducer = (state, action) => {
                 isTimerEnable: false
             };
 
-        // vote
         case actions.state.vote:
             return {
                 ...state,
@@ -88,7 +81,6 @@ const reducer = (state, action) => {
                 currentTime: getTimeStamp()
             };
 
-        // votingDone
         case actions.state.votingDone:
             return {
                 ...state,
@@ -97,7 +89,6 @@ const reducer = (state, action) => {
                 isTimerEnable: false,
             };
 
-        // result
         case actions.state.result:
             return {
                 ...state,
@@ -109,21 +100,18 @@ const reducer = (state, action) => {
                 }
             };
 
-        // update
         case actions.changeCurrentTime:
             return {
                 ...state,
                 currentTime: action.payload.currentTime
             };
 
-        // update
         case actions.changeSocketId:
             return {
                 ...state,
                 socketId: action.payload.socketId
             };
 
-        // start
         case actions.start:
             return {
                 ...state,
@@ -134,21 +122,18 @@ const reducer = (state, action) => {
                 currentTime: getTimeStamp()
             };
 
-        // timeout
         case actions.timeout:
             return {
                 ...state,
                 isTimeout: true
             };
 
-        // vote
         case actions.vote:
             return {
                 ...state,
                 judge: action.payload.judge
             };
 
-        // attendees
         case actions.attendees:
             return {
                 ...state,
@@ -726,7 +711,7 @@ export default function Discussion({ discussion, userId }) {
                     updateSelect('通信が切断されました＿|￣|○');
                 }
 
-                // ソケット接続S時
+                // ソケット接続時
             } else if (websocketStatus.open == data.websocketStatus) {
 
                 // ソケットIDの取得
