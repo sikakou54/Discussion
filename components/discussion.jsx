@@ -12,6 +12,7 @@ import { getTimeStamp } from '../api/api';
 import { actions } from '../define/define';
 import {
     useMeetingManager,
+    useMeetingEvent,
     DeviceLabels
 } from 'amazon-chime-sdk-component-library-react';
 import { MeetingSessionConfiguration } from 'amazon-chime-sdk-js';
@@ -163,6 +164,12 @@ const reducer = (state, action) => {
                     watchers: action.payload.attendees.watchers
                 }
             };
+        case actions.changeMeetingEventName:
+            return {
+                ...state,
+                meetingEventName: action.payload.meetingEventName
+            };
+            break;
 
         default:
             return {
@@ -199,9 +206,11 @@ export default function Discussion({ discussion, userId }) {
             positive: 0,
             negative: 0
         },
+        meetingEventName: undefined,
         message: null
     });
     const meetingManager = useMeetingManager();
+    const meetingEvent = useMeetingEvent();
 
     async function sendMessage(action, data) {
         if (socket.current && socket.current.readyState === 1) {
@@ -213,19 +222,19 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function webSocketOpen(event) {
-        console.log('open', event);
+        console.log('webSocketOpen', event);
         await sendMessage('getSocketId', null);
     }
 
     function webSocketClose(event) {
-        console.log('close', event);
+        console.log('webSocketClose', event);
     }
 
     function webSocketMessage(event) {
 
         const { notify, data } = JSON.parse(event.data);
 
-        console.log('message', notify, data);
+        console.log('webSocketMessage', notify, data);
 
         switch (notify) {
 
@@ -416,7 +425,6 @@ export default function Discussion({ discussion, userId }) {
 
     async function changedStateReady() {
         await startMeeting(data.joinType);
-        dispatch({ type: actions.state.online });
     }
 
     async function changedStateOnline() {
@@ -425,7 +433,6 @@ export default function Discussion({ discussion, userId }) {
 
     async function changedStateFinish() {
         await meetingManager.leave();
-        await setDiscussionState(data.joinType, data.country, data.postId, data.socketId, data.userId, process.env.userState.finish);
     }
 
     async function changedStateVote() { }
@@ -482,6 +489,15 @@ export default function Discussion({ discussion, userId }) {
         });
     }
 
+    function changedMeetingEventName(meetingEventName) {
+        dispatch({
+            type: actions.changeMeetingEventName,
+            payload: {
+                meetingEventName: meetingEventName
+            }
+        });
+    }
+
     useEffect(() => {
 
         return () => {
@@ -508,7 +524,7 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
-        console.log('useEffect', 'state', data.state);
+        console.log('changedDiscussionState', data.state);
 
         switch (data.state) {
 
@@ -600,6 +616,33 @@ export default function Discussion({ discussion, userId }) {
             setVote(data.country, data.postId, data.socketId, data.userId, data.judge);
         }
     }, [data.judge]);
+
+    useEffect(() => {
+        if (undefined !== meetingEvent) {
+            changedMeetingEventName(meetingEvent.name);
+        }
+    }, [meetingEvent]);
+
+    useEffect(() => {
+
+        console.log('changedDiscussionEventName', data.meetingEventName);
+
+        if (process.env.userState.ready === data.state) {
+            if ('meetingStartSucceeded' === data.meetingEventName) {
+                dispatch({ type: actions.state.online });
+            }
+            if ('meetingStartFailed' === data.meetingEventName) {
+                updateSelect('討論の参加に失敗しました＿|￣|○');
+            }
+        } else if (process.env.userState.finish === data.state && 'meetingEnded' === data.meetingEventName) {
+            setDiscussionState(data.joinType, data.country, data.postId, data.socketId, data.userId, process.env.userState.finish);
+        }
+
+        if ('meetingFailed' === data.meetingEventName) {
+            updateSelect('討論が異常終了しました＿|￣|○');
+        }
+
+    }, [data.meetingEventName]);
 
     return (
         <div>

@@ -21,5 +21,6 @@ export const actions = {
     timer: {
         timeout: 0x51
     },
-    vote: 0x61
+    vote: 0x61,
+    changeMeetingEventName: 0x71
 };
