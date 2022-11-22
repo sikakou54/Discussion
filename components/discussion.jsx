@@ -217,11 +217,11 @@ export default function Discussion({ discussion, userId }) {
         await sendMessage('getSocketId', null);
     }
 
-    async function webSocketClose(event) {
+    function webSocketClose(event) {
         console.log('close', event);
     }
 
-    async function webSocketMessage(event) {
+    function webSocketMessage(event) {
 
         const { notify, data } = JSON.parse(event.data);
 
@@ -295,7 +295,7 @@ export default function Discussion({ discussion, userId }) {
                 break;
 
             case 'notifyJoinImpossibleRequest':
-                await updateSelect('参加できません＿|￣|○');
+                updateSelect('参加できません＿|￣|○');
                 break;
 
             default:
@@ -303,7 +303,7 @@ export default function Discussion({ discussion, userId }) {
         }
     }
 
-    async function webSocketError(event) {
+    function webSocketError(event) {
         console.error('error', event);
     }
 
