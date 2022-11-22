@@ -702,6 +702,11 @@ export default function Discussion({ discussion, userId }) {
                     // 参加不可
                     updateSelect('参加できませんでした。＿|￣|○');
 
+                } else if (discusionStatus.websocketDisconnect === data.discusionStatus) {
+
+                    // 参加不可
+                    updateSelect('通信エラーが発生しました。＿|￣|○');
+
                 } else if (discusionStatus.discussionResultShow === data.discusionStatus) {
 
                     // 結果発表
