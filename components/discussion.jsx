@@ -223,7 +223,7 @@ export default function Discussion({ discussion, userId }) {
 
     async function webSocketOpen(event) {
         console.log('webSocketOpen', event);
-        await sendMessage('requestSocketId', null);
+        await sendMessage('getSocketId', null);
     }
 
     function webSocketClose(event) {
