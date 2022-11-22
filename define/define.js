@@ -11,20 +11,20 @@ export const actions = {
         result: 0x08
     },
     changeCurrentTime: {
-        update: 0x11
+        update: 0x10
     },
     changeSocketId: {
-        update: 0x21
+        update: 0x20
     },
-    attendees: 0x31,
-    start: 0x41,
+    attendees: 0x30,
+    start: 0x40,
     timer: {
-        timeout: 0x51
+        timeout: 0x50
     },
-    vote: 0x61,
-    changeMeetingEventName: 0x71,
-    changeWebsocketStatus: 0x81,
-    changeDiscusionStatus: 0x91
+    vote: 0x60,
+    changeMeetingEventName: 0x70,
+    changeWebsocketStatus: 0x80,
+    changeDiscusionStatus: 0x90
 };
 
 export const discusionStatus = {
@@ -36,6 +36,6 @@ export const discusionStatus = {
 };
 
 export const websocketStatus = {
-    open: 0x01,
-    close: 0x02
+    open: 0x00,
+    close: 0x01
 };
