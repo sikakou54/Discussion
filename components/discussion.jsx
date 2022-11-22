@@ -692,37 +692,33 @@ export default function Discussion({ discussion, userId }) {
             // ソケット切断時
             if (websocketStatus.close == data.websocketStatus) {
 
-                // エラーが発生している場合
-                if (undefined !== data.discusionStatus) {
+                if (discusionStatus.discussionStartFailed === data.discusionStatus) {
 
-                    if (discusionStatus.discussionStartFailed === data.discusionStatus) {
+                    // 討論の参加失敗
+                    updateSelect('討論の参加に失敗しました＿|￣|○');
 
-                        // 討論の参加失敗
-                        updateSelect('討論の参加に失敗しました＿|￣|○');
+                } else if (discusionStatus.discussionFailed === data.discusionStatus) {
 
-                    } else if (discusionStatus.discussionFailed === data.discusionStatus) {
+                    // 討論の異常終了
+                    updateSelect('討論が異常終了しました＿|￣|○');
 
-                        // 討論の異常終了
-                        updateSelect('討論が異常終了しました＿|￣|○');
+                } else if (discusionStatus.discussionJoinFailed === data.discusionStatus) {
 
-                    } else if (discusionStatus.discussionJoinFailed === data.discusionStatus) {
+                    // 参加不可
+                    updateSelect('参加できませんでした。＿|￣|○');
 
-                        // 参加不可
-                        updateSelect('参加できませんでした。＿|￣|○');
+                } else if (discusionStatus.discussionResultShow === data.discusionStatus) {
 
-                    } else if (discusionStatus.discussionResultShow === data.discusionStatus) {
-
-                        // 結果発表
-                        Router.push({
-                            pathname: 'result',
-                            query: {
-                                userId: data.userId,
-                                win: data.result.win,
-                                positive: data.result.positive,
-                                negative: data.result.negative
-                            }
-                        });
-                    }
+                    // 結果発表
+                    Router.push({
+                        pathname: 'result',
+                        query: {
+                            userId: data.userId,
+                            win: data.result.win,
+                            positive: data.result.positive,
+                            negative: data.result.negative
+                        }
+                    });
 
                 } else {
 
