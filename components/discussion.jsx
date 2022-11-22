@@ -508,7 +508,7 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
-        console.log('changed', data.state);
+        console.log('useEffect', 'state', data.state);
 
         switch (data.state) {
 
