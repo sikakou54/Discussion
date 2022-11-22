@@ -9,7 +9,7 @@ import Finish from './finish';
 import Vote from './vote';
 import VotingDone from './votingDone';
 import { getTimeStamp } from '../api/api';
-import { actions } from '../define/define';
+import { actions, discusionStatus, websocketStatus } from '../define/define';
 import {
     useMeetingManager,
     useMeetingEvent,
@@ -169,7 +169,18 @@ const reducer = (state, action) => {
                 ...state,
                 meetingEventName: action.payload.meetingEventName
             };
-            break;
+
+        case actions.changeWebsocketStatus:
+            return {
+                ...state,
+                websocketStatus: action.payload.websocketStatus
+            };
+
+        case actions.changeDiscusionStatus:
+            return {
+                ...state,
+                discusionStatus: action.payload.discusionStatus
+            };
 
         default:
             return {
@@ -200,14 +211,16 @@ export default function Discussion({ discussion, userId }) {
         isTimerEnable: false,
         limitTime: 0,
         currentTime: 0,
-        judge: 'draw',
+        judge: undefined,
         result: {
             win: 'none',
             positive: 0,
             negative: 0
         },
         meetingEventName: undefined,
-        message: null
+        message: null,
+        discusionStatus: undefined,
+        websocketStatus: undefined
     });
     const meetingManager = useMeetingManager();
     const meetingEvent = useMeetingEvent();
@@ -217,24 +230,35 @@ export default function Discussion({ discussion, userId }) {
             socket.current.send(JSON.stringify({ action, data }));
         } else {
             console.error('socket error', socket.current);
-            await updateSelect('通信エラーが発生したため退出しました');
+            changeDiscussionStatus(discusionStatus.websocketDisconnect);
         }
     }
 
     async function webSocketOpen(event) {
         console.log('webSocketOpen', event);
-        await sendMessage('getSocketId', null);
+        dispatch({
+            type: actions.changeWebsocketStatus,
+            payload: {
+                websocketStatus: websocketStatus.open
+            }
+        });
     }
 
     function webSocketClose(event) {
         console.log('webSocketClose', event);
+        dispatch({
+            type: actions.changeWebsocketStatus,
+            payload: {
+                websocketStatus: websocketStatus.close
+            }
+        });
     }
 
     function webSocketMessage(event) {
 
-        const { notify, data } = JSON.parse(event.data);
+        console.log('webSocketMessage', event);
 
-        console.log('webSocketMessage', notify, data);
+        const { notify, data } = JSON.parse(event.data);
 
         switch (notify) {
 
@@ -304,7 +328,7 @@ export default function Discussion({ discussion, userId }) {
                 break;
 
             case 'notifyJoinImpossibleRequest':
-                updateSelect('参加できません＿|￣|○');
+                changeDiscussionStatus(discusionStatus.discussionJoinFailed);
                 break;
 
             default:
@@ -314,6 +338,13 @@ export default function Discussion({ discussion, userId }) {
 
     function webSocketError(event) {
         console.error('error', event);
+
+        dispatch({
+            type: actions.changeWebsocketStatus,
+            payload: {
+                websocketStatus: 'close'
+            }
+        });
     }
 
     function setupWebSocket() {
@@ -444,15 +475,7 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function changedStateResult() {
-        Router.push({
-            pathname: 'result',
-            query: {
-                userId: data.userId,
-                win: data.result.win,
-                positive: data.result.positive,
-                negative: data.result.negative
-            }
-        });
+        changeDiscussionStatus(discusionStatus.discussionResultShow);
     }
 
     function discussionTimer() {
@@ -474,13 +497,6 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function updateSelect(message) {
-
-        // ソケットを切断する
-        if (socket.current && socket.current.readyState === 1) {
-            socket.current.close();
-        }
-
-        // 選択画面に遷移する
         dispatch({
             type: actions.state.select,
             payload: {
@@ -498,6 +514,15 @@ export default function Discussion({ discussion, userId }) {
         });
     }
 
+
+    function changeDiscussionStatus(status) {
+        dispatch({
+            type: actions.changeDiscusionStatus,
+            payload: {
+                discusionStatus: status
+            }
+        });
+    }
     useEffect(() => {
 
         return () => {
@@ -595,27 +620,35 @@ export default function Discussion({ discussion, userId }) {
     }, [data.isTimeout]);
 
     useEffect(() => {
+
         if (true === data.isStarted) {
             setTimeout(discussionTimer, 500);
         }
+
     }, [data.isStarted]);
 
     useEffect(() => {
+
         if (true === data.isVote) {
             setTimeout(discussionTimer, 500);
         }
+
     }, [data.isVote]);
 
     useEffect(() => {
-        if ('draw' !== data.judge) {
+
+        if (undefined !== data.judge) {
             setVote(data.country, data.postId, data.socketId, data.userId, data.judge);
         }
+
     }, [data.judge]);
 
     useEffect(() => {
+
         if (undefined !== meetingEvent) {
             changedMeetingEventName(meetingEvent.name);
         }
+
     }, [meetingEvent]);
 
     useEffect(() => {
@@ -627,17 +660,87 @@ export default function Discussion({ discussion, userId }) {
                 dispatch({ type: actions.state.online });
             }
             if ('meetingStartFailed' === data.meetingEventName) {
-                updateSelect('討論の参加に失敗しました＿|￣|○');
+                changeDiscussionStatus(discusionStatus.discussionStartFailed);
             }
         } else if (process.env.userState.finish === data.state && 'meetingEnded' === data.meetingEventName) {
             setDiscussionState(data.joinType, data.country, data.postId, data.socketId, data.userId, process.env.userState.finish);
         }
 
         if ('meetingFailed' === data.meetingEventName) {
-            updateSelect('討論が異常終了しました＿|￣|○');
+            changeDiscussionStatus(discusionStatus.discussionFailed);
         }
 
     }, [data.meetingEventName]);
+
+
+    useEffect(() => {
+
+        if (undefined !== data.discusionStatus) {
+
+            // ソケットを切断する
+            if (socket.current && socket.current.readyState === 1) {
+                socket.current.close();
+            }
+        }
+
+    }, [data.discusionStatus]);
+
+    useEffect(() => {
+
+        if (undefined !== data.websocketStatus) {
+
+            // ソケット切断時
+            if (websocketStatus.close == data.websocketStatus) {
+
+                // エラーが発生している場合
+                if (undefined !== data.discusionStatus) {
+
+                    if (discusionStatus.discussionStartFailed === data.discusionStatus) {
+
+                        // 討論の参加失敗
+                        updateSelect('討論の参加に失敗しました＿|￣|○');
+
+                    } else if (discusionStatus.discussionFailed === data.discusionStatus) {
+
+                        // 討論の異常終了
+                        updateSelect('討論が異常終了しました＿|￣|○');
+
+                    } else if (discusionStatus.discussionJoinFailed === data.discusionStatus) {
+
+                        // 参加不可
+                        updateSelect('参加できませんでした。＿|￣|○');
+
+                    } else if (discusionStatus.discussionResultShow === data.discusionStatus) {
+
+                        // 結果発表
+                        Router.push({
+                            pathname: 'result',
+                            query: {
+                                userId: data.userId,
+                                win: data.result.win,
+                                positive: data.result.positive,
+                                negative: data.result.negative
+                            }
+                        });
+                    }
+
+                } else {
+
+                    // 原因不明のエラー（ブラウザによるソケット切断）
+                    updateSelect('通信が切断されました＿|￣|○');
+                }
+
+                // ソケット接続S時
+            } else if (websocketStatus.open == data.websocketStatus) {
+
+                // ソケットIDの取得
+                sendMessage('getSocketId', null);
+            }
+
+            changeDiscussionStatus(undefined);
+        }
+
+    }, [data.websocketStatus]);
 
     return (
         <div>

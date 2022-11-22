@@ -22,5 +22,20 @@ export const actions = {
         timeout: 0x51
     },
     vote: 0x61,
-    changeMeetingEventName: 0x71
+    changeMeetingEventName: 0x71,
+    changeWebsocketStatus: 0x81,
+    changeDiscusionStatus: 0x91
+};
+
+export const discusionStatus = {
+    websocketDisconnect: 0x00,
+    discussionJoinFailed: 0x01,
+    discussionFailed: 0x02,
+    discussionStartFailed: 0x03,
+    discussionResultShow: 0x04
+};
+
+export const websocketStatus = {
+    open: 0x01,
+    close: 0x02
 };
