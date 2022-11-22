@@ -508,6 +508,8 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
+        console.log('changed', data.state);
+
         switch (data.state) {
 
             case process.env.userState.none:
