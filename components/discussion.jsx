@@ -494,7 +494,6 @@ export default function Discussion({ discussion, userId }) {
         });
     }
 
-
     function changeDiscussionStatus(status) {
         dispatch({
             type: actions.changeDiscusionStatus,
@@ -503,6 +502,7 @@ export default function Discussion({ discussion, userId }) {
             }
         });
     }
+
     useEffect(() => {
 
         return () => {
