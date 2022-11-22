@@ -511,14 +511,9 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
-        async function changeSocketId() {
-
-            if ('none' !== data.socketId) {
-
-                await joinDiscussion(data.joinType, data.country, data.postId, data.socketId, data.userId);
-            }
+        if ('none' !== data.socketId) {
+            joinDiscussion(data.joinType, data.country, data.postId, data.socketId, data.userId);
         }
-        changeSocketId();
 
     }, [data.socketId]);
 
