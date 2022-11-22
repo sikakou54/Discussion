@@ -723,19 +723,23 @@ export default function Discussion({ discussion, userId }) {
 
     }, [data.websocketStatus]);
 
-    return (
-        <div>
-            <h1>{discussion.title}</h1>
-            <p>{discussion.detail}</p>
-            <div>{data.attendees.positive ? data.attendees.positive.userId : 'none'}/{data.attendees.negative ? data.attendees.negative.userId : 'none'}/{data.attendees.watchers.length}</div>
-            {data.state === process.env.userState.select ? <Select onJoin={onJoin} onCancel={onCancel} message={data.message} /> : null}
-            {data.state === process.env.userState.join ? < Join /> : null}
-            {data.state === process.env.userState.standby ? <Standby /> : null}
-            {data.state === process.env.userState.ready ? <Ready /> : null}
-            {data.state === process.env.userState.online ? < Online finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
-            {data.state === process.env.userState.finish ? <Finish /> : null}
-            {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
-            {data.state === process.env.userState.votingDone ? <VotingDone /> : null}
-        </div>
-    );
+    if (process.env.userState.none !== data.state) {
+        return (
+            <div>
+                <h1>{discussion.title}</h1>
+                <p>{discussion.detail}</p>
+                <div>{data.attendees.positive.userId}/{data.attendees.negative.userId}/{data.attendees.watchers.length}</div>
+                {data.state === process.env.userState.select ? <Select onJoin={onJoin} onCancel={onCancel} message={data.message} /> : null}
+                {data.state === process.env.userState.join ? < Join /> : null}
+                {data.state === process.env.userState.standby ? <Standby /> : null}
+                {data.state === process.env.userState.ready ? <Ready /> : null}
+                {data.state === process.env.userState.online ? < Online finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
+                {data.state === process.env.userState.finish ? <Finish /> : null}
+                {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
+                {data.state === process.env.userState.votingDone ? <VotingDone /> : null}
+            </div>
+        );
+    } else {
+        return null;
+    }
 }
