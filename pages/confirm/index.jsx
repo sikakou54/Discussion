@@ -26,7 +26,7 @@ export default function Confirm() {
                 })
             });
 
-            if (res.status) {
+            if (res.result) {
                 Router.push('/signIn');
             } else {
                 setMessage('認証エラー、リトライすると成功する可能性があります。');

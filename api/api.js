@@ -4,7 +4,7 @@ export async function apiFetchPost(url, params) {
 
         let res = null;
         let obj = {
-            status: false,
+            result: false,
             data: null,
             statusCode: 400
         };
@@ -21,7 +21,7 @@ export async function apiFetchPost(url, params) {
 
                     // 戻り値を設定する
                     obj = {
-                        status: true,
+                        result: true,
                         data: res.body,
                         statusCode: res.status
                     };
@@ -35,7 +35,7 @@ export async function apiFetchPost(url, params) {
 
                     // 戻り値を設定する
                     obj = {
-                        status: false,
+                        result: false,
                         data: res.statusText,
                         statusCode: res.status
                     };
@@ -54,7 +54,7 @@ export async function apiFetchPost(url, params) {
 
                 // 戻り値を設定する
                 obj = {
-                    status: false,
+                    result: false,
                     data: e,
                     statusCode: 400
                 };
@@ -75,8 +75,9 @@ export async function apiFetchGet(url, params) {
         let res = null;
         let json = null;
         let obj = {
-            status: false,
-            data: null
+            result: false,
+            data: null,
+            statusCode: 400
         };
 
         while (true) {
@@ -94,7 +95,7 @@ export async function apiFetchGet(url, params) {
 
                     // 戻り値を設定する
                     obj = {
-                        status: true,
+                        result: true,
                         data: json,
                         statusCode: res.status
                     };
@@ -108,7 +109,7 @@ export async function apiFetchGet(url, params) {
 
                     // 戻り値を設定する
                     obj = {
-                        status: false,
+                        result: false,
                         data: res.statusText,
                         statusCode: res.status
                     };
@@ -127,7 +128,7 @@ export async function apiFetchGet(url, params) {
 
                 // 戻り値を設定する
                 obj = {
-                    status: false,
+                    result: false,
                     data: e,
                     statusCode: 400
                 };

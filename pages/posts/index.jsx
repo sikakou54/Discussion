@@ -55,7 +55,7 @@ export async function getServerSideProps(ctx) {
             }
         });
 
-        if (res.status) {
+        if (res.result) {
 
             const { sub } = await jwtVerify(cookie.jwt);
 
