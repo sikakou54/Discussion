@@ -4,6 +4,7 @@ import Router from 'next/router';
 import styles from '../../styles/Home.module.css'
 import { signIn } from '../../api/auth';
 import { setCookie } from 'nookies';
+import Header from '../../components/header';
 
 export default function SignIn() {
 
@@ -31,14 +32,18 @@ export default function SignIn() {
     }
 
     return (
-        <main className={styles.main}>
-            <form onSubmit={onSubmit}>
-                <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type="text" required /></div>
-                <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type="password" required /></div>
-                <div><input type="submit" value="SignIn" /></div>
-                <Link href={'/signUp'}>SignUp</Link>
-                <div>{message}</div>
-            </form>
-        </main>
+        <div>
+            <Header userId={undefined} />
+            <main className={styles.main}>
+                <form onSubmit={onSubmit}>
+                    <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type="text" required /></div>
+                    <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type="password" required /></div>
+                    <div><input type="submit" value="SignIn" /></div>
+                    <Link href={'/signUp'}>SignUp</Link>
+                    <div>{message}</div>
+                </form>
+            </main>
+        </div>
+
     );
 }

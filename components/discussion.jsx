@@ -1,5 +1,4 @@
 import { useEffect, useRef, useReducer } from 'react';
-import { Amplify, Auth } from 'aws-amplify';
 import Router from 'next/router';
 import Select from './select';
 import Online from './online';
@@ -17,6 +16,7 @@ import {
     DeviceLabels
 } from 'amazon-chime-sdk-component-library-react';
 import { MeetingSessionConfiguration } from 'amazon-chime-sdk-js';
+import Header from './header';
 
 const reducer = (state, action) => {
 
@@ -718,6 +718,7 @@ export default function Discussion({ discussion, userId }) {
     if (process.env.userState.none !== data.state) {
         return (
             <div>
+                <Header userId={userId} />
                 <h1>{discussion.title}</h1>
                 <p>{discussion.detail}</p>
                 <div>{data.attendees.positive.userId}/{data.attendees.negative.userId}/{data.attendees.watchers.length}</div>

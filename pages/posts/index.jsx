@@ -1,8 +1,10 @@
 import Router from 'next/router';
 import { parseCookies } from 'nookies';
 import { apiFetchGet } from '../../api/api';
+import { jwtVerify } from '../../api/auth';
+import Header from '../../components/header';
 
-export default function Posts({ posts }) {
+export default function Posts({ posts, userId }) {
 
     function onClick(_postId) {
         Router.push({
@@ -19,6 +21,7 @@ export default function Posts({ posts }) {
 
     return (
         <div>
+            <Header userId={userId} />
             <h1>Posts</h1>
             <div>
                 {
@@ -54,9 +57,12 @@ export async function getServerSideProps(ctx) {
 
         if (res.status) {
 
+            const { sub } = await jwtVerify(cookie.jwt);
+
             return {
                 props: {
-                    posts: res.data
+                    posts: res.data,
+                    userId: sub
                 }
             }
 
@@ -87,6 +93,4 @@ export async function getServerSideProps(ctx) {
             }
         }
     }
-
-
 }

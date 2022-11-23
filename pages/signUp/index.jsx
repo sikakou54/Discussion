@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Router from 'next/router';
 import styles from '../../styles/Home.module.css'
 import { signUp } from '../../api/auth';
+import Header from '../../components/header';
 
 export default function SignUp() {
 
@@ -20,7 +21,7 @@ export default function SignUp() {
         if (undefined !== result) {
 
             Router.push({
-                pathname: "confirm",
+                pathname: "/confirm",
                 query: {
                     userName: result.username,
                     userId: result.userId
@@ -33,14 +34,18 @@ export default function SignUp() {
     }
 
     return (
-        <main className={styles.main}>
-            <form onSubmit={onSubmit}>
-                <div><label>Email:</label><input onChange={(event) => { setEmail(event.target.value) }} type="emal" required /></div>
-                <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type="password" required /></div>
-                <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type="text" required /></div>
-                <div><input type="submit" value="SignUp" /></div>
-                <div>{message}</div>
-            </form>
-        </main>
+        <div>
+            <Header userId={undefined} />
+            <main className={styles.main}>
+                <form onSubmit={onSubmit}>
+                    <div><label>Email:</label><input onChange={(event) => { setEmail(event.target.value) }} type="emal" required /></div>
+                    <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type="password" required /></div>
+                    <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type="text" required /></div>
+                    <div><input type="submit" value="SignUp" /></div>
+                    <div>{message}</div>
+                </form>
+            </main>
+        </div>
+
     );
 }

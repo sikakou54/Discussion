@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import Router, { useRouter } from 'next/router';
 import { apiFetchPost } from '../../api/api';
+import { jwtVerify } from '../../api/auth';
+import Header from '../../components/header';
+import { parseCookies } from 'nookies';
 
-export default function Post() {
+export default function Post({ userId }) {
 
     const [title, setTitle] = useState("");
     const [detail, setDetail] = useState("");
-    const router = useRouter();
-    const userId = router.query.userId;
 
     async function onPost() {
 
@@ -28,6 +29,7 @@ export default function Post() {
 
     return (
         <div>
+            <Header userId={userId} />
             <div>タイトル：<input type="text" onChange={(e) => { setTitle(e.target.value) }} /></div>
             <div>詳細<input type="text" onChange={(e) => { setDetail(e.target.value) }} /></div>
             <div>
@@ -36,4 +38,30 @@ export default function Post() {
             </div>
         </div>
     );
+}
+
+//SSR
+export async function getServerSideProps(ctx) {
+
+    const cookie = parseCookies(ctx);
+
+    if (-1 !== Object.keys(cookie).indexOf('jwt')) {
+
+        const { sub } = await jwtVerify(cookie.jwt);
+
+        return {
+            props: {
+                userId: sub
+            }
+        }
+
+    } else {
+
+        return {
+            redirect: {
+                destination: '/signIn',
+                permanent: false
+            }
+        }
+    }
 }
