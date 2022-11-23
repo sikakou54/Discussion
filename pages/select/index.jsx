@@ -34,15 +34,12 @@ export default function Select({ title, detail, onJoin, onCancel, message }) {
 export async function getServerSideProps({ query }) {
 
     let post = {};
-    //console.log(query);
 
     // データフェッチ
     const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + query.postId, { method: "GET" });
-    console.log(res);
     if (200 === res.status) {
         post = await res.json();
     }
-    console.log(post);
 
     // Postsに渡す
     return { props: { post } };

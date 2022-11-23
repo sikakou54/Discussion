@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Router, { useRouter } from 'next/router';
 import styles from '../../styles/Home.module.css'
 import { confirm } from '../../api/auth';
@@ -12,8 +12,6 @@ export default function Confirm() {
     const router = useRouter();
     const userName = router.query.userName;
     const userId = router.query.userId;
-
-    useEffect(() => { }, []);
 
     async function onSubmit(event) {
 

@@ -26,7 +26,8 @@ export const discusionStatus = {
     discussionJoinFailed: 0x01,
     discussionFailed: 0x02,
     discussionStartFailed: 0x03,
-    discussionResultShow: 0x04
+    discussionResultShow: 0x04,
+    returnPosts: 0x05
 };
 
 export const websocketStatus = {

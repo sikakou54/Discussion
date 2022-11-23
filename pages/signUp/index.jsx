@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Router from 'next/router';
 import styles from '../../styles/Home.module.css'
 import { signUp } from '../../api/auth';
@@ -10,8 +10,6 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
     const [userName, setUserName] = useState("");
     const [message, setMessage] = useState('');
-
-    useEffect(() => { }, []);
 
     async function onSubmit(event) {
 

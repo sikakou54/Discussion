@@ -1,15 +1,14 @@
 import Router from 'next/router';
-import { useEffect } from 'react';
 import { parseCookies } from 'nookies';
 import { apiFetchGet } from '../../api/api';
 
 export default function Posts({ posts }) {
 
-    function onClick(postId) {
+    function onClick(_postId) {
         Router.push({
             pathname: "discussion",
             query: {
-                postId: postId
+                postId: _postId
             }
         });
     }
@@ -19,8 +18,6 @@ export default function Posts({ posts }) {
             pathname: "post"
         });
     }
-
-    useEffect(() => { }, []);
 
     return (
         <div>

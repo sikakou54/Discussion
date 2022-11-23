@@ -1,17 +1,13 @@
 import Router, { useRouter } from 'next/router';
-import { useEffect } from 'react';
 
 export default function Result() {
 
     const router = useRouter();
-    const { userId, win, positive, negative } = router.query;
+    const { win, positive, negative } = router.query;
 
     function click() {
         Router.push({
-            pathname: 'posts',
-            query: {
-                userId: userId
-            }
+            pathname: 'posts'
         });
     }
 

@@ -403,12 +403,6 @@ export default function Discussion({ discussion, userId }) {
         });
     }
 
-    function onCancel() {
-        Router.push({
-            pathname: 'posts'
-        });
-    }
-
     async function startMeeting(type) {
 
         let labels = DeviceLabels.Audio;
@@ -727,7 +721,7 @@ export default function Discussion({ discussion, userId }) {
                 <h1>{discussion.title}</h1>
                 <p>{discussion.detail}</p>
                 <div>{data.attendees.positive.userId}/{data.attendees.negative.userId}/{data.attendees.watchers.length}</div>
-                {data.state === process.env.userState.select ? <Select onJoin={onJoin} onCancel={onCancel} message={data.message} /> : null}
+                {data.state === process.env.userState.select ? <Select onJoin={onJoin} message={data.message} /> : null}
                 {data.state === process.env.userState.join ? < Join /> : null}
                 {data.state === process.env.userState.standby ? <Standby /> : null}
                 {data.state === process.env.userState.ready ? <Ready /> : null}
