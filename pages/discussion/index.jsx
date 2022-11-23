@@ -24,29 +24,41 @@ export async function getServerSideProps(ctx) {
     const { postId } = ctx.query;
     const cookie = parseCookies(ctx);
 
-    const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + postId, {
-        method: 'GET', headers: {
-            Authorization: cookie.jwt
-        }
-    });
+    if (-1 !== Object.keys(cookie).indexOf('jwt')) {
 
-    if (res.status) {
-
-        const verify = await jwtVerify(cookie.jwt);
-
-        return {
-            props: {
-                discussion: res.data,
-                userId: verify.sub
+        const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + postId, {
+            headers: {
+                Authorization: cookie.jwt
             }
-        };
+        });
 
-    } else if (401 === res.statusCode) {
+        if (res.status) {
 
-        return {
-            redirect: {
-                destination: '/signIn',
-                permanent: false
+            const { sub } = await jwtVerify(cookie.jwt);
+
+            return {
+                props: {
+                    discussion: res.data,
+                    userId: sub
+                }
+            };
+
+        } else if (401 === res.statusCode) {
+
+            return {
+                redirect: {
+                    destination: '/signIn',
+                    permanent: false
+                }
+            }
+
+        } else {
+
+            return {
+                redirect: {
+                    destination: '/posts',
+                    permanent: false
+                }
             }
         }
 
@@ -54,9 +66,10 @@ export async function getServerSideProps(ctx) {
 
         return {
             redirect: {
-                destination: '/posts',
+                destination: '/signIn',
                 permanent: false
             }
         }
     }
+
 }

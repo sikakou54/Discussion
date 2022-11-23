@@ -3,7 +3,8 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link';
 import { parseCookies } from 'nookies';
 
-export default function Home(props) {
+export default function Home() {
+
   return (
     <div className={styles.container}>
       <Head>

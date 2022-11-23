@@ -70,7 +70,7 @@ export async function apiFetchPost(url, params) {
     });
 }
 
-export async function apiFetchGet(url) {
+export async function apiFetchGet(url, params) {
 
     return new Promise(async (resolve) => {
 
@@ -84,7 +84,7 @@ export async function apiFetchGet(url) {
             try {
 
                 // GETリクエスト
-                res = await fetch(url, { method: 'GET' });
+                res = await fetch(url, { method: 'GET', ...params });
 
                 // レスポンスが正常の場合
                 if (res.ok) {

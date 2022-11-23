@@ -59,9 +59,7 @@ export async function getServerSideProps(ctx) {
 
     if (-1 !== Object.keys(cookie).indexOf('jwt')) {
 
-        // データフェッチ
         const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn', {
-            method: 'GET',
             headers: {
                 Authorization: cookie.jwt
             }
@@ -69,11 +67,9 @@ export async function getServerSideProps(ctx) {
 
         if (res.status) {
 
-            const posts = res.data;
-
             return {
                 props: {
-                    posts
+                    posts: res.data
                 }
             }
 
@@ -89,9 +85,8 @@ export async function getServerSideProps(ctx) {
         } else {
 
             return {
-                redirect: {
-                    destination: '/',
-                    permanent: false
+                props: {
+                    posts: []
                 }
             }
         }

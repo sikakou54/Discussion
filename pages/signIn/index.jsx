@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Router from 'next/router';
 import styles from '../../styles/Home.module.css'
 import { signIn } from '../../api/auth';
-import { setCookie } from 'nookies'
+import { setCookie } from 'nookies';
 
 export default function SignIn() {
 
@@ -21,10 +21,12 @@ export default function SignIn() {
 
         if (undefined !== user) {
 
-            setCookie(null, 'jwt', user.signInUserSession.idToken.jwtToken);
+            setCookie(null, 'jwt', user.signInUserSession.idToken.jwtToken, {
+                maxAge: 30 * 24 * 60 * 60,
+            });
 
             Router.push({
-                pathname: "/posts"
+                pathname: "posts"
             });
 
         } else {
