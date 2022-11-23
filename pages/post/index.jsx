@@ -1,6 +1,7 @@
 //import Router from 'next/router';
 import { useState } from 'react';
 import Router, { useRouter } from 'next/router';
+import { apiFetchPost } from '../../api/api';
 
 export default function Post() {
 
@@ -9,39 +10,25 @@ export default function Post() {
     const router = useRouter();
     const userId = router.query.userId;
 
-    function onPost() {
-        console.log(title, detail);
-        fetch(process.env.awsApiGatewayHttpApiEndPoint + "/setDiscussion", {
-            method: "POST",
+    async function onPost() {
+
+        await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + "/setDiscussion", {
             body: JSON.stringify({
                 country: 'jpn',
                 userId: userId,
                 title: title,
                 detail: detail,
             })
-        }).then((res) => res.json())
-            .then((data) => {
+        });
 
-                console.log(data);
-
-                Router.push({
-                    pathname: "posts",
-                    query: {
-                        userId: userId
-                    }
-                });
-
-            }).catch((e) => {
-                console.log(e);
-            });
+        Router.push({
+            pathname: "posts"
+        });
     }
 
     function onCancel() {
         Router.push({
-            pathname: "posts",
-            query: {
-                userId: userId
-            }
+            pathname: "posts"
         });
     }
 

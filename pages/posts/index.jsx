@@ -1,30 +1,22 @@
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 import { useEffect } from 'react';
 import { parseCookies } from 'nookies';
-import { jwtVerify } from '../../api/auth';
 import { apiFetchGet } from '../../api/api';
 
 export default function Posts({ posts }) {
-
-    const router = useRouter();
-    const userId = router.query.userId;
 
     function onClick(postId) {
         Router.push({
             pathname: "discussion",
             query: {
-                postId: postId,
-                userId: userId
+                postId: postId
             }
         });
     }
 
     function onPostClick() {
         Router.push({
-            pathname: "post",
-            query: {
-                userId: userId
-            }
+            pathname: "post"
         });
     }
 

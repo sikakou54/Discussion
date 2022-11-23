@@ -116,6 +116,7 @@ export async function apiFetchGet(url, params) {
                     break;
 
                 } else {
+
                     //503の場合はエラーとしリトライする
                     console.log('apiFetchGet', 'retry', res.status, res.statusText, url);
                 }

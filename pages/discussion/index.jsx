@@ -9,6 +9,9 @@ import { jwtVerify } from '../../api/auth';
 import { apiFetchGet } from '../../api/api';
 
 export default function DiscussionManager({ discussion, userId }) {
+
+    console.log('userId', userId);
+
     return (
         < ThemeProvider theme={lightTheme} >
             <MeetingProvider>

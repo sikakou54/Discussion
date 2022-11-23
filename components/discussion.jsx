@@ -405,10 +405,7 @@ export default function Discussion({ discussion, userId }) {
 
     function onCancel() {
         Router.push({
-            pathname: 'posts',
-            query: {
-                userId: data.userId
-            }
+            pathname: 'posts'
         });
     }
 
@@ -504,15 +501,7 @@ export default function Discussion({ discussion, userId }) {
         });
     }
 
-    async function getSession() {
-        const session = await Auth.currentSession();
-        console.log('getSession', session);
-    }
-
     useEffect(() => {
-
-        Amplify.configure(process.env.awsCognitConfing);
-        getSession();
 
         return () => {
             if (socket.current && socket.current.readyState === 1) {
