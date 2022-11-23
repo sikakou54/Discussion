@@ -1,42 +1,37 @@
 
-import { Amplify, Auth } from 'aws-amplify';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import Router from 'next/router';
 import styles from '../../styles/Home.module.css'
+import { signUp } from '../../api/auth';
 
 export default function SignUp() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [userName, setUserName] = useState("");
+    const [message, setMessage] = useState('');
 
-    useEffect(() => {
-        Amplify.configure(process.env.awsCognitConfing);
-    }, []);
+    useEffect(() => { }, []);
 
-    function onSubmit(event) {
+    async function onSubmit(event) {
 
         event.preventDefault();
 
-        Auth.signUp({
-            username: userName,
-            password,
-            attributes: {
-                email
-            }
-        }).then((result) => {
-            //console.log("result", result);
+        const result = await signUp(userName, password, email);
+
+        if (undefined !== result) {
+
             Router.push({
                 pathname: "confirm",
                 query: {
-                    userName: result.user.username,
-                    userId: result.userSub
-                } // ココ
+                    userName: result.username,
+                    userId: result.userId
+                }
             });
-        }).catch((error) => {
-            console.log("error", error);
-        });
+
+        } else {
+            setMessage('認証要件を満たしていません。');
+        }
     }
 
     return (
@@ -46,6 +41,7 @@ export default function SignUp() {
                 <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type="password" required /></div>
                 <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type="text" required /></div>
                 <div><input type="submit" value="SignUp" /></div>
+                <div>{message}</div>
             </form>
         </main>
     );

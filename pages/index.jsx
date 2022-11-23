@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link';
+import { parseCookies } from 'nookies';
 
-export default function Home() {
+export default function Home(props) {
   return (
     <div className={styles.container}>
       <Head>
@@ -17,4 +18,28 @@ export default function Home() {
       <footer className={styles.footer}></footer>
     </div>
   )
+}
+
+//SSR
+export async function getServerSideProps(ctx) {
+
+  const cookie = parseCookies(ctx);
+
+  if (-1 !== Object.keys(cookie).indexOf('jwt')) {
+
+    return {
+      redirect: {
+        destination: '/posts',
+        permanent: false
+      }
+    }
+
+  } else {
+
+    return {
+      props: {}
+    };
+
+  }
+
 }

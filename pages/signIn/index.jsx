@@ -1,36 +1,35 @@
-
-import { Amplify, Auth } from 'aws-amplify';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import styles from '../../styles/Home.module.css'
+import { signIn } from '../../api/auth';
+import { setCookie } from 'nookies'
 
 export default function SignIn() {
 
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const [message, setMessage] = useState('');
 
-    useEffect(() => {
-        Amplify.configure(process.env.awsCognitConfing);
-    }, []);
+    useEffect(() => { }, []);
 
-    function onSubmit(event) {
+    async function onSubmit(event) {
 
         event.preventDefault();
 
-        Auth.signIn(userName, password)
-            .then((result) => {
-                console.log(result);
-                Router.push({
-                    pathname: "posts",
-                    query: {
-                        userId: result.attributes.sub
-                    }
-                });
-            })
-            .catch((error) => {
-                console.log(error);
+        const user = await signIn(userName, password);
+
+        if (undefined !== user) {
+
+            setCookie(null, 'jwt', user.signInUserSession.idToken.jwtToken);
+
+            Router.push({
+                pathname: "/posts"
             });
+
+        } else {
+            setMessage('認証エラー、ユーザー名/パスワードを確認してください。');
+        }
     }
 
     return (
@@ -40,6 +39,7 @@ export default function SignIn() {
                 <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type="password" required /></div>
                 <div><input type="submit" value="SignIn" /></div>
                 <Link href={'/signUp'}>SignUp</Link>
+                <div>{message}</div>
             </form>
         </main>
     );

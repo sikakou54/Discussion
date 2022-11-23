@@ -1,5 +1,8 @@
 import Router, { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { parseCookies } from 'nookies';
+import { jwtVerify } from '../../api/auth';
+import { apiFetchGet } from '../../api/api';
 
 export default function Posts({ posts }) {
 
@@ -25,9 +28,7 @@ export default function Posts({ posts }) {
         });
     }
 
-    useEffect(() => {
-        sessionStorage.removeItem('state');
-    }, []);
+    useEffect(() => { }, []);
 
     return (
         <div>
@@ -52,19 +53,58 @@ export default function Posts({ posts }) {
 }
 
 //SSR
-export async function getServerSideProps() {
+export async function getServerSideProps(ctx) {
 
-    let posts = {};
-    let items = [];
+    const cookie = parseCookies(ctx);
 
-    // データフェッチ
-    const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn', { method: 'GET' });
-    //console.log(res);
-    if (res.ok) {
-        posts = await res.json();
-        items = posts;
+    if (-1 !== Object.keys(cookie).indexOf('jwt')) {
+
+        // データフェッチ
+        const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn', {
+            method: 'GET',
+            headers: {
+                Authorization: cookie.jwt
+            }
+        });
+
+        if (res.status) {
+
+            const posts = res.data;
+
+            return {
+                props: {
+                    posts
+                }
+            }
+
+        } else if (401 === res.statusCode) {
+
+            return {
+                redirect: {
+                    destination: '/signIn',
+                    permanent: false
+                }
+            }
+
+        } else {
+
+            return {
+                redirect: {
+                    destination: '/',
+                    permanent: false
+                }
+            }
+        }
+
+    } else {
+
+        return {
+            redirect: {
+                destination: '/signIn',
+                permanent: false
+            }
+        }
     }
 
-    // Postsに渡す
-    return { props: { posts: items } }
+
 }

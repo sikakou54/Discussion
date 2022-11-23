@@ -1,4 +1,5 @@
 import { useEffect, useRef, useReducer } from 'react';
+import { Amplify, Auth } from 'aws-amplify';
 import Router from 'next/router';
 import Select from './select';
 import Online from './online';
@@ -503,7 +504,15 @@ export default function Discussion({ discussion, userId }) {
         });
     }
 
+    async function getSession() {
+        const session = await Auth.currentSession();
+        console.log('getSession', session);
+    }
+
     useEffect(() => {
+
+        Amplify.configure(process.env.awsCognitConfing);
+        getSession();
 
         return () => {
             if (socket.current && socket.current.readyState === 1) {

@@ -4,6 +4,9 @@ import {
 } from 'amazon-chime-sdk-component-library-react';
 import { ThemeProvider } from "styled-components";
 import Discussion from '../../components/discussion';
+import { parseCookies } from 'nookies';
+import { jwtVerify } from '../../api/auth';
+import { apiFetchGet } from '../../api/api';
 
 export default function DiscussionManager({ discussion, userId }) {
     return (
@@ -16,34 +19,44 @@ export default function DiscussionManager({ discussion, userId }) {
 }
 
 //SSR
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps(ctx) {
 
-    let discussion = null;
-    const { postId, userId } = query;
+    const { postId } = ctx.query;
+    const cookie = parseCookies(ctx);
 
-    try {
+    const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + postId, {
+        method: 'GET', headers: {
+            Authorization: cookie.jwt
+        }
+    });
 
-        if (undefined !== postId && undefined !== userId) {
-            // call getDiscussion api
-            const res = await fetch(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + postId);
-            if (res.ok) {
-                discussion = await res.json();
+    if (res.status) {
+
+        const verify = await jwtVerify(cookie.jwt);
+
+        return {
+            props: {
+                discussion: res.data,
+                userId: verify.sub
+            }
+        };
+
+    } else if (401 === res.statusCode) {
+
+        return {
+            redirect: {
+                destination: '/signIn',
+                permanent: false
             }
         }
 
-    } catch (e) {
-        discussion = null;
-    }
-
-    if (null !== discussion) {
-        return {
-            props: {
-                discussion,
-                userId,
-            }
-        };
     } else {
-        return { notFound: true };
-    }
 
+        return {
+            redirect: {
+                destination: '/posts',
+                permanent: false
+            }
+        }
+    }
 }

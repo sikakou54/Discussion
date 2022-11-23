@@ -4,7 +4,10 @@ export async function apiFetchPost(url, params) {
 
         let res = null;
         let retry = true;
-        let obj = {};
+        let obj = {
+            status: false,
+            data: null
+        };
 
         while (retry) {
 
@@ -19,7 +22,8 @@ export async function apiFetchPost(url, params) {
                     // 戻り値を設定する
                     obj = {
                         status: true,
-                        data: res.body
+                        data: res.body,
+                        statusCode: res.status
                     }
 
                     // リトライしない
@@ -31,7 +35,8 @@ export async function apiFetchPost(url, params) {
                     // 戻り値を設定する
                     obj = {
                         status: false,
-                        data: res.statusText
+                        data: res.statusText,
+                        statusCode: res.status
                     }
 
                     // リトライしない
@@ -49,7 +54,8 @@ export async function apiFetchPost(url, params) {
                 // 戻り値を設定する
                 obj = {
                     status: false,
-                    data: e
+                    data: e,
+                    statusCode: 400
                 }
 
                 // リトライしない
@@ -89,7 +95,8 @@ export async function apiFetchGet(url) {
                     // 戻り値を設定する
                     obj = {
                         status: true,
-                        data: json
+                        data: json,
+                        statusCode: res.status
                     };
 
                     // リトライしない
@@ -101,7 +108,8 @@ export async function apiFetchGet(url) {
                     // 戻り値を設定する
                     obj = {
                         status: false,
-                        data: res.statusText
+                        data: res.statusText,
+                        statusCode: res.status
                     };
 
                     // リトライしない
@@ -119,7 +127,8 @@ export async function apiFetchGet(url) {
                 // 戻り値を設定する
                 obj = {
                     status: false,
-                    data: e
+                    data: e,
+                    statusCode: 400
                 };
 
                 // リトライしない
