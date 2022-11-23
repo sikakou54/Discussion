@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { apiFetchGet } from "../api/api";
+import { apiFetchGet } from "../api/utils";
 
 export default function Header({ userId }) {
 

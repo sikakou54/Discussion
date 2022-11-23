@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Router, { useRouter } from 'next/router';
 import styles from '../../styles/Home.module.css'
 import { confirm } from '../../api/auth';
-import { apiFetchPost } from '../../api/api';
+import { apiFetchPost } from '../../api/utils';
 import Header from '../../components/header';
 
 export default function Confirm() {

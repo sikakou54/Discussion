@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components";
 import Discussion from '../../components/discussion';
 import { parseCookies } from 'nookies';
 import { jwtVerify } from '../../api/auth';
-import { apiFetchGet } from '../../api/api';
+import { apiFetchGet } from '../../api/utils';
 
 export default function DiscussionManager({ discussion, userId }) {
 

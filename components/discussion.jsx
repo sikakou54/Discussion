@@ -8,7 +8,7 @@ import Ready from './ready';
 import Finish from './finish';
 import Vote from './vote';
 import VotingDone from './votingDone';
-import { getTimeStamp } from '../api/api';
+import { getTimeStamp } from '../api/utils';
 import { actions, discusionStatus, websocketStatus } from '../define/define';
 import {
     useMeetingManager,
