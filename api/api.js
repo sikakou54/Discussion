@@ -3,13 +3,13 @@ export async function apiFetchPost(url, params) {
     return new Promise(async (resolve) => {
 
         let res = null;
-        let retry = true;
         let obj = {
             status: false,
-            data: null
+            data: null,
+            statusCode: 400
         };
 
-        while (retry) {
+        while (true) {
 
             try {
 
@@ -24,49 +24,47 @@ export async function apiFetchPost(url, params) {
                         status: true,
                         data: res.body,
                         statusCode: res.status
-                    }
+                    };
 
-                    // リトライしない
-                    retry = false;
+                    break;
 
                     //503以外の場合はエラーとしリトライしない
                 } else if (503 !== res.status) {
+
+                    console.error('apiFetchPost', res.status, res.statusText, url, params);
 
                     // 戻り値を設定する
                     obj = {
                         status: false,
                         data: res.statusText,
                         statusCode: res.status
-                    }
+                    };
 
-                    // リトライしない
-                    retry = false;
-
-                    console.error('apiFetchPost', res.status, res.statusText, url, params);
+                    break;
 
                 } else {
+
                     //503の場合はエラーとしリトライする
                     console.log('apiFetchPost', 'retry', res.status, res.statusText, url, params);
                 }
 
             } catch (e) {
 
+                console.error('apiFetchPost', e, url, params);
+
                 // 戻り値を設定する
                 obj = {
                     status: false,
                     data: e,
                     statusCode: 400
-                }
+                };
 
-                // リトライしない
-                retry = false;
-
-                console.error('apiFetchPost', e, url, params);
+                break;
             }
         }
 
         // 返却する
-        resolve({ ...obj });
+        resolve(obj);
     });
 }
 
@@ -75,11 +73,13 @@ export async function apiFetchGet(url, params) {
     return new Promise(async (resolve) => {
 
         let res = null;
-        let retry = true;
         let json = null;
-        let obj = {};
+        let obj = {
+            status: false,
+            data: null
+        };
 
-        while (retry) {
+        while (true) {
 
             try {
 
@@ -99,11 +99,12 @@ export async function apiFetchGet(url, params) {
                         statusCode: res.status
                     };
 
-                    // リトライしない
-                    retry = false;
+                    break;
 
                     //503以外の場合はエラーとしリトライしない
                 } else if (503 !== res.status) {
+
+                    console.error('apiFetchGet', res.status, res.statusText, url);
 
                     // 戻り値を設定する
                     obj = {
@@ -112,10 +113,7 @@ export async function apiFetchGet(url, params) {
                         statusCode: res.status
                     };
 
-                    // リトライしない
-                    retry = false;
-
-                    console.error('apiFetchGet', res.status, res.statusText, url);
+                    break;
 
                 } else {
                     //503の場合はエラーとしリトライする
@@ -124,6 +122,8 @@ export async function apiFetchGet(url, params) {
 
             } catch (e) {
 
+                console.error('apiFetchGet', e, url);
+
                 // 戻り値を設定する
                 obj = {
                     status: false,
@@ -131,15 +131,12 @@ export async function apiFetchGet(url, params) {
                     statusCode: 400
                 };
 
-                // リトライしない
-                retry = false;
-
-                console.error('apiFetchGet', e, url);
+                break;
             }
         }
 
         // 返却する
-        resolve({ ...obj });
+        resolve(obj);
     });
 }
 
