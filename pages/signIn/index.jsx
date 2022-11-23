@@ -23,9 +23,7 @@ export default function SignIn() {
                 maxAge: 30 * 24 * 60 * 60,
             });
 
-            Router.push({
-                pathname: "posts"
-            });
+            Router.push('/posts');
 
         } else {
             setMessage('認証エラー、ユーザー名/パスワードを確認してください。');

@@ -14,9 +14,7 @@ export default function Posts({ posts }) {
     }
 
     function onPostClick() {
-        Router.push({
-            pathname: "post"
-        });
+        Router.push('/post');
     }
 
     return (

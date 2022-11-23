@@ -6,9 +6,7 @@ export default function Result() {
     const { win, positive, negative } = router.query;
 
     function click() {
-        Router.push({
-            pathname: 'posts'
-        });
+        Router.push('/posts');
     }
 
     return (

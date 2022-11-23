@@ -19,16 +19,11 @@ export default function Post() {
                 detail: detail,
             })
         });
-
-        Router.push({
-            pathname: "posts"
-        });
+        Router.push('/posts');
     }
 
     function onCancel() {
-        Router.push({
-            pathname: "posts"
-        });
+        Router.push('/posts');
     }
 
     return (
