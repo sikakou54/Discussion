@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 import { apiFetchPost } from '../../api/api';
 import { jwtVerify } from '../../api/auth';
 import Header from '../../components/header';
