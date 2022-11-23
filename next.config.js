@@ -8,6 +8,11 @@ module.exports = {
       aws_user_pools_id: "ap-northeast-1_NQ7rz6N7T",
       aws_user_pools_web_client_id: "2beqljda3gfckjqmhmb7pf44ai"
     },
+    cognitoVerifierConfig: {
+      userPoolId: 'ap-northeast-1_NQ7rz6N7T',
+      tokenUse: 'id',
+      clientId: '2beqljda3gfckjqmhmb7pf44ai',
+    },
     awsApiGatewayHttpApiEndPoint: "https://k90g35f81d.execute-api.ap-northeast-1.amazonaws.com",
     awsApiGatewayWebSocketApiEndPoint: "wss://vx92a3mpjf.execute-api.ap-northeast-1.amazonaws.com/production",
     userState: {

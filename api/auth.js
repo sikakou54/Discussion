@@ -62,14 +62,12 @@ export async function jwtVerify(jwtToken) {
 
     let payload = undefined;
 
-    const verifier = CognitoJwtVerifier.create({
-        userPoolId: 'ap-northeast-1_NQ7rz6N7T',
-        tokenUse: 'id',
-        clientId: '2beqljda3gfckjqmhmb7pf44ai',
-    });
+    const verifier = CognitoJwtVerifier.create(process.env.cognitoVerifierConfig);
 
     try {
+
         payload = await verifier.verify(jwtToken);
+
     } catch (e) {
         console.error('jwtVerify', JSON.stringify(e));
     }
