@@ -557,7 +557,7 @@ export default function Discussion({ discussion, userId }) {
             if (data.limitTime <= data.currentTime) {
                 dispatch({ type: actions.timeout });
             } else {
-                setTimeout(discussionTimer, 500);
+                setTimeout(discussionTimer, 250);
             }
         }
 
@@ -583,7 +583,7 @@ export default function Discussion({ discussion, userId }) {
     useEffect(() => {
 
         if (data.isStarted || data.isVote) {
-            setTimeout(discussionTimer, 500);
+            setTimeout(discussionTimer, 250);
         }
 
     }, [data.isStarted, data.isVote]);
