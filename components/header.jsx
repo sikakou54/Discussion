@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { apiFetchGet } from "../api/utils";
+import styles from '../styles/Header.module.css';
 
 export default function Header({ userId }) {
 
-    const [userName, setUserName] = useState('');
+    const [userName, setUserName] = useState(undefined);
 
     useEffect(() => {
 
@@ -16,9 +17,9 @@ export default function Header({ userId }) {
     }, []);
 
     return (
-        <div>
+        <div className={styles.container}>
             <div>Header</div>
-            {userName !== '' ? <div>ようこそ {userName} さん</div> : null}
+            {undefined !== userName ? <div>ようこそ {userName} さん</div> : <div></div>}
         </div>
     );
 }
