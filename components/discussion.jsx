@@ -510,6 +510,8 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
+        console.log(data.state);
+
         switch (data.state) {
 
             case undefined:
@@ -670,7 +672,6 @@ export default function Discussion({ discussion, userId }) {
                     Router.push({
                         pathname: 'result',
                         query: {
-                            userId: data.userId,
                             win: data.result.win,
                             positive: data.result.positive,
                             negative: data.result.negative

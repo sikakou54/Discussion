@@ -8,18 +8,13 @@ export default function Result({ userId }) {
     const router = useRouter();
     const { win, positive, negative } = router.query;
 
-    function click() {
-        Router.push('/posts');
-    }
-
     return (
         <div>
             <Header userId={userId} />
-            <div>result</div>
             <div>win:{win}</div>
             <div>positive:{positive}</div>
             <div>negative:{negative}</div>
-            <button onClick={click}>posts</button>
+            <button onClick={() => Router.push('/posts')}>posts</button>
         </div>
     );
 }

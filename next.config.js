@@ -24,7 +24,8 @@ module.exports = {
       online: 'online',
       finish: 'finish',
       vote: 'vote',
-      votingDone: 'votingDone'
+      votingDone: 'votingDone',
+      result: 'result'
     }
   }
 };
