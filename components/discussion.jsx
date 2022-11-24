@@ -483,11 +483,7 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
-        console.log('mount')
-
         return () => {
-
-            console.log('umMount');
 
             if (null !== socket.current) {
                 socket.current.onopen = null;
