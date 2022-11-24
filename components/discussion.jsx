@@ -5,7 +5,7 @@ import Online from './online';
 import Join from './join';
 import Standby from './standby';
 import Ready from './ready';
-import Finish from './finish';
+import Finish from './Finish';
 import Vote from './vote';
 import VotingDone from './votingDone';
 import { getTimeStamp } from '../api/utils';
@@ -16,7 +16,7 @@ import {
     DeviceLabels
 } from 'amazon-chime-sdk-component-library-react';
 import { MeetingSessionConfiguration } from 'amazon-chime-sdk-js';
-import Header from './header';
+import Header from './Header';
 
 const reducer = (state, action) => {
 

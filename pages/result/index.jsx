@@ -1,7 +1,7 @@
 import Router, { useRouter } from 'next/router';
 import { parseCookies } from 'nookies';
 import { jwtVerify } from '../../api/auth';
-import Header from '../../components/header';
+import Header from '../../components/Header';
 
 export default function Result({ userId }) {
 

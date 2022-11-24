@@ -3,7 +3,7 @@ import {
     lightTheme,
 } from 'amazon-chime-sdk-component-library-react';
 import { ThemeProvider } from "styled-components";
-import Discussion from '../../components/discussion';
+import Discussion from '../../components/Discussion';
 import { parseCookies } from 'nookies';
 import { jwtVerify } from '../../api/auth';
 import { apiFetchGet } from '../../api/utils';

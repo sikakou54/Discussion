@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Router from 'next/router';
 import styles from '../../styles/Home.module.css'
 import { signUp } from '../../api/auth';
-import Header from '../../components/header';
+import Header from '../../components/Header';
 
 export default function SignUp() {
 

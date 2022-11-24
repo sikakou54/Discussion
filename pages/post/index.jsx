@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Router from 'next/router';
 import { apiFetchPost } from '../../api/utils';
 import { jwtVerify } from '../../api/auth';
-import Header from '../../components/header';
+import Header from '../../components/Header';
 import { parseCookies } from 'nookies';
 
 export default function Post({ userId }) {

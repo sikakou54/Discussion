@@ -4,7 +4,7 @@ import Router from 'next/router';
 import styles from '../../styles/Home.module.css'
 import { signIn } from '../../api/auth';
 import { setCookie } from 'nookies';
-import Header from '../../components/header';
+import Header from '../../components/Header';
 
 export default function SignIn() {
 
