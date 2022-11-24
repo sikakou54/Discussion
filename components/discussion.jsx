@@ -336,6 +336,17 @@ export default function Discussion({ discussion, userId }) {
         socket.current.onerror = webSocketError;
     }
 
+    function cleanUpWebSocket() {
+        if (socket.current) {
+            socket.current.onopen = null;
+            socket.current.onclose = null;
+            socket.current.onmessage = null;
+            socket.current.onerror = null;
+            socket.current.close();
+            socket.current = null;
+        }
+    }
+
     async function joinDiscussion(_type, _country, _postId, _socketId, _userId) {
 
         let action = '';
@@ -484,15 +495,7 @@ export default function Discussion({ discussion, userId }) {
     useEffect(() => {
 
         return () => {
-
-            if (null !== socket.current) {
-                socket.current.onopen = null;
-                socket.current.onclose = null;
-                socket.current.onmessage = null;
-                socket.current.onerror = null;
-                socket.current.close();
-                socket.current = null;
-            }
+            cleanUpWebSocket();
         };
 
     }, []);
