@@ -39,11 +39,13 @@ export default function Confirm() {
 
     return (
         <Layout userId={undefined} title={'Confirm'}>
-            <form onSubmit={onSubmit}>
-                <div><label>Confirm:</label><input onChange={(event) => { setConfirmCode(event.target.value) }} type='test' required /></div>
-                <div><input type='submit' value='Confirm' /></div>
-                <div>{message}</div>
-            </form>
+            <main className={styles.main}>
+                <form onSubmit={onSubmit}>
+                    <div><label>Confirm:</label><input onChange={(event) => { setConfirmCode(event.target.value) }} type='test' required /></div>
+                    <div><input type='submit' value='Confirm' /></div>
+                    <div>{message}</div>
+                </form>
+            </main>
         </Layout>
     );
 }
