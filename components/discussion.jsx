@@ -582,19 +582,11 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
-        if (data.isStarted) {
+        if (data.isStarted || data.isVote) {
             setTimeout(discussionTimer, 500);
         }
 
-    }, [data.isStarted]);
-
-    useEffect(() => {
-
-        if (data.isVote) {
-            setTimeout(discussionTimer, 500);
-        }
-
-    }, [data.isVote]);
+    }, [data.isStarted, data.isVote]);
 
     useEffect(() => {
 
