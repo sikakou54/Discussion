@@ -207,10 +207,10 @@ export default function Discussion({ discussion, userId }) {
     const meetingEvent = useMeetingEvent();
 
     async function sendMessage(action, data) {
+
         if (socket.current && socket.current.readyState === 1) {
             socket.current.send(JSON.stringify({ action, data }));
         } else {
-            console.error('socket error', socket.current);
             changeDiscussionStatus(discusionStatus.websocketDisconnect);
         }
     }
@@ -514,7 +514,7 @@ export default function Discussion({ discussion, userId }) {
         switch (data.state) {
 
             case process.env.userState.none:
-                updateSelect('');
+                updateSelect('参加種別を選択してください。');
                 break;
 
             case process.env.userState.join:
@@ -710,8 +710,8 @@ export default function Discussion({ discussion, userId }) {
         return (
             <div>
                 <Header userId={userId} />
-                <h1>{discussion.title}</h1>
-                <p>{discussion.detail}</p>
+                <div>{discussion.title}</div>
+                <div>{discussion.detail}</div>
                 <div>{data.attendees.positive.userId}/{data.attendees.negative.userId}/{data.attendees.watchers.length}</div>
                 {data.state === process.env.userState.select ? <Select onJoin={onJoin} message={data.message} /> : null}
                 {data.state === process.env.userState.join ? < Join /> : null}
