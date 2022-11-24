@@ -349,7 +349,7 @@ export default function Discussion({ discussion, userId }) {
 
     async function joinDiscussion(_type, _country, _postId, _socketId, _userId) {
 
-        let action = '';
+        let action = undefined;
 
         if (_type === 1) action = 'joinDiscussionPositive';
         if (_type === 2) action = 'joinDiscussionNegative';
@@ -366,7 +366,7 @@ export default function Discussion({ discussion, userId }) {
 
     async function setDiscussionState(_type, _country, _postId, _socketId, _userId, _state) {
 
-        let action = '';
+        let action = undefined;
 
         if (_type === 1) action = 'setDiscussionPositive';
         if (_type === 2) action = 'setDiscussionNegative';
@@ -624,7 +624,6 @@ export default function Discussion({ discussion, userId }) {
         }
 
     }, [data.meetingEventName]);
-
 
     useEffect(() => {
 
