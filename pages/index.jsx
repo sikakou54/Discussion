@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link';
 import { parseCookies } from 'nookies';
-import Header from '../components/Header';
+import Header from '../components/header';
 
 export default function Home() {
 

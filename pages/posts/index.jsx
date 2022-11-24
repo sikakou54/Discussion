@@ -2,7 +2,7 @@ import Router from 'next/router';
 import { parseCookies } from 'nookies';
 import { apiFetchGet } from '../../api/utils';
 import { jwtVerify } from '../../api/auth';
-import Header from '../../components/Header';
+import Header from '../../components/header';
 
 export default function Posts({ posts, userId }) {
 
