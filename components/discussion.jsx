@@ -337,7 +337,7 @@ export default function Discussion({ discussion, userId }) {
     }
 
     function cleanUpWebSocket() {
-        if (socket.current) {
+        if (null !== socket.current) {
             socket.current.onopen = null;
             socket.current.onclose = null;
             socket.current.onmessage = null;
