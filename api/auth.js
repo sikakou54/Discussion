@@ -8,8 +8,9 @@ export async function signIn(userName, password) {
     let user = undefined;
 
     try {
+
         user = await Auth.signIn(userName, password);
-        console.log(user);
+
     } catch (e) {
         console.error('signIn', JSON.stringify(e));
     }

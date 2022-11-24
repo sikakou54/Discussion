@@ -174,7 +174,7 @@ export default function Discussion({ discussion, userId }) {
 
     const socket = useRef(null);
     const [data, dispatch] = useReducer(reducer, {
-        state: process.env.userState.none,
+        state: undefined,
         userId: userId,
         postId: discussion.postId,
         country: discussion.country,
@@ -194,7 +194,7 @@ export default function Discussion({ discussion, userId }) {
         currentTime: 0,
         judge: undefined,
         result: {
-            win: 'none',
+            win: undefined,
             positive: 0,
             negative: 0
         },
@@ -509,7 +509,7 @@ export default function Discussion({ discussion, userId }) {
 
         switch (data.state) {
 
-            case process.env.userState.none:
+            case undefined:
                 updateSelect('参加種別を選択してください。');
                 break;
 
@@ -702,7 +702,7 @@ export default function Discussion({ discussion, userId }) {
 
     }, [data.websocketStatus]);
 
-    if (process.env.userState.none !== data.state) {
+    if (undefined !== data.state) {
         return (
             <div>
                 <Header userId={userId} />
