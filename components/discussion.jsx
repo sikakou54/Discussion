@@ -1,13 +1,13 @@
 import { useEffect, useRef, useReducer } from 'react';
 import Router from 'next/router';
-import Select from './select';
-import Online from './online';
-import Join from './join';
-import Standby from './standby';
-import Ready from './ready';
+import Select from './Select';
+import Online from './Online';
+import Join from './Join';
+import Standby from './Standby';
+import Ready from './Ready';
 import Finish from './Finish';
-import Vote from './vote';
-import VotingDone from './votingDone';
+import Vote from './Vote';
+import VotingDone from './VotingDone';
 import { getTimeStamp } from '../api/utils';
 import { actions, discusionStatus, websocketStatus } from '../define/define';
 import {
