@@ -617,8 +617,7 @@ export default function Discussion({ discussion, userId }) {
         if (process.env.userState.ready === data.state) {
             if ('meetingStartSucceeded' === data.meetingEventName) {
                 dispatch({ type: actions.state.online });
-            }
-            if ('meetingStartFailed' === data.meetingEventName) {
+            } else if ('meetingStartFailed' === data.meetingEventName) {
                 changeDiscussionStatus(discusionStatus.discussionStartFailed);
             }
         } else if (process.env.userState.finish === data.state && 'meetingEnded' === data.meetingEventName) {
