@@ -5,13 +5,13 @@ import Head from "next/head";
 
 export default function Header({ userId, title }) {
 
-    const [userName, setUserName] = useState(undefined);
+    const [userInfo, setUserInfo] = useState(undefined);
 
     useEffect(() => {
 
         if (undefined !== userId) {
             apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + "/getUser/" + userId, {}).then((res) => {
-                setUserName(res.data.name);
+                setUserInfo(res.data);
             });
         }
 
@@ -23,7 +23,7 @@ export default function Header({ userId, title }) {
                 <title>{title}</title>
             </Head>
             <div>Header</div>
-            {undefined !== userName ? <div>ようこそ {userName} さん</div> : <div></div>}
+            {undefined !== userInfo ? <div>ようこそ {userInfo.name} さん</div> : <div></div>}
         </div>
     );
 }
