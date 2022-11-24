@@ -184,7 +184,7 @@ export default function Discussion({ discussion, userId }) {
             watchers: discussion.watchers
         },
         joinType: 0,
-        socketId: 'none',
+        socketId: undefined,
         meetingSessionConfiguration: {},
         isVote: false,
         isStarted: false,
@@ -216,7 +216,9 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function webSocketOpen(event) {
+
         console.log('webSocketOpen', event);
+
         dispatch({
             type: actions.changeWebsocketStatus,
             payload: {
@@ -226,13 +228,22 @@ export default function Discussion({ discussion, userId }) {
     }
 
     function webSocketClose(event) {
+
         console.log('webSocketClose', event);
+
         dispatch({
             type: actions.changeWebsocketStatus,
             payload: {
                 websocketStatus: websocketStatus.close
             }
         });
+    }
+
+    function webSocketError(event) {
+
+        console.error('error', event);
+
+        changeDiscussionStatus(discusionStatus.websocketError);
     }
 
     function webSocketMessage(event) {
@@ -317,33 +328,12 @@ export default function Discussion({ discussion, userId }) {
         }
     }
 
-    function webSocketError(event) {
-        console.error('error', event);
-
-        dispatch({
-            type: actions.changeWebsocketStatus,
-            payload: {
-                websocketStatus: 'close'
-            }
-        });
-    }
-
     function setupWebSocket() {
-
-        // websocket
         socket.current = new WebSocket(process.env.awsApiGatewayWebSocketApiEndPoint);
-
-        // open
-        socket.current.addEventListener('open', webSocketOpen);
-
-        // close
-        socket.current.addEventListener('close', webSocketClose);
-
-        // message
-        socket.current.addEventListener('message', webSocketMessage);
-
-        // error
-        socket.current.addEventListener('error', webSocketError);
+        socket.current.onopen = webSocketOpen;
+        socket.current.onclose = webSocketClose;
+        socket.current.onmessage = webSocketMessage;
+        socket.current.onerror = webSocketError;
     }
 
     async function joinDiscussion(_type, _country, _postId, _socketId, _userId) {
@@ -354,7 +344,6 @@ export default function Discussion({ discussion, userId }) {
         if (_type === 2) action = 'joinDiscussionNegative';
         if (_type === 3) action = 'joinDiscussionWatcher';
 
-        // 参加を通知する
         await sendMessage(action, {
             country: _country,
             postId: _postId,
@@ -372,7 +361,6 @@ export default function Discussion({ discussion, userId }) {
         if (_type === 2) action = 'setDiscussionNegative';
         if (_type === 3) action = 'setDiscussionWatcher';
 
-        // ユーザー状態を通知する
         await sendMessage(action, {
             country: _country,
             postId: _postId,
@@ -383,8 +371,6 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function setVote(_country, _postId, _socketId, _userId, _judge) {
-
-        // 投票結果を通知する
         await sendMessage('setVote', {
             country: _country,
             postId: _postId,
@@ -497,8 +483,17 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
+        console.log('mount')
+
         return () => {
-            if (socket.current && socket.current.readyState === 1) {
+
+            console.log('umMount');
+
+            if (null !== socket.current) {
+                socket.current.onopen = null;
+                socket.current.onclose = null;
+                socket.current.onmessage = null;
+                socket.current.onerror = null;
                 socket.current.close();
                 socket.current = null;
             }
@@ -508,15 +503,13 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
-        if ('none' !== data.socketId) {
+        if (undefined !== data.socketId) {
             joinDiscussion(data.joinType, data.country, data.postId, data.socketId, data.userId);
         }
 
     }, [data.socketId]);
 
     useEffect(() => {
-
-        console.log('changedDiscussionState', data.state);
 
         switch (data.state) {
 
@@ -593,7 +586,7 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
-        if (true === data.isStarted) {
+        if (data.isStarted) {
             setTimeout(discussionTimer, 500);
         }
 
@@ -601,7 +594,7 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
-        if (true === data.isVote) {
+        if (data.isVote) {
             setTimeout(discussionTimer, 500);
         }
 
@@ -624,8 +617,6 @@ export default function Discussion({ discussion, userId }) {
     }, [meetingEvent]);
 
     useEffect(() => {
-
-        console.log('changedDiscussionEventName', data.meetingEventName);
 
         if (process.env.userState.ready === data.state) {
             if ('meetingStartSucceeded' === data.meetingEventName) {
@@ -679,7 +670,7 @@ export default function Discussion({ discussion, userId }) {
                     // 参加不可
                     updateSelect('参加できませんでした。＿|￣|○');
 
-                } else if (discusionStatus.websocketDisconnect === data.discusionStatus) {
+                } else if (discusionStatus.websocketDisconnect === data.discusionStatus || discusionStatus.websocketError === data.discusionStatus) {
 
                     // 参加不可
                     updateSelect('通信エラーが発生しました。＿|￣|○');
@@ -699,7 +690,7 @@ export default function Discussion({ discussion, userId }) {
 
                 } else {
 
-                    // 原因不明のエラー（ブラウザによるソケット切断）
+                    // 原因不明のエラー（ブラウザによる強制ソケット切断）
                     updateSelect('通信が切断されました＿|￣|○');
                 }
 

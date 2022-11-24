@@ -27,7 +27,8 @@ export const discusionStatus = {
     discussionFailed: 0x02,
     discussionStartFailed: 0x03,
     discussionResultShow: 0x04,
-    returnPosts: 0x05
+    returnPosts: 0x05,
+    websocketError: 0x06,
 };
 
 export const websocketStatus = {
