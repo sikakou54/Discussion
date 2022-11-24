@@ -2,7 +2,7 @@ import Router from 'next/router';
 import { parseCookies } from 'nookies';
 import { apiFetchGet } from '../../api/utils';
 import { jwtVerify } from '../../api/auth';
-import Header from '../../components/header';
+import Layout from '../../components/layout';
 
 export default function Posts({ posts, userId }) {
 
@@ -20,8 +20,7 @@ export default function Posts({ posts, userId }) {
     }
 
     return (
-        <div>
-            <Header userId={userId} />
+        <Layout userId={userId} title={'Posts'} >
             <h1>Posts</h1>
             <div>
                 {
@@ -38,7 +37,7 @@ export default function Posts({ posts, userId }) {
                 }
             </div>
             <button onClick={onPostClick}>投稿する</button>
-        </div >
+        </Layout >
     );
 }
 

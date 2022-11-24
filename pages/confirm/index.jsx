@@ -3,7 +3,7 @@ import Router, { useRouter } from 'next/router';
 import styles from '../../styles/Home.module.css'
 import { confirm } from '../../api/auth';
 import { apiFetchPost } from '../../api/utils';
-import Header from '../../components/header';
+import Layout from '../../components/layout';
 
 export default function Confirm() {
 
@@ -38,16 +38,12 @@ export default function Confirm() {
     }
 
     return (
-        <div>
-            <Header userId={undefined} />
-            <main className={styles.main}>
-                <form onSubmit={onSubmit}>
-                    <div><label>Confirm:</label><input onChange={(event) => { setConfirmCode(event.target.value) }} type='test' required /></div>
-                    <div><input type='submit' value='Confirm' /></div>
-                    <div>{message}</div>
-                </form>
-            </main>
-        </div>
-
+        <Layout userId={undefined} title={'Confirm'}>
+            <form onSubmit={onSubmit}>
+                <div><label>Confirm:</label><input onChange={(event) => { setConfirmCode(event.target.value) }} type='test' required /></div>
+                <div><input type='submit' value='Confirm' /></div>
+                <div>{message}</div>
+            </form>
+        </Layout>
     );
 }

@@ -4,6 +4,7 @@ import { apiFetchPost } from '../../api/utils';
 import { jwtVerify } from '../../api/auth';
 import Header from '../../components/header';
 import { parseCookies } from 'nookies';
+import Layout from '../../components/layout';
 
 export default function Post({ userId }) {
 
@@ -28,15 +29,14 @@ export default function Post({ userId }) {
     }
 
     return (
-        <div>
-            <Header userId={userId} />
+        <Layout userId={userId} title={'Post'}>
             <div>タイトル：<input type="text" onChange={(e) => { setTitle(e.target.value) }} /></div>
             <div>詳細<input type="text" onChange={(e) => { setDetail(e.target.value) }} /></div>
             <div>
                 <input type="button" onClick={onCancel} value={"キャンセル"} />
                 <input type="button" onClick={onPost} value={"投稿する"} />
             </div>
-        </div>
+        </Layout>
     );
 }
 

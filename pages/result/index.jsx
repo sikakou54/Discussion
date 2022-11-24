@@ -1,7 +1,7 @@
 import Router, { useRouter } from 'next/router';
 import { parseCookies } from 'nookies';
 import { jwtVerify } from '../../api/auth';
-import Header from '../../components/header';
+import Layout from '../../components/layout';
 
 export default function Result({ userId }) {
 
@@ -9,13 +9,12 @@ export default function Result({ userId }) {
     const { win, positive, negative } = router.query;
 
     return (
-        <div>
-            <Header userId={userId} />
+        <Layout userId={userId} title={'Result'}>
             <div>win:{win}</div>
             <div>positive:{positive}</div>
             <div>negative:{negative}</div>
             <button onClick={() => Router.push('/posts')}>posts</button>
-        </div>
+        </Layout>
     );
 }
 

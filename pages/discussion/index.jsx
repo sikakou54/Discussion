@@ -7,15 +7,18 @@ import Discussion from '../../components/discussion';
 import { parseCookies } from 'nookies';
 import { jwtVerify } from '../../api/auth';
 import { apiFetchGet } from '../../api/utils';
+import Layout from '../../components/layout';
 
 export default function DiscussionManager({ discussion, userId }) {
 
     return (
-        < ThemeProvider theme={lightTheme} >
-            <MeetingProvider>
-                <Discussion discussion={discussion} userId={userId} />
-            </MeetingProvider>
-        </ThemeProvider >
+        <Layout userId={userId} title={'Discussion'}>
+            < ThemeProvider theme={lightTheme} >
+                <MeetingProvider>
+                    <Discussion discussion={discussion} userId={userId} />
+                </MeetingProvider>
+            </ThemeProvider >
+        </Layout>
     );
 }
 

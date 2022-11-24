@@ -16,7 +16,6 @@ import {
     DeviceLabels
 } from 'amazon-chime-sdk-component-library-react';
 import { MeetingSessionConfiguration } from 'amazon-chime-sdk-js';
-import Header from './header';
 
 const reducer = (state, action) => {
 
@@ -699,7 +698,6 @@ export default function Discussion({ discussion, userId }) {
     if (undefined !== data.state) {
         return (
             <div>
-                <Header userId={userId} />
                 <div>{discussion.title}</div>
                 <div>{discussion.detail}</div>
                 <div>{data.attendees.positive.userId}/{data.attendees.negative.userId}/{data.attendees.watchers.length}</div>

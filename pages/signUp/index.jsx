@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Router from 'next/router';
 import styles from '../../styles/Home.module.css'
 import { signUp } from '../../api/auth';
-import Header from '../../components/header';
+import Layout from '../../components/layout';
 
 export default function SignUp() {
 
@@ -34,8 +34,7 @@ export default function SignUp() {
     }
 
     return (
-        <div>
-            <Header userId={undefined} />
+        <Layout userId={undefined} title={'SignUp'}>
             <main className={styles.main}>
                 <form onSubmit={onSubmit}>
                     <div><label>Email:</label><input onChange={(event) => { setEmail(event.target.value) }} type="emal" required /></div>
@@ -45,7 +44,6 @@ export default function SignUp() {
                     <div>{message}</div>
                 </form>
             </main>
-        </div>
-
+        </Layout>
     );
 }

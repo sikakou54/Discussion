@@ -4,7 +4,7 @@ import Router from 'next/router';
 import styles from '../../styles/Home.module.css'
 import { signIn } from '../../api/auth';
 import { setCookie } from 'nookies';
-import Header from '../../components/header';
+import Layout from '../../components/layout';
 
 export default function SignIn() {
 
@@ -32,8 +32,7 @@ export default function SignIn() {
     }
 
     return (
-        <div>
-            <Header userId={undefined} />
+        <Layout userId={undefined} title={'SignIn'}>
             <main className={styles.main}>
                 <form onSubmit={onSubmit}>
                     <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type="text" required /></div>
@@ -43,7 +42,6 @@ export default function SignIn() {
                     <div>{message}</div>
                 </form>
             </main>
-        </div>
-
+        </Layout>
     );
 }
