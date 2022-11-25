@@ -5,7 +5,6 @@ import { jwtVerify } from '../../api/auth';
 import Layout from '../../components/layout';
 import { useEffect, useRef, useState } from 'react';
 import { getTimeStampToLocaleString } from '../../api/utils';
-
 import styles from '../../styles/Posts.module.css';
 
 export default function Posts({ posts, userId, config }) {
