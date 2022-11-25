@@ -96,7 +96,6 @@ export default function Posts({ posts, userId, config }) {
     return (
         <Layout userId={userId} title={'Posts'} >
             <div className={styles.container}>
-                <h1>Posts</h1>
                 <div id='items'>
                     {
                         items.map((value, index) => {

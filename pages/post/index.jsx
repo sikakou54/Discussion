@@ -13,6 +13,20 @@ export default function Post({ userId }) {
 
     async function onPost() {
 
+        /**
+            for (let index = 0; index < 500; index++) {
+                await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + "/setDiscussion", {
+                    body: JSON.stringify({
+                        country: 'jpn',
+                        userId: userId,
+                        title: 'title' + index,
+                        detail: 'detail' + index
+                    })
+                });
+                console.log(index);
+            }
+        */
+
         await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + "/setDiscussion", {
             body: JSON.stringify({
                 country: 'jpn',
@@ -21,6 +35,7 @@ export default function Post({ userId }) {
                 detail: detail,
             })
         });
+
         Router.push('/posts');
     }
 
