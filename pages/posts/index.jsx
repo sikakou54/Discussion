@@ -25,10 +25,6 @@ export default function Posts({ posts, userId, next }) {
         });
     }
 
-    function onPostClick() {
-        Router.push('/post');
-    }
-
     function scroollEventListener() {
         setScrollBottomPosition(bodyElement.current.offsetHeight - (windowElement.current.scrollY + windowElement.current.innerHeight));
     }
@@ -74,6 +70,9 @@ export default function Posts({ posts, userId, next }) {
                             }
 
                             setItems((items) => [...items, ...newItems]);
+
+                        } else if (401 === res.statusCode) {
+                            Router.push('/signIn');
                         }
                     });
                 }
@@ -113,7 +112,7 @@ export default function Posts({ posts, userId, next }) {
                         })
                     }
                 </div>
-                <button onClick={onPostClick}>投稿する</button>
+                <button onClick={() => Router.push('/post')}>投稿する</button>
             </div>
         </Layout >
     );
