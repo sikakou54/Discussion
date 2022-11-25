@@ -27,5 +27,13 @@ module.exports = {
       votingDone: 'votingDone',
       result: 'result'
     }
-  }
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/getDiscussions/:path*',
+        destination: 'https://k90g35f81d.execute-api.ap-northeast-1.amazonaws.com/getDiscussions/:path*',
+      },
+    ];
+  },
 };

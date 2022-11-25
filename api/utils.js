@@ -145,3 +145,7 @@ export async function apiFetchGet(url, params) {
 export function getTimeStamp(offset = 0) {
     return (new Date()).getTime() + offset;
 }
+
+export function getTimeStampToLocaleString(utcTime) {
+    return (new Date(utcTime + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000))).toLocaleString();
+}
