@@ -127,7 +127,7 @@ export async function getServerSideProps(ctx) {
 
     if (-1 !== Object.keys(cookie).indexOf('jwt')) {
 
-        const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn' + '/' + 'none' + '/' + 'none', {
+        const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn' + '/none/none', {
             headers: {
                 Authorization: cookie.jwt
             }
