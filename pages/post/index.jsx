@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Router from 'next/router';
 import { apiFetchPost } from '../../api/utils';
 import { jwtVerify } from '../../api/auth';
-import Header from '../../components/header';
 import { parseCookies } from 'nookies';
 import Layout from '../../components/layout';
 
