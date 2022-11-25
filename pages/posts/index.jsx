@@ -17,7 +17,7 @@ export default function Posts({ posts, userId, config }) {
 
     function onClick(_postId) {
         Router.push({
-            pathname: "discussion",
+            pathname: 'discussion',
             query: {
                 postId: _postId
             }

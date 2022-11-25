@@ -7,9 +7,9 @@ import Layout from '../../components/layout';
 
 export default function SignUp() {
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [userName, setUserName] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [userName, setUserName] = useState('');
     const [message, setMessage] = useState('');
 
     async function onSubmit(event) {
@@ -21,7 +21,7 @@ export default function SignUp() {
         if (undefined !== result) {
 
             Router.push({
-                pathname: "/confirm",
+                pathname: '/confirm',
                 query: {
                     userName: result.username,
                     userId: result.userId
@@ -37,10 +37,10 @@ export default function SignUp() {
         <Layout userId={undefined} title={'SignUp'}>
             <main className={styles.main}>
                 <form onSubmit={onSubmit}>
-                    <div><label>Email:</label><input onChange={(event) => { setEmail(event.target.value) }} type="emal" required /></div>
-                    <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type="password" required /></div>
-                    <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type="text" required /></div>
-                    <div><input type="submit" value="SignUp" /></div>
+                    <div><label>Email:</label><input onChange={(event) => { setEmail(event.target.value) }} type='emal' required /></div>
+                    <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type='password' required /></div>
+                    <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type='text' required /></div>
+                    <div><input type='submit' value='SignUp' /></div>
                     <div>{message}</div>
                 </form>
             </main>

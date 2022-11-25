@@ -8,8 +8,8 @@ import Layout from '../../components/layout';
 
 export default function SignIn() {
 
-    const [userName, setUserName] = useState("");
-    const [password, setPassword] = useState("");
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
 
     async function onSubmit(event) {
@@ -35,9 +35,9 @@ export default function SignIn() {
         <Layout userId={undefined} title={'SignIn'}>
             <main className={styles.main}>
                 <form onSubmit={onSubmit}>
-                    <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type="text" required /></div>
-                    <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type="password" required /></div>
-                    <div><input type="submit" value="SignIn" /></div>
+                    <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type='text' required /></div>
+                    <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type='password' required /></div>
+                    <div><input type='submit' value='SignIn' /></div>
                     <Link href={'/signUp'}>SignUp</Link>
                     <div>{message}</div>
                 </form>

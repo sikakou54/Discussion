@@ -2,7 +2,7 @@ import {
     MeetingProvider,
     lightTheme,
 } from 'amazon-chime-sdk-component-library-react';
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from 'styled-components';
 import Discussion from '../../components/discussion';
 import { parseCookies } from 'nookies';
 import { jwtVerify } from '../../api/auth';
@@ -30,7 +30,7 @@ export async function getServerSideProps(ctx) {
 
     if (-1 !== Object.keys(cookie).indexOf('jwt')) {
 
-        const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + "/getDiscussion/" + 'jpn' + '/' + postId, {
+        const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussion/' + 'jpn' + '/' + postId, {
             headers: {
                 Authorization: cookie.jwt
             }
