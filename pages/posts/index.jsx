@@ -10,7 +10,7 @@ import styles from '../../styles/Posts.module.css';
 
 export default function Posts({ posts, userId, next }) {
 
-    const [lastEvaluatedKey, setLastEvaluatedKey] = useState(next.key);
+    const [lastEvaluatedKey, setLastEvaluatedKey] = useState(next.lastEvaluatedKey);
     const [items, setItems] = useState(posts);
     const bodyElement = useRef(null);
     const windowElement = useRef(null);
@@ -122,7 +122,7 @@ export default function Posts({ posts, userId, next }) {
 //SSR
 export async function getServerSideProps(ctx) {
 
-    let latestKey = null;
+    let lastEvaluatedKey = null;
     const cookie = parseCookies(ctx);
 
     if (-1 !== Object.keys(cookie).indexOf('jwt')) {
@@ -139,7 +139,7 @@ export async function getServerSideProps(ctx) {
             const { sub } = await jwtVerify(cookie.jwt);
 
             if (-1 !== Object.keys(res.data).indexOf('LastEvaluatedKey')) {
-                latestKey = res.data.LastEvaluatedKey;
+                lastEvaluatedKey = res.data.LastEvaluatedKey;
             }
 
             return {
@@ -148,7 +148,7 @@ export async function getServerSideProps(ctx) {
                     userId: sub,
                     next: {
                         jwt: cookie.jwt,
-                        key: latestKey
+                        lastEvaluatedKey
                     }
                 }
             }
