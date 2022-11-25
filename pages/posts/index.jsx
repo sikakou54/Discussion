@@ -37,7 +37,7 @@ export default function Posts({ posts, userId, next }) {
 
         if (undefined !== scrollBottomPosition) {
 
-            console.log(scrollBottomPosition);
+            //console.log(scrollBottomPosition);
 
             if (1 >= scrollBottomPosition) {
 
