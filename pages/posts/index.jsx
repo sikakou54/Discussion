@@ -110,7 +110,7 @@ export default function Posts({ posts, userId, config }) {
                         })
                     }
                 </div>
-                <button onClick={() => Router.push('/post')}>投稿する</button>
+                <div className={styles.post} onClick={() => Router.push('/post')}>投稿する</div>
             </div>
         </Layout >
     );
