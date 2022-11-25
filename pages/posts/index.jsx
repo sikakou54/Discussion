@@ -101,7 +101,6 @@ export default function Posts({ posts, userId, config }) {
                         items.map((value, index) => {
                             return (
                                 <div key={index} onClick={() => { onClick(value.postId) }} style={{ border: 'solid', margin: '20px' }}>
-                                    <div>{value.postId}</div>
                                     <div>{value.title}</div>
                                     <div>{value.detail}</div>
                                     <div>{getTimeStampToLocaleString(value.createAt)}</div>
