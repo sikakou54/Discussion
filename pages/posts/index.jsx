@@ -8,9 +8,9 @@ import { getTimeStampToLocaleString } from '../../api/utils';
 
 import styles from '../../styles/Posts.module.css';
 
-export default function Posts({ posts, userId, next }) {
+export default function Posts({ posts, userId, config }) {
 
-    const [lastEvaluatedKey, setLastEvaluatedKey] = useState(next.lastEvaluatedKey);
+    const [lastEvaluatedKey, setLastEvaluatedKey] = useState(config.lastEvaluatedKey);
     const [items, setItems] = useState(posts);
     const bodyElement = useRef(null);
     const windowElement = useRef(null);
@@ -43,7 +43,7 @@ export default function Posts({ posts, userId, next }) {
 
                     apiFetchGet('/getDiscussions/' + lastEvaluatedKey.country + '/' + lastEvaluatedKey.createAt + '/' + lastEvaluatedKey.postId, {
                         headers: {
-                            Authorization: next.jwt
+                            Authorization: config.jwt
                         }
                     }).then((res) => {
 
@@ -145,7 +145,7 @@ export async function getServerSideProps(ctx) {
                 props: {
                     posts: res.data.Items,
                     userId: sub,
-                    next: {
+                    config: {
                         jwt: cookie.jwt,
                         lastEvaluatedKey
                     }
