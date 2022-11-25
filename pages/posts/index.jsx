@@ -123,7 +123,6 @@ export default function Posts({ posts, userId, next }) {
 export async function getServerSideProps(ctx) {
 
     let latestKey = null;
-
     const cookie = parseCookies(ctx);
 
     if (-1 !== Object.keys(cookie).indexOf('jwt')) {
