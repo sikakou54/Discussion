@@ -7,14 +7,14 @@ import Layout from '../../components/layout';
 
 export default function Post({ userId }) {
 
-    const [title, setTitle] = useState("");
-    const [detail, setDetail] = useState("");
+    const [title, setTitle] = useState('');
+    const [detail, setDetail] = useState('');
 
     async function onPost() {
 
         /**
             for (let index = 0; index < 500; index++) {
-                await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + "/setDiscussion", {
+                await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setDiscussion', {
                     body: JSON.stringify({
                         country: 'jpn',
                         userId: userId,
@@ -26,7 +26,7 @@ export default function Post({ userId }) {
             }
         */
 
-        await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + "/setDiscussion", {
+        await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setDiscussion', {
             body: JSON.stringify({
                 country: 'jpn',
                 userId: userId,
@@ -44,11 +44,11 @@ export default function Post({ userId }) {
 
     return (
         <Layout userId={userId} title={'Post'}>
-            <div>タイトル：<input type="text" onChange={(e) => { setTitle(e.target.value) }} /></div>
-            <div>詳細<input type="text" onChange={(e) => { setDetail(e.target.value) }} /></div>
+            <div>タイトル：<input type='text' onChange={(e) => { setTitle(e.target.value) }} /></div>
+            <div>詳細<input type='text' onChange={(e) => { setDetail(e.target.value) }} /></div>
             <div>
-                <input type="button" onClick={onCancel} value={"キャンセル"} />
-                <input type="button" onClick={onPost} value={"投稿する"} />
+                <input type='button' onClick={onCancel} value={'キャンセル'} />
+                <input type='button' onClick={onPost} value={'投稿する'} />
             </div>
         </Layout>
     );
