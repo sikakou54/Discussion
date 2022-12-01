@@ -35,3 +35,19 @@ export const websocketStatus = {
     open: 0x00,
     close: 0x01
 };
+
+export const discussionErrorMsg = {
+    websocketDisconnect: '通信が切断されました＿|￣|○',
+    discussionJoinFailed: '討論の参加に失敗しました＿|￣|○',
+    discussionFailed: '討論が異常終了しました＿|￣|○',
+    discussionStartFailed: '討論の参加に失敗しました＿|￣|○',
+    websocketError: '通信エラーが発生しました。＿|￣|○',
+}
+
+export const discussionErrorCode = {
+    websocketDisconnect: 0x00,
+    discussionJoinFailed: 0x01,
+    discussionFailed: 0x02,
+    discussionStartFailed: 0x03,
+    websocketError: 0x04,
+}

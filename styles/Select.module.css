@@ -1,0 +1,59 @@
+.container {
+    width: 80%;
+    text-align: center;
+}
+
+.joinTypeWrapper {
+    margin: 20px;
+}
+
+.joinType {
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    margin: 5px;
+}
+
+.selectItemDisable {
+    padding: 20px;
+    margin: 10px;
+    background-color: gray;
+    color: white;
+}
+
+.selectItemEnable {
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+    color: black;
+}
+
+.selectItemEnable:hover {
+    background-color: skyblue;
+    color: black;
+}
+
+.joinButtonEnable {
+    padding: 20px;
+    background-color: white;
+    color: black;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.joinButtonDisable {
+    padding: 20px;
+    background-color: gray;
+    color: white;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.joinButtonEnable:hover {
+    background-color: greenyellow;
+    color: black;
+}

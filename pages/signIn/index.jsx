@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/Home.module.css';
 import { signIn } from '../../api/auth';
 import { setCookie } from 'nookies';
 import Layout from '../../components/layout';

@@ -9,13 +9,14 @@ import Finish from './finish';
 import Vote from './vote';
 import VotingDone from './votingDone';
 import { getTimeStamp } from '../api/utils';
-import { actions, discusionStatus, websocketStatus } from '../define/define';
+import { actions, discusionStatus, discussionErrorCode, websocketStatus } from '../define/define';
 import {
     useMeetingManager,
     useMeetingEvent,
     DeviceLabels
 } from 'amazon-chime-sdk-component-library-react';
 import { MeetingSessionConfiguration } from 'amazon-chime-sdk-js';
+import styles from '../styles/Discussion.module.css';
 
 const reducer = (state, action) => {
 
@@ -493,7 +494,18 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
+        window.onbeforeunload = (event) => {
+
+            // Cancel the event as stated by the standard.
+            event.preventDefault();
+
+            event.returnValue = ''; // Google Chrome
+
+            return "このページを離れますか？"; // Google Chrome以外
+        }
+
         return () => {
+            window.onbeforeunload = null;
             cleanUpWebSocket();
         };
 
@@ -514,7 +526,7 @@ export default function Discussion({ discussion, userId }) {
         switch (data.state) {
 
             case undefined:
-                updateSelect('参加種別を選択してください。');
+                updateSelect('参加種別を選択してください');
                 break;
 
             case process.env.userState.join:
@@ -647,23 +659,39 @@ export default function Discussion({ discussion, userId }) {
 
                 if (discusionStatus.discussionStartFailed === data.discusionStatus) {
 
-                    // 討論の参加失敗
-                    updateSelect('討論の参加に失敗しました＿|￣|○');
+                    Router.push({
+                        pathname: 'error',
+                        query: {
+                            code: discussionErrorCode.discussionStartFailed
+                        }
+                    });
 
                 } else if (discusionStatus.discussionFailed === data.discusionStatus) {
 
-                    // 討論の異常終了
-                    updateSelect('討論が異常終了しました＿|￣|○');
+                    Router.push({
+                        pathname: 'error',
+                        query: {
+                            code: discussionErrorCode.discussionFailed
+                        }
+                    });
 
                 } else if (discusionStatus.discussionJoinFailed === data.discusionStatus) {
 
-                    // 参加不可
-                    updateSelect('参加できませんでした。＿|￣|○');
+                    Router.push({
+                        pathname: 'error',
+                        query: {
+                            code: discussionErrorCode.discussionJoinFailed
+                        }
+                    });
 
                 } else if (discusionStatus.websocketDisconnect === data.discusionStatus || discusionStatus.websocketError === data.discusionStatus) {
 
-                    // 参加不可
-                    updateSelect('通信エラーが発生しました。＿|￣|○');
+                    Router.push({
+                        pathname: 'error',
+                        query: {
+                            code: discussionErrorCode.websocketDisconnect
+                        }
+                    });
 
                 } else if (discusionStatus.discussionResultShow === data.discusionStatus) {
 
@@ -680,7 +708,12 @@ export default function Discussion({ discussion, userId }) {
                 } else {
 
                     // 原因不明のエラー（ブラウザによる強制ソケット切断）
-                    updateSelect('通信が切断されました＿|￣|○');
+                    Router.push({
+                        pathname: 'error',
+                        query: {
+                            code: discussionErrorCode.websocketDisconnect
+                        }
+                    });
                 }
 
                 // ソケット接続時
@@ -696,21 +729,28 @@ export default function Discussion({ discussion, userId }) {
     }, [data.websocketStatus]);
 
     if (undefined !== data.state) {
+
         return (
-            <div>
-                <div>{discussion.title}</div>
-                <div>{discussion.detail}</div>
-                <div>{data.attendees.positive.userId}/{data.attendees.negative.userId}/{data.attendees.watchers.length}</div>
-                {data.state === process.env.userState.select ? <Select onJoin={onJoin} message={data.message} /> : null}
-                {data.state === process.env.userState.join ? < Join /> : null}
-                {data.state === process.env.userState.standby ? <Standby /> : null}
-                {data.state === process.env.userState.ready ? <Ready /> : null}
-                {data.state === process.env.userState.online ? < Online finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
-                {data.state === process.env.userState.finish ? <Finish /> : null}
-                {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
-                {data.state === process.env.userState.votingDone ? <VotingDone /> : null}
+            <div className={styles.page}>
+                <div className={styles.titleField}>
+                    <h1>{discussion.title}</h1>
+                    {/* <div>{discussion.detail}</div> */}
+                    {/* <div>{data.attendees.positive.userId}/{data.attendees.negative.userId}/{data.attendees.watchers.length}</div>*/}
+                </div>
+                <div className={styles.main}>
+                    {data.state === process.env.userState.select ? <Select onJoin={onJoin} attendees={data.attendees} /> : null}
+                    {data.state === process.env.userState.join ? < Join /> : null}
+                    {data.state === process.env.userState.standby ? <Standby /> : null}
+                    {data.state === process.env.userState.ready ? <Ready /> : null}
+                    {data.state === process.env.userState.online ? < Online finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
+                    {data.state === process.env.userState.finish ? <Finish /> : null}
+                    {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
+                    {data.state === process.env.userState.votingDone ? <VotingDone /> : null}
+                </div>
+                {/* <div>{data.message}</div>*/}
             </div>
         );
+
     } else {
         return null;
     }

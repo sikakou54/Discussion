@@ -14,7 +14,7 @@ export default function Vote({ type, setVotindDone, limitTime, currentTime }) {
         return (
             <div>
                 <div>time:{Math.floor((limitTime - currentTime) / 1000)}</div>
-                {vote === 'none' ? <div>投票お願いします</div> : <div>{vote}</div>}
+                {vote === 'none' ? <h2>投票お願いします</h2> : <h2>{vote}</h2>}
                 <button onClick={() => setVote('positive')}>positive</button>
                 <button onClick={() => setVote('negative')}>negative</button>
             </div>
@@ -22,8 +22,8 @@ export default function Vote({ type, setVotindDone, limitTime, currentTime }) {
     } else {
         return (
             <div>
+                <h2>投票しています</h2>
                 <div>time:{Math.floor((limitTime - currentTime) / 1000)}</div>
-                <div>投票しています</div>
             </div>
         );
     }

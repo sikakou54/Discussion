@@ -18,12 +18,14 @@ export default function Header({ userId, title }) {
     }, []);
 
     return (
-        <div className={styles.container}>
+        <div>
             <Head>
                 <title>{title}</title>
             </Head>
-            <div>Header</div>
-            {undefined !== userInfo ? <div>ようこそ {userInfo.name} さん</div> : <div></div>}
+            <div className={styles.container}>
+                <div><h1>Discussion</h1></div>
+                {undefined !== userInfo ? <div>ようこそ {userInfo.name} さん</div> : <div></div>}
+            </div>
         </div>
     );
 }
