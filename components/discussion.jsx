@@ -25,8 +25,7 @@ const reducer = (state, action) => {
         case actions.state.select:
             return {
                 ...state,
-                state: process.env.userState.select,
-                message: action.payload.message
+                state: process.env.userState.select
             };
 
         case actions.state.join:
@@ -465,15 +464,6 @@ export default function Discussion({ discussion, userId }) {
         });
     }
 
-    async function updateSelect(message) {
-        dispatch({
-            type: actions.state.select,
-            payload: {
-                message: message
-            }
-        });
-    }
-
     function changedMeetingEventName(meetingEventName) {
         dispatch({
             type: actions.changeMeetingEventName,
@@ -526,7 +516,9 @@ export default function Discussion({ discussion, userId }) {
         switch (data.state) {
 
             case undefined:
-                updateSelect('参加種別を選択してください');
+                dispatch({
+                    type: actions.state.select
+                });
                 break;
 
             case process.env.userState.join:

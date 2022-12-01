@@ -7,9 +7,9 @@ import { discussionErrorCode, discussionErrorMsg } from '../../define/define';
 export default function Error({ message, userId }) {
 
     return (
-        <Layout userId={userId} title={'Result'}>
+        <Layout userId={userId} title={'Error'}>
             <div>{message}</div>
-            <button onClick={() => Router.push('/posts')}>TOP</button>
+            <button onClick={() => Router.push('/posts')}>投稿へ</button>
         </Layout>
     );
 }
