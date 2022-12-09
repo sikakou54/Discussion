@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function votingDone() {
+export default function VotingDone() {
 
     useEffect(() => {
 
