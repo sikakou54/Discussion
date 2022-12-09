@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import Router from 'next/router';
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/SignUp.module.css'
 import { signUp } from '../../api/auth';
 import Layout from '../../components/layout';
 
@@ -35,15 +35,13 @@ export default function SignUp() {
 
     return (
         <Layout userId={undefined} title={'SignUp'}>
-            <main className={styles.main}>
-                <form onSubmit={onSubmit}>
-                    <div><label>Email:</label><input onChange={(event) => { setEmail(event.target.value) }} type='emal' required /></div>
-                    <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type='password' required /></div>
-                    <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type='text' required /></div>
-                    <div><input type='submit' value='SignUp' /></div>
-                    <div>{message}</div>
-                </form>
-            </main>
+            <form onSubmit={onSubmit} className={styles.signUpForm}>
+                <input placeholder='Email' onChange={(event) => { setEmail(event.target.value) }} type='text' required className={styles.signUpFormTextBox} />
+                <input placeholder='UserName' nChange={(event) => { setUserName(event.target.value) }} type='text' required className={styles.signUpFormTextBox} />
+                <input placeholder='Password' onChange={(event) => { setPassword(event.target.value) }} type='password' required className={styles.signUpFormTextBox} />
+                <input type='submit' value='SignUp' className={styles.signUpFormTButton} />
+                <div>{message}</div>
+            </form>
         </Layout>
     );
 }

@@ -5,6 +5,20 @@ export default function Vote({ type, setVotindDone, limitTime, currentTime }) {
     const [vote, setVote] = useState('none');
 
     useEffect(() => {
+
+        window.onbeforeunload = (event) => {
+            event.preventDefault();
+            event.returnValue = 'このページを離れますか？'; // Google Chrome
+            return 'このページを離れますか？'; // Google Chrome以外
+        }
+
+        return () => {
+            window.onbeforeunload = null;
+        };
+
+    }, []);
+
+    useEffect(() => {
         if ('none' !== vote) {
             setVotindDone(vote);
         }

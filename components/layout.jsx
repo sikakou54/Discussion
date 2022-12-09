@@ -5,7 +5,7 @@ export default function Layout({ userId, children, title }) {
     return (
         <div>
             <Header userId={userId} title={title} />
-            <div>{children}</div>
+            {children}
             <footer ></footer>
         </div>
     );

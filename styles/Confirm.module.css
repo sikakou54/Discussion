@@ -1,0 +1,31 @@
+.confirmForm {
+    width: 320px;
+    height: 400px;
+    border: 2px solid #707070;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 120px;
+    margin-top: 100px;
+}
+
+.confirmFormTextBox {
+    width: 250px;
+    height: 40px;
+    font-size: medium;
+    margin-bottom: 40px;
+    color: black;
+    background-color: white;
+}
+
+.confirmFormTButton {
+    width: 100px;
+    height: 40px;
+    font-size: medium;
+    margin-bottom: 40px;
+    color: black;
+    background-color: white;
+}
+
+.confirmFormconfirmLink {
+    color: black;
+}

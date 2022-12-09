@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
         userId = payload.sub;
     }
 
-    switch (code) {
+    switch (Number(code)) {
 
         case discussionErrorCode.discussionFailed:
             message = discussionErrorMsg.discussionFailed;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Router, { useRouter } from 'next/router';
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/Confirm.module.css'
 import { confirm } from '../../api/auth';
 import { apiFetchPost } from '../../api/utils';
 import Layout from '../../components/layout';
@@ -29,23 +29,21 @@ export default function Confirm() {
             if (res.result) {
                 Router.push('/signIn');
             } else {
-                setMessage('認証エラー、リトライすると成功する可能性があります。');
+                setMessage('認証エラー');
             }
 
         } else {
-            setMessage('認証エラー、コードを確認してください');
+            setMessage('コードを確認してください');
         }
     }
 
     return (
         <Layout userId={undefined} title={'Confirm'}>
-            <main className={styles.main}>
-                <form onSubmit={onSubmit}>
-                    <div><label>Confirm:</label><input onChange={(event) => { setConfirmCode(event.target.value) }} type='test' required /></div>
-                    <div><input type='submit' value='Confirm' /></div>
-                    <div>{message}</div>
-                </form>
-            </main>
+            <form onSubmit={onSubmit} className={styles.confirmForm}>
+                <input placeholder='確認コード' onChange={(event) => { setConfirmCode(event.target.value) }} type='text' required className={styles.confirmFormTextBox} />
+                <input type='submit' value='Confirm' className={styles.confirmFormTButton} />
+                <div>{message}</div>
+            </form>ï
         </Layout>
     );
 }

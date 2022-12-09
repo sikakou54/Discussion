@@ -484,16 +484,6 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
-        window.onbeforeunload = (event) => {
-
-            // Cancel the event as stated by the standard.
-            event.preventDefault();
-
-            event.returnValue = ''; // Google Chrome
-
-            return "このページを離れますか？"; // Google Chrome以外
-        }
-
         return () => {
             window.onbeforeunload = null;
             cleanUpWebSocket();

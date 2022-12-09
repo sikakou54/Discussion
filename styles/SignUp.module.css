@@ -1,0 +1,31 @@
+.signUpForm {
+    width: 320px;
+    height: 400px;
+    border: 2px solid #707070;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 60px;
+    margin-top: 100px;
+}
+
+.signUpFormTextBox {
+    width: 250px;
+    height: 40px;
+    font-size: medium;
+    margin-bottom: 40px;
+    color: black;
+    background-color: white;
+}
+
+.signUpFormTButton {
+    width: 100px;
+    height: 40px;
+    font-size: medium;
+    margin-bottom: 40px;
+    color: black;
+    background-color: white;
+}
+
+.signUpFormSignUpLink {
+    color: black;
+}

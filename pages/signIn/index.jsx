@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
-import styles from '../../styles/Home.module.css';
+import styles from '../../styles/SignIn.module.css';
 import { signIn } from '../../api/auth';
 import { setCookie } from 'nookies';
 import Layout from '../../components/layout';
@@ -27,21 +27,19 @@ export default function SignIn() {
             Router.push('/posts');
 
         } else {
-            setMessage('認証エラー、ユーザー名/パスワードを確認してください。');
+            setMessage('ユーザー名/パスワードを確認してください');
         }
     }
 
     return (
         <Layout userId={undefined} title={'SignIn'}>
-            <main className={styles.main}>
-                <form onSubmit={onSubmit}>
-                    <div><label>UserName:</label><input onChange={(event) => { setUserName(event.target.value) }} type='text' required /></div>
-                    <div><label>Password:</label><input onChange={(event) => { setPassword(event.target.value) }} type='password' required /></div>
-                    <div><input type='submit' value='SignIn' /></div>
-                    <Link href={'/signUp'}>SignUp</Link>
-                    <div>{message}</div>
-                </form>
-            </main>
+            <form onSubmit={onSubmit} className={styles.loginForm}>
+                <input placeholder='UserName' onChange={(event) => { setUserName(event.target.value) }} type='text' required className={styles.loginFormTextBox} />
+                <input placeholder='Password' onChange={(event) => { setPassword(event.target.value) }} type='password' required className={styles.loginFormTextBox} />
+                <input type='submit' value='SignIn' className={styles.loginFormTButton} />
+                <div><Link href={'/signUp'} ><a className={styles.loginFormSignUpLink} >SignUp</a></Link></div>
+                <div>{message}</div>
+            </form>
         </Layout>
     );
 }
