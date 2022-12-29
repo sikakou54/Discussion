@@ -1,6 +1,8 @@
 .titleField {
     height: 10vh;
     text-align: center;
+    background-color: white;
+    color: black;
 }
 
 .main {
@@ -10,8 +12,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    color: black;
 }
 
 .page {
     margin: 0 auto;
+    background-color: white;
+    color: black;
 }

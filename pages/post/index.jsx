@@ -4,34 +4,25 @@ import { apiFetchPost } from '../../api/utils';
 import { jwtVerify } from '../../api/auth';
 import { parseCookies } from 'nookies';
 import Layout from '../../components/layout';
+import style from '../../styles/Posts.module.css';
 
 export default function Post({ userId }) {
 
     const [title, setTitle] = useState('');
     const [detail, setDetail] = useState('');
+    const [positiveText, setPositiveText] = useState('');
+    const [negativeText, setNegativeText] = useState('');
 
     async function onPost() {
-
-        /**
-            for (let index = 0; index < 500; index++) {
-                await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setDiscussion', {
-                    body: JSON.stringify({
-                        country: 'jpn',
-                        userId: userId,
-                        title: 'title' + index,
-                        detail: 'detail' + index
-                    })
-                });
-                console.log(index);
-            }
-        */
 
         await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setDiscussion', {
             body: JSON.stringify({
                 country: 'jpn',
-                userId: userId,
-                title: title,
-                detail: detail,
+                userId,
+                title,
+                detail,
+                positiveText,
+                negativeText
             })
         });
 
@@ -44,11 +35,15 @@ export default function Post({ userId }) {
 
     return (
         <Layout userId={userId} title={'Post'}>
-            <div>タイトル：<input type='text' onChange={(e) => { setTitle(e.target.value) }} /></div>
-            <div>詳細<input type='text' onChange={(e) => { setDetail(e.target.value) }} /></div>
-            <div>
-                <input type='button' onClick={onCancel} value={'キャンセル'} />
-                <input type='button' onClick={onPost} value={'投稿する'} />
+            <div className={style.postCotainer}>
+                <div>タイトル：<input type='text' onChange={(e) => { setTitle(e.target.value) }} /></div>
+                <div>詳細<input type='text' onChange={(e) => { setDetail(e.target.value) }} /></div>
+                <div>意見1：<input type='text' onChange={(e) => { setPositiveText(e.target.value) }} /></div>
+                <div>意見2<input type='text' onChange={(e) => { setNegativeText(e.target.value) }} /></div>
+                <div>
+                    <input type='button' onClick={onCancel} value={'キャンセル'} />
+                    <input type='button' onClick={onPost} value={'投稿する'} />
+                </div>
             </div>
         </Layout>
     );

@@ -1,21 +1,137 @@
 .container {
     min-height: 100vh;
-    position: relative;
+    min-width: 100vw;
+    background-color: white;
+    color: black;
+    display: flex;
+}
+
+.postCotainer {
+    background-color: white;
+    color: black;
+}
+
+.timeLineView {
+    flex-basis: 80%;
+    background-color: beige;
+}
+
+.status {
+    text-align: center;
+    flex-basis: 10%;
+    margin-right: 12px;
+}
+
+.progress {
+    font-size: 16px;
+    margin-bottom: 48px;
+}
+
+.title {
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+.detail {
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 32px;
+}
+
+.contents {
+    flex-basis: 90%;
+}
+
+.timeLineItems {
+    width: 65%;
+    margin: 0 auto;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    padding: 10px;
+}
+
+
+.sideView {
+    flex-basis: 20%;
+    border: 2px solid black;
+    background-color: beige;
+}
+
+.userIcon {
+    width: 100%;
+}
+
+.discussionLabelContainer {
+    display: flex;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.discussionLabelItems {
+    font-size: 12px;
+}
+
+.stausBarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statusContens {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-right: 24px;
+}
+
+.imageWrap {
+    margin-right: 12px;
+    text-align: center;
 }
 
 .post {
-    margin: 50px;
-    padding: 20px;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    border: 3px solid white;
-    background-color: black;
-    color: white;
+    display: none;
 }
 
-.post:hover {
-    border: 3px solid black;
-    background-color: white;
-    color: black;
+@media screen and (max-width: 479px) {
+
+    .container {
+        position: relative;
+        display: block;
+    }
+
+    .post {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 20px;
+    }
+
+    .sideView {
+        display: none;
+    }
+
+    .timeLineView {
+        flex-basis: 100%;
+        background-color: beige;
+    }
+
+    .timeLineItems {
+        width: 100%;
+    }
+
+    .status {
+        flex-basis: 20%;
+    }
+
+    .contents {
+        flex-basis: 80%;
+    }
 }

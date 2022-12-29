@@ -8,6 +8,7 @@ import Ready from './ready';
 import Finish from './finish';
 import Vote from './vote';
 import VotingDone from './votingDone';
+import UserStautsView from './sideView';
 import { getTimeStamp } from '../api/utils';
 import { actions, discusionStatus, discussionErrorCode, websocketStatus } from '../define/define';
 import {

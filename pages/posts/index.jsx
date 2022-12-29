@@ -4,8 +4,10 @@ import { apiFetchGet } from '../../api/utils';
 import { jwtVerify } from '../../api/auth';
 import Layout from '../../components/layout';
 import { useEffect, useRef, useState } from 'react';
-import { getTimeStampToLocaleString } from '../../api/utils';
 import styles from '../../styles/Posts.module.css';
+import SideView from '../../components/sideView';
+import TimeLineView from '../../components/timeLineView';
+import PostButton from '../../components/postButton';
 
 export default function Posts({ posts, userId, config }) {
 
@@ -27,6 +29,18 @@ export default function Posts({ posts, userId, config }) {
     function scroollEventListener() {
         setScrollBottomPosition(bodyElement.current.offsetHeight - (windowElement.current.scrollY + windowElement.current.innerHeight));
     }
+
+    useEffect(() => {
+
+        bodyElement.current = document.body;
+        windowElement.current = window;
+        windowElement.current.onscroll = scroollEventListener;
+
+        return () => {
+            windowElement.current.onscroll = null;
+        }
+
+    }, []);
 
     useEffect(() => {
 
@@ -76,40 +90,16 @@ export default function Posts({ posts, userId, config }) {
                     });
                 }
             }
-
         }
 
     }, [scrollBottomPosition]);
 
-    useEffect(() => {
-
-        bodyElement.current = document.body;
-        windowElement.current = window;
-        windowElement.current.onscroll = scroollEventListener;
-
-        return () => {
-            windowElement.current.onscroll = null;
-        }
-
-    }, []);
-
     return (
         <Layout userId={userId} title={'Posts'} >
             <div className={styles.container}>
-                <div id='items'>
-                    {
-                        items.map((value, index) => {
-                            return (
-                                <div key={index} onClick={() => { onClick(value.postId) }} style={{ border: 'solid', margin: '20px' }}>
-                                    <div>{value.title}</div>
-                                    <div>{value.detail}</div>
-                                    <div>{getTimeStampToLocaleString(value.createAt)}</div>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-                <div className={styles.post} onClick={() => Router.push('/post')}>投稿する</div>
+                <div className={styles.timeLineView}><TimeLineView items={items} onClick={onClick} /></div>
+                <div className={styles.sideView}><SideView userId={userId} /></div>
+                <div className={styles.post}><PostButton /></div>
             </div>
         </Layout >
     );

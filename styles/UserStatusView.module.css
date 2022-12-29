@@ -1,0 +1,24 @@
+.userStatusView {
+    width: 100%;
+    text-align: center;
+}
+
+.userIcon {
+    margin-top: 50px;
+}
+
+.userName {
+    margin-top: 10px;
+    margin-bottom: 24px;
+}
+
+.result {
+    font-size: large;
+    padding: 12px;
+    margin-bottom: 24px;
+}
+
+.post {
+    width: 80%;
+    margin: 0 auto;
+}
