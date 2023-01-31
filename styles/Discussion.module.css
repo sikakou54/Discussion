@@ -1,29 +1,26 @@
 .container {
-    width: 1000px;
-    height: 850px;
-    margin: 0 auto;
-    margin-top: 30px;
-    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    margin-top: 10px;
+    border: none;
 }
 
 @media screen and (max-width:480px) {
-
     /*　for iPhone　*/
-
-    .container {
-        width: 100%;
-        height: 100vh;
-        margin-top: 10px;
-        border: none;
-    }
 }
 
-@media screen and (min-width:768px) and (max-width:1024px) {
+@media screen and (min-width:480px) and (max-width:1024px) {
     /*　for iPad 　*/
-
 }
 
 @media screen and (min-width:1024px) {
-    /*　for PC　*/
 
+    /*　for PC　*/
+    .container {
+        width: 1000px;
+        height: 850px;
+        margin: 0 auto;
+        margin-top: 30px;
+        border: 1px solid black;
+    }
 }

@@ -61,24 +61,22 @@
 
 /* iPhone 縦 */
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:480px) {
     /*　for iPhone　*/
 
     .selectItem {
-        display: block;
         width: 350px;
         height: 80px;
-        background-color: white;
-        color: black;
-        border: 1px solid black;
-        margin: 0 auto;
-        margin-top: 32px;
     }
 }
 
-@media screen and (min-width:768px) and (max-width:1024px) {
+@media screen and (min-width:480px) and (max-width:1024px) {
     /*　for iPad 　*/
 
+    .selectItem {
+        width: 450px;
+        height: 80px;
+    }
 }
 
 @media screen and (min-width:1024px) {
