@@ -6,11 +6,6 @@
     display: flex;
 }
 
-.postCotainer {
-    background-color: white;
-    color: black;
-}
-
 .timeLineView {
     flex-basis: 80%;
     background-color: beige;

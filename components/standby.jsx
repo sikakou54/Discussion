@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import styles from '../styles/Standby.module.css';
 
 export default function Standby() {
 
@@ -17,6 +18,8 @@ export default function Standby() {
     }, []);
 
     return (
-        <h2>参加者を待っています</h2>
+        <div className={styles.outer}>
+            <div className={styles.inner}>参加者を待っています</div>
+        </div>
     );
 }

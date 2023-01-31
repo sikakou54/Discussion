@@ -6,6 +6,8 @@ import Progress from "./progress";
 import heart from '../public/heart.svg';
 import comment from '../public/comment.svg';
 import Image from "next/image";
+import { BsHeart } from 'react-icons/bs';
+import { FaRegCommentDots } from 'react-icons/fa';
 
 export default function TimeLineView({ items, onClick }) {
 
@@ -28,7 +30,7 @@ export default function TimeLineView({ items, onClick }) {
 
                                 <div className={styles.contents}>
                                     <div className={styles.title}><u>{value.title}</u></div>
-                                    <div className={styles.detail}>{value.detail}</div>
+                                    {/* <div className={styles.detail}>{value.detail}</div> */}
                                     <div className={styles.discussionLabelContainer}>
                                         <div className={styles.discussionLabelItems}>
                                             <DiscussionLabel userId={value.positive.userId} text={value.positive.text} />
@@ -45,22 +47,14 @@ export default function TimeLineView({ items, onClick }) {
 
                                         <div className={styles.statusContens}>
                                             <div className={styles.imageWrap}>
-                                                <Image
-                                                    src={heart}
-                                                    width={30}
-                                                    height={30}
-                                                />
+                                                <BsHeart />
                                             </div>
                                             <div>{0}</div>
                                         </div>
 
                                         <div className={styles.statusContens}>
                                             <div className={styles.imageWrap}>
-                                                <Image
-                                                    src={comment}
-                                                    width={30}
-                                                    height={30}
-                                                />
+                                                <FaRegCommentDots />
                                             </div>
                                             <div>{0}</div>
                                         </div>

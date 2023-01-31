@@ -1,0 +1,84 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.title {
+    width: 100%;
+    height: 42px;
+    border-radius: 5px;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    background-color: white;
+    color: black;
+}
+
+.discussion {
+    width: 100%;
+    height: 42px;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    background-color: white;
+    color: black;
+}
+
+.secsionName {
+    margin-bottom: 10px;
+}
+
+.oval {
+    resize: none;
+    width: 100%;
+    height: 100px;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    background-color: white;
+    color: black;
+}
+
+.frame {
+    width: 100%;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 18px;
+}
+
+.buttonArea {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonAreaItem {
+    width: 120px;
+    height: 45px;
+    margin: 16px;
+}
+
+@media screen and (min-width:480px) {
+ 
+    /*　for iPhone　*/
+
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1024px) {
+
+    /*　for iPad 　*/
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    /*　for PC　*/
+
+    .container {
+        width: 1000px;
+        margin: 0 auto;
+    }
+}

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import styles from '../styles/Join.module.css';
 
 export default function Join() {
 
@@ -17,6 +18,8 @@ export default function Join() {
     }, []);
 
     return (
-        <h2>参加を問い合わせしています</h2>
+        <div className={styles.outer}>
+            <div className={styles.inner}>参加を問い合わせしています</div>
+        </div>
     );
 }

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import styles from '../styles/Ready.module.css';
 
 export default function Ready() {
 
@@ -17,9 +18,11 @@ export default function Ready() {
     }, []);
 
     return (
-        <div>
-            <h2>接続しています</h2>
-            <div>スピーカの方はマイクを’オン’にして下さい</div>
+        <div className={styles.outer}>
+            <div className={styles.inner}>
+                <div>接続しています</div>
+                <div>スピーカの方はマイクを’オン’にして下さい</div>
+            </div>
         </div>
     );
 }

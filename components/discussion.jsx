@@ -8,7 +8,6 @@ import Ready from './ready';
 import Finish from './finish';
 import Vote from './vote';
 import VotingDone from './votingDone';
-import UserStautsView from './sideView';
 import { getTimeStamp } from '../api/utils';
 import { actions, discusionStatus, discussionErrorCode, websocketStatus } from '../define/define';
 import {
@@ -448,39 +447,47 @@ export default function Discussion({ discussion, userId }) {
     }
 
     function discussionTimer() {
+
         dispatch({
             type: actions.changeCurrentTime,
             payload: {
                 currentTime: getTimeStamp()
             }
         });
+
     }
 
     function setVotindDone(judge) {
+
         dispatch({
             type: actions.vote,
             payload: {
                 judge: judge
             }
         });
+
     }
 
     function changedMeetingEventName(meetingEventName) {
+
         dispatch({
             type: actions.changeMeetingEventName,
             payload: {
                 meetingEventName: meetingEventName
             }
         });
+
     }
 
     function changeDiscussionStatus(status) {
+
         dispatch({
             type: actions.changeDiscusionStatus,
             payload: {
                 discusionStatus: status
             }
         });
+
     }
 
     useEffect(() => {
@@ -624,7 +631,6 @@ export default function Discussion({ discussion, userId }) {
     useEffect(() => {
 
         if (undefined !== data.discusionStatus) {
-
             // ソケットを切断する
             if (socket.current && socket.current.readyState === 1) {
                 socket.current.close();
@@ -714,23 +720,15 @@ export default function Discussion({ discussion, userId }) {
     if (undefined !== data.state) {
 
         return (
-            <div className={styles.page}>
-                <div className={styles.titleField}>
-                    <h1>{discussion.title}</h1>
-                    {/* <div>{discussion.detail}</div> */}
-                    {/* <div>{data.attendees.positive.userId}/{data.attendees.negative.userId}/{data.attendees.watchers.length}</div>*/}
-                </div>
-                <div className={styles.main}>
-                    {data.state === process.env.userState.select ? <Select onJoin={onJoin} attendees={data.attendees} /> : null}
-                    {data.state === process.env.userState.join ? < Join /> : null}
-                    {data.state === process.env.userState.standby ? <Standby /> : null}
-                    {data.state === process.env.userState.ready ? <Ready /> : null}
-                    {data.state === process.env.userState.online ? < Online finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
-                    {data.state === process.env.userState.finish ? <Finish /> : null}
-                    {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
-                    {data.state === process.env.userState.votingDone ? <VotingDone /> : null}
-                </div>
-                {/* <div>{data.message}</div>*/}
+            <div className={styles.container}>
+                {data.state === process.env.userState.select ? <Select onJoin={onJoin} attendees={data.attendees} title={discussion.title} detail={discussion.detail} /> : null}
+                {data.state === process.env.userState.join ? < Join /> : null}
+                {data.state === process.env.userState.standby ? <Standby /> : null}
+                {data.state === process.env.userState.ready ? <Ready /> : null}
+                {data.state === process.env.userState.online ? < Online finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
+                {data.state === process.env.userState.finish ? <Finish /> : null}
+                {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
+                {data.state === process.env.userState.votingDone ? <VotingDone /> : null}
             </div>
         );
 

@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import styles from '../styles/Select.module.css';
-import SelectItem from './selectItem';
+import UserIcon from './userIcon';
 
-export default function Select({ onJoin, attendees }) {
+export default function Select({ onJoin, attendees, title, detail }) {
 
     const [selectedJoinType, setSelectedJoinType] = useState(undefined);
-
-    console.log('Select', attendees);
 
     function onClick() {
         if (undefined !== selectedJoinType) {
@@ -16,27 +14,29 @@ export default function Select({ onJoin, attendees }) {
 
     return (
         <div className={styles.container}>
-            <div className={styles.joinTypeWrapper}>
+            <div className={styles.title}>{title}</div>
+            <textarea className={styles.detail}>{detail}</textarea>
+            <div className={styles.selectItems}>
                 {
                     'none' === attendees.positive.userId
-                        ? <SelectItem onClick={() => setSelectedJoinType(1)} enable={true}>肯定</SelectItem>
-                        : <SelectItem onClick={() => setSelectedJoinType(1)} enable={false}>肯定</SelectItem>
+                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(1)} disabled={false}>{attendees.positive.text}</button>
+                        : <button className={styles.selectItem} onClick={() => setSelectedJoinType(1)} disabled={true}>{attendees.positive.text}</button>
                 }
                 {
                     'none' === attendees.negative.userId
-                        ? <SelectItem onClick={() => setSelectedJoinType(2)} enable={true}>否定</SelectItem>
-                        : <SelectItem onClick={() => setSelectedJoinType(2)} enable={false}>否定</SelectItem>
+                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(1)} disabled={false}>{attendees.negative.text}</button>
+                        : <button className={styles.selectItem} onClick={() => setSelectedJoinType(1)} disabled={true}>{attendees.negative.text}</button>
                 }
                 {
                     100 > attendees.watchers.length
-                        ? <SelectItem onClick={() => setSelectedJoinType(3)} enable={true}>視聴</SelectItem>
-                        : <SelectItem onClick={() => setSelectedJoinType(3)} enable={false}>視聴</SelectItem>
+                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(3)} disabled={false}>視聴</button>
+                        : <button className={styles.selectItem} onClick={() => setSelectedJoinType(3)} disabled={true}>視聴</button>
                 }
             </div>
             {
                 undefined === selectedJoinType
-                    ? <div className={styles.joinButtonDisable} onClick={onClick}>参加する</div>
-                    : <div className={styles.joinButtonEnable} onClick={onClick}>参加する</div>
+                    ? <button className={styles.joinButton} disabled={true} onClick={onClick}>参加する</button>
+                    : <button className={styles.joinButton} disabled={false} onClick={onClick}>参加する</button>
             }
         </div>
     );

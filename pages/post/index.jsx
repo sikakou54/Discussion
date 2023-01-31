@@ -4,7 +4,8 @@ import { apiFetchPost } from '../../api/utils';
 import { jwtVerify } from '../../api/auth';
 import { parseCookies } from 'nookies';
 import Layout from '../../components/layout';
-import style from '../../styles/Posts.module.css';
+import Button from '../../components/button';
+import style from '../../styles/Post.module.css';
 
 export default function Post({ userId }) {
 
@@ -13,9 +14,9 @@ export default function Post({ userId }) {
     const [positiveText, setPositiveText] = useState('');
     const [negativeText, setNegativeText] = useState('');
 
-    async function onPost() {
+    function onPost() {
 
-        await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setDiscussion', {
+        apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setDiscussion', {
             body: JSON.stringify({
                 country: 'jpn',
                 userId,
@@ -24,9 +25,10 @@ export default function Post({ userId }) {
                 positiveText,
                 negativeText
             })
+        }).then(() => {
+            Router.push('/posts');
         });
 
-        Router.push('/posts');
     }
 
     function onCancel() {
@@ -35,14 +37,20 @@ export default function Post({ userId }) {
 
     return (
         <Layout userId={userId} title={'Post'}>
-            <div className={style.postCotainer}>
-                <div>タイトル：<input type='text' onChange={(e) => { setTitle(e.target.value) }} /></div>
-                <div>詳細<input type='text' onChange={(e) => { setDetail(e.target.value) }} /></div>
-                <div>意見1：<input type='text' onChange={(e) => { setPositiveText(e.target.value) }} /></div>
-                <div>意見2<input type='text' onChange={(e) => { setNegativeText(e.target.value) }} /></div>
-                <div>
-                    <input type='button' onClick={onCancel} value={'キャンセル'} />
-                    <input type='button' onClick={onPost} value={'投稿する'} />
+            <div className={style.container}>
+                <div><input className={style.title} type='text' placeholder='タイトル' required onChange={(e) => { setTitle(e.target.value) }} /></div>
+                <div className={style.frame}>
+                    <div className={style.secsionName}>討論</div>
+                    <div><input className={style.discussion} type='text' placeholder='1' onChange={(e) => { setPositiveText(e.target.value) }} /></div>
+                    <div><input className={style.discussion} type='text' placeholder='2' onChange={(e) => { setNegativeText(e.target.value) }} /></div>
+                </div>
+                <div className={style.frame}>
+                    <div className={style.secsionName}>概要</div>
+                    <textarea className={style.oval} id="story" name="story" rows="5" cols="33" onChange={(e) => { setDetail(e.target.value) }} />
+                </div>
+                <div className={style.buttonArea}>
+                    <div className={style.buttonAreaItem}><Button onClick={onCancel} text={'キャンセル'} /></div>
+                    <div className={style.buttonAreaItem}><Button onClick={onPost} text={'投稿する'} /></div>
                 </div>
             </div>
         </Layout>

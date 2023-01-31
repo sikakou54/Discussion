@@ -1,59 +1,87 @@
 .container {
-    width: 80%;
     text-align: center;
+    width: 100%;
+    height: 100%;
 }
 
-.joinTypeWrapper {
-    margin: 20px;
+.title {
+    width: 100%;
+    height: 60px;
+    font-size: 36px;
+    margin: 12px;
 }
 
-.joinType {
-    border: 1px solid white;
+.detail {
+    background-color: white;
+    color: black;
+    white-space: pre-wrap;
+    width: 95%;
+    height: 160px;
+    font-size: 18px;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+
+.selectItems {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+.selectItem {
+    display: block;
+    width: 640px;
+    height: 80px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    margin: 0 auto;
+    margin-top: 32px;
+}
+
+.selectItem:hover {
     background-color: black;
     color: white;
-    margin: 5px;
 }
 
-.selectItemDisable {
-    padding: 20px;
-    margin: 10px;
-    background-color: gray;
+.joinButton {
+    background-color: black;
+    border: 1px solid black;
     color: white;
+    width: 240px;
+    height: 70px;
+    margin: 32px;
 }
 
-.selectItemEnable {
-    padding: 20px;
-    margin: 10px;
+.joinButton:hover {
     background-color: white;
     color: black;
 }
 
-.selectItemEnable:hover {
-    background-color: skyblue;
-    color: black;
+/* iPhone 縦 */
+
+@media screen and (max-width:400px) {
+    /*　for iPhone　*/
+
+    .selectItem {
+        display: block;
+        width: 350px;
+        height: 80px;
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+        margin: 0 auto;
+        margin-top: 32px;
+    }
 }
 
-.joinButtonEnable {
-    padding: 20px;
-    background-color: white;
-    color: black;
+@media screen and (min-width:768px) and (max-width:1024px) {
+    /*　for iPad 　*/
 
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
 }
 
-.joinButtonDisable {
-    padding: 20px;
-    background-color: gray;
-    color: white;
+@media screen and (min-width:1024px) {
+    /*　for PC　*/
 
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-
-.joinButtonEnable:hover {
-    background-color: greenyellow;
-    color: black;
 }

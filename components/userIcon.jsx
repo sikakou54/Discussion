@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { apiFetchGet } from "../api/utils";
 import logo from '../public/userIcon.svg';
 import styles from '../styles/UserIcon.module.css';
+import { FaRegUserCircle } from 'react-icons/fa';
 
 export default function UserIcon({ userId, width, height }) {
 
@@ -16,13 +17,5 @@ export default function UserIcon({ userId, width, height }) {
         }
     }, []);
 
-    return (
-        <div className={styles.circle} style={{ width: width, height: height }}>
-            <Image
-                src={userIcon}
-                width={width - 10}
-                height={height - 10}
-            />
-        </div>
-    );
+    return <FaRegUserCircle />;
 }
