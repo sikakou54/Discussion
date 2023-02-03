@@ -2,6 +2,7 @@ import Router, { useRouter } from 'next/router';
 import { parseCookies } from 'nookies';
 import { jwtVerify } from '../../api/auth';
 import Layout from '../../components/layout';
+import styles from '../../styles/Result.module.css';
 
 export default function Result({ userId }) {
 
@@ -10,10 +11,14 @@ export default function Result({ userId }) {
 
     return (
         <Layout userId={userId} title={'Result'}>
-            <div>win:{win}</div>
-            <div>positive:{positive}</div>
-            <div>negative:{negative}</div>
-            <button onClick={() => Router.push('/posts')}>posts</button>
+            <div className={styles.container}>
+                <div>
+                    <div>win:{win}</div>
+                    <div>positive:{positive}</div>
+                    <div>negative:{negative}</div>
+                    <button onClick={() => Router.push('/posts')}>posts</button>
+                </div>
+            </div>
         </Layout>
     );
 }

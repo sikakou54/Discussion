@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import styles from '../styles/Finish.module.css';
 
 export default function Finish() {
 
@@ -17,9 +18,11 @@ export default function Finish() {
     }, []);
 
     return (
-        <div>
-            <h2>討論終了</h2>
-            <div>投票の準備をしています</div>
+        <div className={styles.outer}>
+            <div className={styles.inner}>
+                <div>討論終了</div>
+                <div>投票の準備をしています</div>
+            </div>
         </div>
     );
 }

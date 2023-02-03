@@ -1,0 +1,17 @@
+.timeLineItem {
+    margin-bottom: 6px;
+}
+
+@media screen and (min-width:480px) and (max-width:1024px) {
+    /*　for iPad 　*/
+}
+
+@media screen and (min-width:1024px) {
+
+    /*　for PC　*/
+    .timeLineItem {
+        width: 1000px;
+        margin: 0 auto;
+        margin-bottom: 6px;
+    }
+}

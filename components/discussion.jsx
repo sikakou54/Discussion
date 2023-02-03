@@ -723,7 +723,7 @@ export default function Discussion({ discussion, userId }) {
             <div className={styles.container}>
                 {data.state === process.env.userState.select ? <Select onJoin={onJoin} attendees={data.attendees} title={discussion.title} detail={discussion.detail} /> : null}
                 {data.state === process.env.userState.join ? < Join /> : null}
-                {data.state === process.env.userState.standby ? <Standby /> : null}
+                {data.state === process.env.userState.standby ? <Standby attendees={data.attendees} title={discussion.title} /> : null}
                 {data.state === process.env.userState.ready ? <Ready /> : null}
                 {data.state === process.env.userState.online ? < Online finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
                 {data.state === process.env.userState.finish ? <Finish /> : null}

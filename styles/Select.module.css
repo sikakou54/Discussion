@@ -8,7 +8,6 @@
     width: 100%;
     height: 60px;
     font-size: 36px;
-    margin: 12px;
 }
 
 .detail {
@@ -20,8 +19,8 @@
     font-size: 18px;
     border: 1px solid black;
     margin: 0 auto;
+    resize: none
 }
-
 
 .selectItems {
     width: 100%;
@@ -57,6 +56,10 @@
 .joinButton:hover {
     background-color: white;
     color: black;
+}
+
+.itemDisable {
+    background-color: gray;
 }
 
 /* iPhone 縦 */
