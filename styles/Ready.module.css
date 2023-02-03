@@ -1,11 +1,42 @@
-.outer {
+.container {
     height: 100%;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
-.inner {
-    font-size: 32px;
+.title {
+    font-size: 24px;
+    margin-bottom: 90px;
+}
+
+.message {
+    margin-bottom: 90px;
+}
+
+.main {
+    font-size: 20px;
+}
+
+.sub {
+    font-size: 16px;
+}
+
+.attendees {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 80px;
+    margin: 0 auto;
+    border: 1px solid black;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.disable {
+    background-color: gray;
+}
+
+.enable {
+    background-color: white;
 }
