@@ -15,13 +15,15 @@
 
 .main {
     font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .sub {
     font-size: 16px;
+    margin-bottom: 10px;
 }
 
-.attendees {
+.selectItem {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,12 +33,31 @@
     border: 1px solid black;
     margin-bottom: 20px;
     font-size: 18px;
+    background-color: white;
+    color: black;
+}
+
+.selectItem:hover {
+    background-color: black;
+    color: white;
+}
+
+.voteButton {
+    width: 280px;
+    height: 80px;
+}
+
+.voteButton:hover {
+    background-color: black;
+    color: white;
 }
 
 .disable {
     background-color: gray;
+    color: black;
 }
 
 .enable {
     background-color: white;
+    color: black;
 }

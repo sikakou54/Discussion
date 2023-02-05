@@ -1,7 +1,67 @@
 .container {
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 90px;
+}
+
+.message {
+    margin-bottom: 90px;
+}
+
+.main {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.attendees {
+    font-size: 45px;
+    color: #8f8f8f;
+}
+
+.box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.win {
+    color: red;
+    font-size: 45px;
+}
+
+.lose {
+    color: blue;
+    font-size: 45px;
+}
+
+.draw {
+    color: green;
+    font-size: 45px;
+}
+
+.resultArea {
+    margin-bottom: 100px;
+}
+
+.return {
+    width: 280px;
+    height: 80px;
+    background-color: white;
+    color: black;
+}
+
+.return:hover {
+    background-color: black;
+    color: white;
 }

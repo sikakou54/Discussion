@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import styles from '../styles/Vote.module.css';
 
-export default function Vote({ type, setVotindDone, limitTime, currentTime }) {
+export default function Vote({ attendees, title, type, setVotindDone, limitTime, currentTime }) {
 
-    const [vote, setVote] = useState('none');
+    const [vote, setVote] = useState('');
+    const [isVoteDone, setIsVoteDone] = useState(false);
 
     useEffect(() => {
 
@@ -18,26 +20,51 @@ export default function Vote({ type, setVotindDone, limitTime, currentTime }) {
 
     }, []);
 
-    useEffect(() => {
-        if ('none' !== vote) {
-            setVotindDone(vote);
-        }
-    }, [vote]);
+    function onVoteClick() {
+        setVotindDone(vote);
+        setIsVoteDone(true);
+    }
 
     if (3 === type) {
+
         return (
-            <div>
-                <div>time:{Math.floor((limitTime - currentTime) / 1000)}</div>
-                {vote === 'none' ? <h2>投票お願いします</h2> : <h2>{vote}</h2>}
-                <button onClick={() => setVote('positive')}>positive</button>
-                <button onClick={() => setVote('negative')}>negative</button>
+            <div className={styles.container}>
+                <div className={styles.title}>{title}</div>
+                {
+                    isVoteDone === true
+                        ?
+                        <div className={styles.message}>
+                            <div className={styles.main}>ありがとうございます</div>
+                            <div className={styles.sub}>(しばらくお待ち下さい)</div>
+                            <div className={styles.sub}>time:{Math.floor((limitTime - currentTime) / 1000)}</div>
+                        </div>
+                        :
+                        <>
+                            <div className={styles.message}>
+                                <div className={styles.main}>投票中</div>
+                                <div className={styles.sub}>time:{Math.floor((limitTime - currentTime) / 1000)}</div>
+                            </div>
+                            <button className={styles.selectItem} onClick={() => setVote('positive')}>{attendees.positive.text}</button>
+                            <button className={styles.selectItem} onClick={() => setVote('negative')}>{attendees.negative.text}</button>
+                            {
+                                '' === vote
+                                    ? <button className={`${styles.voteButton} ${styles.disable}`} disabled={true} onClick={onVoteClick}>投票する</button>
+                                    : <button className={`${styles.voteButton} ${styles.enable}`} disabled={false} onClick={onVoteClick}>投票する</button>
+                            }
+                        </>
+                }
             </div>
         );
+
     } else {
+
         return (
-            <div>
-                <h2>投票しています</h2>
-                <div>time:{Math.floor((limitTime - currentTime) / 1000)}</div>
+            <div className={styles.container}>
+                <div className={styles.title}>{title}</div>
+                <div className={styles.message}>
+                    <div className={styles.main}>投票中</div>
+                    <div className={styles.sub}>time:{Math.floor((limitTime - currentTime) / 1000)}</div>
+                </div>
             </div>
         );
     }

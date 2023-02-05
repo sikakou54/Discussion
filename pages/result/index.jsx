@@ -12,12 +12,10 @@ export default function Result({ userId }) {
     return (
         <Layout userId={userId} title={'Result'}>
             <div className={styles.container}>
-                <div>
-                    <div>win:{win}</div>
-                    <div>positive:{positive}</div>
-                    <div>negative:{negative}</div>
-                    <button onClick={() => Router.push('/posts')}>posts</button>
-                </div>
+                <div>win:{win}</div>
+                <div>positive:{positive}</div>
+                <div>negative:{negative}</div>
+                <button onClick={() => Router.push('/posts')}>posts</button>
             </div>
         </Layout>
     );

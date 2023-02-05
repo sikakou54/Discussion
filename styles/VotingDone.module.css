@@ -1,0 +1,23 @@
+.container {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 90px;
+}
+
+.message {
+    margin-bottom: 90px;
+}
+
+.main {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.sub {
+    font-size: 16px;
+}

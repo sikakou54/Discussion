@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import styles from '../styles/VotingDone.module.css';
 
-export default function VotingDone() {
+export default function VotingDone({ title }) {
 
     useEffect(() => {
 
@@ -17,9 +18,12 @@ export default function VotingDone() {
     }, []);
 
     return (
-        <div>
-            <h2>投票終了</h2>
-            <div>結果をお待ち下さい</div>
+        <div className={styles.container}>
+            <div className={styles.title}>{title}</div>
+            <div className={styles.message}>
+                <div className={styles.main}>投票終了</div>
+                <div className={styles.sub}>(結果をお待ち下さい)</div>
+            </div>
         </div>
     );
 }

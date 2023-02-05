@@ -8,6 +8,7 @@ import Ready from './ready';
 import Finish from './finish';
 import Vote from './vote';
 import VotingDone from './votingDone';
+import Result from './result';
 import { getTimeStamp } from '../api/utils';
 import { actions, discusionStatus, discussionErrorCode, websocketStatus } from '../define/define';
 import {
@@ -509,8 +510,6 @@ export default function Discussion({ discussion, userId }) {
 
     useEffect(() => {
 
-        console.log(data.state);
-
         switch (data.state) {
 
             case undefined:
@@ -685,14 +684,16 @@ export default function Discussion({ discussion, userId }) {
                 } else if (discusionStatus.discussionResultShow === data.discusionStatus) {
 
                     // 結果発表
-                    Router.push({
-                        pathname: 'result',
-                        query: {
-                            win: data.result.win,
-                            positive: data.result.positive,
-                            negative: data.result.negative
-                        }
-                    });
+                    /**
+                        Router.push({
+                            pathname: 'result',
+                            query: {
+                                win: data.result.win,
+                                positive: data.result.positive,
+                                negative: data.result.negative
+                            }
+                        });
+                     */
 
                 } else {
 
@@ -725,10 +726,11 @@ export default function Discussion({ discussion, userId }) {
                 {data.state === process.env.userState.join ? < Join /> : null}
                 {data.state === process.env.userState.standby ? <Standby attendees={data.attendees} title={discussion.title} /> : null}
                 {data.state === process.env.userState.ready ? <Ready attendees={data.attendees} title={discussion.title} /> : null}
-                {data.state === process.env.userState.online ? < Online finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
-                {data.state === process.env.userState.finish ? <Finish /> : null}
-                {data.state === process.env.userState.vote ? <Vote type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
+                {data.state === process.env.userState.online ? < Online attendees={data.attendees} title={discussion.title} finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
+                {data.state === process.env.userState.finish ? <Finish attendees={data.attendees} title={discussion.title} /> : null}
+                {data.state === process.env.userState.vote ? <Vote attendees={data.attendees} title={discussion.title} type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
                 {data.state === process.env.userState.votingDone ? <VotingDone /> : null}
+                {data.state === process.env.userState.result ? <Result attendees={data.attendees} title={discussion.title} result={data.result} /> : null}
             </div>
         );
 
