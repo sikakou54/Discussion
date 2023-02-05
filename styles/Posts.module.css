@@ -8,13 +8,11 @@
 
 .timeLineView {
     flex-basis: 80%;
-    background-color: beige;
 }
 
 .sideView {
     flex-basis: 20%;
     border: 2px solid black;
-    background-color: beige;
 }
 
 .post {
@@ -43,7 +41,6 @@
 
     .timeLineView {
         flex-basis: 100%;
-        background-color: beige;
     }
 
     .timeLineItems {
