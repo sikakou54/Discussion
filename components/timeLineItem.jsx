@@ -1,6 +1,6 @@
 import { BsHeart } from "react-icons/bs";
 import { FaRegCommentDots } from "react-icons/fa";
-import { getTimeStampToLocaleString } from "../api/utils";
+import { getTimeStamp, getTimeStampToLocaleString } from "../api/utils";
 import DiscussionLabel from "./discussionLabel";
 import Progress from "./progress";
 import UserIcon from "./userIcon";
@@ -19,7 +19,6 @@ export default function TimeLineItem({ postId, progress, userId, title, positive
                     <UserIcon userId={userId} width={45} height={45} />
                 </div>
             </div>
-
             <div className={styles.contents}>
                 <div className={styles.title}>{title}</div>
                 <div className={styles.discussionLabelContainer}>
@@ -29,21 +28,11 @@ export default function TimeLineItem({ postId, progress, userId, title, positive
                     <div className={styles.discussionLabelItems}>
                         <DiscussionLabel userId={negative.userId} text={negative.text} />
                     </div>
-                    <div className={styles.discussionLabelItems}>
+                    <div className={styles.discussionLabelItemsWatcher}>
                         <DiscussionLabel userId={'none'} text={watchers.length} />
                     </div>
                 </div>
-                <div className={styles.stausBarContainer}>
-                    <div className={styles.statusContens}>
-                        <BsHeart />
-                        <div>{0}</div>
-                    </div>
-                    <div className={styles.statusContens}>
-                        <FaRegCommentDots />
-                        <div>{0}</div>
-                    </div>
-                    <div>{getTimeStampToLocaleString(createAt)}</div>
-                </div>
+                <div className={styles.date}>{getTimeStampToLocaleString(createAt)}</div>
             </div>
         </div>
     );

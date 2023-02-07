@@ -14,21 +14,24 @@ export default function Post({ userId }) {
     const [positiveText, setPositiveText] = useState('');
     const [negativeText, setNegativeText] = useState('');
 
-    function onPost() {
+    async function onPost() {
 
-        apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setDiscussion', {
-            body: JSON.stringify({
-                country: 'jpn',
-                userId,
-                title,
-                detail,
-                positiveText,
-                negativeText
-            })
-        }).then(() => {
-            Router.push('/posts');
-        });
+        if ('' !== title && '' !== detail && '' !== positiveText && '' !== negativeText) {
 
+            apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setDiscussion', {
+                body: JSON.stringify({
+                    country: 'jpn',
+                    userId,
+                    title,
+                    detail,
+                    positiveText,
+                    negativeText
+                })
+            }).then(() => {
+                Router.push('/posts');
+            });
+
+        }
     }
 
     function onCancel() {
@@ -41,12 +44,12 @@ export default function Post({ userId }) {
                 <div><input className={style.title} type='text' placeholder='タイトル' required onChange={(e) => { setTitle(e.target.value) }} /></div>
                 <div className={style.frame}>
                     <div className={style.secsionName}>討論</div>
-                    <div><input className={style.discussion} type='text' placeholder='1' onChange={(e) => { setPositiveText(e.target.value) }} /></div>
-                    <div><input className={style.discussion} type='text' placeholder='2' onChange={(e) => { setNegativeText(e.target.value) }} /></div>
+                    <div><input className={style.discussion} type='text' placeholder='1' required onChange={(e) => { setPositiveText(e.target.value) }} /></div>
+                    <div><input className={style.discussion} type='text' placeholder='2' required onChange={(e) => { setNegativeText(e.target.value) }} /></div>
                 </div>
                 <div className={style.frame}>
                     <div className={style.secsionName}>概要</div>
-                    <textarea className={style.oval} id="story" name="story" rows="5" cols="33" onChange={(e) => { setDetail(e.target.value) }} />
+                    <textarea className={style.oval} id="story" name="story" rows="5" cols="33" required onChange={(e) => { setDetail(e.target.value) }} />
                 </div>
                 <div className={style.buttonArea}>
                     <div className={style.buttonAreaItem}><Button onClick={onCancel} text={'キャンセル'} /></div>

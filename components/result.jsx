@@ -70,7 +70,6 @@ export default function Result({ attendees, title, result }) {
                 </div>
             </div>
 
-
             <button className={styles.return} onClick={() => Router.push('/posts')}>戻る</button>
         </div>
     );
