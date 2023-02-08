@@ -17,8 +17,8 @@
 
     /*　for PC　*/
     .container {
-        width: 1000px;
-        height: 850px;
+        width: 800px;
+        height: 800px;
         margin: 0 auto;
         margin-top: 30px;
         border: 1px solid black;

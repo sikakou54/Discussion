@@ -9,11 +9,13 @@ export default function Header({ userId, title }) {
 
     useEffect(() => {
 
+        /**
         if (undefined !== userId) {
             apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getUser/' + userId, {}).then((res) => {
                 setUserInfo(res.data);
             });
-        }
+        } 
+        */
 
     }, []);
 

@@ -7,7 +7,8 @@
 .title {
     width: 100%;
     font-size: 20px;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .detail {
@@ -15,26 +16,25 @@
     color: black;
     white-space: pre-wrap;
     width: 95%;
-    height: 120px;
+    height: 150px;
     font-size: 14px;
     border: 1px solid black;
     margin: 0 auto;
     resize: none;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     overflow: auto;
 }
 
 .selectItems {
     width: 100%;
     text-align: center;
-    padding: 10px;
 }
 
 .selectItem {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 640px;
+    width: 90%;
     height: 80px;
     background-color: white;
     color: black;
@@ -54,6 +54,7 @@
     color: white;
     width: 240px;
     height: 70px;
+    margin-bottom: 30px;
 }
 
 .joinButton:hover {
@@ -67,15 +68,6 @@
 
 /* iPhone 縦 */
 
-@media screen and (max-width:480px) {
-    /*　for iPhone　*/
-
-    .selectItem {
-        width: 350px;
-        height: 80px;
-    }
-}
-
 @media screen and (min-width:480px) and (max-width:1024px) {
     /*　for iPad 　*/
 
@@ -86,6 +78,19 @@
 }
 
 @media screen and (min-width:1024px) {
+
+    .detail {
+        height: 190px;
+    }
+
     /*　for PC　*/
+    .selectItem {
+        width: 500px;
+        height: 80px;
+    }
+
+    .selectItems {
+        margin-bottom: 60px;
+    }
 
 }

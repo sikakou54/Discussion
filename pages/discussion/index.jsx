@@ -4,8 +4,6 @@ import {
 } from 'amazon-chime-sdk-component-library-react';
 import { ThemeProvider } from 'styled-components';
 import Discussion from '../../components/discussion';
-import { parseCookies } from 'nookies';
-import { jwtVerify } from '../../api/auth';
 import { apiFetchGet } from '../../api/utils';
 import Layout from '../../components/layout';
 
@@ -27,19 +25,19 @@ export async function getServerSideProps(ctx) {
 
     const { postId } = ctx.query;
     const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussion/' + 'jpn' + '/' + postId, {
+        /**
         headers: {
             Authorization: process.env.jwt
         }
+         */
     });
 
     if (res.result) {
 
-        const { sub } = await jwtVerify(process.env.jwt);
-
         return {
             props: {
                 discussion: res.data,
-                userId: sub
+                userId: 'a18c3444-56c3-43c3-a34b-41263fd64d35'
             }
         };
 

@@ -22,10 +22,6 @@ export default function Result({ attendees, title, result }) {
     return (
         <div className={styles.container}>
             <div className={styles.title}>{title}</div>
-            <div className={styles.message}>
-                <div className={styles.main}>結果発表</div>
-            </div>
-
             <div className={styles.resultArea}>
                 <div className={styles.box}>
                     <div className={styles.attendees}>< UserIcon userId={attendees.positive.userId} />{attendees.positive.text}</div>

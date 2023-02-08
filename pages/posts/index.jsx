@@ -1,10 +1,8 @@
 import Router from 'next/router';
 import { apiFetchGet } from '../../api/utils';
-import { jwtVerify } from '../../api/auth';
 import Layout from '../../components/layout';
 import { useEffect, useRef, useState } from 'react';
 import styles from '../../styles/Posts.module.css';
-import SideView from '../../components/sideView';
 import TimeLineView from '../../components/timeLineView';
 import PostButton from '../../components/postButton';
 
@@ -50,9 +48,11 @@ export default function Posts({ posts, userId, config }) {
                 if (null !== lastEvaluatedKey) {
 
                     apiFetchGet('/getDiscussions/' + lastEvaluatedKey.country + '/' + lastEvaluatedKey.createAt + '/' + lastEvaluatedKey.postId, {
+                        /**
                         headers: {
                             Authorization: config.jwt
-                        }
+                        } 
+                         */
                     }).then((res) => {
 
                         if (res.result) {
@@ -87,7 +87,6 @@ export default function Posts({ posts, userId, config }) {
         <Layout userId={userId} title={'Posts'} >
             <div className={styles.container}>
                 <div className={styles.timeLineView}><TimeLineView items={items} onClick={onClick} /></div>
-                {/*<div className={styles.sideView}><SideView userId={userId} /></div>*/}
                 <div className={styles.post}><PostButton /></div>
             </div>
         </Layout >
@@ -100,14 +99,14 @@ export async function getServerSideProps() {
     let lastEvaluatedKey = null;
 
     const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn' + '/none/none', {
+        /**
         headers: {
             Authorization: process.env.jwt
-        }
+        } 
+         */
     });
 
     if (res.result) {
-
-        const { sub } = await jwtVerify(process.env.jwt);
 
         if (-1 !== Object.keys(res.data).indexOf('LastEvaluatedKey')) {
             lastEvaluatedKey = res.data.LastEvaluatedKey;
@@ -116,7 +115,7 @@ export async function getServerSideProps() {
         return {
             props: {
                 posts: res.data.Items,
-                userId: sub,
+                userId: 'a18c3444-56c3-43c3-a34b-41263fd64d35',
                 config: {
                     jwt: process.env.jwt,
                     lastEvaluatedKey
@@ -128,7 +127,8 @@ export async function getServerSideProps() {
 
         return {
             props: {
-                posts: []
+                posts: [],
+                lastEvaluatedKey: null,
             }
         }
     }

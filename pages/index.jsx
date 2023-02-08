@@ -1,7 +1,5 @@
-import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link';
-import { parseCookies } from 'nookies';
 import Layout from '../components/layout';
 
 export default function Home() {
@@ -17,7 +15,7 @@ export default function Home() {
 }
 
 //SSR
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps() {
 
   return {
     redirect: {

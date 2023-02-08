@@ -21,8 +21,8 @@
     /*　for PC　*/
 
     .container {
-        width: 120px;
-        height: 120px;
+        width: 130px;
+        height: 130px;
     }
 
     .timeLineView {
@@ -34,11 +34,4 @@
         margin-top: 20px;
     }
 
-    .post {
-        display: block;
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        margin: 30px;
-    }
 }

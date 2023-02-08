@@ -61,13 +61,11 @@ export default function Post({ userId }) {
 }
 
 //SSR
-export async function getServerSideProps(ctx) {
-
-    const { sub } = await jwtVerify(process.env.jwt);
+export async function getServerSideProps() {
 
     return {
         props: {
-            userId: sub
+            userId: 'a18c3444-56c3-43c3-a34b-41263fd64d35'
         }
     }
 

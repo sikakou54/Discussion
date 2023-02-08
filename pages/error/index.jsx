@@ -18,8 +18,7 @@ export async function getServerSideProps(context) {
 
     let message = 'システムエラー';
     const { code } = context.query;
-    const payload = await jwtVerify(process.env.jwt);
-    const userId = payload.sub;
+    const userId = 'a18c3444-56c3-43c3-a34b-41263fd64d35';
 
     switch (Number(code)) {
 

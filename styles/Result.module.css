@@ -6,6 +6,7 @@
 
 .title {
     font-size: 20px;
+    margin-top: 24px;
     margin-bottom: 90px;
 }
 
@@ -27,6 +28,7 @@
 .box {
     position: relative;
     margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 
 .center {
@@ -65,4 +67,30 @@
 .return:hover {
     background-color: black;
     color: white;
+}
+
+@media screen and (min-width:480px) and (max-width:1024px) {
+    /*　for iPad 　*/
+}
+
+@media screen and (min-width:1024px) {
+
+    /*　for PC　*/
+
+    .title {
+        margin-bottom: 180px;
+    }
+
+    .message {
+        font-size: 24px;
+        margin-bottom: 180px;
+    }
+
+    .box {
+        margin-bottom: 120px;
+    }
+
+    .resultArea {
+        margin-bottom: 200px;
+    }
 }

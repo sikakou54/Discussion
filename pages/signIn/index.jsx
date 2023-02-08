@@ -24,6 +24,8 @@ export default function SignIn() {
                 maxAge: 30 * 24 * 60 * 60,
             });
 
+            console.log(user.signInUserSession.idToken.jwtToken);
+
             Router.push('/posts');
 
         } else {
