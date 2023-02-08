@@ -23,6 +23,7 @@
     resize: none;
     margin-bottom: 40px;
     overflow: auto;
+    border-radius: 12px;
 }
 
 .selectItems {
@@ -42,6 +43,7 @@
     margin: 0 auto;
     font-size: 14px;
     margin-bottom: 30px;
+    border-radius: 12px;
 }
 
 .selectItem:hover {
@@ -55,6 +57,7 @@
     width: 240px;
     height: 70px;
     margin-bottom: 30px;
+    border-radius: 12px;
 }
 
 .joinButton:hover {
@@ -69,6 +72,7 @@
 /* iPhone 縦 */
 
 @media screen and (min-width:480px) and (max-width:1024px) {
+
     /*　for iPad 　*/
 
     .selectItem {
@@ -80,6 +84,7 @@
 @media screen and (min-width:1024px) {
 
     .detail {
+        width: 700px;
         height: 190px;
     }
 

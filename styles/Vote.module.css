@@ -83,6 +83,8 @@
 
     .selectItem {
         width: 500px;
+        margin-bottom: 30px;
+        border-radius: 12px;
     }
 
 }
