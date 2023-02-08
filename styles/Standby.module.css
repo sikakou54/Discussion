@@ -25,6 +25,7 @@
     border: 1px solid black;
     margin-bottom: 30px;
     font-size: 14px;
+    border-radius: 12px;
 }
 
 .disable {
