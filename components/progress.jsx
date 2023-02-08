@@ -3,7 +3,7 @@ import styles from '../styles/Progress.module.css';
 
 export default function Progress({ progress }) {
 
-    const [text, setText] = useState('');
+    const [text, setText] = useState('?');
 
     useEffect(() => {
 
