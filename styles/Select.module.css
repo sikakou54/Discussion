@@ -21,6 +21,7 @@
     margin: 0 auto;
     resize: none;
     margin-bottom: 20px;
+    overflow: auto;
 }
 
 .selectItems {
