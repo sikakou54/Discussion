@@ -6,8 +6,7 @@
 
     /*　for PC　*/
     .timeLineItem {
-        width: 1000px;
-        margin: 0 auto;
-        margin-bottom: 6px;
+        width: 550px;
+        margin: 10px;
     }
 }

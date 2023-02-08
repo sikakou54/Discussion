@@ -19,23 +19,11 @@ export default function Home() {
 //SSR
 export async function getServerSideProps(ctx) {
 
-  const cookie = parseCookies(ctx);
-
-  if (-1 !== Object.keys(cookie).indexOf('jwt')) {
-
-    return {
-      redirect: {
-        destination: '/posts',
-        permanent: false
-      }
+  return {
+    redirect: {
+      destination: '/posts',
+      permanent: false
     }
-
-  } else {
-
-    return {
-      props: {}
-    };
-
   }
 
 }

@@ -1,5 +1,4 @@
 import Router from 'next/router';
-import { parseCookies } from 'nookies';
 import { apiFetchGet } from '../../api/utils';
 import { jwtVerify } from '../../api/auth';
 import Layout from '../../components/layout';
@@ -46,11 +45,7 @@ export default function Posts({ posts, userId, config }) {
 
         if (undefined !== scrollBottomPosition) {
 
-            //console.log(scrollBottomPosition);
-
             if (1 >= scrollBottomPosition) {
-
-                //console.log(lastEvaluatedKey);
 
                 if (null !== lastEvaluatedKey) {
 
@@ -60,8 +55,6 @@ export default function Posts({ posts, userId, config }) {
                         }
                     }).then((res) => {
 
-                        //console.log(res);
-
                         if (res.result) {
 
                             let newItems = [];
@@ -69,7 +62,6 @@ export default function Posts({ posts, userId, config }) {
                             for (let i = 0; i < res.data.Items.length; i++) {
 
                                 if (undefined === items.find((v) => v.postId === res.data.Items[i].postId)) {
-                                    //console.log('add', res.data.Items[i]);
                                     newItems.push(res.data.Items[i]);
                                 }
                             }
@@ -83,9 +75,6 @@ export default function Posts({ posts, userId, config }) {
                             }
 
                             setItems((items) => [...items, ...newItems]);
-
-                        } else if (401 === res.statusCode) {
-                            Router.push('/signIn');
                         }
                     });
                 }
@@ -98,7 +87,7 @@ export default function Posts({ posts, userId, config }) {
         <Layout userId={userId} title={'Posts'} >
             <div className={styles.container}>
                 <div className={styles.timeLineView}><TimeLineView items={items} onClick={onClick} /></div>
-                <div className={styles.sideView}><SideView userId={userId} /></div>
+                {/*<div className={styles.sideView}><SideView userId={userId} /></div>*/}
                 <div className={styles.post}><PostButton /></div>
             </div>
         </Layout >
@@ -106,53 +95,31 @@ export default function Posts({ posts, userId, config }) {
 }
 
 //SSR
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps() {
 
     let lastEvaluatedKey = null;
-    const cookie = parseCookies(ctx);
 
-    if (-1 !== Object.keys(cookie).indexOf('jwt')) {
+    const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn' + '/none/none', {
+        headers: {
+            Authorization: process.env.jwt
+        }
+    });
 
-        const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn' + '/none/none', {
-            headers: {
-                Authorization: cookie.jwt
-            }
-        });
-        //console.log(res);
+    if (res.result) {
 
-        if (res.result) {
+        const { sub } = await jwtVerify(process.env.jwt);
 
-            const { sub } = await jwtVerify(cookie.jwt);
+        if (-1 !== Object.keys(res.data).indexOf('LastEvaluatedKey')) {
+            lastEvaluatedKey = res.data.LastEvaluatedKey;
+        }
 
-            if (-1 !== Object.keys(res.data).indexOf('LastEvaluatedKey')) {
-                lastEvaluatedKey = res.data.LastEvaluatedKey;
-            }
-
-            return {
-                props: {
-                    posts: res.data.Items,
-                    userId: sub,
-                    config: {
-                        jwt: cookie.jwt,
-                        lastEvaluatedKey
-                    }
-                }
-            }
-
-        } else if (401 === res.statusCode) {
-
-            return {
-                redirect: {
-                    destination: '/signIn',
-                    permanent: false
-                }
-            }
-
-        } else {
-
-            return {
-                props: {
-                    posts: []
+        return {
+            props: {
+                posts: res.data.Items,
+                userId: sub,
+                config: {
+                    jwt: process.env.jwt,
+                    lastEvaluatedKey
                 }
             }
         }
@@ -160,9 +127,8 @@ export async function getServerSideProps(ctx) {
     } else {
 
         return {
-            redirect: {
-                destination: '/signIn',
-                permanent: false
+            props: {
+                posts: []
             }
         }
     }

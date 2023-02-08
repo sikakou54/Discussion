@@ -1,5 +1,4 @@
 import Router from 'next/router';
-import { parseCookies } from 'nookies';
 import { jwtVerify } from '../../api/auth';
 import Layout from '../../components/layout';
 import { discussionErrorCode, discussionErrorMsg } from '../../define/define';
@@ -18,14 +17,9 @@ export default function Error({ message, userId }) {
 export async function getServerSideProps(context) {
 
     let message = 'システムエラー';
-    let userId = undefined;
     const { code } = context.query;
-    const cookie = parseCookies(context);
-
-    if (-1 !== Object.keys(cookie).indexOf('jwt')) {
-        const payload = await jwtVerify(cookie.jwt);
-        userId = payload.sub;
-    }
+    const payload = await jwtVerify(process.env.jwt);
+    const userId = payload.sub;
 
     switch (Number(code)) {
 
@@ -52,8 +46,6 @@ export async function getServerSideProps(context) {
         default:
             break;
     }
-
-    console.log(code, message, userId);
 
     return {
         props: {

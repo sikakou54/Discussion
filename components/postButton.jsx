@@ -5,6 +5,6 @@ import post from '../public/post.svg';
 
 export default function PostButton() {
     return (
-        <div className={styles.container} onClick={() => Router.push('/post')}><Image src={post} width={50} height={50}/></div>
+        <div className={styles.container} onClick={() => Router.push('/post')}><Image src={post} className={styles.image} /></div>
     );
 }

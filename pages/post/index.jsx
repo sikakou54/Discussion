@@ -63,25 +63,12 @@ export default function Post({ userId }) {
 //SSR
 export async function getServerSideProps(ctx) {
 
-    const cookie = parseCookies(ctx);
+    const { sub } = await jwtVerify(process.env.jwt);
 
-    if (-1 !== Object.keys(cookie).indexOf('jwt')) {
-
-        const { sub } = await jwtVerify(cookie.jwt);
-
-        return {
-            props: {
-                userId: sub
-            }
-        }
-
-    } else {
-
-        return {
-            redirect: {
-                destination: '/signIn',
-                permanent: false
-            }
+    return {
+        props: {
+            userId: sub
         }
     }
+
 }
