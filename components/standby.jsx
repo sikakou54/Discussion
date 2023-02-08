@@ -4,8 +4,6 @@ import UserIcon from "./userIcon";
 
 export default function Standby({ attendees, title }) {
 
-    console.log(attendees);
-
     useEffect(() => {
 
         window.onbeforeunload = (event) => {

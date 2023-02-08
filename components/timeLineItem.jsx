@@ -1,6 +1,4 @@
-import { BsHeart } from "react-icons/bs";
-import { FaRegCommentDots } from "react-icons/fa";
-import { getTimeStamp, getTimeStampToLocaleString } from "../api/utils";
+import { getTimeStampToLocaleString } from "../api/utils";
 import DiscussionLabel from "./discussionLabel";
 import Progress from "./progress";
 import UserIcon from "./userIcon";

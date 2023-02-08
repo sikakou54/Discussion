@@ -5,12 +5,13 @@
 }
 
 .title {
-    font-size: 24px;
+    font-size: 20px;
+    margin-top: 18px;
     margin-bottom: 90px;
 }
 
 .message {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 90px;
 }
 
@@ -22,8 +23,8 @@
     height: 80px;
     margin: 0 auto;
     border: 1px solid black;
-    margin-bottom: 20px;
-    font-size: 18px;
+    margin-bottom: 30px;
+    font-size: 14px;
 }
 
 .disable {
