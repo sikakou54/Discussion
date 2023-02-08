@@ -11,6 +11,7 @@
     margin-bottom: 16px;
     background-color: white;
     color: black;
+    font-size: 12px;
 }
 
 .discussion {
@@ -20,10 +21,12 @@
     margin-bottom: 12px;
     background-color: white;
     color: black;
+    font-size: 12px;
 }
 
 .secsionName {
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .oval {
@@ -34,11 +37,12 @@
     margin-bottom: 12px;
     background-color: white;
     color: black;
+    font-size: 12px;
 }
 
 .frame {
     width: 100%;
-    border: 2px solid black;
+    border: 1px solid black;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 18px;
@@ -56,7 +60,7 @@
 }
 
 @media screen and (min-width:480px) {
- 
+
     /*　for iPhone　*/
 
     .container {
