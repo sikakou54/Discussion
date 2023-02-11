@@ -49,12 +49,12 @@
 }
 
 .main {
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 12px;
 }
 
 .sub {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .attendees {
@@ -97,6 +97,7 @@
 
     .main {
         font-size: 24px;
+        margin-bottom: 12px;
     }
 
     .sub {
@@ -130,6 +131,7 @@
 
     .main {
         font-size: 24px;
+        margin-bottom: 12px;
     }
 
     .sub {

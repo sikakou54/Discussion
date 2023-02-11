@@ -3,7 +3,7 @@ import styles from '../styles/Online.module.css';
 import user from '../public/user.svg';
 import Image from "next/image";
 
-export default function Online({ attendees, title, finishTime, currentTime }) {
+export default function Online({ isStart, attendees, title, finishTime, currentTime }) {
 
     useEffect(() => {
 
@@ -30,8 +30,18 @@ export default function Online({ attendees, title, finishTime, currentTime }) {
                 }
             </div>
             <div className={styles.message}>
-                <div className={styles.main}>討論中</div>
-                <div className={styles.sub}>time:{Math.floor((finishTime - currentTime) / 1000)}</div>
+                {
+                    true === isStart
+                        ? <>
+                            <div className={styles.main}>討論中</div>
+                            <div className={styles.sub}>time:{Math.floor((finishTime - currentTime) / 1000)}</div>
+                        </>
+                        : <>
+                            <div className={styles.main}>討論開始待ち中</div>
+                            <div className={styles.sub}>(他の方の接続を待っています)</div>
+                        </>
+                }
+
             </div>
 
             {

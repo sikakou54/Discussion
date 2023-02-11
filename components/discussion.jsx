@@ -684,16 +684,6 @@ export default function Discussion({ discussion, userId }) {
                 } else if (discusionStatus.discussionResultShow === data.discusionStatus) {
 
                     // 結果発表
-                    /**
-                        Router.push({
-                            pathname: 'result',
-                            query: {
-                                win: data.result.win,
-                                positive: data.result.positive,
-                                negative: data.result.negative
-                            }
-                        });
-                     */
 
                 } else {
 
@@ -726,7 +716,7 @@ export default function Discussion({ discussion, userId }) {
                 {data.state === process.env.userState.join ? < Join /> : null}
                 {data.state === process.env.userState.standby ? <Standby attendees={data.attendees} title={discussion.title} /> : null}
                 {data.state === process.env.userState.ready ? <Ready attendees={data.attendees} title={discussion.title} /> : null}
-                {data.state === process.env.userState.online ? < Online attendees={data.attendees} title={discussion.title} finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
+                {data.state === process.env.userState.online ? < Online isStart={data.isStarted} attendees={data.attendees} title={discussion.title} finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
                 {data.state === process.env.userState.finish ? <Finish attendees={data.attendees} title={discussion.title} /> : null}
                 {data.state === process.env.userState.vote ? <Vote attendees={data.attendees} title={discussion.title} type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
                 {data.state === process.env.userState.votingDone ? <VotingDone /> : null}
