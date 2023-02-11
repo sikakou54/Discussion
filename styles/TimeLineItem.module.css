@@ -56,12 +56,21 @@
     margin-bottom: 7px;
 }
 
+.attendessContainer {
+    display: flex;
+    align-items: center;
+}
+
+.attendessText {
+    margin-left: 5px;
+}
+
 .watcherCount {
     display: flex;
     align-items: center;
 }
 
-.watcherIcon {
+.userIcon {
     width: 15px;
     height: 15px;
 }
