@@ -9,7 +9,6 @@ export default function TimeLineItem({ postId, progress, title, positive, negati
 
     return (
         <div className={styles.container} onClick={() => { onClick(postId) }} >
-
             <div className={styles.status}>
                 <div className={styles.progress} >
                     <Progress progress={progress} />
