@@ -18,13 +18,14 @@ export default function Select({ onJoin, attendees, title, detail }) {
             <div className={styles.selectItems}>
                 {
                     'none' === attendees.positive.userId
-                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(1)} disabled={false}>{attendees.positive.text}</button>
-                        : <button className={styles.selectItem} onClick={() => setSelectedJoinType(1)} disabled={true}>{attendees.positive.text}</button>
+                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(1)} disabled={false}><div className={styles.attendeesText} >{attendees.positive.text}</div></button>
+                        : <button className={styles.selectItem} onClick={() => setSelectedJoinType(1)} disabled={true}><div className={styles.attendeesText} >{attendees.positive.text}</div></button>
                 }
+                
                 {
                     'none' === attendees.negative.userId
-                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(2)} disabled={false}>{attendees.negative.text}</button>
-                        : <button className={styles.selectItem} onClick={() => setSelectedJoinType(2)} disabled={true}>{attendees.negative.text}</button>
+                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(2)} disabled={false}><div className={styles.attendeesText} >{attendees.negative.text}</div></button>
+                        : <button className={styles.selectItem} onClick={() => setSelectedJoinType(2)} disabled={true}><div className={styles.attendeesText} >{attendees.negative.text}</div></button>
                 }
                 {
                     100 > attendees.watchers.length

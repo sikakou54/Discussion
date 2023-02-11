@@ -14,10 +14,12 @@
 .title {
     display: flex;
     align-items: center;
+    justify-content: left;
+    text-align: left;
     font-size: 14px;
     margin-left: 12px;
-    width: 280px;
-    text-align: left;
+    margin-right: 12px;
+    flex-basis: 85%;
 }
 
 .watcher {
@@ -28,6 +30,8 @@
     padding: 5px;
     border: 1px solid black;
     border-radius: 6px;
+    flex-basis: 15%;
+    font-size: 12px;
 }
 
 .watcherIcon {
@@ -43,16 +47,19 @@
 
 .attendeesText {
     margin-left: 12px;
+    margin-right: 12px;
 }
 
 .message {
-    font-size: 24px;
+    font-size: 18px;
     margin-bottom: 90px;
 }
 
 .attendees {
     display: flex;
     align-items: center;
+    justify-content: left;
+    text-align: left;
     width: 340px;
     height: 80px;
     border: 1px solid black;

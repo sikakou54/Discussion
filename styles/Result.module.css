@@ -5,24 +5,22 @@
 }
 
 .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
     font-size: 14px;
     margin-top: 24px;
     margin-bottom: 90px;
-}
-
-.message {
-    font-size: 18px;
-    margin-bottom: 90px;
-}
-
-.main {
-    font-size: 20px;
-    margin-bottom: 10px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .attendees {
     display: flex;
     align-items: center;
+    justify-content: left;
+    text-align: left;
     width: 340px;
     height: 80px;
     margin: 0 auto;
@@ -30,6 +28,11 @@
     margin-bottom: 64px;
     font-size: 14px;
     border-radius: 12px;
+}
+
+.attendeesText {
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .win {
@@ -68,6 +71,7 @@
     /*　for iPad 　*/
 
     .title {
+        font-size: 20px;
         margin-bottom: 180px;
     }
 
@@ -87,6 +91,7 @@
     /*　for PC　*/
 
     .title {
+        font-size: 20px;
         margin-bottom: 180px;
     }
 

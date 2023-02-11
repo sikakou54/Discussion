@@ -5,10 +5,15 @@
 }
 
 .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
     font-size: 14px;
     margin-top: 24px;
     margin-bottom: 90px;
-    text-align: left;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .message {

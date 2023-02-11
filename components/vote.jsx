@@ -44,8 +44,8 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                                 <div className={styles.main}>投票中</div>
                                 <div className={styles.sub}>time:{Math.floor((limitTime - currentTime) / 1000)}</div>
                             </div>
-                            <button className={styles.selectItem} onClick={() => setVote('positive')}>{attendees.positive.text}</button>
-                            <button className={styles.selectItem} onClick={() => setVote('negative')}>{attendees.negative.text}</button>
+                            <button className={styles.selectItem} onClick={() => setVote('positive')}><div className={styles.attendeesText} >{attendees.positive.text}</div></button>
+                            <button className={styles.selectItem} onClick={() => setVote('negative')}><div className={styles.attendeesText} >{attendees.negative.text}</div></button>
                             {
                                 '' === vote
                                     ? <button className={styles.voteButton} disabled={true} onClick={onVoteClick}>投票する</button>

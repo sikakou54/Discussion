@@ -37,7 +37,7 @@ export default function Result({ attendees, title, result }) {
                         ? <div className={styles.draw}>DRAW</div>
                         : null
                 }
-                {attendees.positive.text}
+                <div className={styles.attendeesText} >{attendees.positive.text}</div>
             </div>
             <div className={styles.attendees}>
                 {
@@ -55,7 +55,7 @@ export default function Result({ attendees, title, result }) {
                         ? <div className={styles.draw}>DRAW</div>
                         : null
                 }
-                {attendees.negative.text}
+                <div className={styles.attendeesText} >{attendees.negative.text}</div>
             </div>
             <button className={styles.return} onClick={() => Router.push('/posts')}>戻る</button>
         </div >

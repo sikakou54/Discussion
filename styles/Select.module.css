@@ -5,10 +5,15 @@
 }
 
 .title {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
     font-size: 16px;
     margin-bottom: 20px;
     margin-top: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .detail {
@@ -41,6 +46,12 @@
     font-size: 12px;
     margin-bottom: 24px;
     border-radius: 12px;
+    text-align: left;
+}
+
+.attendeesText {
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .joinButton {
