@@ -64,7 +64,7 @@ export default function Post({ userId }) {
                             (negativeText.length > 0 && negativeText.length <= 20) &&
                             (detail.length > 0 && detail.length <= 140)
                             ? <div className={style.buttonAreaItem}><Button disable={false} onClick={onPost} text={'投稿する'} /></div>
-                            : <div className={style.buttonAreaItem}><Button disaïble={true} onClick={onPost} text={'投稿する'} /></div>
+                            : <div className={style.buttonAreaItem}><Button disable={true} onClick={onPost} text={'投稿する'} /></div>
                     }
                 </div>
             </div>
