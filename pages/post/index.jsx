@@ -65,7 +65,7 @@ export default function Post({ userId }) {
                             (detail.length > 0 && detail.length <= 140)
                             ? <div className={style.buttonAreaItem}><Button disable={false} onClick={onPost} text={'投稿する'} /></div>
                             : <div className={style.buttonAreaItem}><Button disaïble={true} onClick={onPost} text={'投稿する'} /></div>
-                    }ï
+                    }
                 </div>
             </div>
         </Layout>
