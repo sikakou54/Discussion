@@ -21,39 +21,48 @@
 }
 
 .attendees {
-    font-size: 28px;
-    color: #8f8f8f;
+    display: flex;
+    align-items: center;
+    width: 340px;
+    height: 80px;
+    margin: 0 auto;
+    border: 1px solid black;
+    margin-bottom: 64px;
+    font-size: 14px;
+    border-radius: 12px;
 }
 
 .box {
-    position: relative;
-    margin-bottom: 20px;
-    margin-bottom: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 120px;
 }
 
 .center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 120px;
 }
 
 .win {
     color: red;
-    font-size: 45px;
+    font-size: 24px;
+    margin: 12px;
 }
 
 .lose {
     color: blue;
-    font-size: 45px;
+    font-size: 24px;
+    margin: 12px;
 }
 
 .draw {
     color: green;
-    font-size: 45px;
+    font-size: 24px;
+    margin: 12px;
 }
 
 .resultArea {
+    width: 100%;
     margin-bottom: 140px;
 }
 
@@ -62,13 +71,6 @@
     height: 70px;
     margin-bottom: 30px;
     border-radius: 12px;
-    background-color: white;
-    color: black;
-}
-
-.return:hover {
-    background-color: black;
-    color: white;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {

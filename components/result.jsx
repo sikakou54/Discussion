@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import styles from '../styles/Result.module.css';
-import UserIcon from "./userIcon";
 import Router from 'next/router';
 
 export default function Result({ attendees, title, result }) {
@@ -22,51 +21,43 @@ export default function Result({ attendees, title, result }) {
     return (
         <div className={styles.container}>
             <div className={styles.title}>{title}</div>
-            <div className={styles.resultArea}>
-                <div className={styles.box}>
-                    <div className={styles.attendees}>{attendees.positive.text}</div>
-                    <div className={styles.center}>
-                        {
-                            result.positive > result.negative
-                                ? <div className={styles.win}>WIN</div>
-                                : null
-                        }
-                        {
-                            result.positive < result.negative
-                                ? <div className={styles.lose}>LOSE</div>
-                                : null
-                        }
-                        {
-                            result.positive === result.negative
-                                ? <div className={styles.draw}>DRAW</div>
-                                : null
-                        }
-                    </div>
-                </div>
-
-                <div className={styles.box}>
-                    <div className={styles.attendees}>{attendees.negative.text}</div>
-                    <div className={styles.center}>
-                        {
-                            result.positive > result.negative
-                                ? <div className={styles.lose}>LOSE</div>
-                                : null
-                        }
-                        {
-                            result.positive < result.negative
-                                ? <div className={styles.win}>WIN</div>
-                                : null
-                        }
-                        {
-                            result.positive === result.negative
-                                ? <div className={styles.draw}>DRAW</div>
-                                : null
-                        }
-                    </div>
-                </div>
+            <div className={styles.attendees}>
+                {
+                    result.positive > result.negative
+                        ? <div className={styles.win}>WIN</div>
+                        : null
+                }
+                {
+                    result.positive < result.negative
+                        ? <div className={styles.lose}>LOSE</div>
+                        : null
+                }
+                {
+                    result.positive === result.negative
+                        ? <div className={styles.draw}>DRAW</div>
+                        : null
+                }
+                {attendees.positive.text}
             </div>
-
+            <div className={styles.attendees}>
+                {
+                    result.positive > result.negative
+                        ? <div className={styles.lose}>LOSE</div>
+                        : null
+                }
+                {
+                    result.positive < result.negative
+                        ? <div className={styles.win}>WIN</div>
+                        : null
+                }
+                {
+                    result.positive === result.negative
+                        ? <div className={styles.draw}>DRAW</div>
+                        : null
+                }
+                {attendees.negative.text}
+            </div>
             <button className={styles.return} onClick={() => Router.push('/posts')}>戻る</button>
-        </div>
+        </div >
     );
 }
