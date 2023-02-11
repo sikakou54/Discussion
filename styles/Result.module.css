@@ -69,12 +69,28 @@
 .return {
     width: 240px;
     height: 70px;
+    margin-top: 30px;
     margin-bottom: 30px;
     border-radius: 12px;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
+
     /*　for iPad 　*/
+
+    .title {
+        margin-bottom: 180px;
+    }
+
+    .message {
+        font-size: 24px;
+        margin-bottom: 180px;
+    }
+
+    .attendees {
+        font-size: 18px;
+        width: 500px;
+    }
 }
 
 @media screen and (min-width:1024px) {
@@ -90,11 +106,8 @@
         margin-bottom: 180px;
     }
 
-    .box {
-        margin-bottom: 120px;
-    }
-
-    .resultArea {
-        margin-bottom: 200px;
+    .attendees {
+        font-size: 18px;
+        width: 500px;
     }
 }

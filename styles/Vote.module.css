@@ -70,15 +70,11 @@
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
+
     /*　for iPad 　*/
-}
-
-@media screen and (min-width:1024px) {
-
-    /*　for PC　*/
 
     .title {
-        margin-bottom: 180px;
+        font-size: 20px;
     }
 
     .message {
@@ -86,10 +82,46 @@
         margin-bottom: 180px;
     }
 
+    .main {
+        font-size: 24px;
+    }
+
+    .sub {
+        font-size: 20px;
+    }
+
     .selectItem {
         width: 500px;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
         border-radius: 12px;
     }
 
+}
+
+@media screen and (min-width:1024px) {
+
+    /*　for PC　*/
+
+    .title {
+        font-size: 20px;
+    }
+
+    .message {
+        font-size: 24px;
+        margin-bottom: 180px;
+    }
+
+    .main {
+        font-size: 24px;
+    }
+
+    .sub {
+        font-size: 20px;
+    }
+
+    .selectItem {
+        width: 500px;
+        margin-bottom: 50px;
+        border-radius: 12px;
+    }
 }

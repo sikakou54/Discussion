@@ -1,3 +1,13 @@
+@media screen and (min-width:480px) and (max-width:1024px) {
+
+    /*　for iPad 　*/
+
+    .timeLineItem {
+        width: 80%;
+        margin: 10px;
+    }
+}
+
 
 @media screen and (min-width:1024px) {
 

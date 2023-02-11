@@ -43,9 +43,33 @@
     }
 }
 
+@media screen and (min-width:480px) and (max-width:1024px) {
+
+    /*　for iPad 　*/
+
+    .timeLineView {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .post {
+        display: block;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        margin: 30px;
+    }
+
+}
+
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
+
     .timeLineView {
         width: 100%;
         display: flex;

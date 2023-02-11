@@ -1,0 +1,18 @@
+.container {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.message {
+    font-size: 18px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+
+}
+
+.return {
+    width: 240px;
+    height: 70px;
+    margin: 0 auto;
+}

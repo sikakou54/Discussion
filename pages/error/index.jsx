@@ -1,14 +1,19 @@
 import Router from 'next/router';
-import { jwtVerify } from '../../api/auth';
+import Button from '../../components/button';
 import Layout from '../../components/layout';
 import { discussionErrorCode, discussionErrorMsg } from '../../define/define';
+import styles from '../../styles/Error.module.css';
 
 export default function Error({ message, userId }) {
 
     return (
         <Layout userId={userId} title={'Error'}>
-            <div>{message}</div>
-            <button onClick={() => Router.push('/posts')}>投稿へ</button>
+            <div className={styles.container}>
+                <div className={styles.message}>{message}</div>
+                <div className={styles.return}>
+                    <Button onClick={() => Router.push('/posts')} text={'投稿へ'} />
+                </div>
+            </div>
         </Layout>
     );
 }

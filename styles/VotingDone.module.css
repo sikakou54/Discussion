@@ -11,7 +11,6 @@
 }
 
 .message {
-    font-size: 18px;
     margin-bottom: 90px;
 }
 
@@ -25,7 +24,24 @@
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
+
     /*　for iPad 　*/
+
+    .title {
+        font-size: 20px;
+    }
+
+    .message {
+        margin-bottom: 180px;
+    }
+
+    .main {
+        font-size: 24px;
+    }
+
+    .sub {
+        font-size: 20px;
+    }
 }
 
 @media screen and (min-width:1024px) {
@@ -33,11 +49,19 @@
     /*　for PC　*/
 
     .title {
-        margin-bottom: 180px;
+        font-size: 20px;
     }
 
     .message {
+        margin-bottom: 180px;
+    }
+
+    .main {
         font-size: 24px;
+    }
+
+    .sub {
+        font-size: 20px;
     }
 
 }

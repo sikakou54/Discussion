@@ -75,23 +75,47 @@
 
     /*　for iPad 　*/
 
+    .title {
+        font-size: 18px;
+    }
+
+    .detail {
+        width: 700px;
+        height: 190px;
+        font-size: 16px;
+        margin-bottom: 64px;
+    }
+
     .selectItem {
         width: 450px;
         height: 80px;
+        font-size: 14px;
+        margin-bottom: 48px;
+    }
+
+    .selectItems {
+        margin-bottom: 60px;
     }
 }
 
 @media screen and (min-width:1024px) {
 
+    /*　for PC　*/
+
+    .title {
+        font-size: 18px;
+    }
+
     .detail {
         width: 700px;
         height: 190px;
+        font-size: 16px;
     }
 
-    /*　for PC　*/
     .selectItem {
         width: 500px;
         height: 80px;
+        font-size: 14px;
     }
 
     .selectItems {
