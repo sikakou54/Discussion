@@ -7,11 +7,6 @@
     border-radius: 6px;
 }
 
-.container:hover {
-    background-color: greenyellow;
-    color: black;
-}
-
 .status {
     text-align: center;
     flex-basis: 20%;
