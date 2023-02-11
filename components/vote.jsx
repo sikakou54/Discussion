@@ -48,8 +48,8 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                             <button className={styles.selectItem} onClick={() => setVote('negative')}>{attendees.negative.text}</button>
                             {
                                 '' === vote
-                                    ? <button className={`${styles.voteButton} ${styles.disable}`} disabled={true} onClick={onVoteClick}>投票する</button>
-                                    : <button className={`${styles.voteButton} ${styles.enable}`} disabled={false} onClick={onVoteClick}>投票する</button>
+                                    ? <button className={styles.voteButton} disabled={true} onClick={onVoteClick}>投票する</button>
+                                    : <button className={styles.voteButton} disabled={false} onClick={onVoteClick}>投票する</button>
                             }
                         </>
                 }

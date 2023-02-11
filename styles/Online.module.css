@@ -16,6 +16,7 @@
     align-items: center;
     font-size: 14px;
     margin-left: 12px;
+    text-align: left;
 }
 
 .watcher {
@@ -44,7 +45,6 @@
 }
 
 .message {
-    font-size: 16px;
     margin-bottom: 90px;
 }
 

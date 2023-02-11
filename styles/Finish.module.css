@@ -16,6 +16,7 @@
     align-items: center;
     font-size: 14px;
     margin-left: 12px;
+    text-align: left;
 }
 
 .watcher {
@@ -44,17 +45,16 @@
 }
 
 .message {
-    font-size: 16px;
     margin-bottom: 90px;
 }
 
 .main {
-    font-size: 14px;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
 .sub {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .attendees {
