@@ -2,7 +2,6 @@
 
 .container {
     width: 100%;
-    height: 160px;
     display: flex;
     border: 1px solid black;
     border-radius: 6px;
@@ -16,7 +15,6 @@
 .status {
     text-align: center;
     flex-basis: 20%;
-    height: 160px;
 }
 
 .progress {
@@ -27,13 +25,8 @@
     margin-bottom: 40px;
 }
 
-.userIcon {
-    width: 70px;
-    margin: 0 auto;
-}
-
 .contents {
-    height: 160px;
+    margin-bottom: 5px;
     flex-basis: 80%;
 }
 
@@ -53,21 +46,35 @@
     width: 280px;
     font-size: 10px;
     height: 24px;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
 }
 
 .discussionLabelItemsWatcher {
-    width: 50px;
+    width: 60px;
     font-size: 10px;
     height: 24px;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
+}
+
+.watcherCount {
+    display: flex;
+    align-items: center;
+}
+
+.watcherIcon {
+    width: 15px;
+    height: 15px;
+}
+
+.watcherText {
+    font-size: 10px;
+    margin-left: 3px;
 }
 
 .date {
     text-align: right;
     margin-right: 5px;
     font-size: 11px;
-    height: 20px;
     color: gray;
 }
 

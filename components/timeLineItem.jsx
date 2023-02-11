@@ -1,8 +1,9 @@
 import { getTimeStampToLocaleString } from "../api/utils";
 import DiscussionLabel from "./discussionLabel";
 import Progress from "./progress";
-import UserIcon from "./userIcon";
 import styles from '../styles/TimeLineItem.module.css';
+import Image from "next/image";
+import user from '../public/user.svg';
 
 export default function TimeLineItem({ postId, progress, userId, title, positive, negative, watchers, createAt, onClick }) {
 
@@ -13,21 +14,23 @@ export default function TimeLineItem({ postId, progress, userId, title, positive
                 <div className={styles.progress} >
                     <Progress progress={progress} />
                 </div>
-                <div className={styles.userIcon} >
-                    <UserIcon userId={userId} width={45} height={45} />
-                </div>
             </div>
             <div className={styles.contents}>
                 <div className={styles.title}>{title}</div>
                 <div className={styles.discussionLabelContainer}>
                     <div className={styles.discussionLabelItems}>
-                        <DiscussionLabel userId={positive.userId} text={positive.text} />
+                        <DiscussionLabel>{positive.text} </DiscussionLabel>
                     </div>
                     <div className={styles.discussionLabelItems}>
-                        <DiscussionLabel userId={negative.userId} text={negative.text} />
+                        <DiscussionLabel>{negative.text} </DiscussionLabel>
                     </div>
                     <div className={styles.discussionLabelItemsWatcher}>
-                        <DiscussionLabel userId={'none'} text={watchers.length} />
+                        <DiscussionLabel>
+                            <div className={styles.watcherCount}>
+                                <div className={styles.watcherIcon}>< Image src={user} /></div>
+                                <div className={styles.watcherText}>{watchers.length}</div>
+                            </div>
+                        </DiscussionLabel>
                     </div>
                 </div>
                 <div className={styles.date}>{getTimeStampToLocaleString(createAt)}</div>
