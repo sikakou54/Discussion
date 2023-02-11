@@ -7,7 +7,7 @@
 .title {
     font-size: 20px;
     margin-top: 24px;
-    margin-bottom: 90px;
+    margin-bottom: 100px;
 }
 
 .message {
@@ -21,7 +21,7 @@
 }
 
 .attendees {
-    font-size: 30px;
+    font-size: 28px;
     color: #8f8f8f;
 }
 
@@ -54,12 +54,14 @@
 }
 
 .resultArea {
-    margin-bottom: 100px;
+    margin-bottom: 140px;
 }
 
 .return {
-    width: 280px;
-    height: 80px;
+    width: 240px;
+    height: 70px;
+    margin-bottom: 30px;
+    border-radius: 12px;
     background-color: white;
     color: black;
 }

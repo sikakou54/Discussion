@@ -19,17 +19,17 @@ export default function Select({ onJoin, attendees, title, detail }) {
             <div className={styles.selectItems}>
                 {
                     'none' === attendees.positive.userId
-                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(1)} disabled={false}><UserIcon userId={attendees.positive.userId} />{attendees.positive.text}</button>
-                        : <button className={`${styles.selectItem} ${styles.itemDisable}`} onClick={() => setSelectedJoinType(1)} disabled={true}><UserIcon userId={attendees.positive.userId} />{attendees.positive.text}</button>
+                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(1)} disabled={false}>{attendees.positive.text}</button>
+                        : <button className={`${styles.selectItem} ${styles.itemDisable}`} onClick={() => setSelectedJoinType(1)} disabled={true}>{attendees.positive.text}</button>
                 }
                 {
                     'none' === attendees.negative.userId
-                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(2)} disabled={false}><UserIcon userId={attendees.negative.userId} />{attendees.negative.text}</button>
-                        : <button className={`${styles.selectItem} ${styles.itemDisable}`} onClick={() => setSelectedJoinType(2)} disabled={true}><UserIcon userId={attendees.negative.userId} />{attendees.negative.text}</button>
+                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(2)} disabled={false}>{attendees.negative.text}</button>
+                        : <button className={`${styles.selectItem} ${styles.itemDisable}`} onClick={() => setSelectedJoinType(2)} disabled={true}>{attendees.negative.text}</button>
                 }
                 {
                     100 > attendees.watchers.length
-                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(3)} disabled={false}>視聴</button>
+                        ? <button className={styles.selectItem} onClick={() => setSelectedJoinType(3)} disabled={false}>視聴する</button>
                         : <button className={`${styles.selectItem} ${styles.itemDisable}`} onClick={() => setSelectedJoinType(3)} disabled={true}>視聴</button>
                 }
             </div>

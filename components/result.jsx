@@ -24,7 +24,7 @@ export default function Result({ attendees, title, result }) {
             <div className={styles.title}>{title}</div>
             <div className={styles.resultArea}>
                 <div className={styles.box}>
-                    <div className={styles.attendees}>< UserIcon userId={attendees.positive.userId} />{attendees.positive.text}</div>
+                    <div className={styles.attendees}>{attendees.positive.text}</div>
                     <div className={styles.center}>
                         {
                             result.positive > result.negative
@@ -45,7 +45,7 @@ export default function Result({ attendees, title, result }) {
                 </div>
 
                 <div className={styles.box}>
-                    <div className={styles.attendees}>< UserIcon userId={attendees.negative.userId} />{attendees.negative.text}</div>
+                    <div className={styles.attendees}>{attendees.negative.text}</div>
                     <div className={styles.center}>
                         {
                             result.positive > result.negative
