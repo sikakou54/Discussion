@@ -14,7 +14,7 @@
 .title {
     display: flex;
     align-items: center;
-    font-size: 16px;
+    font-size: 14px;
     margin-left: 12px;
 }
 
@@ -44,17 +44,17 @@
 }
 
 .message {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 90px;
 }
 
 .main {
-    font-size: 20px;
+    font-size: 14px;
     margin-bottom: 10px;
 }
 
 .sub {
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .attendees {
@@ -65,7 +65,7 @@
     margin: 0 auto;
     border: 1px solid black;
     margin-bottom: 64px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 12px;
 }
 

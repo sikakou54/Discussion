@@ -14,8 +14,9 @@
 .title {
     display: flex;
     align-items: center;
-    font-size: 16px;
+    font-size: 14px;
     margin-left: 12px;
+    width: 280px;
 }
 
 .watcher {
@@ -44,7 +45,7 @@
 }
 
 .message {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 90px;
 }
 
@@ -53,11 +54,12 @@
     align-items: center;
     width: 340px;
     height: 80px;
-    margin: 0 auto;
     border: 1px solid black;
-    margin-bottom: 64px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 12px;
+    margin: 0 auto;
+    margin-bottom: 64px;
+    padding: 5px;
 }
 
 .disable {
