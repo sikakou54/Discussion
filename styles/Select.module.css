@@ -37,7 +37,6 @@
     align-items: center;
     width: 90%;
     height: 70px;
-    background-color: white;
     color: black;
     border: 1px solid black;
     margin: 0 auto;
@@ -46,23 +45,11 @@
     border-radius: 12px;
 }
 
-.selectItem:hover {
-    background-color: black;
-    color: white;
-}
-
 .joinButton {
-    background-color: #4D84F4;
-    color: white;
     width: 240px;
     height: 70px;
     margin-bottom: 30px;
     border-radius: 12px;
-}
-
-.joinButton:hover {
-    background-color: greenyellow;
-    color: white;
 }
 
 .itemDisable {

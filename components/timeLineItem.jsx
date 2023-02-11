@@ -8,7 +8,7 @@ import user from '../public/user.svg';
 export default function TimeLineItem({ postId, progress, title, positive, negative, watchers, createAt, onClick }) {
 
     return (
-        <div className={styles.container} onClick={() => { onClick(postId) }} >
+        <button className={styles.container} onClick={() => { onClick(postId) }} >
             <div className={styles.status}>
                 <div className={styles.progress} >
                     <Progress progress={progress} />
@@ -50,6 +50,6 @@ export default function TimeLineItem({ postId, progress, title, positive, negati
                 </div>
                 <div className={styles.date}>{getTimeStampToLocaleString(createAt)}</div>
             </div>
-        </div>
+        </button>
     );
 }

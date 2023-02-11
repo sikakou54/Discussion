@@ -36,27 +36,13 @@
     margin-bottom: 45px;
     font-size: 14px;
     border-radius: 12px;
-    background-color: white;
-    color: black;
-}
-
-.selectItem:hover {
-    background-color: black;
-    color: white;
 }
 
 .voteButton {
-    background-color: #4D84F4;
-    color: white;
     width: 240px;
     height: 70px;
     margin-bottom: 30px;
     border-radius: 12px;
-}
-
-.voteButton:hover {
-    background-color: black;
-    color: white;
 }
 
 .disable {

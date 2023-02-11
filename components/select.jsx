@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styles from '../styles/Select.module.css';
-import UserIcon from './userIcon';
 
 export default function Select({ onJoin, attendees, title, detail }) {
 

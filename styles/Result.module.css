@@ -32,17 +32,6 @@
     border-radius: 12px;
 }
 
-.box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 120px;
-}
-
-.center {
-    width: 120px;
-}
-
 .win {
     color: red;
     font-size: 24px;
