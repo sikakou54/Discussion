@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import Router from 'next/router';
 import { apiFetchPost } from '../../api/utils';
-import { jwtVerify } from '../../api/auth';
-import { parseCookies } from 'nookies';
 import Layout from '../../components/layout';
 import Button from '../../components/button';
 import style from '../../styles/Post.module.css';
