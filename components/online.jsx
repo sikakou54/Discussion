@@ -41,9 +41,7 @@ export default function Online({ isStart, attendees, title, finishTime, currentT
                             <div className={styles.sub}>(他の方の接続を待っています)</div>
                         </>
                 }
-
             </div>
-
             {
                 attendees.positive.userId === 'none'
                     ? <div className={`${styles.attendees} ${styles.disable}`}><div className={styles.attendeesText}>{attendees.positive.text}</div></div>
