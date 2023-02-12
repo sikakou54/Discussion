@@ -7,6 +7,7 @@ import Discussion from '../../components/discussion';
 import { apiFetchGet } from '../../api/utils';
 import Layout from '../../components/layout';
 import { useEffect, useState } from 'react';
+import Router from 'next/router';
 
 export default function DiscussionManager({ postId, userId }) {
 
@@ -15,8 +16,11 @@ export default function DiscussionManager({ postId, userId }) {
     useEffect(() => {
 
         apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussion/' + 'jpn' + '/' + postId).then((response) => {
-            console.log(response);
-            setDiscussion(response.data);
+            if (200 == response.statusCode) {
+                setDiscussion(response.data);
+            } else {
+                Router.push('/posts');
+            }
         });
 
     }, []);

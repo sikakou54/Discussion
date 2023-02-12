@@ -117,7 +117,6 @@ export async function getServerSideProps() {
                 posts: res.data.Items,
                 userId: 'a18c3444-56c3-43c3-a34b-41263fd64d35',
                 config: {
-                    jwt: process.env.jwt,
                     lastEvaluatedKey
                 }
             }

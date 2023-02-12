@@ -26,20 +26,12 @@
         padding: 20px;
     }
 
-    .sideView {
-        display: none;
-    }
-
     .timeLineView {
         flex-basis: 100%;
     }
 
     .timeLineItems {
         width: 100%;
-    }
-
-    .contents {
-        flex-basis: 80%;
     }
 }
 

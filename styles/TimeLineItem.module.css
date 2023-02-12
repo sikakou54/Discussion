@@ -77,8 +77,13 @@
     margin-left: 3px;
 }
 
-.date {
+.contensFooter {
     text-align: right;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.date {
     margin-right: 5px;
     font-size: 10px;
     color: gray;
@@ -90,7 +95,6 @@
 
     .container {
         width: 100%;
-        height: 160px;
     }
 }
 
@@ -100,6 +104,5 @@
 
     .container {
         width: 100%;
-        height: 160px;
     }
 }
