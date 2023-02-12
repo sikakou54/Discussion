@@ -34,7 +34,7 @@ export default function Online({ isStart, attendees, title, finishTime, currentT
                     true === isStart
                         ? <>
                             <div className={styles.main}>討論中</div>
-                            <div className={styles.sub}>time:{Math.floor((finishTime - currentTime) / 1000)}</div>
+                            <div className={styles.sub}>{Math.floor((finishTime - currentTime) / 1000)}</div>
                         </>
                         : <>
                             <div className={styles.main}>まもなく始まります</div>

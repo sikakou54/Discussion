@@ -36,13 +36,13 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                         <div className={styles.message}>
                             <div className={styles.main}>ありがとうございます</div>
                             <div className={styles.sub}>(しばらくお待ち下さい)</div>
-                            <div className={styles.sub}>time:{Math.floor((limitTime - currentTime) / 1000)}</div>
+                            <div className={styles.sub}>{Math.floor((limitTime - currentTime) / 1000)}</div>
                         </div>
                         :
                         <>
                             <div className={styles.message}>
                                 <div className={styles.main}>投票中</div>
-                                <div className={styles.sub}>time:{Math.floor((limitTime - currentTime) / 1000)}</div>
+                                <div className={styles.sub}>{Math.floor((limitTime - currentTime) / 1000)}</div>
                             </div>
                             <button className={styles.selectItem} onClick={() => setVote('positive')}><div className={styles.attendeesText} >{attendees.positive.text}</div></button>
                             <button className={styles.selectItem} onClick={() => setVote('negative')}><div className={styles.attendeesText} >{attendees.negative.text}</div></button>
@@ -63,7 +63,7 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                 <div className={styles.title}>{title}</div>
                 <div className={styles.message}>
                     <div className={styles.main}>投票中</div>
-                    <div className={styles.sub}>time:{Math.floor((limitTime - currentTime) / 1000)}</div>
+                    <div className={styles.sub}>{Math.floor((limitTime - currentTime) / 1000)}</div>
                 </div>
             </div>
         );
