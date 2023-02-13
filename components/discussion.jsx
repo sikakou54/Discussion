@@ -163,6 +163,12 @@ const reducer = (state, action) => {
                 discusionStatus: action.payload.discusionStatus
             };
 
+        case actions.keepalive:
+            return {
+                ...state,
+                timerId: action.payload.timerId
+            };
+
         default:
             return {
                 ...state
@@ -201,7 +207,8 @@ export default function Discussion({ discussion, userId }) {
         meetingEventName: undefined,
         message: null,
         discusionStatus: undefined,
-        websocketStatus: undefined
+        websocketStatus: undefined,
+        timerId: undefined
     });
     const meetingManager = useMeetingManager();
     const meetingEvent = useMeetingEvent();
@@ -225,6 +232,7 @@ export default function Discussion({ discussion, userId }) {
                 websocketStatus: websocketStatus.open
             }
         });
+
     }
 
     function webSocketClose(event) {
@@ -241,16 +249,16 @@ export default function Discussion({ discussion, userId }) {
 
     function webSocketError(event) {
 
-        console.error('error', event);
+        console.error('webSocketError', event);
 
         changeDiscussionStatus(discusionStatus.websocketError);
     }
 
     function webSocketMessage(event) {
 
-        console.log('webSocketMessage', event);
-
         const { notify, data } = JSON.parse(event.data);
+
+        console.log('webSocketMessage', notify, data);
 
         switch (notify) {
 
@@ -494,8 +502,14 @@ export default function Discussion({ discussion, userId }) {
     useEffect(() => {
 
         return () => {
+
             window.onbeforeunload = null;
             cleanUpWebSocket();
+
+            // KeepAlive用インターバルタイマー停止
+            if (undefined !== data.timerId) {
+                clearInterval(data.timerId);
+            }
         };
 
     }, []);
@@ -559,6 +573,7 @@ export default function Discussion({ discussion, userId }) {
     useEffect(() => {
 
         if (data.isTimerEnable) {
+
             if (data.limitTime <= data.currentTime) {
                 dispatch({ type: actions.timeout });
             } else {
@@ -696,11 +711,40 @@ export default function Discussion({ discussion, userId }) {
                     });
                 }
 
+                // KeepAlive用インターバルタイマー停止
+                clearInterval(data.timerId);
+
+                // timerIdを初期化する
+                dispatch({
+                    type: actions.keepalive,
+                    payload: {
+                        timerId: undefined
+                    }
+                });
+
                 // ソケット接続時
             } else if (websocketStatus.open == data.websocketStatus) {
 
                 // ソケットIDの取得
                 sendMessage('getSocketId', null);
+
+                // KeepAlive用インターバルタイマー開始
+                const timerId = setInterval(() => {
+                    console.log('keepalive');
+                    sendMessage('keepalive', {
+                        postId: data.postId,
+                        socketId: data.socketId,
+                        userId: data.userId
+                    });
+                }, 60000);
+
+                // timerIdを保持する
+                dispatch({
+                    type: actions.keepalive,
+                    payload: {
+                        timerId
+                    }
+                });
             }
 
             changeDiscussionStatus(undefined);

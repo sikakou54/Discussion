@@ -18,7 +18,8 @@ export const actions = {
     vote: 15,
     changeMeetingEventName: 16,
     changeWebsocketStatus: 17,
-    changeDiscusionStatus: 18
+    changeDiscusionStatus: 18,
+    keepalive: 19
 };
 
 export const discusionStatus = {
