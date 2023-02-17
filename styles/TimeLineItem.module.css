@@ -110,4 +110,8 @@
     .container {
         width: 100%;
     }
+
+    .discussionLabelItems {
+        width: 350px;
+    }
 }
