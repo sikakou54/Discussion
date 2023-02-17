@@ -3,14 +3,13 @@
 .container {
     width: 100%;
     display: flex;
-    border: 0.5px solid black;
     border-radius: 6px;
     background-color: #fafafa;
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
 }
 
 .container:hover {
-    border: 3px solid #00838f;
+    border: 2px solid #00838f;
 }
 
 .status {
