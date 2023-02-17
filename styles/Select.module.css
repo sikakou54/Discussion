@@ -2,6 +2,7 @@
     text-align: center;
     width: 100%;
     height: 100%;
+    background-color: white;
 }
 
 .title {
@@ -10,8 +11,8 @@
     align-items: center;
     text-align: left;
     font-size: 16px;
+    padding-top: 10px;
     margin-bottom: 20px;
-    margin-top: 20px;
     margin-left: 12px;
     margin-right: 12px;
 }
@@ -23,10 +24,10 @@
     width: 95%;
     height: 130px;
     font-size: 12px;
-    border: 1px solid black;
+    border: 0.5px solid black;
     margin: 0 auto;
     resize: none;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     overflow: auto;
     border-radius: 6px;
 }
@@ -44,9 +45,16 @@
     height: 70px;
     margin: 0 auto;
     font-size: 12px;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     border-radius: 12px;
     text-align: left;
+    background-color: #e0f2f1;
+    border: 0.5px solid black;
+    color: black;
+}
+
+.selectItem:hover {
+    background-color: #4db6ac;
 }
 
 .attendeesText {
@@ -59,6 +67,12 @@
     height: 70px;
     margin-bottom: 30px;
     border-radius: 12px;
+    background-color: #00838f;
+    color: white;
+}
+
+.joinButton:hover {
+    background-color: #00695c;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {

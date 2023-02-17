@@ -5,6 +5,7 @@
     display: flex;
     border: 1px solid black;
     border-radius: 6px;
+    background-color: #fafafa;
 }
 
 .status {

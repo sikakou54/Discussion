@@ -5,10 +5,12 @@
     padding: 10px;
     border: 1px solid black;
     border-radius: 12px;
+    background-color: #00838f;
+    color: white;
 }
 
 .container:hover {
-    background-color: greenyellow;
+    background-color: #006064;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
