@@ -1,9 +1,9 @@
 .container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
     height: 70px;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #00838f;
     color: black;
     border: none;
