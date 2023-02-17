@@ -32,7 +32,7 @@ export default function Post({ userId }) {
     }
 
     return (
-        <Layout userId={userId} title={'Post'}>
+        <Layout title={'Post'}>
             <div className={style.container}>
                 <div><input className={style.title} type='text' placeholder='朝食はパン？ごはん？' required onChange={(e) => { setTitle(e.target.value) }} /></div>
                 {title.length > 30 && <div className={style.errorText}>30文字以内で入力してください</div>}

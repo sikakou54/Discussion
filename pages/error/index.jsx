@@ -4,10 +4,10 @@ import Layout from '../../components/layout';
 import { discussionErrorCode, discussionErrorMsg } from '../../define/define';
 import styles from '../../styles/Error.module.css';
 
-export default function Error({ message, userId }) {
+export default function Error({ message }) {
 
     return (
-        <Layout userId={userId} title={'Error'}>
+        <Layout title={'Error'}>
             <div className={styles.container}>
                 <div className={styles.message}>{message}</div>
                 <div className={styles.return}>

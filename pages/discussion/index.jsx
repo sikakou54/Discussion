@@ -28,7 +28,7 @@ export default function DiscussionManager({ postId, userId }) {
     if (null !== discussion) {
 
         return (
-            <Layout userId={userId} title={'Discussion'}>
+            <Layout title={'Discussion'}>
                 < ThemeProvider theme={lightTheme} >
                     <MeetingProvider>
                         <Discussion discussion={discussion} userId={userId} />

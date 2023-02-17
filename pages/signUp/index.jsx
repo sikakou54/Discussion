@@ -34,7 +34,7 @@ export default function SignUp() {
     }
 
     return (
-        <Layout userId={undefined} title={'SignUp'}>
+        <Layout title={'SignUp'}>
             <form onSubmit={onSubmit} className={styles.signUpForm}>
                 <input placeholder='Email' onChange={(event) => { setEmail(event.target.value) }} type='text' required className={styles.signUpFormTextBox} />
                 <input placeholder='UserName' onChange={(event) => { setUserName(event.target.value) }} type='text' required className={styles.signUpFormTextBox} />

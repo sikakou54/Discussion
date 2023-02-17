@@ -6,7 +6,7 @@ import styles from '../../styles/Posts.module.css';
 import TimeLineView from '../../components/timeLineView';
 import PostButton from '../../components/postButton';
 
-export default function Posts({ posts, userId, config }) {
+export default function Posts({ posts, config }) {
 
     const [lastEvaluatedKey, setLastEvaluatedKey] = useState(config.lastEvaluatedKey);
     const [items, setItems] = useState(posts);
@@ -84,7 +84,7 @@ export default function Posts({ posts, userId, config }) {
     }, [scrollBottomPosition]);
 
     return (
-        <Layout userId={userId} title={'Posts'} >
+        <Layout title={'Posts'} >
             <div className={styles.container}>
                 <div className={styles.timeLineView}><TimeLineView items={items} onClick={onClick} /></div>
                 <div className={styles.post}><PostButton /></div>

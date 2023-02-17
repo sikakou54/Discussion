@@ -34,7 +34,7 @@ export default function SignIn() {
     }
 
     return (
-        <Layout userId={undefined} title={'SignIn'}>
+        <Layout title={'SignIn'}>
             <form onSubmit={onSubmit} className={styles.loginForm}>
                 <input placeholder='UserName' onChange={(event) => { setUserName(event.target.value) }} type='text' required className={styles.loginFormTextBox} />
                 <input placeholder='Password' onChange={(event) => { setPassword(event.target.value) }} type='password' required className={styles.loginFormTextBox} />

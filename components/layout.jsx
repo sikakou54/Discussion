@@ -1,10 +1,10 @@
 import Header from './header';
 
-export default function Layout({ userId, children, title }) {
+export default function Layout({ children, title }) {
 
     return (
         <>
-            <Header userId={userId} title={title} />
+            <Header title={title} />
             {children}
             <footer ></footer>
         </>

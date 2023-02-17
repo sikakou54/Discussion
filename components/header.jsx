@@ -3,7 +3,7 @@ import Head from 'next/head';
 import icon from '../public/talkup.png';
 import Image from 'next/image';
 
-export default function Header({ userId, title }) {
+export default function Header({ title }) {
 
     return (
         <>

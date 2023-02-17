@@ -38,7 +38,7 @@ export default function Confirm() {
     }
 
     return (
-        <Layout userId={undefined} title={'Confirm'}>
+        <Layout title={'Confirm'}>
             <form onSubmit={onSubmit} className={styles.confirmForm}>
                 <input placeholder='確認コード' onChange={(event) => { setConfirmCode(event.target.value) }} type='text' required className={styles.confirmFormTextBox} />
                 <input type='submit' value='Confirm' className={styles.confirmFormTButton} />
