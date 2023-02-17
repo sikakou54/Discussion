@@ -49,8 +49,13 @@
     border-radius: 12px;
     text-align: left;
     background-color: #e0f2f1;
-    border: 0.5px solid black;
     color: black;
+    border: none;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
+}
+
+.selectItem:hover {
+    border: 0.5px solid #00838f;
 }
 
 .selectItem:hover {
@@ -69,6 +74,8 @@
     border-radius: 12px;
     background-color: #00838f;
     color: white;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
+    border: none;
 }
 
 .joinButton:hover {
