@@ -699,6 +699,7 @@ export default function Discussion({ discussion, userId }) {
                 } else if (discusionStatus.discussionResultShow === data.discusionStatus) {
 
                     // 結果発表
+                    return;
 
                 } else {
 
