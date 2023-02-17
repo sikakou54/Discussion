@@ -62,12 +62,15 @@
     text-align: left;
     width: 340px;
     height: 80px;
-    border: 1px solid black;
     font-size: 12px;
     border-radius: 12px;
     margin: 0 auto;
     margin-bottom: 64px;
     padding: 5px;
+    background-color: white;
+    color: black;
+    border: none;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .5);
 }
 
 .disable {

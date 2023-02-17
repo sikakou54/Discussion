@@ -48,10 +48,10 @@
     margin-bottom: 32px;
     border-radius: 12px;
     text-align: left;
-    background-color: #e0f2f1;
+    background-color: white;
     color: black;
     border: none;
-    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .5);
 }
 
 .selectItem:hover {
