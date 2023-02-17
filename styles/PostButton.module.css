@@ -3,10 +3,10 @@
     height: 80px;
     margin: 0 auto;
     padding: 10px;
-    border: 1px solid black;
     border-radius: 12px;
     background-color: #00838f;
     color: white;
+    border: none;
 }
 
 .container:hover {
