@@ -1,6 +1,6 @@
 import styles from '../styles/Header.module.css';
 import Head from 'next/head';
-import icon from '../public/talkup.png';
+import icon from '../public/talkup2.png';
 import Image from 'next/image';
 
 export default function Header({ title }) {
