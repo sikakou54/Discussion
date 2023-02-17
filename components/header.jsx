@@ -25,7 +25,7 @@ export default function Header({ userId, title }) {
                 <title>{title}</title>
             </Head>
             <div className={styles.container}>
-                <div className={styles.title}>Discussion</div>
+                <div className={styles.title}>TalkUp</div>
                 {undefined !== userInfo ? <div>ようこそ {userInfo.name} さん</div> : <div></div>}
             </div>
         </>
