@@ -1,23 +1,9 @@
-import { useEffect, useState } from 'react';
-import { apiFetchGet } from '../api/utils';
 import styles from '../styles/Header.module.css';
 import Head from 'next/head';
+import icon from '../public/talkup.png';
+import Image from 'next/image';
 
 export default function Header({ userId, title }) {
-
-    const [userInfo, setUserInfo] = useState(undefined);
-
-    useEffect(() => {
-
-        /**
-        if (undefined !== userId) {
-            apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getUser/' + userId, {}).then((res) => {
-                setUserInfo(res.data);
-            });
-        } 
-        */
-
-    }, []);
 
     return (
         <>
@@ -25,8 +11,10 @@ export default function Header({ userId, title }) {
                 <title>{title}</title>
             </Head>
             <div className={styles.container}>
+                <div className={styles.icon}>
+                    <Image src={icon} />
+                </div>
                 <div className={styles.title}>TalkUp</div>
-                {undefined !== userInfo ? <div>ようこそ {userInfo.name} さん</div> : <div></div>}
             </div>
         </>
     );
