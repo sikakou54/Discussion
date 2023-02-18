@@ -12,6 +12,7 @@
     background-color: white;
     color: black;
     font-size: 12px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
 }
 
 .discussion {
@@ -23,6 +24,7 @@
     background-color: white;
     color: black;
     font-size: 12px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
 }
 
 .secsionName {
@@ -40,14 +42,17 @@
     color: black;
     font-size: 12px;
     overflow: auto;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
 }
 
 .frame {
     width: 100%;
-    border: 1px solid black;
     padding: 10px;
     border-radius: 5px;
     margin-top: 18px;
+    background-color: white;
+    border: 2px inset #00838f;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
 }
 
 .buttonArea {
@@ -109,7 +114,7 @@
     }
 
     .title {
-        font-size: 24px;
+        font-size: 16px;
     }
 
     .secsionName {
@@ -118,11 +123,11 @@
 
     .discussion {
         margin-top: 24px;
-        font-size: 24px;
+        font-size: 16px;
     }
 
     .oval {
-        font-size: 24px;
+        font-size: 16px;
     }
 
     .frame {
@@ -151,7 +156,7 @@
     }
 
     .title {
-        font-size: 24px;
+        font-size: 16px;
     }
 
     .secsionName {
@@ -160,11 +165,11 @@
 
     .discussion {
         margin-top: 24px;
-        font-size: 24px;
+        font-size: 16px;
     }
 
     .oval {
-        font-size: 24px;
+        font-size: 16px;
     }
 
     .frame {
