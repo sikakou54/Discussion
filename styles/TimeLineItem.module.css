@@ -101,6 +101,10 @@
     .container {
         width: 100%;
     }
+
+    .discussionLabelItems {
+        width: 350px;
+    }
 }
 
 @media screen and (min-width:1024px) {
