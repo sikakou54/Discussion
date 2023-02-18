@@ -73,7 +73,7 @@
 .enable {
     border: 2px outset #00838f;
     background-color: white;
-    color: black;
+    color: #00838f;
 }
 
 .enable:hover {
