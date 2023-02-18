@@ -4,12 +4,13 @@
     width: 100%;
     display: flex;
     border-radius: 6px;
-    background-color: #fafafa;
+    background-color: white;
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
 }
 
 .container:hover {
-    border: 2px solid #00838f;
+    border: 1px solid #00838f;
+    background-color: #fafafa;
 }
 
 .status {
