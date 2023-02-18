@@ -47,36 +47,31 @@ export default function Posts({ posts, config }) {
 
                 if (null !== lastEvaluatedKey) {
 
-                    apiFetchGet('/getDiscussions/' + lastEvaluatedKey.country + '/' + lastEvaluatedKey.createAt + '/' + lastEvaluatedKey.postId, {
-                        /**
-                        headers: {
-                            Authorization: config.jwt
-                        } 
-                         */
-                    }).then((res) => {
+                    apiFetchGet('/getDiscussions/' + lastEvaluatedKey.country + '/' + lastEvaluatedKey.createAt + '/' + lastEvaluatedKey.postId)
+                        .then((res) => {
 
-                        if (res.result) {
+                            if (res.result) {
 
-                            let newItems = [];
+                                let newItems = [];
 
-                            for (let i = 0; i < res.data.Items.length; i++) {
+                                for (let i = 0; i < res.data.Items.length; i++) {
 
-                                if (undefined === items.find((v) => v.postId === res.data.Items[i].postId)) {
-                                    newItems.push(res.data.Items[i]);
+                                    if (undefined === items.find((v) => v.postId === res.data.Items[i].postId)) {
+                                        newItems.push(res.data.Items[i]);
+                                    }
                                 }
-                            }
 
-                            if (-1 !== Object.keys(res.data).indexOf('LastEvaluatedKey')) {
-                                if (res.data.LastEvaluatedKey.country !== lastEvaluatedKey.country ||
-                                    res.data.LastEvaluatedKey.createAt !== lastEvaluatedKey.createAt ||
-                                    res.data.LastEvaluatedKey.postId !== lastEvaluatedKey.postId) {
-                                    setLastEvaluatedKey(res.data.LastEvaluatedKey);
+                                if (-1 !== Object.keys(res.data).indexOf('LastEvaluatedKey')) {
+                                    if (res.data.LastEvaluatedKey.country !== lastEvaluatedKey.country ||
+                                        res.data.LastEvaluatedKey.createAt !== lastEvaluatedKey.createAt ||
+                                        res.data.LastEvaluatedKey.postId !== lastEvaluatedKey.postId) {
+                                        setLastEvaluatedKey(res.data.LastEvaluatedKey);
+                                    }
                                 }
-                            }
 
-                            setItems((items) => [...items, ...newItems]);
-                        }
-                    });
+                                setItems((items) => [...items, ...newItems]);
+                            }
+                        });
                 }
             }
         }

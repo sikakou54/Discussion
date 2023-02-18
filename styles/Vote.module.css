@@ -31,7 +31,8 @@
     margin-bottom: 10px;
 }
 
-.selectItem {
+.selectItem,
+.selected {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,10 +43,20 @@
     margin-bottom: 45px;
     font-size: 14px;
     border-radius: 12px;
-    background-color: white;
-    color: black;
-    border: none;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .5);
+    border: 1px outset black;
+    background-color: white;
+    color: #00838f;
+}
+
+.selected {
+    border: 1px inset #00838f;
+    background-color: #00838f;
+    color: white;
+}
+
+.selectItem:hover {
+    background-color: #e0f2f1;
 }
 
 .attendeesText {
@@ -58,6 +69,21 @@
     height: 70px;
     margin-bottom: 30px;
     border-radius: 12px;
+    color: white;
+    border: none;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
+}
+
+.disable {
+    background-color: gray;
+}
+
+.enable {
+    background-color: #00838f;
+}
+
+.enable:hover {
+    background-color: #006064;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {

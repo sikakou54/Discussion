@@ -9,7 +9,7 @@
 }
 
 .container:hover {
-    border: 1px solid #00838f;
+    border: 0.5px solid #00838f;
     background-color: #fafafa;
 }
 
