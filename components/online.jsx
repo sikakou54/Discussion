@@ -38,7 +38,6 @@ export default function Online({ isStart, attendees, title, finishTime, currentT
                         </>
                         : <>
                             <div className={styles.main}>まもなく始まります</div>
-                            <div className={styles.sub}>(他の方の接続を待っています)</div>
                         </>
                 }
             </div>
