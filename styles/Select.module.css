@@ -11,10 +11,8 @@
     align-items: center;
     text-align: left;
     font-size: 16px;
-    padding-top: 10px;
+    margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 12px;
-    margin-right: 12px;
 }
 
 .detail {
@@ -48,18 +46,8 @@
     margin-bottom: 32px;
     border-radius: 12px;
     text-align: left;
-    background-color: white;
-    color: black;
     border: none;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .5);
-}
-
-.selectItem:hover {
-    border: 0.5px solid #00838f;
-}
-
-.selectItem:hover {
-    background-color: #4db6ac;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
 }
 
 .attendeesText {
@@ -72,14 +60,39 @@
     height: 70px;
     margin-bottom: 30px;
     border-radius: 12px;
-    background-color: #00838f;
-    color: white;
-    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
     border: none;
 }
 
-.joinButton:hover {
-    background-color: #00695c;
+.disable,
+.buttonDisable {
+    background-color: gray;
+    color: white;
+}
+
+.enable {
+    border: 2px outset #00838f;
+    background-color: white;
+    color: black;
+}
+
+.enable:hover {
+    background-color: #e0f2f1;
+}
+
+.buttonEnable {
+    background-color: #00838f;
+    color: white;
+}
+
+.buttonEnable:hover {
+    background-color: #006064;
+}
+
+.selected {
+    border: 2px inset #00838f;
+    background-color: #26a69a;
+    color: white;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {

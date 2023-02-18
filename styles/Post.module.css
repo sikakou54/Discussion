@@ -56,10 +56,41 @@
     margin-top: 32px;
 }
 
-.buttonAreaItem {
+.cancel {
     width: 150px;
     height: 50px;
     margin: 16px;
+    border: 1px solid #00838f;
+    background-color: white;
+    color: #00838f;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .5);
+}
+
+.push {
+    width: 150px;
+    height: 50px;
+    margin: 16px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .5);
+}
+
+.enable {
+    border: 1px solid #00838f;
+    background-color: #00838f;
+    color: white;
+}
+
+.enable:hover {
+    background-color: #006064;
+}
+
+.disable {
+    border: none;
+    background-color: gray;
+    color: white;
+}
+
+.cancel:hover {
+    background-color: #e0f2f1;
 }
 
 .errorText {

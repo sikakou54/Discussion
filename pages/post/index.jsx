@@ -57,14 +57,14 @@ export default function Post({ userId }) {
 
                 </div>
                 <div className={style.buttonArea}>
-                    <div className={style.buttonAreaItem}><Button onClick={onCancel} text={'キャンセル'} /></div>
+                    <button className={style.cancel} onClick={onCancel}>キャンセル</button>
                     {
                         (title.length > 0 && title.length <= 30) &&
                             (positiveText.length > 0 && positiveText.length <= 20) &&
                             (negativeText.length > 0 && negativeText.length <= 20) &&
                             (detail.length > 0 && detail.length <= 140)
-                            ? <div className={style.buttonAreaItem}><Button disable={false} onClick={onPost} text={'投稿する'} /></div>
-                            : <div className={style.buttonAreaItem}><Button disable={true} onClick={onPost} text={'投稿する'} /></div>
+                            ? <button className={`${style.push} ${style.enable}`} disable={false} onClick={onPost} >投稿する</button>
+                            : <button className={`${style.push} ${style.disable}`} disable={true} onClick={onPost} >投稿する</button>
                     }
                 </div>
             </div>
