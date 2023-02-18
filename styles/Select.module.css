@@ -71,7 +71,7 @@
 }
 
 .enable {
-    border: 2px outset #00838f;
+    border: 1px outset black;
     background-color: white;
     color: #00838f;
 }
@@ -90,7 +90,7 @@
 }
 
 .selected {
-    border: 2px inset #00838f;
+    border: 1px inset #00838f;
     background-color: #00838f;
     color: white;
 }
