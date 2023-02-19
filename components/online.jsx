@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import styles from '../styles/Online.module.css';
 import user from '../public/user.svg';
 import Image from "next/image";
+import ProgressBar from './progressBar';
 
 export default function Online({ isStart, attendees, title, finishTime, currentTime }) {
 
@@ -34,7 +35,15 @@ export default function Online({ isStart, attendees, title, finishTime, currentT
                     true === isStart
                         ? <>
                             <div className={styles.main}>討論中</div>
-                            <div className={styles.sub}>{Math.floor((finishTime - currentTime) / 1000)}</div>
+                            <div className={styles.sub}>
+                                <div className={styles.ProgressBar}>
+                                    <ProgressBar
+                                        text={Math.floor((finishTime - currentTime) / 1000)}
+                                        percent={
+                                            (Math.floor((finishTime - currentTime) / 1000) / 600 * 100)
+                                        } />
+                                </div>
+                            </div>
                         </>
                         : <>
                             <div className={styles.main}>まもなく始まります</div>

@@ -24,12 +24,15 @@ export default function Standby({ attendees, title }) {
             <div className={styles.titleHeader}>
                 <div className={styles.title}>{title}</div>
                 {
-                    attendees.watchers.length > 0
+                    attendees.watchers.length >= 3
                         ? <div className={`${styles.watcher} ${styles.enable}`}><div className={styles.watcherIcon}>< Image src={user} /></div>{attendees.watchers.length}</div>
                         : <div className={`${styles.watcher} ${styles.disable}`}><div className={styles.watcherIcon}>< Image src={user} /></div>{attendees.watchers.length}</div>
                 }
             </div>
-            <div className={styles.message}>参加者を待っています</div>
+            <div className={styles.message}>
+                <div className={styles.main}>参加者を待っています</div>
+                <div className={styles.sub}>( 討論者2名,視聴者3人以上が必要 )</div>
+            </div>
             {
                 attendees.positive.userId === 'none'
                     ? <div className={`${styles.attendees} ${styles.disable}`}><div className={styles.attendeesText}>{attendees.positive.text}</div></div>

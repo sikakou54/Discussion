@@ -31,20 +31,27 @@
     margin-bottom: 10px;
 }
 
+.ProgressBar {
+    margin: 0 auto;
+    margin-top: 32px;
+    width: 80%;
+    height: 24px;
+}
+
 .selectItem,
 .selected {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: left;
-    width: 340px;
-    height: 80px;
     margin: 0 auto;
     margin-bottom: 45px;
     font-size: 14px;
     border-radius: 12px;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .5);
+    width: 90%;
+    height: 80px;
     border: 1px outset black;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
     background-color: white;
     color: #00838f;
 }
@@ -107,8 +114,10 @@
         font-size: 20px;
     }
 
-    .selectItem {
-        width: 500px;
+    .selectItem,
+    .selected {
+        width: 450px;
+        height: 80px;
         margin-bottom: 50px;
         border-radius: 12px;
     }
@@ -136,8 +145,10 @@
         font-size: 20px;
     }
 
-    .selectItem {
+    .selectItem,
+    .selected {
         width: 500px;
+        height: 80px;
         margin-bottom: 50px;
         border-radius: 12px;
     }

@@ -10,23 +10,25 @@
     justify-content: center;
     text-align: left;
     font-size: 16px;
-    margin-top: 24px;
+    padding-top: 24px;
     margin-bottom: 90px;
     margin-left: 12px;
     margin-right: 12px;
 }
 
 .message {
-    margin-bottom: 90px;
+    font-size: 18px;
+    margin-bottom: 70px;
 }
 
 .main {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
 .sub {
     font-size: 16px;
+    margin-bottom: 10px;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
@@ -34,18 +36,6 @@
     /*　for iPad 　*/
 
     .title {
-        font-size: 20px;
-    }
-
-    .message {
-        margin-bottom: 180px;
-    }
-
-    .main {
-        font-size: 24px;
-    }
-
-    .sub {
         font-size: 20px;
     }
 }
@@ -57,17 +47,4 @@
     .title {
         font-size: 20px;
     }
-
-    .message {
-        margin-bottom: 180px;
-    }
-
-    .main {
-        font-size: 24px;
-    }
-
-    .sub {
-        font-size: 20px;
-    }
-
 }

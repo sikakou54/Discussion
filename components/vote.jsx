@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/Vote.module.css';
+import ProgressBar from './progressBar';
 
 export default function Vote({ attendees, title, type, setVotindDone, limitTime, currentTime }) {
 
@@ -36,13 +37,29 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                         <div className={styles.message}>
                             <div className={styles.main}>ありがとうございます</div>
                             <div className={styles.sub}>(しばらくお待ち下さい)</div>
-                            <div className={styles.sub}>{Math.floor((limitTime - currentTime) / 1000)}</div>
+                            <div className={styles.sub}>
+                                <div className={styles.ProgressBar}>
+                                    <ProgressBar
+                                        text={Math.floor((limitTime - currentTime) / 1000)}
+                                        percent={
+                                            (Math.floor((limitTime - currentTime) / 1000) / 30 * 100)
+                                        } />
+                                </div>
+                            </div>
                         </div>
                         :
                         <>
                             <div className={styles.message}>
                                 <div className={styles.main}>投票中</div>
-                                <div className={styles.sub}>{Math.floor((limitTime - currentTime) / 1000)}</div>
+                                <div className={styles.sub}>
+                                    <div className={styles.ProgressBar}>
+                                        <ProgressBar
+                                            text={Math.floor((limitTime - currentTime) / 1000)}
+                                            percent={
+                                                (Math.floor((limitTime - currentTime) / 1000) / 30 * 100)
+                                            } />
+                                    </div>
+                                </div>
                             </div>
                             {
                                 vote === 'positive'
@@ -72,7 +89,15 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                 <div className={styles.title}>{title}</div>
                 <div className={styles.message}>
                     <div className={styles.main}>投票中</div>
-                    <div className={styles.sub}>{Math.floor((limitTime - currentTime) / 1000)}</div>
+                    <div className={styles.sub}>
+                        <div className={styles.ProgressBar}>
+                            <ProgressBar
+                                text={Math.floor((limitTime - currentTime) / 1000)}
+                                percent={
+                                    (Math.floor((limitTime - currentTime) / 1000) / 30 * 100)
+                                } />
+                        </div>
+                    </div>
                 </div>
             </div>
         );

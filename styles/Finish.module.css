@@ -101,19 +101,6 @@
         font-size: 20px;
     }
 
-    .message {
-        font-size: 24px;
-        margin-bottom: 180px;
-    }
-
-    .main {
-        font-size: 24px;
-    }
-
-    .sub {
-        font-size: 20px;
-    }
-
     .attendees {
         width: 500px;
         margin-bottom: 80px;
@@ -131,19 +118,6 @@
     }
 
     .title {
-        font-size: 20px;
-    }
-
-    .message {
-        font-size: 24px;
-        margin-bottom: 180px;
-    }
-
-    .main {
-        font-size: 24px;
-    }
-
-    .sub {
         font-size: 20px;
     }
 

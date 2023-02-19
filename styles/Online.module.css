@@ -57,11 +57,18 @@
 
 .main {
     font-size: 18px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .sub {
     font-size: 16px;
+}
+
+.ProgressBar {
+    margin: 0 auto;
+    margin-top: 32px;
+    width: 80%;
+    height: 24px;
 }
 
 .attendees {
@@ -69,7 +76,7 @@
     align-items: center;
     justify-content: left;
     text-align: left;
-    width: 340px;
+    width: 90%;
     height: 80px;
     margin: 0 auto;
     margin-bottom: 64px;
@@ -78,7 +85,7 @@
     background-color: white;
     color: black;
     border: 1px solid black;
-    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
 }
 
 .disable {
@@ -102,20 +109,6 @@
         font-size: 20px;
     }
 
-    .message {
-        font-size: 24px;
-        margin-bottom: 180px;
-    }
-
-    .main {
-        font-size: 24px;
-        margin-bottom: 12px;
-    }
-
-    .sub {
-        font-size: 20px;
-    }
-
     .attendees {
         width: 500px;
         margin-bottom: 80px;
@@ -133,20 +126,6 @@
     }
 
     .title {
-        font-size: 20px;
-    }
-
-    .message {
-        font-size: 24px;
-        margin-bottom: 180px;
-    }
-
-    .main {
-        font-size: 24px;
-        margin-bottom: 12px;
-    }
-
-    .sub {
         font-size: 20px;
     }
 
