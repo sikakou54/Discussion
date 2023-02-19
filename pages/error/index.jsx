@@ -1,5 +1,4 @@
 import Router from 'next/router';
-import Button from '../../components/button';
 import Layout from '../../components/layout';
 import { discussionErrorCode, discussionErrorMsg } from '../../define/define';
 import styles from '../../styles/Error.module.css';
