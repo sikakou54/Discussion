@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function Header({ title }) {
 
     return (
-        <>
+        <header>
             <Head>
                 <title>{title}</title>
             </Head>
@@ -16,6 +16,6 @@ export default function Header({ title }) {
                 </div>
                 <div className={styles.title}>TalkUp</div>
             </div>
-        </>
+        </header>
     );
 }

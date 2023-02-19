@@ -1,5 +1,5 @@
 .container {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     color: black;
     position: relative;
@@ -69,7 +69,7 @@
     }
 
     .post {
-        
+
         display: block;
         position: fixed;
         right: 0;
