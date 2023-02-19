@@ -3,9 +3,10 @@
     /*　for iphone 　*/
 
     .timeLineItem {
-        margin: 2px;
-     }
-     
+        margin: 0 auto;
+        margin-top: 5px;
+    }
+
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
