@@ -13,5 +13,15 @@
 .return {
     width: 240px;
     height: 70px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
+    border: none;
+    background-color: #00838f;
+    color: white;
     margin: 0 auto;
+}
+
+.return:hover {
+    background-color: #006064;
 }

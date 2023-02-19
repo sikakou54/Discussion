@@ -10,9 +10,7 @@ export default function Error({ message }) {
         <Layout title={'Error'}>
             <div className={styles.container}>
                 <div className={styles.message}>{message}</div>
-                <div className={styles.return}>
-                    <Button onClick={() => Router.push('/posts')} text={'投稿へ'} />
-                </div>
+                <button className={styles.return} onClick={() => Router.push('/posts')}  >投稿へ</button>
             </div>
         </Layout>
     );
