@@ -5,8 +5,13 @@
     flex-direction: column;
 }
 
-.main {
-    flex: auto;
+.header,
+.footer {
+    width: 100%;
+}
+
+.header {
+    height: 70px;
 }
 
 .footer {
