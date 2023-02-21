@@ -17,7 +17,7 @@ export default function Home() {
 
       <div className={styles.second}>
         <div className={styles.aboutText}>
-          <div className={styles.about}>What's TalkUp？</div>
+          <div className={styles.about}>What’s TalkUp？</div>
           <div className={styles.detail}>TalkUpは匿名の討論アプリです</div>
           <div className={styles.detail}>TalkUpであなたのTalk力を測ってみませんか？</div>
         </div>
