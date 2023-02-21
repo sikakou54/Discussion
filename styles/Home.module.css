@@ -2,6 +2,7 @@
   height: 100%;
   width: 100%;
   margin: 0 auto;
+  margin-top: 6px;
   border-radius: 6px;
   background-color: white;
 }
@@ -9,10 +10,12 @@
 .top {
   width: 100%;
   background-color: #e0f2f1;
+  text-align: center;
 }
 
 .titleSecssion {
-  padding: 12px;
+  padding-top: 32px;
+  margin-bottom: 12px;
   text-align: center;
 }
 
@@ -66,23 +69,17 @@
 .startButton {
   width: 180px;
   height: 50px;
-  margin-bottom: 30px;
   border-radius: 12px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .5);
   border: none;
   background-color: #00838f;
   color: white;
+  margin: 0 auto;
+  margin-bottom: 32px;
 }
 
 .startButton:hover {
   background-color: #006064;
-}
-
-.buttonFrame {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .screenImange {
