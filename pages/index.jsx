@@ -55,6 +55,7 @@ export default function Home() {
           </div>
           <div className={styles.screenImange}></div>
         </div>
+
       </div>
     </Layout>
   );
