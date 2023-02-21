@@ -10,9 +10,9 @@ export default function Home() {
       <div className={styles.container}>
 
         <div className={styles.top}>
-          <div className={styles.titleSecssion}  >
+          <div className={styles.titleSecssion}>
             <div className={styles.appNameSction} >匿名討論アプリ</div>
-            <div className={styles.appName} >TalkUp</div>
+            <div className={styles.appName}>TalkUp</div>
           </div>
           <button className={styles.startButton} onClick={() => Router.push('/posts')}>はじめる</button>
         </div>
