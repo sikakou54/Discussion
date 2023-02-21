@@ -24,41 +24,44 @@ export default function Home() {
         <button className={styles.startButton} onClick={() => Router.push('/posts')}>はじめる</button>
       </div>
 
-      <div className={styles.bar}>遊び方</div>
+      <div className={styles.third}>
+        <div className={styles.bar}>遊び方</div>
 
-      <div className={styles.section}>
-        <div className={styles.label}>
-          <div>気になるROOMを選びます</div>
+        <div className={styles.section}>
+          <div className={styles.label}>
+            <div>気になるROOMを選びます</div>
+          </div>
+          <div className={styles.screenImange}></div>
         </div>
-        <div className={styles.screenImange}></div>
-      </div>
 
-      <div className={styles.section}>
-        <div className={styles.label}>
-          <div>ROOMに参加します</div>
+        <div className={styles.section}>
+          <div className={styles.label}>
+            <div>ROOMに参加します</div>
+          </div>
+          <div className={styles.screenImange}></div>
         </div>
-        <div className={styles.screenImange}></div>
-      </div>
 
-      <div className={styles.section}>
-        <div className={styles.label}>
-          <div>参加者がそろったら討論開始</div>
+        <div className={styles.section}>
+          <div className={styles.label}>
+            <div>参加者がそろったら討論開始</div>
+          </div>
+          <div className={styles.screenImange}></div>
         </div>
-        <div className={styles.screenImange}></div>
-      </div>
 
-      <div className={styles.section}>
-        <div className={styles.label}>
-          <div>投票タイム</div>
+        <div className={styles.section}>
+          <div className={styles.label}>
+            <div>投票タイム</div>
+          </div>
+          <div className={styles.screenImange}></div>
         </div>
-        <div className={styles.screenImange}></div>
-      </div>
 
-      <div className={styles.section}>
-        <div className={styles.label}>
-          <div>結果発表</div>
+        <div className={styles.section}>
+          <div className={styles.label}>
+            <div>結果発表</div>
+          </div>
+          <div className={styles.screenImange}></div>
         </div>
-        <div className={styles.screenImange}></div>
+
       </div>
 
     </div>
