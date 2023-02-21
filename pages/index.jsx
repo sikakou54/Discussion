@@ -23,14 +23,14 @@ export default function Home() {
 
         <div className={styles.section}>
           <div className={styles.label}>
-            <div>気になるルームを選びます</div>
+            <div>気になるROOMを選びます</div>
           </div>
           <div className={styles.screenImange}></div>
         </div>
 
         <div className={styles.section}>
           <div className={styles.label}>
-            <div>気になるルームに参加します</div>
+            <div>ROOMに参加します</div>
           </div>
           <div className={styles.screenImange}></div>
         </div>
