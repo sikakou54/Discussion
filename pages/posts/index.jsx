@@ -93,13 +93,7 @@ export async function getServerSideProps() {
 
     let lastEvaluatedKey = null;
 
-    const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn' + '/none/none', {
-        /**
-        headers: {
-            Authorization: process.env.jwt
-        } 
-         */
-    });
+    const res = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + 'jpn' + '/none/none');
 
     if (res.result) {
 
