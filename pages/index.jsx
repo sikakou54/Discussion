@@ -11,7 +11,7 @@ export default function Home() {
 
   function onClikc() {
     console.log(name);
-    Router.push('/posts')
+    Router.push('/posts');
   }
 
   return (
@@ -25,7 +25,7 @@ export default function Home() {
         <div className={styles.aboutText}>
           <div className={styles.about}>What’s TalkUp？</div>
           <div className={styles.detail}>TalkUpは匿名の討論アプリです</div>
-          <div className={styles.detail}>TalkUpであなたのTalk力を測ってみませんか？</div>
+          <div className={styles.detail}>TalkUpであなたのTalk力を試してみませんか？</div>
         </div>
         <input className={styles.name} type='text' placeholder='ニックネーム' required onChange={(e) => { setName(e.target.value) }} />
         <button className={styles.startButton} onClick={onClikc}>はじめる</button>

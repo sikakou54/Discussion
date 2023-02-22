@@ -31,7 +31,7 @@
 .about {
   padding: 12px;
   font-size: 24px;
-  font-family: "Courier New";
+  font-family: 'Courier New';
 }
 
 .detail {
@@ -39,6 +39,7 @@
   padding-top: 12px;
   font-size: 16px;
   margin-left: 12px;
+  font-family: 'Meiryo';
 }
 
 .name {
