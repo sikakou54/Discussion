@@ -6,9 +6,14 @@
   background-color: white;
 }
 
-.bgImage,
 .top {
   width: 100%;
+  background-color: #00838f;
+}
+
+.bgImage {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .second {
