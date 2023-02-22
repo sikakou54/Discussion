@@ -3,8 +3,16 @@ import Router from 'next/router';
 import Image from 'next/image';
 import bgimage from '../public/bgimage.png';
 import Footer from '../components/footer';
+import { useState } from 'react';
 
 export default function Home() {
+
+  const [name, setName] = useState('');
+
+  function onClikc() {
+    console.log(name);
+    Router.push('/posts')
+  }
 
   return (
     <div className={styles.container}>
@@ -19,7 +27,8 @@ export default function Home() {
           <div className={styles.detail}>TalkUpは匿名の討論アプリです</div>
           <div className={styles.detail}>TalkUpであなたのTalk力を測ってみませんか？</div>
         </div>
-        <button className={styles.startButton} onClick={() => Router.push('/posts')}>はじめる</button>
+        <input className={styles.name} type='text' placeholder='ニックネーム' required onChange={(e) => { setName(e.target.value) }} />
+        <button className={styles.startButton} onClick={onClikc}>はじめる</button>
       </div>
       <div className={styles.third}>
         <div className={styles.bar}>遊び方</div>
