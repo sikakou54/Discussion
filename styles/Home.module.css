@@ -24,8 +24,17 @@
 }
 
 .third {
-  padding: 12px;
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 24px;
   background-color: #00838f;
+}
+
+.force {
+  padding: 12px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-color: #e0f2f1;
 }
 
 .about {
@@ -88,9 +97,9 @@
   align-items: center;
   border-radius: 6px;
   width: 95%;
-  height: 30px;
+  height: 40px;
   margin: 0 auto;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
   background-color: white;
   border: 1px solid black;
@@ -108,11 +117,10 @@
 }
 
 .label {
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 6px;
-  margin-bottom: 24px;
 }
 
 .appNameSction {

@@ -37,9 +37,7 @@ export default function Home() {
       <div className={styles.third}>
         <div className={styles.bar}>討論に参加する</div>
         <div className={styles.section}>
-          <div className={styles.label}>
-            <div>気になるROOMを選びます</div>
-          </div>
+          <div className={styles.label}>気になるROOMを選びます</div>
           <div className={styles.screenImange}></div>
         </div>
         <div className={styles.section}>
@@ -66,7 +64,27 @@ export default function Home() {
           </div>
           <div className={styles.screenImange}></div>
         </div>
+      </div>
+      <div className={styles.force}>
         <div className={styles.bar}>討論を作る</div>
+        <div className={styles.section}>
+          <div className={styles.label}>
+            <div>空いているROOMを選択</div>
+          </div>
+          <div className={styles.screenImange}></div>
+        </div>
+        <div className={styles.section}>
+          <div className={styles.label}>
+            <div>討論内容を登録します</div>
+          </div>
+          <div className={styles.screenImange}></div>
+        </div>
+        <div className={styles.section}>
+          <div className={styles.label}>
+            <div>ROOMを作成できました</div>
+          </div>
+          <div className={styles.screenImange}></div>
+        </div>
       </div>
       <div className={styles.footer}><Footer /></div>
     </div>
