@@ -24,14 +24,18 @@ export default function Home() {
       <div className={styles.second}>
         <div className={styles.aboutText}>
           <div className={styles.about}>What’s TalkUp？</div>
-          <div className={styles.detail}>TalkUpは匿名の討論アプリです</div>
-          <div className={styles.detail}>TalkUpであなたのTalk力を試してみませんか？</div>
+          <div className={styles.detail}>
+            <p>TalkUpは匿名の討論アプリです</p>
+            <p>TalkUpであなたのTalk力を試してみませんか？</p>
+          </div>
         </div>
-        <input className={styles.name} type='text' placeholder='ニックネーム' required onChange={(e) => { setName(e.target.value) }} />
-        <button className={styles.startButton} onClick={onClikc}>はじめる</button>
+        <div className={styles.form}>
+          <input className={styles.name} type='text' placeholder='ニックネーム' required onChange={(e) => { setName(e.target.value) }} />
+          <button className={styles.startButton} onClick={onClikc}>はじめる</button>
+        </div>
       </div>
       <div className={styles.third}>
-        <div className={styles.bar}>遊び方</div>
+        <div className={styles.bar}>討論に参加する</div>
         <div className={styles.section}>
           <div className={styles.label}>
             <div>気になるROOMを選びます</div>
@@ -62,6 +66,7 @@ export default function Home() {
           </div>
           <div className={styles.screenImange}></div>
         </div>
+        <div className={styles.bar}>討論を作る</div>
       </div>
       <div className={styles.footer}><Footer /></div>
     </div>
