@@ -41,48 +41,34 @@ export default function Home() {
           <div className={styles.screenImange}></div>
         </div>
         <div className={styles.section}>
-          <div className={styles.label}>
-            <div>ROOMに参加します</div>
-          </div>
+          <div className={styles.label}>ROOMに参加します</div>
           <div className={styles.screenImange}></div>
         </div>
         <div className={styles.section}>
-          <div className={styles.label}>
-            <div>参加者がそろったら討論開始</div>
-          </div>
+          <div className={styles.label}>参加者がそろったら討論開始</div>
           <div className={styles.screenImange}></div>
         </div>
         <div className={styles.section}>
-          <div className={styles.label}>
-            <div>投票タイム</div>
-          </div>
+          <div className={styles.label}>投票タイム</div>
           <div className={styles.screenImange}></div>
         </div>
         <div className={styles.section}>
-          <div className={styles.label}>
-            <div>結果発表</div>
-          </div>
+          <div className={styles.label}>結果発表</div>
           <div className={styles.screenImange}></div>
         </div>
       </div>
       <div className={styles.force}>
         <div className={styles.bar}>討論を作る</div>
         <div className={styles.section}>
-          <div className={styles.label}>
-            <div>空いているROOMを選択</div>
-          </div>
+          <div className={styles.label}>空いているROOMを選択</div>
           <div className={styles.screenImange}></div>
         </div>
         <div className={styles.section}>
-          <div className={styles.label}>
-            <div>討論内容を登録します</div>
-          </div>
+          <div className={styles.label}>討論内容を登録します</div>
           <div className={styles.screenImange}></div>
         </div>
         <div className={styles.section}>
-          <div className={styles.label}>
-            <div>ROOMを作成できました</div>
-          </div>
+          <div className={styles.label}>ROOMを作成できました</div>
           <div className={styles.screenImange}></div>
         </div>
       </div>
