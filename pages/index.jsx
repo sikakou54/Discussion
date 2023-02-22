@@ -1,4 +1,4 @@
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
 import Router from 'next/router';
 import Image from 'next/image';
 import bgimage from '../public/bgimage.png';
