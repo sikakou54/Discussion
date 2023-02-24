@@ -6,42 +6,52 @@ import { ThemeProvider } from 'styled-components';
 import Discussion from '../../components/discussion';
 import { apiFetchGet } from '../../api/utils';
 import Layout from '../../components/layout';
+import { useEffect, useState } from 'react';
+import Router from 'next/router';
 
-export default function DiscussionManager({ userId, discussion }) {
+export default function DiscussionManager({ postId, userId }) {
 
-    return (
-        <Layout title={'Discussion'}>
-            < ThemeProvider theme={lightTheme} >
-                <MeetingProvider>
-                    <Discussion discussion={discussion} userId={userId} />
-                </MeetingProvider>
-            </ThemeProvider >
-        </Layout>
-    );
+    const [discussion, setDiscussion] = useState(null);
+
+    useEffect(() => {
+        apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussion/' + 'jpn' + '/' + postId).then((response) => {
+            if (200 == response.statusCode) {
+                setDiscussion(response.data);
+            } else {
+                Router.push({
+                    pathname: 'posts'
+                });
+            }
+        });
+    }, []);
+
+    if (null !== discussion) {
+
+        return (
+            <Layout title={'Discussion'}>
+                < ThemeProvider theme={lightTheme} >
+                    <MeetingProvider>
+                        <Discussion discussion={discussion} userId={userId} />
+                    </MeetingProvider>
+                </ThemeProvider >
+            </Layout>
+        );
+
+    } else {
+        return null;
+    }
+
 }
 
 //SSR
 export async function getServerSideProps(context) {
 
     const { postId } = context.query;
-    const response = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussion/' + 'jpn' + '/' + postId);
 
-    if (200 == response.statusCode) {
-
-        return {
-            props: {
-                userId: 'a18c3444-56c3-43c3-a34b-41263fd64d35',
-                discussion: response.data
-            }
-        };
-
-    } else {
-
-        return {
-            redirect: {
-                permanent: false,
-                destination: '/posts',
-            },
-        };
-    }
+    return {
+        props: {
+            postId,
+            userId: 'a18c3444-56c3-43c3-a34b-41263fd64d35'
+        }
+    };
 }
