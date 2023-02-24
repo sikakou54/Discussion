@@ -22,7 +22,7 @@ export default function Select({ onJoin, attendees, title, detail }) {
                             selectedJoinType === 1 ?
                                 (
                                     <button className={`${styles.selectItem} ${styles.selected}`} disabled={false}>
-                                        <div className={styles.attendeesText} >{attendees.positive.text}</div>
+                                        <div className={styles.attendeesText}>{attendees.positive.text}</div>
                                     </button>
                                 ) : (
                                     <button className={`${styles.selectItem} ${styles.enable}`} onClick={() => setSelectedJoinType(1)} disabled={false}>

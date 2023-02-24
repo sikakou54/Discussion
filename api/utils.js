@@ -1,5 +1,7 @@
 export async function apiFetchPost(url, params) {
 
+    console.log(params);
+
     return new Promise(async (resolve) => {
 
         let res = null;
@@ -12,9 +14,8 @@ export async function apiFetchPost(url, params) {
         while (true) {
 
             try {
-
                 // POSTリクエスト
-                res = await fetch(url, { method: 'POST', ...params });
+                res = await fetch(url, { method: 'POST', body: JSON.stringify(params) });
 
                 // レスポンスが正常の場合
                 if (res.ok) {
@@ -85,7 +86,7 @@ export async function apiFetchGet(url, params) {
             try {
 
                 // GETリクエスト
-                res = await fetch(url, { method: 'GET', ...params });
+                res = await fetch(url, { method: 'GET', body: JSON.stringify(params) });
 
                 // レスポンスが正常の場合
                 if (res.ok) {

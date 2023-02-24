@@ -38,7 +38,11 @@ export default function DiscussionManager({ postId, userId }) {
         );
 
     } else {
-        return null;
+        return (
+            <Layout title={'Discussion'}>
+                <></>
+            </Layout>
+        );
     }
 
 }
@@ -46,12 +50,12 @@ export default function DiscussionManager({ postId, userId }) {
 //SSR
 export async function getServerSideProps(context) {
 
-    const { postId } = context.query;
+    const { postId, userId } = context.query;
 
     return {
         props: {
             postId,
-            userId: 'a18c3444-56c3-43c3-a34b-41263fd64d35'
+            userId
         }
     };
 }

@@ -6,7 +6,7 @@ import styles from '../../styles/Posts.module.css';
 import TimeLineView from '../../components/timeLineView';
 import PostButton from '../../components/postButton';
 
-export default function Posts() {
+export default function Posts({ userId }) {
 
     const [lastEvaluatedKey, setLastEvaluatedKey] = useState(null);
     const [items, setItems] = useState([]);
@@ -18,7 +18,8 @@ export default function Posts() {
         Router.push({
             pathname: 'discussion',
             query: {
-                postId: _postId
+                postId: _postId,
+                userId
             }
         });
     }
@@ -93,4 +94,17 @@ export default function Posts() {
             </div>
         </Layout >
     );
+}
+
+
+//SSR
+export async function getServerSideProps(context) {
+
+    const { userId } = context.query;
+
+    return {
+        props: {
+            userId
+        }
+    };
 }

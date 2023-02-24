@@ -18,3 +18,16 @@
     margin-top: auto;
     height: 32px;
 }
+
+@media screen and (min-width:480px) and (max-width:1024px) {
+    /*　for iPad 　*/
+
+}
+
+@media screen and (min-width:1024px) {
+    /*　for PC　*/
+    .header {
+        height: 100px;
+    }
+    
+}

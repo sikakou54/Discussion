@@ -4,14 +4,35 @@ import Image from 'next/image';
 import bgimage from '../public/bgimage.png';
 import Footer from '../components/footer';
 import { useState } from 'react';
+import { apiFetchGet, apiFetchPost } from '../api/utils';
 
 export default function Home() {
 
   const [name, setName] = useState('');
 
-  function onClikc() {
-    console.log(name);
-    Router.push('/posts');
+  async function onClikc() {
+
+    let response = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getToken')
+    console.log(response);
+    if (200 !== response.statusCode) {
+      return;
+    }
+
+    const userId = response.data;
+    response = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setUser', {
+      userId,
+      userName: name
+    });
+    console.log(response);
+    if (200 === response.statusCode) {
+      Router.push({
+        pathname: 'posts',
+        query: {
+          userId
+        }
+      });
+    }
+
   }
 
   return (
