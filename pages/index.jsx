@@ -13,7 +13,6 @@ export default function Home() {
   async function onClikc() {
 
     let response = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getToken')
-    console.log(response);
     if (200 !== response.statusCode) {
       return;
     }
@@ -23,7 +22,6 @@ export default function Home() {
       userId,
       userName: name
     });
-    console.log(response);
     if (200 === response.statusCode) {
       Router.push({
         pathname: 'posts',

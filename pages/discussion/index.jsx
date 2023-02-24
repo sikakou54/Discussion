@@ -14,6 +14,7 @@ export default function DiscussionManager({ postId, userId }) {
     const [discussion, setDiscussion] = useState(null);
 
     useEffect(() => {
+
         apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussion/' + 'jpn' + '/' + postId).then((response) => {
             if (200 == response.statusCode) {
                 setDiscussion(response.data);
@@ -23,6 +24,7 @@ export default function DiscussionManager({ postId, userId }) {
                 });
             }
         });
+
     }, []);
 
     if (null !== discussion) {
