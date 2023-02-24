@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import styles from '../styles/Standby.module.css';
 import user from '../public/user.svg';
 import Image from "next/image";
+import Attendee from "./attendee";
 
 export default function Standby({ attendees, title }) {
 
@@ -35,13 +36,13 @@ export default function Standby({ attendees, title }) {
             </div>
             {
                 attendees.positive.userId === 'none'
-                    ? <div className={`${styles.attendees} ${styles.disable}`}><div className={styles.attendeesText}>{attendees.positive.text}</div></div>
-                    : <div className={`${styles.attendees} ${styles.enable}`}><div className={styles.attendeesIcon}>< Image src={user} /></div ><div className={styles.attendeesText}>{attendees.positive.text}</div></div>
+                    ? <div className={`${styles.attendees} ${styles.disable}`}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
+                    : <div className={`${styles.attendees} ${styles.enable}`}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
             }
             {
                 attendees.negative.userId === 'none'
-                    ? <div className={`${styles.attendees} ${styles.disable}`}><div className={styles.attendeesText}>{attendees.negative.text}</div></div>
-                    : <div className={`${styles.attendees} ${styles.enable}`}><div className={styles.attendeesIcon}>< Image src={user} /></div><div className={styles.attendeesText}>{attendees.negative.text}</div></div>
+                    ? <div className={`${styles.attendees} ${styles.disable}`}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
+                    : <div className={`${styles.attendees} ${styles.enable}`}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
             }
         </div>
     );

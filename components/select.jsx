@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from '../styles/Select.module.css';
+import Attendee from './attendee';
 
 export default function Select({ onJoin, attendees, title, detail }) {
 
@@ -22,16 +23,16 @@ export default function Select({ onJoin, attendees, title, detail }) {
                             selectedJoinType === 1 ?
                                 (
                                     <button className={`${styles.selectItem} ${styles.selected}`} disabled={false}>
-                                        <div className={styles.attendeesText}>{attendees.positive.text}</div>
+                                        <Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee>
                                     </button>
                                 ) : (
                                     <button className={`${styles.selectItem} ${styles.enable}`} onClick={() => setSelectedJoinType(1)} disabled={false}>
-                                        <div className={styles.attendeesText} >{attendees.positive.text}</div>
+                                        <Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee>
                                     </button>
                                 )
                         ) : (
                             <button className={`${styles.selectItem} ${styles.disable}`} onClick={() => setSelectedJoinType(1)} disabled={true}>
-                                <div className={styles.attendeesText} >{attendees.positive.text}</div>
+                                <Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee>
                             </button>
                         )
                 }
@@ -41,16 +42,16 @@ export default function Select({ onJoin, attendees, title, detail }) {
                             selectedJoinType === 2 ?
                                 (
                                     <button className={`${styles.selectItem} ${styles.selected}`} disabled={false}>
-                                        <div className={styles.attendeesText} >{attendees.negative.text}</div>
+                                        <Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee>
                                     </button>
                                 ) : (
                                     <button className={`${styles.selectItem} ${styles.enable}`} onClick={() => setSelectedJoinType(2)} disabled={false}>
-                                        <div className={styles.attendeesText} >{attendees.negative.text}</div>
+                                        <Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee>
                                     </button>
                                 )
                         ) : (
                             <button className={`${styles.selectItem} ${styles.disable}`} onClick={() => setSelectedJoinType(2)} disabled={true}>
-                                <div className={styles.attendeesText} >{attendees.positive.text}</div>
+                                <Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee>
                             </button>
                         )
                 }
@@ -60,16 +61,16 @@ export default function Select({ onJoin, attendees, title, detail }) {
                             selectedJoinType === 3 ?
                                 (
                                     <button className={`${styles.selectItem} ${styles.selected}`} disabled={false}>
-                                        <div className={styles.attendeesText} >視聴する</div>
+                                        <Attendee userId={'none'}>視聴する</Attendee>
                                     </button>
                                 ) : (
                                     <button className={`${styles.selectItem} ${styles.enable}`} onClick={() => setSelectedJoinType(3)} disabled={false}>
-                                        <div className={styles.attendeesText} >視聴する</div>
+                                        <Attendee userId={'none'}>視聴する</Attendee>
                                     </button>
                                 )
                         ) : (
                             <button className={`${styles.selectItem} ${styles.disable}`} onClick={() => setSelectedJoinType(3)} disabled={true}>
-                                <div className={styles.attendeesText} >視聴する</div>
+                                <Attendee userId={'none'}>視聴する</Attendee>
                             </button>
                         )
                 }

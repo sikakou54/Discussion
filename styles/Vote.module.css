@@ -40,18 +40,13 @@
 
 .selectItem,
 .selected {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: left;
-    margin: 0 auto;
-    margin-bottom: 45px;
-    font-size: 14px;
-    border-radius: 12px;
     width: 90%;
     height: 80px;
-    border: 1px outset black;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
+    margin: 0 auto;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    margin-bottom: 48px;
     background-color: white;
     color: #00838f;
 }

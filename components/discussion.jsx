@@ -178,7 +178,7 @@ const reducer = (state, action) => {
 
 export default function Discussion({ discussion, userId }) {
 
-    console.log(discussion, userId);
+    console.log(discussion);
 
     const socket = useRef(null);
     const [data, dispatch] = useReducer(reducer, {
@@ -501,6 +501,15 @@ export default function Discussion({ discussion, userId }) {
 
     }
 
+    function onReturn() {
+        Router.push({
+            pathname: 'posts',
+            query: {
+                userId
+            }
+        });
+    }
+
     useEffect(() => {
 
         return () => {
@@ -767,7 +776,7 @@ export default function Discussion({ discussion, userId }) {
                 {data.state === process.env.userState.finish ? <Finish attendees={data.attendees} title={discussion.title} /> : null}
                 {data.state === process.env.userState.vote ? <Vote attendees={data.attendees} title={discussion.title} type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
                 {data.state === process.env.userState.votingDone ? <VotingDone /> : null}
-                {data.state === process.env.userState.result ? <Result attendees={data.attendees} title={discussion.title} result={data.result} /> : null}
+                {data.state === process.env.userState.result ? <Result onReturn={onReturn} attendees={data.attendees} title={discussion.title} result={data.result} /> : null}
             </div>
         );
 

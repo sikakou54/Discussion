@@ -20,7 +20,7 @@
     white-space: pre-wrap;
     width: 95%;
     height: 120px;
-    font-size: 12px;
+    font-size: 18px;
     border: 0.5px solid black;
     margin: 0 auto;
     resize: none;
@@ -36,18 +36,13 @@
 }
 
 .selectItem {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 90%;
     height: 80px;
     margin: 0 auto;
-    font-size: 12px;
     margin-bottom: 32px;
-    border-radius: 12px;
-    text-align: left;
+    padding: 0;
     border: none;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
+    border-radius: 12px;
 }
 
 .attendeesText {
@@ -71,7 +66,6 @@
 }
 
 .enable {
-    border: 1px outset black;
     background-color: white;
     color: #00838f;
 }

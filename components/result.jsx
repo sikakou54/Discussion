@@ -1,22 +1,8 @@
-import { useEffect } from "react";
 import styles from '../styles/Result.module.css';
 import Router from 'next/router';
+import Attendee from "./attendee";
 
-export default function Result({ attendees, title, result }) {
-
-    useEffect(() => {
-
-        window.onbeforeunload = (event) => {
-            event.preventDefault();
-            event.returnValue = 'このページを離れますか？'; // Google Chrome
-            return 'このページを離れますか？'; // Google Chrome以外
-        }
-
-        return () => {
-            window.onbeforeunload = null;
-        };
-
-    }, []);
+export default function Result({ onReturn, attendees, title, result }) {
 
     return (
         <div className={styles.container}>
@@ -37,7 +23,7 @@ export default function Result({ attendees, title, result }) {
                         ? <div className={styles.draw}>DRAW</div>
                         : null
                 }
-                <div className={styles.attendeesText} >{attendees.positive.text}</div>
+                <Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee>
             </div>
             <div className={styles.attendees}>
                 {
@@ -55,9 +41,9 @@ export default function Result({ attendees, title, result }) {
                         ? <div className={styles.draw}>DRAW</div>
                         : null
                 }
-                <div className={styles.attendeesText} >{attendees.negative.text}</div>
+                <Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee>
             </div>
-            <button className={styles.return} onClick={() => Router.push('/posts')}>戻る</button>
+            <button className={styles.return} onClick={onReturn}>戻る</button>
         </div >
     );
 }
