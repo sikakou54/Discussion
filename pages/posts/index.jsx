@@ -4,7 +4,6 @@ import Layout from '../../components/layout';
 import { useEffect, useRef, useState } from 'react';
 import styles from '../../styles/Posts.module.css';
 import TimeLineView from '../../components/timeLineView';
-import useSWR from 'swr';
 import Loding from '../../components/loading';
 
 export default function Posts({ userId }) {
@@ -16,7 +15,6 @@ export default function Posts({ userId }) {
     const [items, setItems] = useState([]);
     const bodyElement = useRef(null);
     const windowElement = useRef(null);
-    const [scrollBottomPosition, setScrollBottomPosition] = useState(undefined);
 
     function onClick(_postId) {
         Router.push({
@@ -29,7 +27,6 @@ export default function Posts({ userId }) {
     }
 
     function scroollEventListener() {
-        console.log('scroollEventListener');
         setScrollBottomPosition(bodyElement.current.offsetHeight - (windowElement.current.scrollY + windowElement.current.innerHeight));
     }
 
