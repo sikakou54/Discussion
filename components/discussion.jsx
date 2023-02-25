@@ -18,6 +18,7 @@ import {
 } from 'amazon-chime-sdk-component-library-react';
 import { MeetingSessionConfiguration } from 'amazon-chime-sdk-js';
 import styles from '../styles/Discussion.module.css';
+import Loding from './loading';
 
 const reducer = (state, action) => {
 
@@ -786,6 +787,9 @@ export default function Discussion({ discussion, userId }) {
         );
 
     } else {
-        return null;
+
+        return <div className={styles.loading}>
+            <Loding />
+        </div>
     }
 }
