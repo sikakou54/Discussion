@@ -16,6 +16,8 @@ export default function Attendee({ userId, children }) {
                     setUserName(response.data.name);
                 }
             });
+        } else {
+            setUserName('');
         }
 
     }, [userId]);

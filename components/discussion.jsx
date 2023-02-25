@@ -179,8 +179,6 @@ const reducer = (state, action) => {
 
 export default function Discussion({ discussion, userId }) {
 
-    console.log(discussion);
-
     const socket = useRef(null);
     const [data, dispatch] = useReducer(reducer, {
         state: undefined,

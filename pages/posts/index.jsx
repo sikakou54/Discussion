@@ -57,6 +57,10 @@ export default function Posts({ userId }) {
                 0 < items.length ?
                     (
                         <div className={styles.container}>
+                            <div>
+                                <button>＜</button>
+                                <button>＞</button>
+                            </div>
                             <div className={styles.timeLineView}><TimeLineView userId={userId} items={items} onClick={onClick} /></div>
                         </div>
                     ) : (
