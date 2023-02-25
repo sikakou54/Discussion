@@ -86,7 +86,11 @@ export default function Posts({ userId }) {
             });
 
         const tId = setInterval(() => {
-            setTimerCount((timerCount) => timerCount + 1);
+            if (100 >= timerCount) {
+                setTimerCount((timerCount) => timerCount + 1);
+            } else {
+                setTimerCount(0);
+            }
         }, 1000);
         setTimerId(tId);
 
