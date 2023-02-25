@@ -19,19 +19,22 @@
 }
 
 .pageControl {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
     position: fixed;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
+    margin-bottom: 24px;
 }
 
 .preview,
 .next {
     width: 80px;
     height: 40px;
-    margin: 12px;
     border: none;
     background-color: #00838f;
     color: white;
@@ -110,10 +113,13 @@
         margin: 30px;
     }
 
+    .pageControl {
+        width: 300px;
+    }
+
     .preview,
     .next {
         width: 100px;
         height: 50px;
-        margin: 24px;
     }
 }
