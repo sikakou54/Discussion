@@ -40,7 +40,6 @@ export default function Posts({ userId }) {
     }
 
     function onClickPreview() {
-
         if (0 <= lastEvaluatedKeys.length - 3) {
             apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 3].country + '/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 3].postId)
                 .then((response) => {
@@ -50,11 +49,9 @@ export default function Posts({ userId }) {
             newItems.pop();
             setLastEvaluatedKeys(newItems);
         }
-
     }
 
     useEffect(() => {
-        console.log('timerCount', timerCount);
         if (0 <= lastEvaluatedKeys.length - 2) {
             apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 2].country + '/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 2].postId)
                 .then((response) => {
@@ -66,13 +63,8 @@ export default function Posts({ userId }) {
     }, [timerCount]);
 
     useEffect(() => {
-        console.log('lastEvaluatedKey', lastEvaluatedKey);
         setLastEvaluatedKeys([...lastEvaluatedKeys, lastEvaluatedKey]);
     }, [lastEvaluatedKey]);
-
-    useEffect(() => {
-        console.log('lastEvaluatedKeys', lastEvaluatedKeys);
-    }, [lastEvaluatedKeys]);
 
     useEffect(() => {
 
