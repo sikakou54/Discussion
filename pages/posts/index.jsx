@@ -13,7 +13,6 @@ export default function Posts({ userId }) {
         postId: 'none'
     });
     const [lastEvaluatedKeys, setLastEvaluatedKeys] = useState([]);
-
     const [items, setItems] = useState([]);
     const [timerId, setTimerId] = useState(undefined);
     const [timerCount, setTimerCount] = useState(0);
@@ -86,11 +85,13 @@ export default function Posts({ userId }) {
             });
 
         const tId = setInterval(() => {
-            if (100 >= timerCount) {
-                setTimerCount((timerCount) => timerCount + 1);
-            } else {
-                setTimerCount(0);
-            }
+            setTimerCount((timerCount) => {
+                if (100 >= timerCount) {
+                    return timerCount + 1
+                } else {
+                    return 0
+                }
+            });
         }, 1000);
         setTimerId(tId);
 
