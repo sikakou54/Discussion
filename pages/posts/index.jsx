@@ -55,6 +55,18 @@ export default function Posts({ userId }) {
     }
 
     useEffect(() => {
+        console.log('timerCount', timerCount);
+        if (0 <= lastEvaluatedKeys.length - 2) {
+            apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 2].country + '/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 2].postId)
+                .then((response) => {
+                    if (0 < response.data.Count) {
+                        setItems(response.data.Items);
+                    }
+                });
+        }
+    }, [timerCount]);
+
+    useEffect(() => {
         console.log('lastEvaluatedKey', lastEvaluatedKey);
         setLastEvaluatedKeys([...lastEvaluatedKeys, lastEvaluatedKey]);
     }, [lastEvaluatedKey]);
@@ -73,8 +85,13 @@ export default function Posts({ userId }) {
                 }
             });
 
-        return () => {
+        const tId = setInterval(() => {
+            setTimerCount((timerCount) => timerCount + 1);
+        }, 1000);
+        setTimerId(tId);
 
+        return () => {
+            clearInterval(timerId);
         }
 
     }, []);
