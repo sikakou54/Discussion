@@ -5,7 +5,7 @@
     position: relative;
 }
 
-.loading{
+.loading {
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -16,6 +16,30 @@
 .timeLineView {
     width: 100%;
     height: 100%;
+}
+
+.pageControl {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+}
+
+.preview,
+.next {
+    width: 80px;
+    height: 40px;
+    margin: 12px;
+    border: none;
+    background-color: #00838f;
+    color: white;
+}
+
+.preview:hover,
+.next:hover {
+    background-color: #006064;
 }
 
 @media screen and (max-width:479px) {
@@ -83,5 +107,12 @@
         right: 0;
         bottom: 0;
         margin: 30px;
+    }
+
+    .preview,
+    .next {
+        width: 100px;
+        height: 50px;
+        margin: 24px;
     }
 }

@@ -12,9 +12,11 @@ export default function Posts({ userId }) {
         country: 'jpn',
         postId: 'none'
     });
+    const [lastEvaluatedKeys, setLastEvaluatedKeys] = useState([]);
+
     const [items, setItems] = useState([]);
-    const bodyElement = useRef(null);
-    const windowElement = useRef(null);
+    const [timerId, setTimerId] = useState(undefined);
+    const [timerCount, setTimerCount] = useState(0);
 
     function onClick(_postId) {
         Router.push({
@@ -26,27 +28,53 @@ export default function Posts({ userId }) {
         });
     }
 
-    function scroollEventListener() {
-        setScrollBottomPosition(bodyElement.current.offsetHeight - (windowElement.current.scrollY + windowElement.current.innerHeight));
+    function onClickNext() {
+        apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 1].country + '/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 1].postId)
+            .then((response) => {
+                if (0 < response.data.Count) {
+                    setItems(response.data.Items);
+                    if (-1 !== Object.keys(response.data).indexOf('LastEvaluatedKey')) {
+                        setLastEvaluatedKey(response.data.LastEvaluatedKey);
+                    }
+                }
+            });
+    }
+
+    function onClickPreview() {
+
+        if (0 <= lastEvaluatedKeys.length - 3) {
+            apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 3].country + '/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 3].postId)
+                .then((response) => {
+                    setItems(response.data.Items);
+                });
+            const newItems = [...lastEvaluatedKeys];
+            newItems.pop();
+            setLastEvaluatedKeys(newItems);
+        }
+
     }
 
     useEffect(() => {
-        apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + lastEvaluatedKey.country + '/' + lastEvaluatedKey.postId).then((response) => {
-            setItems((items) => [...items, ...(response.data.Items)]);
-            if (-1 !== Object.keys(response.data).indexOf('LastEvaluatedKey')) {
-                setLastEvaluatedKey(response.data.LastEvaluatedKey);
-            }
-        });
+        console.log('lastEvaluatedKey', lastEvaluatedKey);
+        setLastEvaluatedKeys([...lastEvaluatedKeys, lastEvaluatedKey]);
     }, [lastEvaluatedKey]);
 
     useEffect(() => {
+        console.log('lastEvaluatedKeys', lastEvaluatedKeys);
+    }, [lastEvaluatedKeys]);
 
-        bodyElement.current = document.body;
-        windowElement.current = window;
-        windowElement.current.onscroll = scroollEventListener;
+    useEffect(() => {
+
+        apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + lastEvaluatedKey.country + '/' + lastEvaluatedKey.postId)
+            .then((response) => {
+                setItems(response.data.Items);
+                if (-1 !== Object.keys(response.data).indexOf('LastEvaluatedKey')) {
+                    setLastEvaluatedKey(response.data.LastEvaluatedKey);
+                }
+            });
 
         return () => {
-            windowElement.current.onscroll = null;
+
         }
 
     }, []);
@@ -57,9 +85,9 @@ export default function Posts({ userId }) {
                 0 < items.length ?
                     (
                         <div className={styles.container}>
-                            <div>
-                                <button>＜</button>
-                                <button>＞</button>
+                            <div className={styles.pageControl}>
+                                <button className={styles.preview} onClick={onClickPreview}>＜</button>
+                                <button className={styles.next} onClick={onClickNext}>＞</button>
                             </div>
                             <div className={styles.timeLineView}><TimeLineView userId={userId} items={items} onClick={onClick} /></div>
                         </div>

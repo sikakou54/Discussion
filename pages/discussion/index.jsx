@@ -8,6 +8,8 @@ import { apiFetchGet } from '../../api/utils';
 import Layout from '../../components/layout';
 import { useEffect, useState } from 'react';
 import Router from 'next/router';
+import Loding from '../../components/loading';
+import styles from '../../styles/Discussion.module.css';
 
 export default function DiscussionManager({ postId, userId }) {
 
@@ -42,7 +44,9 @@ export default function DiscussionManager({ postId, userId }) {
     } else {
         return (
             <Layout title={'Discussion'}>
-                <></>
+                <div className={styles.loading}>
+                    <Loding />
+                </div>
             </Layout>
         );
     }
