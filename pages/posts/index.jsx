@@ -89,8 +89,8 @@ export default function Posts({ userId }) {
     return (
         <Layout title={'Posts'} >
             <div className={styles.container}>
-                <div className={styles.timeLineView}><TimeLineView items={items} onClick={onClick} /></div>
-                <div className={styles.post}><PostButton /></div>
+                <div className={styles.timeLineView}><TimeLineView userId={userId} items={items} onClick={onClick} /></div>
+                {/*<div className={styles.post}><PostButton /></div>*/}
             </div>
         </Layout >
     );

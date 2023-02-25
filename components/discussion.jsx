@@ -676,7 +676,8 @@ export default function Discussion({ discussion, userId }) {
                     Router.push({
                         pathname: 'error',
                         query: {
-                            code: discussionErrorCode.discussionStartFailed
+                            code: discussionErrorCode.discussionStartFailed,
+                            userId
                         }
                     });
 
@@ -685,7 +686,8 @@ export default function Discussion({ discussion, userId }) {
                     Router.push({
                         pathname: 'error',
                         query: {
-                            code: discussionErrorCode.discussionFailed
+                            code: discussionErrorCode.discussionFailed,
+                            userId
                         }
                     });
 
@@ -694,7 +696,8 @@ export default function Discussion({ discussion, userId }) {
                     Router.push({
                         pathname: 'error',
                         query: {
-                            code: discussionErrorCode.discussionJoinFailed
+                            code: discussionErrorCode.discussionJoinFailed,
+                            userId
                         }
                     });
 
@@ -703,7 +706,8 @@ export default function Discussion({ discussion, userId }) {
                     Router.push({
                         pathname: 'error',
                         query: {
-                            code: discussionErrorCode.websocketDisconnect
+                            code: discussionErrorCode.websocketDisconnect,
+                            userId
                         }
                     });
 
@@ -718,7 +722,8 @@ export default function Discussion({ discussion, userId }) {
                     Router.push({
                         pathname: 'error',
                         query: {
-                            code: discussionErrorCode.websocketDisconnect
+                            code: discussionErrorCode.websocketDisconnect,
+                            userId
                         }
                     });
                 }

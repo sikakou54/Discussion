@@ -74,6 +74,10 @@
 
     /*　for iPad 　*/
 
+    .attendees {
+        width: 60%;
+    }
+
     .titleHeader {
         margin-bottom: 180px;
     }
@@ -87,6 +91,10 @@
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
+
+    .attendees {
+        width: 500px;
+    }
 
     .titleHeader {
         margin-bottom: 180px;

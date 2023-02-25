@@ -2,10 +2,9 @@ import { useState } from 'react';
 import Router from 'next/router';
 import { apiFetchPost } from '../../api/utils';
 import Layout from '../../components/layout';
-import Button from '../../components/button';
 import style from '../../styles/Post.module.css';
 
-export default function Post({ userId }) {
+export default function Post({ postId, userId }) {
 
     const [title, setTitle] = useState('');
     const [detail, setDetail] = useState('');
@@ -14,21 +13,30 @@ export default function Post({ userId }) {
 
     async function onPost() {
         apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setDiscussion', {
-            body: JSON.stringify({
-                country: 'jpn',
-                userId,
-                title,
-                detail,
-                positiveText,
-                negativeText
-            })
+            country: 'jpn',
+            postId,
+            userId,
+            title,
+            detail,
+            positiveText,
+            negativeText
         }).then(() => {
-            Router.push('/posts');
+            Router.push({
+                pathname: 'posts',
+                query: {
+                    userId
+                }
+            });
         });
     }
 
     function onCancel() {
-        Router.push('/posts');
+        Router.push({
+            pathname: 'posts',
+            query: {
+                userId
+            }
+        });
     }
 
     return (
@@ -66,8 +74,8 @@ export default function Post({ userId }) {
                             (positiveText.length > 0 && positiveText.length <= 20) &&
                             (negativeText.length > 0 && negativeText.length <= 20) &&
                             (detail.length > 0 && detail.length <= 140)
-                            ? <button className={`${style.push} ${style.enable}`} disable={false} onClick={onPost} >投稿する</button>
-                            : <button className={`${style.push} ${style.disable}`} disable={true} onClick={onPost} >投稿する</button>
+                            ? <button className={`${style.push} ${style.enable}`} disabled={false} onClick={onPost} >投稿する</button>
+                            : <button className={`${style.push} ${style.disable}`} disabled={true} onClick={onPost} >投稿する</button>
                     }
                 </div>
             </div>
@@ -76,12 +84,14 @@ export default function Post({ userId }) {
 }
 
 //SSR
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+
+    const { postId, userId } = context.query;
 
     return {
         props: {
-            userId: 'a18c3444-56c3-43c3-a34b-41263fd64d35'
+            postId,
+            userId
         }
-    }
-
+    };
 }

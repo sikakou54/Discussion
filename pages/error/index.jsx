@@ -3,13 +3,22 @@ import Layout from '../../components/layout';
 import { discussionErrorCode, discussionErrorMsg } from '../../define/define';
 import styles from '../../styles/Error.module.css';
 
-export default function Error({ message }) {
+export default function Error({ message, userId }) {
+
+    function onClick() {
+        Router.push({
+            pathname: 'posts',
+            query: {
+                userId
+            }
+        });
+    }
 
     return (
         <Layout title={'Error'}>
             <div className={styles.container}>
                 <div className={styles.message}>{message}</div>
-                <button className={styles.return} onClick={() => Router.push('/posts')}  >投稿へ</button>
+                <button className={styles.return} onClick={onClick}  >投稿へ</button>
             </div>
         </Layout>
     );
@@ -19,8 +28,7 @@ export default function Error({ message }) {
 export async function getServerSideProps(context) {
 
     let message = 'システムエラー';
-    const { code } = context.query;
-    const userId = 'a18c3444-56c3-43c3-a34b-41263fd64d35';
+    const { code, userId } = context.query;
 
     switch (Number(code)) {
 

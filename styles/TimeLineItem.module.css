@@ -2,10 +2,13 @@
 
 .container {
     width: 100%;
+    height: 100%;
     display: flex;
     border-radius: 6px;
     background-color: white;
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
+    margin-top: 5px;
+    font-size: 1rem;
 }
 
 .container:hover {
@@ -24,6 +27,11 @@
     margin: 0 auto;
     margin-top: 9px;
     margin-bottom: 40px;
+}
+
+.roomNum {
+    color: gray;
+    font-size: 12px;
 }
 
 .contents {
@@ -86,23 +94,25 @@
 
 .contensFooter {
     text-align: right;
-    margin-right: 5px;
-    margin-bottom: 5px;
 }
 
 .date {
-    margin-right: 5px;
+    margin-right: 10px;
     font-size: 10px;
     color: gray;
+}
+
+.makeRoomText {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
 
     /*　for iPad 　*/
-
-    .container {
-        width: 100%;
-    }
 
     .discussionLabelItems {
         width: 300px;
@@ -112,12 +122,26 @@
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
-
-    .container {
-        width: 100%;
+    .discussionLabelItems {
+        width: 80%;
+        margin-bottom: 18px;
     }
 
-    .discussionLabelItems {
-        width: 350px;
+    .progress {
+        width: 90px;
+        font-size: 1.1rem;
+    }
+
+    .roomNum {
+        font-size: 1rem;
+    }
+
+    .title {
+        font-size: 1.1rem;
+    }
+
+    .attendessContainer,
+    .watcherCount {
+        font-size: 1rem;
     }
 }

@@ -1,9 +1,17 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 @media screen and (max-width:480px) {
 
     /*　for iphone 　*/
 
     .timeLineItem {
-        margin: 0 auto;
+        width: 100%;
+        min-height: 150px;
         margin-top: 5px;
     }
 
@@ -15,6 +23,7 @@
 
     .timeLineItem {
         width: 80%;
+        min-height: 150px;
         margin: 10px;
     }
 }
@@ -24,7 +33,9 @@
 
     /*　for PC　*/
     .timeLineItem {
-        width: 550px;
+        width: 700px;
+        min-height: 200px;
         margin: 10px;
+        font-size: 18px;
     }
 }
