@@ -7,9 +7,11 @@ export default function Error({ message, userId }) {
 
     function onClick() {
         Router.push({
-            pathname: 'posts',
+            pathname: '/posts',
             query: {
-                userId
+                userId,
+                country: 'jpn',
+                postId: 'none'
             }
         });
     }

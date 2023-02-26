@@ -502,9 +502,11 @@ export default function Discussion({ discussion, userId }) {
 
     function onReturn() {
         Router.push({
-            pathname: 'posts',
+            pathname: '/posts',
             query: {
-                userId
+                userId,
+                country: 'jpn',
+                postId: 'none'
             }
         });
     }
