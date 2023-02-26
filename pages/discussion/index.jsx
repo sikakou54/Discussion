@@ -16,8 +16,6 @@ export default function DiscussionManager() {
     const [discussion, setDiscussion] = useState(null);
     const router = useRouter()
     const { postId, userId } = router.query
-    const [timerId, setTimerId] = useState(0);
-    const [timerCount, setTimerCount] = useState(0);
 
     useEffect(() => {
 
