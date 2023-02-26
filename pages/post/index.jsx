@@ -36,7 +36,13 @@ export default function Post() {
             positiveText,
             negativeText
         }).then(() => {
-            backPosts();
+            Router.push({
+                pathname: '/discussion',
+                query: {
+                    postId,
+                    userId
+                }
+            });
         });
     }
 

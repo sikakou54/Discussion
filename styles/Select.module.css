@@ -94,18 +94,18 @@
     /*　for iPad 　*/
 
     .title {
-        font-size: 18px;
+        font-size: 32px;
     }
 
     .detail {
         width: 700px;
         height: 190px;
-        font-size: 16px;
+        font-size: 24px;
         margin-bottom: 64px;
     }
 
     .selectItem {
-        width: 450px;
+        width: 550px;
         height: 80px;
         font-size: 14px;
         margin-bottom: 32px;
@@ -121,14 +121,14 @@
     /*　for PC　*/
 
     .title {
-        font-size: 18px;
+        font-size: 32px;
     }
 
     .detail {
         width: 700px;
         height: 190px;
         margin-bottom: 64px;
-        font-size: 16px;
+        font-size: 24px;
     }
 
     .selectItem {
@@ -139,7 +139,7 @@
     }
 
     .selectItems {
-        margin-bottom: 60px;
+        margin-bottom: 18px;
     }
 
 }
