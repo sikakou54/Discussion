@@ -17,7 +17,7 @@ export default function Post() {
         const item = sessionStorage.getItem('key');
         const key = JSON.parse(item);
         Router.push({
-            pathname: '/posts/[country]/[postId]',
+            pathname: '/posts',
             query: {
                 userId,
                 country: key.country,
