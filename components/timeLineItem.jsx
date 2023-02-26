@@ -59,6 +59,7 @@ export default function TimeLineItem({ pub, index, country, postId, progress, ti
     } else {
         return (
             <div key={index} className={styles.container} onClick={() => onMakeRoom(country, postId)}>
+                <div className={styles.roomNum}>room{postId}</div>
                 <div className={styles.makeRoomText}>
                     ルームを作る
                 </div>
