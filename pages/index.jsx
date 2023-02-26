@@ -24,9 +24,11 @@ export default function Home() {
     });
     if (200 === response.statusCode) {
       Router.push({
-        pathname: 'posts',
+        pathname: '/posts',
         query: {
-          userId
+          userId,
+          country: 'jpn',
+          postId: 'none'
         }
       });
     }

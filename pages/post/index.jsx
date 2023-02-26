@@ -1,19 +1,34 @@
 import { useState } from 'react';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import { apiFetchPost } from '../../api/utils';
 import Layout from '../../components/layout';
 import style from '../../styles/Post.module.css';
 
-export default function Post({ postId, userId }) {
+export default function Post() {
 
+    const router = useRouter();
+    const { userId, country, postId } = router.query;
     const [title, setTitle] = useState('');
     const [detail, setDetail] = useState('');
     const [positiveText, setPositiveText] = useState('');
     const [negativeText, setNegativeText] = useState('');
 
+    function backPosts() {
+        const item = sessionStorage.getItem('key');
+        const key = JSON.parse(item);
+        Router.push({
+            pathname: '/posts/[country]/[postId]',
+            query: {
+                userId,
+                country: key.country,
+                postId: key.postId
+            }
+        });
+    }
+
     async function onPost() {
         apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setDiscussion', {
-            country: 'jpn',
+            country,
             postId,
             userId,
             title,
@@ -21,22 +36,12 @@ export default function Post({ postId, userId }) {
             positiveText,
             negativeText
         }).then(() => {
-            Router.push({
-                pathname: 'posts',
-                query: {
-                    userId
-                }
-            });
+            backPosts();
         });
     }
 
     function onCancel() {
-        Router.push({
-            pathname: 'posts',
-            query: {
-                userId
-            }
-        });
+        backPosts();
     }
 
     return (
@@ -81,17 +86,4 @@ export default function Post({ postId, userId }) {
             </div>
         </Layout>
     );
-}
-
-//SSR
-export async function getServerSideProps(context) {
-
-    const { postId, userId } = context.query;
-
-    return {
-        props: {
-            postId,
-            userId
-        }
-    };
 }

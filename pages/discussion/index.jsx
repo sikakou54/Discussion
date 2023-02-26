@@ -7,27 +7,29 @@ import Discussion from '../../components/discussion';
 import { apiFetchGet } from '../../api/utils';
 import Layout from '../../components/layout';
 import { useEffect, useState } from 'react';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import Loding from '../../components/loading';
 import styles from '../../styles/Discussion.module.css';
 
-export default function DiscussionManager({ postId, userId }) {
+export default function DiscussionManager() {
 
     const [discussion, setDiscussion] = useState(null);
+    const router = useRouter()
+    const { postId, userId } = router.query
+    const [timerId, setTimerId] = useState(0);
+    const [timerCount, setTimerCount] = useState(0);
 
     useEffect(() => {
 
-        apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussion/' + 'jpn' + '/' + postId).then((response) => {
-            if (200 == response.statusCode) {
-                setDiscussion(response.data);
-            } else {
-                Router.push({
-                    pathname: 'posts'
-                });
-            }
-        });
+        if (undefined !== postId) {
+            apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussion/' + 'jpn' + '/' + postId).then((response) => {
+                if (200 == response.statusCode) {
+                    setDiscussion(response.data);
+                }
+            });
+        }
 
-    }, []);
+    }, [postId]);
 
     if (null !== discussion) {
 
@@ -51,17 +53,4 @@ export default function DiscussionManager({ postId, userId }) {
         );
     }
 
-}
-
-//SSR
-export async function getServerSideProps(context) {
-
-    const { postId, userId } = context.query;
-
-    return {
-        props: {
-            postId,
-            userId
-        }
-    };
 }

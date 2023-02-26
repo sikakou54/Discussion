@@ -5,7 +5,7 @@ import styles from '../styles/TimeLineItem.module.css';
 import Image from "next/image";
 import user from '../public/user.svg';
 
-export default function TimeLineItem({ pub, index, postId, progress, title, positive, negative, watchers, createAt, onClick, onMakeRoom }) {
+export default function TimeLineItem({ pub, index, country, postId, progress, title, positive, negative, watchers, createAt, onClick, onMakeRoom }) {
 
     if (pub) {
         return (
@@ -14,7 +14,7 @@ export default function TimeLineItem({ pub, index, postId, progress, title, posi
                     <div className={styles.progress} >
                         <Progress progress={progress} />
                     </div>
-                    <div className={styles.roomNum} >ROOM{index}</div>
+                    <div className={styles.roomNum} >ROOM{postId}</div>
                 </div>
                 <div className={styles.contents}>
                     <div className={styles.title}>{title}</div>
@@ -58,7 +58,7 @@ export default function TimeLineItem({ pub, index, postId, progress, title, posi
         );
     } else {
         return (
-            <div key={index} className={styles.container} onClick={() => onMakeRoom(index)}>
+            <div key={index} className={styles.container} onClick={() => onMakeRoom(country, postId)}>
                 <div className={styles.makeRoomText}>
                     ルームを作る
                 </div>

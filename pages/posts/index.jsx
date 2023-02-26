@@ -1,4 +1,4 @@
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import { apiFetchGet } from '../../api/utils';
 import Layout from '../../components/layout';
 import { useEffect, useRef, useState } from 'react';
@@ -6,20 +6,17 @@ import styles from '../../styles/Posts.module.css';
 import TimeLineView from '../../components/timeLineView';
 import Loding from '../../components/loading';
 
-export default function Posts({ userId }) {
+export default function Posts() {
 
-    const [lastEvaluatedKey, setLastEvaluatedKey] = useState({
-        country: 'jpn',
-        postId: 'none'
-    });
-    const [lastEvaluatedKeys, setLastEvaluatedKeys] = useState([]);
+    const router = useRouter();
+    const { userId, country, postId } = router.query;
     const [items, setItems] = useState([]);
     const [timerId, setTimerId] = useState(undefined);
     const [timerCount, setTimerCount] = useState(0);
 
     function onClick(_postId) {
         Router.push({
-            pathname: 'discussion',
+            pathname: '/discussion',
             query: {
                 postId: _postId,
                 userId
@@ -27,65 +24,32 @@ export default function Posts({ userId }) {
         });
     }
 
-    function onClickNext() {
-        apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 1].country + '/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 1].postId)
-            .then((response) => {
-                if (0 < response.data.Count) {
-                    setItems(response.data.Items);
-                    if (-1 !== Object.keys(response.data).indexOf('LastEvaluatedKey')) {
-                        setLastEvaluatedKey(response.data.LastEvaluatedKey);
-                    }
-                }
-            });
-    }
+    async function getItems(_country, _postId, _items) {
 
-    function onClickPreview() {
-        if (0 <= lastEvaluatedKeys.length - 3) {
-            apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 3].country + '/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 3].postId)
-                .then((response) => {
-                    setItems(response.data.Items);
-                });
-            const newItems = [...lastEvaluatedKeys];
-            newItems.pop();
-            setLastEvaluatedKeys(newItems);
+        if (undefined === _country && undefined === _postId) {
+            return _items;
+        }
+        const response = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + _country + '/' + _postId);
+        if (response.result) {
+            if (-1 !== Object.keys(response.data).indexOf('LastEvaluatedKey')) {
+                return getItems(response.data.LastEvaluatedKey.country, response.data.LastEvaluatedKey.postId, [..._items, ...(response.data.Items)]);
+            } else {
+                return getItems(undefined, undefined, [..._items, ...(response.data.Items)]);
+            }
+        } else {
+            return getItems(undefined, undefined, []);
         }
     }
 
-    useEffect(() => {
-        if (0 <= lastEvaluatedKeys.length - 2) {
-            apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 2].country + '/' + lastEvaluatedKeys[lastEvaluatedKeys.length - 2].postId)
-                .then((response) => {
-                    if (0 < response.data.Count) {
-                        setItems(response.data.Items);
-                    }
-                });
+    useEffect(async () => {
+        let items = [];
+        const newItems = await getItems(country, postId, items);
+        if (0 !== newItems.length) {
+            setItems(newItems);
         }
     }, [timerCount]);
 
-    useEffect(() => {
-        setLastEvaluatedKeys([...lastEvaluatedKeys, lastEvaluatedKey]);
-    }, [lastEvaluatedKey]);
-
-    useEffect(() => {
-
-        apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + lastEvaluatedKey.country + '/' + lastEvaluatedKey.postId)
-            .then((response) => {
-                setItems(response.data.Items);
-                if (-1 !== Object.keys(response.data).indexOf('LastEvaluatedKey')) {
-                    setLastEvaluatedKey(response.data.LastEvaluatedKey);
-                }
-            });
-
-        const tId = setInterval(() => {
-            setTimerCount((timerCount) => {
-                if (100 >= timerCount) {
-                    return timerCount + 1
-                } else {
-                    return 0
-                }
-            });
-        }, 1000);
-        setTimerId(tId);
+    useEffect(async () => {
 
         return () => {
             clearInterval(timerId);
@@ -93,17 +57,30 @@ export default function Posts({ userId }) {
 
     }, []);
 
+    useEffect(async () => {
+
+        if (undefined !== country && undefined !== postId) {
+            const tId = setInterval(() => {
+                setTimerCount((timerCount) => {
+                    if (100 >= timerCount) {
+                        return timerCount + 1
+                    } else {
+                        return 0
+                    }
+                });
+            }, 1000);
+            setTimerId(tId);
+        }
+
+    }, [country, postId]);
+
     return (
         <Layout title={'Posts'} >
             {
-                0 < items.length ?
+                undefined !== items && 0 < items.length ?
                     (
                         <div className={styles.container}>
-                            <div className={styles.pageControl}>
-                                <button className={styles.preview} onClick={onClickPreview}>＜</button>
-                                <button className={styles.next} onClick={onClickNext}>＞</button>
-                            </div>
-                            <div className={styles.timeLineView}><TimeLineView userId={userId} items={items} onClick={onClick} /></div>
+                            <div className={styles.timeLineView}><TimeLineView country={country} postId={postId} userId={userId} items={items} onClick={onClick} /></div>
                         </div>
                     ) : (
                         <div className={styles.loading}>
@@ -113,17 +90,4 @@ export default function Posts({ userId }) {
             }
         </Layout >
     );
-}
-
-
-//SSR
-export async function getServerSideProps(context) {
-
-    const { userId } = context.query;
-
-    return {
-        props: {
-            userId
-        }
-    };
 }
