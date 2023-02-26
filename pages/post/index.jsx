@@ -14,14 +14,12 @@ export default function Post() {
     const [negativeText, setNegativeText] = useState('');
 
     function backPosts() {
-        const item = sessionStorage.getItem('key');
-        const key = JSON.parse(item);
         Router.push({
             pathname: '/posts',
             query: {
                 userId,
-                country: key.country,
-                postId: key.postId
+                country: 'jpn',
+                postId: 'none'
             }
         });
     }
