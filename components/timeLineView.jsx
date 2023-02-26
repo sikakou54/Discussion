@@ -1,7 +1,7 @@
 import styles from '../styles/TimeLineView.module.css';
 import TimeLineItem from "./timeLineItem";
 import Router from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function TimeLineView({ userId, items, onClick }) {
 
