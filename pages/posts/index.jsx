@@ -68,7 +68,7 @@ export default function Posts() {
                         return 0
                     }
                 });
-            }, 1000);
+            }, 3000);
             setTimerId(tId);
         }
 
