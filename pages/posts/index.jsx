@@ -36,7 +36,7 @@ export default function Posts({ userId, country, postId }) {
     useEffect(async () => {
 
         if (undefined !== error) {
-            console.error(error);
+            console.error('posts', error);
         }
 
     }, [error]);
