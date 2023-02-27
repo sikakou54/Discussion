@@ -1,3 +1,6 @@
+
+import { CognitoJwtVerifier } from 'aws-jwt-verify';
+
 export async function apiFetchPost(url, params) {
 
     console.log(params);
@@ -143,10 +146,38 @@ export async function apiFetchGet(url, params) {
     });
 }
 
-export function getTimeStamp(offset = 0) {
+export function getTimeStampToLocaleString(utcTime) {
+    return (new Date(utcTime + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000))).toLocaleString();
+}
+
+
+export function sleep(msec) {
+    return new Promise(resolve => setTimeout(resolve, msec));
+}
+
+export function getTimeStamp() {
+    return (new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000))).toLocaleString();
+}
+
+export function getUtcMsec(offset = 0) {
     return (new Date()).getTime() + offset;
 }
 
-export function getTimeStampToLocaleString(utcTime) {
-    return (new Date(utcTime + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000))).toLocaleString();
+export async function jwtVerify(jwtToken) {
+
+    let payload = undefined;
+
+    const verifier = CognitoJwtVerifier.create({
+        userPoolId: 'ap-northeast-1_NQ7rz6N7T',
+        tokenUse: 'id',
+        clientId: '2beqljda3gfckjqmhmb7pf44ai',
+    });
+
+    try {
+        payload = await verifier.verify(jwtToken);
+    } catch (e) {
+        console.error('jwtVerify', JSON.stringify(e));
+    }
+
+    return payload;
 }

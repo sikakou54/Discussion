@@ -1,18 +1,18 @@
-import Router, { useRouter } from 'next/router';
-import { apiFetchGet } from '../../api/utils';
+import Router from 'next/router';
 import Layout from '../../components/layout';
 import { useEffect, useRef, useState } from 'react';
 import styles from '../../styles/Posts.module.css';
 import TimeLineView from '../../components/timeLineView';
 import Loding from '../../components/loading';
+import useSWR from 'swr';
 
-export default function Posts() {
+export default function Posts({ userId, country, postId }) {
 
-    const router = useRouter();
-    const { userId, country, postId } = router.query;
+    const fetcher = (url) => fetch(url).then((res) => res.json());
     const [items, setItems] = useState([]);
-    const [timerId, setTimerId] = useState(undefined);
-    const [timerCount, setTimerCount] = useState(0);
+    const { data, error } = useSWR('/api/getDiscussions/' + country + '/' + postId, fetcher, {
+        refreshInterval: 1000
+    });
 
     function onClick(_postId) {
         Router.push({
@@ -24,55 +24,30 @@ export default function Posts() {
         });
     }
 
-    async function getItems(_country, _postId, _items) {
-
-        if (undefined === _country && undefined === _postId) {
-            return _items;
-        }
-        const response = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussions/' + _country + '/' + _postId);
-        if (response.result) {
-            if (-1 !== Object.keys(response.data).indexOf('LastEvaluatedKey')) {
-                return getItems(response.data.LastEvaluatedKey.country, response.data.LastEvaluatedKey.postId, [..._items, ...(response.data.Items)]);
-            } else {
-                return getItems(undefined, undefined, [..._items, ...(response.data.Items)]);
-            }
-        } else {
-            return getItems(undefined, undefined, []);
-        }
-    }
-
     useEffect(async () => {
-        let items = [];
-        const newItems = await getItems(country, postId, items);
-        if (0 !== newItems.length) {
-            setItems(newItems);
+
+        if (undefined !== data) {
+            setItems(data.Items);
         }
-    }, [timerCount]);
+
+    }, [data]);
+
 
     useEffect(async () => {
 
-        return () => {
-            clearInterval(timerId);
+        if (undefined !== error) {
+            console.error(error);
         }
+
+    }, [error]);
+
+
+
+    useEffect(async () => {
+
+        return () => { }
 
     }, []);
-
-    useEffect(async () => {
-
-        if (undefined !== country && undefined !== postId) {
-            const tId = setInterval(() => {
-                setTimerCount((timerCount) => {
-                    if (100 >= timerCount) {
-                        return timerCount + 1
-                    } else {
-                        return 0
-                    }
-                });
-            }, 3000);
-            setTimerId(tId);
-        }
-
-    }, [country, postId]);
 
     return (
         <Layout title={'Posts'} >
@@ -90,4 +65,17 @@ export default function Posts() {
             }
         </Layout >
     );
+}
+
+//SSR
+export async function getServerSideProps(context) {
+
+    const { userId, country, postId } = context.query;
+    return {
+        props: {
+            userId,
+            country,
+            postId
+        }
+    }
 }
