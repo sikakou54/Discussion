@@ -12,7 +12,7 @@
     margin-bottom: 5px;
     background-color: white;
     color: black;
-    font-size: 12px;
+    font-size: 14px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
 }
 
@@ -25,13 +25,13 @@
     margin-bottom: 5px;
     background-color: white;
     color: black;
-    font-size: 12px;
+    font-size: 14px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
 }
 
 .secsionName {
     color: black;
-    font-size: 14px;
+    font-size: 24px;
 }
 
 .oval {
@@ -44,7 +44,7 @@
     margin-bottom: 5px;
     background-color: white;
     color: black;
-    font-size: 12px;
+    font-size: 14px;
     overflow: auto;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
 }
@@ -65,22 +65,24 @@
 }
 
 .cancel {
-    width: 150px;
-    height: 50px;
+    width: 200px;
+    height: 60px;
     margin: 16px;
     border: 1px solid #00838f;
     border-radius: 12px;
     background-color: white;
     color: #00838f;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .5);
+    font-size: 18px;
 }
 
 .push {
-    width: 150px;
-    height: 50px;
+    width: 200px;
+    height: 60px;
     margin: 16px;
     border-radius: 12px;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .5);
+    font-size: 18px;
 }
 
 .enable {
