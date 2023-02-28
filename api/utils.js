@@ -150,13 +150,12 @@ export function getTimeStampToLocaleString(utcTime) {
     return (new Date(utcTime + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000))).toLocaleString();
 }
 
-
 export function sleep(msec) {
     return new Promise(resolve => setTimeout(resolve, msec));
 }
 
-export function getTimeStamp() {
-    return (new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000))).toLocaleString();
+export function getTimeStamp(offset = 0) {
+    return (new Date()).getTime() + offset;
 }
 
 export function getUtcMsec(offset = 0) {
