@@ -1,6 +1,6 @@
 import Router from 'next/router';
 import Layout from '../../components/layout';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../../styles/Posts.module.css';
 import TimeLineView from '../../components/timeLineView';
 import Loding from '../../components/loading';
@@ -32,7 +32,6 @@ export default function Posts({ userId, country, postId }) {
 
     }, [data]);
 
-
     useEffect(async () => {
 
         if (undefined !== error) {
@@ -41,12 +40,8 @@ export default function Posts({ userId, country, postId }) {
 
     }, [error]);
 
-
-
     useEffect(async () => {
-
         return () => { }
-
     }, []);
 
     return (
