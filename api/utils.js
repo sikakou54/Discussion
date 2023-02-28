@@ -1,9 +1,9 @@
 
 import { CognitoJwtVerifier } from 'aws-jwt-verify';
+import AWS from 'aws-sdk';
+AWS.config.update({ region: 'ap-northeast-1' });
 
 export async function apiFetchPost(url, params) {
-
-    console.log(params);
 
     return new Promise(async (resolve) => {
 
@@ -180,4 +180,8 @@ export async function jwtVerify(jwtToken) {
     }
 
     return payload;
+}
+
+export function getToken() {
+    return AWS.util.uuid.v4();
 }

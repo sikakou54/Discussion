@@ -12,21 +12,21 @@ export default function Home() {
 
   async function onClikc() {
 
-    let response = await apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getToken')
+    let response = await apiFetchGet('/api/getToken');
     if (200 !== response.statusCode) {
       return;
     }
-
-    const userId = response.data;
-    response = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setUser', {
-      userId,
+    const { token } = response.data;
+    console.log(token);
+    response = await apiFetchPost('api/setUser', {
+      userId: token,
       userName: name
     });
     if (200 === response.statusCode) {
       Router.push({
         pathname: '/posts',
         query: {
-          userId,
+          userId: token,
           country: 'jpn',
           postId: 'none'
         }

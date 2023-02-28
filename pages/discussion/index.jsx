@@ -20,9 +20,10 @@ export default function DiscussionManager() {
     useEffect(() => {
 
         if (undefined !== postId) {
-            apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getDiscussion/' + 'jpn' + '/' + postId).then((response) => {
+            apiFetchGet('/api/getDiscussion/' + postId).then((response) => {
+                console.log(response);
                 if (200 == response.statusCode) {
-                    setDiscussion(response.data);
+                    setDiscussion(response.data.discussion);
                 }
             });
         }
