@@ -38,7 +38,7 @@ export default function Progress({ progress }) {
                 break;
         }
 
-    }, []);
+    }, [progress]);
 
     return (
         <div className={styles.container}>{text}</div>
