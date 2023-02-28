@@ -25,7 +25,7 @@ export default function Post() {
     }
 
     async function onPost() {
-        apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setDiscussion', {
+        apiFetchPost('/api/setDiscussion', {
             country,
             postId,
             userId,
