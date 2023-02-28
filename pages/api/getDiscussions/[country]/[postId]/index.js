@@ -2,8 +2,6 @@ import { getDiscussions } from '../../../../../api/discussion';
 
 export default async function handler(req, res) {
 
-    console.log(Date.now(), req.query);
-
     const { country, postId } = req.query;
     let discussions = {};
 
