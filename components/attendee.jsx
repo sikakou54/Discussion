@@ -11,9 +11,9 @@ export default function Attendee({ userId, children }) {
     useEffect(() => {
 
         if ('none' !== userId) {
-            apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getUser/' + userId).then((response) => {
+            apiFetchGet('/api/getUser/' + userId).then((response) => {
                 if (200 == response.statusCode) {
-                    setUserName(response.data.name);
+                    setUserName(response.data.user.name);
                 }
             });
         } else {

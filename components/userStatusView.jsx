@@ -10,8 +10,8 @@ export default function UserStatusView({ userId }) {
 
     useEffect(() => {
 
-        apiFetchGet(process.env.awsApiGatewayHttpApiEndPoint + '/getUser/' + userId, {}).then((res) => {
-            setUser(res.data);
+        apiFetchGet('/api/getUser/' + userId, {}).then((response) => {
+            setUser(response.data.user);
         });
 
     }, []);
