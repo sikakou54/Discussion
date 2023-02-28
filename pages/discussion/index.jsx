@@ -7,28 +7,23 @@ import Discussion from '../../components/discussion';
 import { apiFetchGet } from '../../api/utils';
 import Layout from '../../components/layout';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import Loding from '../../components/loading';
 import styles from '../../styles/Discussion.module.css';
 
-export default function DiscussionManager() {
+export default function DiscussionManager({ postId, userId }) {
 
     const [discussion, setDiscussion] = useState(null);
-    const router = useRouter()
-    const { postId, userId } = router.query
 
     useEffect(() => {
 
-        if (undefined !== postId) {
-            apiFetchGet('/api/getDiscussion/' + postId).then((response) => {
-                console.log(response);
-                if (200 == response.statusCode) {
-                    setDiscussion(response.data.discussion);
-                }
-            });
-        }
+        apiFetchGet('/api/getDiscussion/' + postId).then((response) => {
+            console.log(response);
+            if (200 == response.statusCode) {
+                setDiscussion(response.data.discussion);
+            }
+        });
 
-    }, [postId]);
+    }, []);
 
     if (null !== discussion) {
 
@@ -52,4 +47,16 @@ export default function DiscussionManager() {
         );
     }
 
+}
+
+//SSR
+export async function getServerSideProps(context) {
+
+    const { userId, postId } = context.query;
+    return {
+        props: {
+            userId,
+            postId
+        }
+    }
 }
