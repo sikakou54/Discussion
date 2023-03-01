@@ -71,7 +71,7 @@ export default function Post() {
 
                 <div className={style.frame}>
                     <div className={style.secsionName}>概要</div>
-                    <textarea className={style.oval} id="story" name="story" rows="5" cols="33" required onChange={(e) => { setDetail(e.target.value) }} />
+                    <textarea className={style.oval} id="story" name="story" rows="5" cols="33" placeholder='朝食の最適解について討論しましょう！' required onChange={(e) => { setDetail(e.target.value) }} />
                     {detail.length > 140 && <div className={style.errorText}>140文字以内で入力してください</div>}
                     {detail.length === 0 && <div className={style.errorText}>概要を入力してください</div>}
                 </div>
