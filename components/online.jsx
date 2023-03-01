@@ -25,7 +25,6 @@ export default function Online({ isStart, attendees, title, finishTime, currentT
         <div className={styles.container}>
             <div className={styles.titleHeader}>
                 <div className={styles.title}>{title}</div>
-                <div className={styles.watcher}><div className={styles.watcherIcon}>< Image src={user} /></div>{attendees.watchers.length}</div>
             </div>
             <div className={styles.message}>
                 {
@@ -49,6 +48,7 @@ export default function Online({ isStart, attendees, title, finishTime, currentT
             </div>
             <div className={styles.attendees}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
             <div className={styles.attendees}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
+            <div className={styles.watcher}><div className={styles.watcherIcon}>< Image src={user} /></div >{attendees.watchers.length}</div>
         </div>
     );
 }

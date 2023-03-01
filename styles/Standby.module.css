@@ -6,9 +6,10 @@
 
 .titleHeader {
     display: flex;
+    align-items: center;
+    justify-content: center;
     padding-top: 24px;
     margin-bottom: 90px;
-    justify-content: space-between;
 }
 
 .title {
@@ -16,10 +17,9 @@
     align-items: center;
     justify-content: left;
     text-align: left;
-    font-size: 16px;
+    font-size: 18px;
     margin-left: 12px;
     margin-right: 12px;
-    flex-basis: 85%;
 }
 
 .watcher {
@@ -30,13 +30,14 @@
     padding: 5px;
     border-radius: 6px;
     flex-basis: 15%;
-    font-size: 12px;
-    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .5);
+    font-size: 16px;
+    color: gray;
 }
 
 .watcherIcon {
-    height: 18px;
-    width: 18px;
+    height: 32px;
+    width: 32px;
+    margin-right: 5px;
 }
 
 .message {
@@ -59,7 +60,7 @@
     margin: 0 auto;
     border: none;
     border-radius: 12px;
-    margin-bottom: 48px;
+    margin-bottom: 42px;
     font-size: 13px;
 }
 
@@ -106,9 +107,11 @@
     .attendees {
         width: 500px;
         font-size: 18px;
+        margin-bottom: 72px;
     }
 
     .titleHeader {
+        padding-top: 32px;
         margin-bottom: 180px;
     }
 
