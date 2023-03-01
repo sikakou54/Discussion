@@ -45,12 +45,12 @@
 }
 
 .main {
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
 .sub {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .ProgressBar {
@@ -67,7 +67,7 @@
     border: none;
     border-radius: 12px;
     margin-bottom: 48px;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {

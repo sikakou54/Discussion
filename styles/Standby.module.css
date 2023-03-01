@@ -44,12 +44,12 @@
 }
 
 .main {
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
 .sub {
-    font-size: 16px;
+    font-size: 14px;
     color: gray;
 }
 
@@ -60,7 +60,7 @@
     border: none;
     border-radius: 12px;
     margin-bottom: 48px;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .disable {
