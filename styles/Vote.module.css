@@ -134,11 +134,13 @@
     }
 
     .main {
-        font-size: 24px;
+        font-size: 32px;
+        margin-bottom: 10px;
     }
 
     .sub {
-        font-size: 20px;
+        font-size: 24px;
+        color: gray;
     }
 
     .selectItem,

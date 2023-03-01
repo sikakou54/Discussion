@@ -112,6 +112,15 @@
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
+    .main {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .sub {
+        font-size: 24px;
+        color: gray;
+    }
 
     .titleHeader {
         margin-bottom: 180px;
@@ -125,6 +134,6 @@
         width: 500px;
         margin-bottom: 80px;
         border-radius: 12px;
-        font-size: 16px;
+        font-size: 18px;
     }
 }
