@@ -65,6 +65,7 @@
     border-radius: 12px;
     margin-bottom: 42px;
     font-size: 13px;
+
 }
 
 .disable {
@@ -73,7 +74,7 @@
 }
 
 .enable {
-    color: black;
+    color: #00838f;
     background-color: white;
 }
 

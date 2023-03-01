@@ -83,8 +83,8 @@
 }
 
 .enable {
-    color: black;
-    background-color: #00838f;
+    color: #00838f;
+    background-color: white;
 }
 
 .enable:hover {

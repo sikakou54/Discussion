@@ -69,6 +69,8 @@
     border-radius: 12px;
     margin-bottom: 42px;
     font-size: 13px;
+    color: #00838f;
+    background-color: white;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
@@ -113,9 +115,5 @@
         margin-bottom: 72px;
     }
 
-    .titleHeader {
-        padding-top: 32px;
-        margin-bottom: 120px;
-    }
 
 }
