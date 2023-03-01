@@ -38,7 +38,7 @@ export default function Attendee({ userId, children }) {
                             </div>
                             <div className={styles.attendeeGroup}>
                                 <div className={styles.text}>{children}</div>
-                                <div className={styles.userName}>{userName} さん</div>
+                                <div className={styles.userName}><u>{userName}</u> さん</div>
                             </div>
 
                         </>
