@@ -49,7 +49,6 @@
     background-color: white;
     color: #00838f;
     font-size: 13px;
-    border: 1px solid #00838f;
 }
 
 .selected {
@@ -78,10 +77,12 @@
 }
 
 .disable {
+    color: white;
     background-color: gray;
 }
 
 .enable {
+    color: black;
     background-color: #00838f;
 }
 
