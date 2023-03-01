@@ -53,7 +53,6 @@
 }
 
 .selected {
-    border: 1px inset #00838f;
     background-color: #00838f;
     color: white;
 }
