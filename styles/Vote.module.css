@@ -71,23 +71,23 @@
     height: 70px;
     margin-bottom: 30px;
     border-radius: 12px;
-    color: white;
     border: none;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
 }
 
 .disable {
-    color: white;
     background-color: gray;
+    color: white;
 }
 
 .enable {
-    color: #00838f;
-    background-color: white;
+    background-color: #00838f;
+    color: white;
 }
 
 .enable:hover {
-    background-color: #eceff1;
+    background-color: #006064;
+    color: white;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
