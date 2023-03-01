@@ -68,6 +68,7 @@
     border-radius: 12px;
     margin-bottom: 42px;
     font-size: 13px;
+    border: 1px solid #00838f;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
@@ -114,7 +115,7 @@
 
     .titleHeader {
         padding-top: 32px;
-        margin-bottom: 180px;
+        margin-bottom: 120px;
     }
 
 }

@@ -62,21 +62,27 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                                     </div>
                                 </div>
                             </div>
-                            {
-                                vote === 'positive'
-                                    ? <button className={`${styles.selected}`} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></button>
-                                    : <button className={styles.selectItem} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></button>
-                            }
-                            {
-                                vote === 'negative'
-                                    ? <button className={` ${styles.selected}`} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></button>
-                                    : <button className={styles.selectItem} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></button>
-                            }
-                            {
-                                '' === vote
-                                    ? <button className={`${styles.voteButton} ${styles.disable}`} disabled={true} onClick={onVoteClick}>投票する</button>
-                                    : <button className={`${styles.voteButton} ${styles.enable}`} disabled={false} onClick={onVoteClick}>投票する</button>
-                            }
+                            <div>
+                                {
+                                    vote === 'positive'
+                                        ? <button className={`${styles.selected}`} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></button>
+                                        : <button className={styles.selectItem} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></button>
+                                }
+                            </div>
+                            <div>
+                                {
+                                    vote === 'negative'
+                                        ? <button className={` ${styles.selected}`} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></button>
+                                        : <button className={styles.selectItem} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></button>
+                                }
+                            </div>
+                            <div>
+                                {
+                                    '' === vote
+                                        ? <button className={`${styles.voteButton} ${styles.disable}`} disabled={true} onClick={onVoteClick}>投票する</button>
+                                        : <button className={`${styles.voteButton} ${styles.enable}`} disabled={false} onClick={onVoteClick}>投票する</button>
+                                }
+                            </div>
                         </>
                 }
             </div>

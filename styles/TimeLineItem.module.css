@@ -5,7 +5,7 @@
     height: 100%;
     display: flex;
     border-radius: 6px;
-    background-color: white;
+    background-color: #FCF1E3;
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
     margin-bottom: 5px;
     font-size: 1rem;
@@ -13,8 +13,7 @@
 }
 
 .container:hover {
-    border: 0.5px solid #00838f;
-    background-color: #fafafa;
+    background-color: #FCE5CA;
 }
 
 .status {
