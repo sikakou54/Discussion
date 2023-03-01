@@ -45,7 +45,6 @@
     border: none;
     border-radius: 12px;
     font-size: 13px;
-    border: 1px solid #00838f;
 }
 
 .attendeesText {
@@ -75,7 +74,7 @@
 }
 
 .enable:hover {
-    background-color: #e0f2f1;
+    background-color: #eceff1;
 }
 
 .buttonEnable {

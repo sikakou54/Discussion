@@ -10,6 +10,7 @@
     justify-content: center;
     padding-top: 24px;
     margin-bottom: 90px;
+    width: 100%;
 }
 
 .title {
@@ -20,6 +21,7 @@
     font-size: 18px;
     margin-left: 12px;
     margin-right: 12px;
+    color: #00838f;
 }
 
 .watcher {
@@ -47,6 +49,7 @@
 .main {
     font-size: 24px;
     margin-bottom: 10px;
+    color: black;
 }
 
 .sub {

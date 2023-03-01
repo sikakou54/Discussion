@@ -5,7 +5,7 @@
     height: 100%;
     display: flex;
     border-radius: 6px;
-    background-color: #FCF1E3;
+    background-color: white;
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
     margin-bottom: 5px;
     font-size: 1rem;
@@ -13,7 +13,7 @@
 }
 
 .container:hover {
-    background-color: #FCE5CA;
+    background-color: #e0f2f1;
 }
 
 .status {
@@ -47,6 +47,7 @@
     margin-bottom: 16px;
     padding-left: 5px;
     width: 100%;
+    color: #00838f;
 }
 
 .discussionLabelContainer {

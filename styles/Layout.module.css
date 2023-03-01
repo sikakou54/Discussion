@@ -25,9 +25,10 @@
 }
 
 @media screen and (min-width:1024px) {
+
     /*　for PC　*/
     .header {
         height: 100px;
     }
-    
+
 }
