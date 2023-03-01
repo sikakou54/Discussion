@@ -11,6 +11,7 @@
     padding: 5px;
     border: 0.5px solid gray;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
+    font-size: 1em;
 }
 
 .userIcon {
@@ -20,12 +21,17 @@
     margin-right: 10px;
 }
 
+
+.attendeeGroup {
+    font-size: 1em;
+}
+
 .text {
-    font-size: 16px;
+    font-size: 1em;
     margin: 4px;
 }
 
 .userName {
-    font-size: 14px;
+    font-size: 0.9em;
     margin: 4px;
 }

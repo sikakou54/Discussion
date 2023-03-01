@@ -36,7 +36,7 @@ export default function Attendee({ userId, children }) {
                             <div className={styles.userIcon}>
                                 < Image src={user} />
                             </div>
-                            <div>
+                            <div className={styles.attendeeGroup}>
                                 <div className={styles.text}>{children}</div>
                                 <div className={styles.userName}>{userName} さん</div>
                             </div>

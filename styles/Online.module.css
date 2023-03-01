@@ -67,6 +67,7 @@
     border: none;
     border-radius: 12px;
     margin-bottom: 48px;
+    font-size: 12px;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
