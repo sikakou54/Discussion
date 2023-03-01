@@ -9,6 +9,7 @@
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
     margin-bottom: 5px;
     font-size: 1rem;
+    position: relative;
 }
 
 .container:hover {
@@ -102,12 +103,22 @@
     color: gray;
 }
 
+.roomNum {
+    margin: 5px;
+}
+
+.postIcon {
+    width: 50px;
+    height: 50px;
+}
+
 .makeRoomText {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
