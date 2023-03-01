@@ -24,11 +24,6 @@ export default function Ready({ attendees, title }) {
         <div className={styles.container}>
             <div className={styles.titleHeader}>
                 <div className={styles.title}>{title}</div>
-                {
-                    attendees.watchers.length > 0
-                        ? <div className={`${styles.watcher} ${styles.enable}`}><div className={styles.watcherIcon}>< Image src={user} /></div>{attendees.watchers.length}</div>
-                        : <div className={`${styles.watcher} ${styles.disable}`}><div className={styles.watcherIcon}>< Image src={user} /></div>{attendees.watchers.length}</div>
-                }
             </div>
             <div className={styles.message}>
                 <div className={styles.main}>接続しています</div>
@@ -43,6 +38,11 @@ export default function Ready({ attendees, title }) {
                 attendees.negative.userId === 'none'
                     ? <div className={`${styles.attendees} ${styles.disable}`}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
                     : <div className={`${styles.attendees} ${styles.enable}`}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
+            }
+            {
+                attendees.watchers.length >= 3
+                    ? <div className={`${styles.watcher}`}><div className={styles.watcherIcon}>< Image src={user} /></div >{attendees.watchers.length}</div>
+                    : <div className={`${styles.watcher}`}><div className={styles.watcherIcon}>< Image src={user} /></div>{attendees.watchers.length}</div>
             }
         </div>
     );
