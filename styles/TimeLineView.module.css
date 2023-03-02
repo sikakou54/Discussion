@@ -72,9 +72,9 @@
     }
 
     .timeLineItem {
-        width: 650px;
+        width: 550px;
         min-height: 200px;
-        margin: 12px;
+        margin: 10px;
         font-size: 18px;
     }
 }

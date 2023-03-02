@@ -61,9 +61,8 @@
     width: 90%;
     height: 80px;
     margin: 0 auto;
-    border: none;
+    margin-bottom: 48px;
     border-radius: 12px;
-    margin-bottom: 42px;
     font-size: 13px;
 }
 

@@ -29,20 +29,18 @@ export default function Online({ isStart, attendees, title, finishTime, currentT
             <div className={styles.message}>
                 {
                     true === isStart
-                        ? <>
-                            <div className={styles.main}>討論中</div>
-                            <div className={styles.sub}>
-                                <div className={styles.ProgressBar}>
-                                    <ProgressBar
-                                        text={Math.floor((finishTime - currentTime) / 1000)}
-                                        percent={
-                                            (Math.floor((finishTime - currentTime) / 1000) / 600 * 100)
-                                        } />
-                                </div>
+                        ? <div className={styles.box}>
+                            <div className={styles.status}>討論中</div>
+                            <div className={styles.ProgressBar}>
+                                <ProgressBar
+                                    text={Math.floor((finishTime - currentTime) / 1000)}
+                                    percent={
+                                        (Math.floor((finishTime - currentTime) / 1000) / 600 * 100)
+                                    } />
                             </div>
-                        </>
+                        </div>
                         : <>
-                            <div className={styles.main}>まもなく始まります</div>
+                            <div className={styles.status}>まもなく始まります</div>
                         </>
                 }
             </div>
