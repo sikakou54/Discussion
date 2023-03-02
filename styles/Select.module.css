@@ -22,16 +22,16 @@
     color: black;
     white-space: pre-wrap;
     width: 95%;
-    height: 110px;
-    border: 0.5px solid #00838f;
+    height: 140px;
     margin: 0 auto;
     resize: none;
     margin-bottom: 32px;
     overflow: auto;
     border-radius: 5px;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
     padding: 5px;
     font-size: 13px;
+    border: none;
+    box-shadow: 0 2px 5px gray;
 }
 
 .selectItems {

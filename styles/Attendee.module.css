@@ -8,8 +8,8 @@
     margin: 0 auto;
     margin-bottom: 64px;
     padding: 5px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px #ccc;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px gray;
     font-size: 1em;
 }
 
