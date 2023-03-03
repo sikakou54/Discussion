@@ -30,7 +30,7 @@
     border-radius: 5px;
     padding: 5px;
     font-size: 13px;
-    border: none;
+    border: 0.5px solid #00838f;
     box-shadow: 0 2px 5px gray;
 }
 
