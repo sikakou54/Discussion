@@ -38,16 +38,10 @@
     justify-content: center;
 }
 
-@media screen and (max-width:480px) {
-
-    /*　for iphone 　*/
-
-    .timeLineItem {
-        width: 100%;
-        min-height: 150px;
-        margin-top: 5px;
-    }
-
+.timeLineItem {
+    width: 100%;
+    min-height: 150px;
+    margin-top: 5px;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
@@ -55,9 +49,10 @@
     /*　for iPad 　*/
 
     .timeLineItem {
-        width: 80%;
-        min-height: 150px;
+        width: 550px;
+        min-height: 200px;
         margin: 10px;
+        font-size: 18px;
     }
 }
 
@@ -65,14 +60,9 @@
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
-    .selectItem {
-        width: 150px;
-        height: 60px;
-        margin: 12px;
-    }
 
     .timeLineItem {
-        width: 550px;
+        width: 600px;
         min-height: 200px;
         margin: 10px;
         font-size: 18px;
