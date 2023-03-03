@@ -84,6 +84,7 @@
 .selected {
     width: 90%;
     height: 70%;
+    padding: 0;
     border: none;
     border-radius: 12px;
     background-color: white;
@@ -100,7 +101,7 @@
     background-color: #e0f2f1;
 }
 
-ï .attendeesText {
+.attendeesText {
     margin-left: 12px;
     margin-right: 12px;
 }
