@@ -20,7 +20,7 @@ export default function Error({ message, userId }) {
         <Layout title={'Error'}>
             <div className={styles.container}>
                 <div className={styles.message}>{message}</div>
-                <button className={styles.return} onClick={onClick}  >投稿へ</button>
+                <button className={styles.return} onClick={onClick}>戻る</button>
             </div>
         </Layout>
     );
