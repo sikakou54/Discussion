@@ -781,7 +781,7 @@ export default function Discussion({ discussion, userId }) {
                 {data.state === process.env.userState.online ? < Online isStart={data.isStarted} attendees={data.attendees} title={discussion.title} finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
                 {data.state === process.env.userState.finish ? <Finish attendees={data.attendees} title={discussion.title} /> : null}
                 {data.state === process.env.userState.vote ? <Vote attendees={data.attendees} title={discussion.title} type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
-                {data.state === process.env.userState.votingDone ? <VotingDone /> : null}
+                {data.state === process.env.userState.votingDone ? <VotingDone title={discussion.title} /> : null}
                 {data.state === process.env.userState.result ? <Result onReturn={onReturn} attendees={data.attendees} title={discussion.title} result={data.result} /> : null}
             </div>
         );

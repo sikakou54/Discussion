@@ -4,57 +4,82 @@
     text-align: center;
 }
 
-.title {
+.titleSeccsion {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 15%;
+}
+
+.statusSeccsion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: left;
     text-align: left;
-    font-size: 16px;
-    padding-top: 24px;
-    margin-bottom: 90px;
+    font-size: 18px;
     margin-left: 12px;
     margin-right: 12px;
     color: black;
 }
 
-.message {
-    font-size: 18px;
-    margin-bottom: 70px;
+.inner {
+    width: 100%;
+    height: auto;
 }
 
 .main {
     font-size: 24px;
     margin-bottom: 10px;
+    color: black;
 }
 
 .sub {
     font-size: 14px;
+    color: gray;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
 
     /*　for iPad 　*/
 
-    .title {
-        font-size: 20px;
+    .main {
+        font-size: 32px;
     }
+
+    .sub {
+        font-size: 24px;
+        color: gray;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
 }
 
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
 
-    .title {
-        font-size: 20px;
-    }
-
     .main {
         font-size: 32px;
-        margin-bottom: 10px;
     }
 
     .sub {
         font-size: 24px;
         color: gray;
+    }
+
+    .title {
+        font-size: 24px;
     }
 }

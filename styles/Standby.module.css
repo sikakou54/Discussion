@@ -4,13 +4,28 @@
     text-align: center;
 }
 
-.titleHeader {
+.titleSeccsion {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 24px;
-    margin-bottom: 90px;
     width: 100%;
+    height: 15%;
+}
+
+.statusSeccsion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+}
+
+.attendeesSeccsion {
+    width: 100%;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .title {
@@ -28,12 +43,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 12px;
-    padding: 5px;
-    border-radius: 6px;
-    flex-basis: 15%;
     font-size: 16px;
     color: gray;
+    width: 90%;
+    height: 50%;
 }
 
 .watcherIcon {
@@ -42,8 +55,9 @@
     margin-right: 5px;
 }
 
-.message {
-    margin-bottom: 90px;
+.inner {
+    width: 100%;
+    height: auto;
 }
 
 .main {
@@ -57,11 +71,17 @@
     color: gray;
 }
 
+.attendeesSeccsionItems {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .attendees {
     width: 90%;
-    height: 80px;
-    margin: 0 auto;
-    margin-bottom: 48px;
+    height: 70%;
     border-radius: 12px;
     font-size: 13px;
 }
@@ -80,27 +100,8 @@
 
     /*　for iPad 　*/
 
-    .attendees {
-        width: 500px;
-    }
-
-    .titleHeader {
-        margin-bottom: 180px;
-    }
-
-    .title {
-        font-size: 20px;
-    }
-
-}
-
-@media screen and (min-width:1024px) {
-
-    /*　for PC　*/
-
     .main {
         font-size: 32px;
-        margin-bottom: 10px;
     }
 
     .sub {
@@ -111,12 +112,29 @@
     .attendees {
         width: 500px;
         font-size: 18px;
-        margin-bottom: 72px;
     }
 
-    .titleHeader {
-        padding-top: 32px;
-        margin-bottom: 180px;
+    .title {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width:1024px) {
+
+    /*　for PC　*/
+
+    .main {
+        font-size: 32px;
+    }
+
+    .sub {
+        font-size: 24px;
+        color: gray;
+    }
+
+    .attendees {
+        width: 500px;
+        font-size: 18px;
     }
 
     .title {

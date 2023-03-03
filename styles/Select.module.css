@@ -43,7 +43,7 @@
     width: 90%;
     height: 80px;
     margin: 0 auto;
-    margin-bottom: 38px;
+    margin-bottom: 32px;
     padding: 0;
     border-radius: 12px;
     font-size: 13px;
@@ -61,7 +61,6 @@
     margin: 0 auto;
     width: 240px;
     height: 70px;
-    margin-bottom: 30px;
     border-radius: 12px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
     border: none;
@@ -108,20 +107,21 @@
     .detail {
         width: 700px;
         height: 190px;
-        font-size: 18px;
         margin-bottom: 64px;
+        font-size: 18px;
     }
 
     .selectItem {
-        width: 550px;
+        width: 500px;
         height: 80px;
-        font-size: 14px;
-        margin-bottom: 32px;
+        margin-bottom: 48px;
+        font-size: 18px;
     }
 
     .selectItems {
-        margin-bottom: 60px;
+        margin-bottom: 18px;
     }
+
 }
 
 @media screen and (min-width:1024px) {

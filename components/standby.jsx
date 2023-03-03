@@ -22,28 +22,40 @@ export default function Standby({ attendees, title }) {
 
     return (
         <div className={styles.container}>
-            <div className={styles.titleHeader}>
+            <div className={styles.titleSeccsion}>
                 <div className={styles.title}>{title}</div>
             </div>
-            <div className={styles.message}>
-                <div className={styles.main}>参加者を待っています</div>
-                <div className={styles.sub}>( 討論者2名,視聴者3人以上が必要 )</div>
+            <div className={styles.statusSeccsion}>
+                <div className={styles.inner}>
+                    <div className={styles.main}>参加者を待っています</div>
+                    <div className={styles.sub}>( 討論者2名,視聴者3人以上が必要 )</div>
+                </div>
             </div>
-            {
-                attendees.positive.userId === 'none'
-                    ? <div className={`${styles.attendees} ${styles.disable}`}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
-                    : <div className={`${styles.attendees} ${styles.enable}`}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
-            }
-            {
-                attendees.negative.userId === 'none'
-                    ? <div className={`${styles.attendees} ${styles.disable}`}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
-                    : <div className={`${styles.attendees} ${styles.enable}`}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
-            }
-            {
-                attendees.watchers.length >= 3
-                    ? <div className={`${styles.watcher}`}><div className={styles.watcherIcon}>< Image src={user} /></div >{attendees.watchers.length}</div>
-                    : <div className={`${styles.watcher}`}><div className={styles.watcherIcon}>< Image src={user} /></div>{attendees.watchers.length}</div>
-            }
+            <div className={styles.attendeesSeccsion}>
+                <div className={styles.inner}>
+                    <div className={styles.attendeesSeccsionItems}>
+                        {
+                            attendees.positive.userId === 'none'
+                                ? <div className={`${styles.attendees} ${styles.disable}`}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
+                                : <div className={`${styles.attendees} ${styles.enable}`}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
+                        }
+                    </div>
+                    <div className={styles.attendeesSeccsionItems}>
+                        {
+                            attendees.negative.userId === 'none'
+                                ? <div className={`${styles.attendees} ${styles.disable}`}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
+                                : <div className={`${styles.attendees} ${styles.enable}`}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
+                        }
+                    </div>
+                    <div className={styles.attendeesSeccsionItems}>
+                        {
+                            attendees.watchers.length >= 3
+                                ? <div className={`${styles.watcher}`}><div className={styles.watcherIcon}>< Image src={user} /></div >{attendees.watchers.length}</div>
+                                : <div className={`${styles.watcher}`}><div className={styles.watcherIcon}>< Image src={user} /></div>{attendees.watchers.length}</div>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

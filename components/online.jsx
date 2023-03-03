@@ -23,30 +23,54 @@ export default function Online({ isStart, attendees, title, finishTime, currentT
 
     return (
         <div className={styles.container}>
-            <div className={styles.titleHeader}>
+            <div className={styles.titleSeccsion}>
                 <div className={styles.title}>{title}</div>
             </div>
-            <div className={styles.message}>
-                {
-                    true === isStart
-                        ? <div className={styles.box}>
-                            <div className={styles.status}>討論中</div>
-                            <div className={styles.ProgressBar}>
-                                <ProgressBar
-                                    text={Math.floor((finishTime - currentTime) / 1000)}
-                                    percent={
-                                        (Math.floor((finishTime - currentTime) / 1000) / 600 * 100)
-                                    } />
-                            </div>
-                        </div>
-                        : <>
-                            <div className={styles.status}>まもなく始まります</div>
-                        </>
-                }
+            <div className={styles.statusSeccsion}>
+                <div className={styles.inner}>
+                    {
+                        true === isStart
+                            ? <>
+                                <div className={styles.main}>討論中</div>
+                                <div className={styles.ProgressBar}>
+                                    <ProgressBar
+                                        text={Math.floor((finishTime - currentTime) / 1000)}
+                                        percent={
+                                            (Math.floor((finishTime - currentTime) / 1000) / 600 * 100)
+                                        } />
+                                </div>
+                            </>
+                            : <>
+                                <div className={styles.main}>まもなく始まります</div>
+                            </>
+                    }
+                </div>
             </div>
-            <div className={styles.attendees}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
-            <div className={styles.attendees}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
-            <div className={styles.watcher}><div className={styles.watcherIcon}>< Image src={user} /></div >{attendees.watchers.length}</div>
+            <div className={styles.attendeesSeccsion}>
+                <div className={styles.inner}>
+                    <div className={styles.attendeesSeccsionItems}>
+                        {
+                            attendees.positive.userId === 'none'
+                                ? <div className={`${styles.attendees} ${styles.disable}`}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
+                                : <div className={`${styles.attendees} ${styles.enable}`}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
+                        }
+                    </div>
+                    <div className={styles.attendeesSeccsionItems}>
+                        {
+                            attendees.negative.userId === 'none'
+                                ? <div className={`${styles.attendees} ${styles.disable}`}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
+                                : <div className={`${styles.attendees} ${styles.enable}`}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
+                        }
+                    </div>
+                    <div className={styles.attendeesSeccsionItems}>
+                        {
+                            attendees.watchers.length >= 3
+                                ? <div className={`${styles.watcher}`}><div className={styles.watcherIcon}>< Image src={user} /></div >{attendees.watchers.length}</div>
+                                : <div className={`${styles.watcher}`}><div className={styles.watcherIcon}>< Image src={user} /></div>{attendees.watchers.length}</div>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

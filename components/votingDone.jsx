@@ -19,11 +19,16 @@ export default function VotingDone({ title }) {
 
     return (
         <div className={styles.container}>
-            <div className={styles.title}>{title}</div>
-            <div className={styles.message}>
-                <div className={styles.main}>投票終了</div>
-                <div className={styles.sub}>(結果をお待ち下さい)</div>
+            <div className={styles.titleSeccsion}>
+                <div className={styles.title}>{title}</div>
+            </div>
+            <div className={styles.statusSeccsion}>
+                <div className={styles.inner}>
+                    <div className={styles.main}>投票終了</div>
+                    <div className={styles.sub}>(結果をお待ち下さい)</div>
+                </div>
             </div>
         </div>
     );
+
 }

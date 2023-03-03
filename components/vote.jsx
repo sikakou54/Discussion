@@ -31,14 +31,16 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
 
         return (
             <div className={styles.container}>
-                <div className={styles.title}>{title}</div>
+                <div className={styles.titleSeccsion}>
+                    <div className={styles.title}>{title}</div>
+                </div>
                 {
                     isVoteDone === true
                         ?
-                        <div className={styles.message}>
-                            <div className={styles.main}>ありがとうございます</div>
-                            <div className={styles.sub}>(しばらくお待ち下さい)</div>
-                            <div className={styles.sub}>
+                        <div className={styles.statusSeccsion}>
+                            <div className={styles.inner}>
+                                <div className={styles.main}>ありがとうございます</div>
+                                <div className={styles.sub}>(しばらくお待ち下さい)</div>
                                 <div className={styles.ProgressBar}>
                                     <ProgressBar
                                         text={Math.floor((limitTime - currentTime) / 1000)}
@@ -48,11 +50,10 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                                 </div>
                             </div>
                         </div>
-                        :
-                        <>
-                            <div className={styles.message}>
-                                <div className={styles.main}>投票中</div>
-                                <div className={styles.sub}>
+                        : <>
+                            <div className={styles.statusSeccsion}>
+                                <div className={styles.inner}>
+                                    <div className={styles.main}>投票中</div>
                                     <div className={styles.ProgressBar}>
                                         <ProgressBar
                                             text={Math.floor((limitTime - currentTime) / 1000)}
@@ -62,26 +63,30 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                {
-                                    vote === 'positive'
-                                        ? <button className={`${styles.selected}`} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></button>
-                                        : <button className={styles.selectItem} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></button>
-                                }
-                            </div>
-                            <div>
-                                {
-                                    vote === 'negative'
-                                        ? <button className={` ${styles.selected}`} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></button>
-                                        : <button className={styles.selectItem} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></button>
-                                }
-                            </div>
-                            <div>
-                                {
-                                    '' === vote
-                                        ? <button className={`${styles.voteButton} ${styles.disable}`} disabled={true} onClick={onVoteClick}>投票する</button>
-                                        : <button className={`${styles.voteButton} ${styles.enable}`} disabled={false} onClick={onVoteClick}>投票する</button>
-                                }
+                            <div className={styles.attendeesSeccsion}>
+                                <div className={styles.inner}>
+                                    <div className={styles.attendeesSeccsionItems}>
+                                        {
+                                            vote === 'positive'
+                                                ? <button className={`${styles.selected}`} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></button>
+                                                : <button className={styles.selectItem} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></button>
+                                        }
+                                    </div>
+                                    <div className={styles.attendeesSeccsionItems}>
+                                        {
+                                            vote === 'negative'
+                                                ? <button className={` ${styles.selected}`} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></button>
+                                                : <button className={styles.selectItem} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></button>
+                                        }
+                                    </div>
+                                    <div className={styles.attendeesSeccsionItems}>
+                                        {
+                                            '' === vote
+                                                ? <button className={`${styles.voteButton} ${styles.disable}`} disabled={true} onClick={onVoteClick}>投票する</button>
+                                                : <button className={`${styles.voteButton} ${styles.enable}`} disabled={false} onClick={onVoteClick}>投票する</button>
+                                        }
+                                    </div>
+                                </div>
                             </div>
                         </>
                 }
@@ -92,10 +97,12 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
 
         return (
             <div className={styles.container}>
-                <div className={styles.title}>{title}</div>
-                <div className={styles.message}>
-                    <div className={styles.main}>投票中</div>
-                    <div className={styles.sub}>
+                <div className={styles.titleSeccsion}>
+                    <div className={styles.title}>{title}</div>
+                </div>
+                <div className={styles.statusSeccsion}>
+                    <div className={styles.inner}>
+                        <div className={styles.main}>投票中</div>
                         <div className={styles.ProgressBar}>
                             <ProgressBar
                                 text={Math.floor((limitTime - currentTime) / 1000)}
