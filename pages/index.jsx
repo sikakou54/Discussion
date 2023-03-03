@@ -43,12 +43,9 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.second}>
-        <div className={styles.aboutText}>
-          <div className={styles.about}>What’s TalkUp？</div>
-          <div className={styles.detail}>
-            <p>TalkUpは匿名の討論アプリです</p>
-            <p>TalkUpであなたのTalk力を試してみませんか？</p>
-          </div>
+        <div className={styles.detail}>
+          <div className={styles.about}>TalkUpは匿名の討論アプリです</div>
+          <div className={styles.about}>TalkUpであなたのTalk力を試してみませんか？</div>
         </div>
         <div className={styles.form}>
           <input className={styles.name} type='text' placeholder='ニックネーム' required onChange={(e) => { setName(e.target.value) }} />
