@@ -153,6 +153,7 @@
     .selectItem,
     .selected {
         width: 500px;
+        font-size: 18px;
     }
 
     .title {
@@ -181,6 +182,7 @@
     .selectItem,
     .selected {
         width: 500px;
+        font-size: 18px;
     }
 
     .title {

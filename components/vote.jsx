@@ -68,15 +68,15 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                                     <div className={styles.attendeesSeccsionItems}>
                                         {
                                             vote === 'positive'
-                                                ? <button className={`${styles.selected}`} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></button>
-                                                : <button className={styles.selectItem} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></button>
+                                                ? <div className={`${styles.selected}`} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
+                                                : <div className={styles.selectItem} onClick={() => setVote('positive')}><Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee></div>
                                         }
                                     </div>
                                     <div className={styles.attendeesSeccsionItems}>
                                         {
                                             vote === 'negative'
-                                                ? <button className={` ${styles.selected}`} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></button>
-                                                : <button className={styles.selectItem} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></button>
+                                                ? <div className={` ${styles.selected}`} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
+                                                : <div className={styles.selectItem} onClick={() => setVote('negative')}><Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee></div>
                                         }
                                     </div>
                                     <div className={styles.attendeesSeccsionItems}>
