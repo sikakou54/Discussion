@@ -25,7 +25,7 @@ export default function TimeLineItem({ pub, index, country, postId, progress, ti
                                 <div className={styles.attendessContainer}>
                                     {
                                         positive.userId === 'none'
-                                            ? <>{positive.text}</>
+                                            ? <div className={styles.attendessText}>{positive.text}</div>
                                             : <><div className={styles.userIcon}>< Image src={user} /></div><div className={styles.attendessText}>{positive.text}</div></>
                                     }
                                 </div>
@@ -36,7 +36,7 @@ export default function TimeLineItem({ pub, index, country, postId, progress, ti
                                 <div className={styles.attendessContainer}>
                                     {
                                         negative.userId === 'none'
-                                            ? <>{negative.text}</>
+                                            ? <div className={styles.attendessText}>{negative.text}</div>
                                             : <><div className={styles.userIcon}>< Image src={user} /></div><div className={styles.attendessText}>{negative.text}</div></>
                                     }
                                 </div>
