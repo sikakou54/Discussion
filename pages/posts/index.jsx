@@ -24,7 +24,7 @@ export default function Posts({ userId, country, postId }) {
         });
     }
 
-    useEffect(async () => {
+    useEffect(() => {
 
         if (undefined !== data) {
             setItems(data.Items);
@@ -32,7 +32,7 @@ export default function Posts({ userId, country, postId }) {
 
     }, [data]);
 
-    useEffect(async () => {
+    useEffect(() => {
 
         if (undefined !== error) {
             console.error('posts', error);
@@ -40,7 +40,7 @@ export default function Posts({ userId, country, postId }) {
 
     }, [error]);
 
-    useEffect(async () => {
+    useEffect(() => {
         return () => { }
     }, []);
 
