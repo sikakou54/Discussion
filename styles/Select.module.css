@@ -1,7 +1,7 @@
 .container {
-    text-align: center;
     width: 100%;
     height: 100%;
+    text-align: center;
 }
 
 .title {
@@ -25,7 +25,7 @@
     height: 140px;
     margin: 0 auto;
     resize: none;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     overflow: auto;
     border-radius: 5px;
     padding: 5px;
@@ -36,14 +36,20 @@
 
 .selectItems {
     width: 100%;
-    text-align: center;
+    height: 300px;
+}
+
+.selectItemBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
 }
 
 .selectItem {
     width: 90%;
-    height: 80px;
-    margin: 0 auto;
-    margin-bottom: 32px;
+    height: 75px;
     padding: 0;
     border-radius: 12px;
     font-size: 13px;
@@ -115,13 +121,14 @@
 
     .selectItem {
         width: 500px;
-        height: 100px;
-        margin-bottom: 48px;
+        height: 150px;
         font-size: 18px;
     }
 
     .selectItems {
-        margin-bottom: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
 }
