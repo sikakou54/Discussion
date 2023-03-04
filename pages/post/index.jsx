@@ -29,7 +29,6 @@ export default function Post() {
         setSeq((seq) => seq + 1);
     }
 
-
     function preview() {
         setSeq((seq) => seq - 1);
     }
