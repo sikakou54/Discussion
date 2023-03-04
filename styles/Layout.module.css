@@ -11,12 +11,12 @@
 }
 
 .header {
-    height: 50px;
+    height: 60px;
+    background-color: green;
 }
 
 .footer {
     margin-top: auto;
-    height: 32px;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {

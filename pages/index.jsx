@@ -5,6 +5,9 @@ import bgimage from '../public/bgimage.png';
 import Footer from '../components/footer';
 import { useState } from 'react';
 import { apiFetchGet, apiFetchPost } from '../api/utils';
+import timeline from '../public/home/timeline.png';
+import select from '../public/home/select.png';
+
 
 export default function Home() {
 
@@ -56,11 +59,15 @@ export default function Home() {
         <div className={styles.bar}>討論に参加する</div>
         <div className={styles.section}>
           <div className={styles.label}>気になるROOMを選びます</div>
-          <div className={styles.screenImange}></div>
+          <div className={styles.screenImange}>
+            <Image src={timeline} />
+          </div>
         </div>
         <div className={styles.section}>
           <div className={styles.label}>ROOMに参加します</div>
-          <div className={styles.screenImange}></div>
+          <div className={styles.screenImange}>
+            <Image src={select} />
+          </div>
         </div>
         <div className={styles.section}>
           <div className={styles.label}>参加者がそろったら討論開始</div>
