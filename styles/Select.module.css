@@ -107,6 +107,9 @@
     /*　for iPad 　*/
 
     .title {
+        width: 85%;
+        height: 100px;
+        margin: 0 auto;
         font-size: 24px;
         padding-top: 28px;
         margin-bottom: 28px;
@@ -114,7 +117,7 @@
 
     .detail {
         width: 75%;
-        height: 240px;
+        height: 210px;
         margin-bottom: 38px;
         font-size: 24px;
     }
@@ -143,6 +146,9 @@
     /*　for PC　*/
 
     .title {
+        width: 85%;
+        height: 100px;
+        margin: 0 auto;
         font-size: 24px;
         padding-top: 28px;
         margin-bottom: 28px;
@@ -150,7 +156,7 @@
 
     .detail {
         width: 75%;
-        height: 240px;
+        height: 210px;
         margin-bottom: 38px;
         font-size: 24px;
     }
