@@ -32,8 +32,7 @@
 
     /*　for PC　*/
 
-    .container,
-    .loading {
+    .container {
         width: 900px;
         height: 900px;
     }
