@@ -17,7 +17,7 @@ export default function Select({ onJoin, attendees, title, detail }) {
             <div className={styles.title}>{title}</div>
             <textarea value={detail} className={styles.detail} readOnly />
             <div className={styles.selectItems}>
-                <div className={`${styles.selectItem}`}  >
+                <div className={styles.selectItem}>
                     {
                         'none' === attendees.positive.userId ?
                             (
@@ -38,7 +38,7 @@ export default function Select({ onJoin, attendees, title, detail }) {
                             )
                     }
                 </div>
-                <div className={`${styles.selectItem}`} >
+                <div className={styles.selectItem}>
                     {
                         'none' === attendees.negative.userId ?
                             (
@@ -59,7 +59,7 @@ export default function Select({ onJoin, attendees, title, detail }) {
                             )
                     }
                 </div>
-                <div className={`${styles.selectItem}`} >
+                <div className={styles.selectItem}>
                     {
                         100 > attendees.watchers.length ?
                             (
