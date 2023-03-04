@@ -92,6 +92,7 @@
     border: 1px solid #00838f;
     background-color: #00838f;
     color: white;
+    animation: change-color-anim 2s linear infinite;
 }
 
 .enable:hover {
@@ -99,7 +100,7 @@
 }
 
 .disable {
-    border: none;
+    border: 1px solid gray;
     background-color: gray;
     color: white;
 }
@@ -112,6 +113,24 @@
     color: red;
     margin: 2px;
     font-size: 10px;
+}
+
+.seqWrapper {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 12px;
+}
+
+.seq {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
 }
 
 @media screen and (min-width:768px) and (max-width:1024px) {

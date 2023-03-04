@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Router, { useRouter } from 'next/router';
 import { apiFetchPost } from '../../api/utils';
 import Layout from '../../components/layout';
@@ -57,9 +57,45 @@ export default function Post() {
         backPosts();
     }
 
+    function onbeforeunload(event) {
+        event.returnValue = 'このページを離れますか？'; // Google Chrome
+    }
+
+    function onPopState(event) {
+        history.pushState(null, null, null);
+        return;
+    }
+
+    useEffect(() => {
+
+        history.replaceState(null, null, null);
+        window.addEventListener('beforeunload', onbeforeunload, false);
+        window.addEventListener('popstate', onPopState, false);
+
+        return () => {
+            window.removeEventListener('beforeunload', onbeforeunload, false);
+            window.removeEventListener('popstate', onPopState, false);
+        };
+
+    }, []);
+
     return (
         <Layout title={'Post'}>
             <div className={style.container}>
+                <div className={style.seqWrapper}>
+                    {0 >= seq
+                        ? <div className={`${style.seq} ${style.disable}`}>1</div>
+                        : <div className={`${style.seq} ${style.enable}`}>1</div>
+                    }
+                    {1 >= seq
+                        ? <div className={`${style.seq} ${style.disable}`}>2</div>
+                        : <div className={`${style.seq} ${style.enable}`}>2</div>
+                    }
+                    {2 >= seq
+                        ? <div className={`${style.seq} ${style.disable}`}>3</div>
+                        : <div className={`${style.seq} ${style.enable}`}>3</div>
+                    }
+                </div>
                 {
                     0 === seq &&
                     <>
@@ -78,7 +114,6 @@ export default function Post() {
                             }
                         </div>
                     </>
-
                 }
                 {
                     1 === seq &&
