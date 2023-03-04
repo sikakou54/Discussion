@@ -4,7 +4,7 @@ import user from '../public/user.svg';
 import Image from "next/image";
 import Attendee from "./attendee";
 
-export default function Ready({ attendees, title }) {
+export default function Ready({ type, attendees, title }) {
 
     useEffect(() => {
 
@@ -28,7 +28,10 @@ export default function Ready({ attendees, title }) {
             <div className={styles.statusSeccsion}>
                 <div className={styles.inner}>
                     <div className={styles.main}>接続しています</div>
-                    <div className={styles.sub}>(スピーカの方はマイクを’オン’にして下さい)</div>
+                    {
+                        3 !== type &&
+                        <div className={styles.sub}>(マイクを’許可’にして下さい)</div>
+                    }
                 </div>
             </div>
             <div className={styles.attendeesSeccsion}>

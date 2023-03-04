@@ -777,7 +777,7 @@ export default function Discussion({ discussion, userId }) {
                 {data.state === process.env.userState.select ? <Select onJoin={onJoin} attendees={data.attendees} title={discussion.title} detail={discussion.detail} /> : null}
                 {data.state === process.env.userState.join ? < Join /> : null}
                 {data.state === process.env.userState.standby ? <Standby attendees={data.attendees} title={discussion.title} /> : null}
-                {data.state === process.env.userState.ready ? <Ready attendees={data.attendees} title={discussion.title} /> : null}
+                {data.state === process.env.userState.ready ? <Ready type={data.joinType} attendees={data.attendees} title={discussion.title} /> : null}
                 {data.state === process.env.userState.online ? < Online isStart={data.isStarted} attendees={data.attendees} title={discussion.title} finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
                 {data.state === process.env.userState.finish ? <Finish attendees={data.attendees} title={discussion.title} /> : null}
                 {data.state === process.env.userState.vote ? <Vote attendees={data.attendees} title={discussion.title} type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
