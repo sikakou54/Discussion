@@ -10,6 +10,7 @@ export default function Header({ title }) {
         <header className={styles.container}>
             <Head>
                 <title>{title}</title>
+                <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"></meta>
             </Head>
             <Link href="/">
                 <a className={styles.headerSectioin}>

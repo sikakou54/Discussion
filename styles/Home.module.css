@@ -35,8 +35,9 @@
 }
 
 .about {
-  padding: 6px;
-  font-size: 18px;
+  padding: 3px;
+  font-size: 15px;
+  margin-bottom: 5px;
 }
 
 .detail {
