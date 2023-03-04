@@ -171,7 +171,7 @@ export default function Post() {
                         </div>
                         <div className={style.frame}>
                             <div className={style.secsionName}>概要</div>
-                            <div className={style.detail}>{detail}</div>
+                            <div className={style.oval}>{detail}</div>
                         </div>
                         <div className={style.buttonArea}>
                             <button className={style.cancel} onClick={preview}>戻る</button>
