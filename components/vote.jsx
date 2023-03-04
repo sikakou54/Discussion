@@ -27,20 +27,17 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
         setIsVoteDone(true);
     }
 
-    if (3 === type) {
-
-        return (
-            <div className={styles.container}>
-                <div className={styles.titleSeccsion}>
-                    <div className={styles.title}>{title}</div>
-                </div>
-                {
-                    isVoteDone === true
-                        ?
+    return (
+        <div className={styles.container}>
+            <div className={styles.titleSeccsion}>
+                <div className={styles.title}>{title}</div>
+            </div>
+            {
+                type === 3 ? (
+                    isVoteDone === true ? (
                         <div className={styles.statusSeccsion}>
                             <div className={styles.inner}>
                                 <div className={styles.main}>ありがとうございます</div>
-                                <div className={styles.sub}>(しばらくお待ち下さい)</div>
                                 <div className={styles.ProgressBar}>
                                     <ProgressBar
                                         text={Math.floor((limitTime - currentTime) / 1000)}
@@ -50,7 +47,8 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                                 </div>
                             </div>
                         </div>
-                        : <>
+                    ) : (
+                        <>
                             <div className={styles.statusSeccsion}>
                                 <div className={styles.inner}>
                                     <div className={styles.main}>投票中</div>
@@ -89,31 +87,23 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                                 </div>
                             </div>
                         </>
-                }
-            </div>
-        );
+                    )
 
-    } else {
-
-        return (
-            <div className={styles.container}>
-                <div className={styles.titleSeccsion}>
-                    <div className={styles.title}>{title}</div>
-                </div>
-                <div className={styles.statusSeccsion}>
-                    <div className={styles.inner}>
-                        <div className={styles.main}>投票中</div>
-                        <div className={styles.ProgressBar}>
-                            <ProgressBar
-                                text={Math.floor((limitTime - currentTime) / 1000)}
-                                percent={
-                                    (Math.floor((limitTime - currentTime) / 1000) / 30 * 100)
-                                } />
+                ) : (
+                    <div className={styles.statusSeccsion}>
+                        <div className={styles.inner}>
+                            <div className={styles.main}>投票中</div>
+                            <div className={styles.ProgressBar}>
+                                <ProgressBar
+                                    text={Math.floor((limitTime - currentTime) / 1000)}
+                                    percent={
+                                        (Math.floor((limitTime - currentTime) / 1000) / 30 * 100)
+                                    } />
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        );
-    }
-
+                )
+            }
+        </div>
+    );
 }
