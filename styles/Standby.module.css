@@ -97,6 +97,27 @@
 
     /*　for iPad 　*/
 
+    .titleSeccsion {
+        width: 80%;
+        height: 20%;
+        margin: 0 auto;
+    }
+
+    .statusSeccsion {
+        width: 100%;
+        height: 30%;
+    }
+
+    .attendeesSeccsion {
+        width: 100%;
+        height: 50%;
+    }
+
+    .attendeesSeccsionItems {
+        width: 100%;
+        height: 150px;
+    }
+
     .main {
         font-size: 32px;
     }
@@ -119,6 +140,26 @@
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
+    .titleSeccsion {
+        width: 80%;
+        height: 20%;
+        margin: 0 auto;
+    }
+
+    .statusSeccsion {
+        width: 100%;
+        height: 30%;
+    }
+
+    .attendeesSeccsion {
+        width: 100%;
+        height: 50%;
+    }
+
+    .attendeesSeccsionItems {
+        width: 100%;
+        height: 150px;
+    }
 
     .main {
         font-size: 32px;
