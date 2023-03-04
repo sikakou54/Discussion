@@ -12,7 +12,7 @@
     margin-bottom: 5px;
     background-color: white;
     color: black;
-    font-size: 16px;
+    font-size: 13px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
     border: 1px solid #00838f;
     display: flex;
@@ -29,7 +29,7 @@
     margin-bottom: 5px;
     background-color: white;
     color: black;
-    font-size: 16px;
+    font-size: 13px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
     border: 1px solid #00838f;
     display: flex;
@@ -52,7 +52,7 @@
     margin-bottom: 5px;
     background-color: white;
     color: black;
-    font-size: 16px;
+    font-size: 13px;
     overflow: auto;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
     border: 1px solid #00838f;
@@ -145,13 +145,14 @@
     /*　for iPad 　*/
 
     .container {
-        width: 80%;
+        width: 700px;
         margin: 0 auto;
-        margin-top: 32px;
+        margin-top: 48px;
     }
 
     .title {
-        font-size: 16px;
+        padding: 5px;
+        font-size: 24px;
     }
 
     .secsionName {
@@ -159,12 +160,14 @@
     }
 
     .discussion {
-        font-size: 16px;
+        padding: 5px;
+        font-size: 24px;
     }
 
     .oval {
-        height: 150px;
-        font-size: 16px;
+        padding: 5px;
+        height: 200px;
+        font-size: 24px;
     }
 
     .frame {
@@ -195,7 +198,8 @@
     }
 
     .title {
-        font-size: 16px;
+        padding: 5px;
+        font-size: 24px;
     }
 
     .secsionName {
@@ -203,12 +207,14 @@
     }
 
     .discussion {
-        font-size: 16px;
+        padding: 5px;
+        font-size: 24px;
     }
 
     .oval {
-        height: 150px;
-        font-size: 16px;
+        padding: 5px;
+        height: 200px;
+        font-size: 24px;
     }
 
     .frame {

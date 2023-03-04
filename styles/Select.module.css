@@ -29,7 +29,7 @@
     overflow: auto;
     border-radius: 5px;
     padding: 5px;
-    font-size: 16px;
+    font-size: 13px;
     border: 0.5px solid #00838f;
     box-shadow: 0 2px 5px gray;
 }
@@ -52,7 +52,7 @@
     height: 75px;
     padding: 0;
     border-radius: 12px;
-    font-size: 13px;
+    font-size: 12.5px;
 }
 
 .attendeesText {
@@ -110,16 +110,16 @@
         width: 85%;
         height: 100px;
         margin: 0 auto;
-        font-size: 24px;
+        font-size: 28px;
         padding-top: 28px;
         margin-bottom: 28px;
     }
 
     .detail {
         width: 80%;
-        height: 210px;
-        margin-bottom: 38px;
-        font-size: 18px;
+        height: 220px;
+        margin-bottom: 18px;
+        font-size: 24px;
     }
 
     .selectItems {
@@ -131,7 +131,7 @@
         height: 90px;
         padding: 0;
         border-radius: 12px;
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .joinButton {
@@ -146,19 +146,20 @@
     /*　for PC　*/
 
     .title {
-        width: 85%;
+        width: 80%;
         height: 100px;
         margin: 0 auto;
-        font-size: 24px;
+        font-size: 32px;
         padding-top: 28px;
         margin-bottom: 28px;
     }
 
     .detail {
-        width: 80%;
-        height: 210px;
-        margin-bottom: 38px;
-        font-size: 18px;
+        padding: 5px;
+        width: 75%;
+        height: 230px;
+        margin-bottom: 18px;
+        font-size: 24px;
     }
 
     .selectItems {
