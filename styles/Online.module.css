@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 15%;
+    height: 10%;
 }
 
 .statusSeccsion {
@@ -22,7 +22,7 @@
 
 .attendeesSeccsion {
     width: 100%;
-    height: 60%;
+    height: 65%;
 }
 
 .title {
@@ -104,8 +104,8 @@
     /*　for iPad 　*/
 
     .titleSeccsion {
-        width: 80%;
-        height: 20%;
+        width: 70%;
+        height: 15%;
         margin: 0 auto;
     }
 
@@ -116,7 +116,7 @@
 
     .attendeesSeccsion {
         width: 100%;
-        height: 50%;
+        height: 55%;
     }
 
     .attendeesSeccsionItems {
@@ -150,9 +150,10 @@
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
+
     .titleSeccsion {
         width: 70%;
-        height: 20%;
+        height: 15%;
         margin: 0 auto;
     }
 
@@ -163,7 +164,7 @@
 
     .attendeesSeccsion {
         width: 100%;
-        height: 50%;
+        height: 55%;
     }
 
     .attendeesSeccsionItems {
