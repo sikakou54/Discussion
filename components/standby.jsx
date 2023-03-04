@@ -28,7 +28,7 @@ export default function Standby({ attendees, title }) {
             <div className={styles.statusSeccsion}>
                 <div className={styles.inner}>
                     <div className={styles.main}>参加者を待っています</div>
-                    <div className={styles.sub}>( 討論者2名,視聴者3人以上が必要 )</div>
+                    <div className={styles.sub}>( 討論者2名、視聴者3人以上 )</div>
                 </div>
             </div>
             <div className={styles.attendeesSeccsion}>
