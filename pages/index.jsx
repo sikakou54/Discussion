@@ -8,12 +8,13 @@ import { apiFetchGet, apiFetchPost } from '../api/utils';
 import timeline from '../public/home/timeline.png';
 import select from '../public/home/select.png';
 
-
 export default function Home() {
 
   const [name, setName] = useState('');
 
-  async function onClikc() {
+  async function onClick(e) {
+
+    e.preventDefault();
 
     let response = await apiFetchGet('/api/getToken');
     if (200 !== response.statusCode) {
@@ -49,10 +50,10 @@ export default function Home() {
           <div className={styles.about}>TalkUpは匿名の討論アプリです</div>
           <div className={styles.about}>TalkUpであなたのTalk力を試してみませんか？</div>
         </div>
-        <div className={styles.form}>
+        <form onSubmit={onClick} className={styles.form}>
           <input className={styles.name} type='text' placeholder='ニックネーム' required onChange={(e) => { setName(e.target.value) }} />
-          <button className={styles.startButton} onClick={onClikc}>はじめる</button>
-        </div>
+          <input type='submit' className={styles.startButton} value='はじめる' />
+        </form>
       </div>
       <div className={styles.third}>
         <div className={styles.bar}>討論に参加する</div>

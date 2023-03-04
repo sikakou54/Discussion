@@ -770,26 +770,28 @@ export default function Discussion({ discussion, userId }) {
 
     }, [data.websocketStatus]);
 
-    if (undefined !== data.state) {
-
-        return (
-            <div className={styles.container}>
-                {data.state === process.env.userState.select ? <Select onJoin={onJoin} attendees={data.attendees} title={discussion.title} detail={discussion.detail} /> : null}
-                {data.state === process.env.userState.join ? < Join /> : null}
-                {data.state === process.env.userState.standby ? <Standby attendees={data.attendees} title={discussion.title} /> : null}
-                {data.state === process.env.userState.ready ? <Ready type={data.joinType} attendees={data.attendees} title={discussion.title} /> : null}
-                {data.state === process.env.userState.online ? < Online isStart={data.isStarted} attendees={data.attendees} title={discussion.title} finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
-                {data.state === process.env.userState.finish ? <Finish attendees={data.attendees} title={discussion.title} /> : null}
-                {data.state === process.env.userState.vote ? <Vote attendees={data.attendees} title={discussion.title} type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
-                {data.state === process.env.userState.votingDone ? <VotingDone title={discussion.title} /> : null}
-                {data.state === process.env.userState.result ? <Result onReturn={onReturn} attendees={data.attendees} title={discussion.title} result={data.result} /> : null}
-            </div>
-        );
-
-    } else {
-
-        return <div className={styles.loading}>
-            <Loding />
-        </div>
-    }
+    return (
+        <>
+            {
+                undefined !== data.state ?
+                    (
+                        <div className={styles.container}>
+                            {data.state === process.env.userState.select ? <Select onJoin={onJoin} attendees={data.attendees} title={discussion.title} detail={discussion.detail} /> : null}
+                            {data.state === process.env.userState.join ? < Join /> : null}
+                            {data.state === process.env.userState.standby ? <Standby attendees={data.attendees} title={discussion.title} /> : null}
+                            {data.state === process.env.userState.ready ? <Ready type={data.joinType} attendees={data.attendees} title={discussion.title} /> : null}
+                            {data.state === process.env.userState.online ? < Online isStart={data.isStarted} attendees={data.attendees} title={discussion.title} finishTime={data.limitTime} currentTime={data.currentTime} /> : null}
+                            {data.state === process.env.userState.finish ? <Finish attendees={data.attendees} title={discussion.title} /> : null}
+                            {data.state === process.env.userState.vote ? <Vote attendees={data.attendees} title={discussion.title} type={data.joinType} setVotindDone={setVotindDone} limitTime={data.limitTime} currentTime={data.currentTime} /> : null}
+                            {data.state === process.env.userState.votingDone ? <VotingDone title={discussion.title} /> : null}
+                            {data.state === process.env.userState.result ? <Result onReturn={onReturn} attendees={data.attendees} title={discussion.title} result={data.result} /> : null}
+                        </div>
+                    ) : (
+                        <div className={styles.loading}>
+                            <Loding />
+                        </div>
+                    )
+            }
+        </>
+    );
 }

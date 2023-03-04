@@ -1,10 +1,6 @@
-.container,
-.loading {
+.container {
     width: 100%;
     height: 650px;
-}
-
-.container {
     margin-top: 5px;
     background-color: white;
     border-radius: 5px;
@@ -12,6 +8,8 @@
 }
 
 .loading {
+    width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,8 +18,8 @@
 @media screen and (min-width:480px) and (max-width:1024px) {
 
     /*　for iPad 　*/
-    .container,
-    .loading {
+
+    .container {
         width: 100%;
         height: 900px;
     }
@@ -35,9 +33,6 @@
     .container {
         width: 900px;
         height: 900px;
-    }
-
-    .container {
         margin: 0 auto;
         margin-top: 16px;
         box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .5);
