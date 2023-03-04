@@ -36,7 +36,8 @@ export default function Post() {
         setSeq((seq) => seq - 1);
     }
 
-    async function onPost() {
+    async function onPost(e) {
+        e.preventDefault();
         apiFetchPost('/api/setDiscussion', {
             country,
             postId,
@@ -158,7 +159,7 @@ export default function Post() {
                             }
                             {
                                 3 === seq &&
-                                <form onSubmit={next}>
+                                <form onSubmit={onPost}>
                                     <div className={style.frame}>
                                         <div className={style.secsionName}>議題</div>
                                         <div className={style.title}>{title}</div>
@@ -174,11 +175,7 @@ export default function Post() {
                                     </div>
                                     <div className={style.buttonArea}>
                                         <input type='button' className={style.cancel} onClick={preview} value='戻る' />
-                                        {
-                                            (detail.length > 0 && detail.length <= 140)
-                                                ? <input type='submit' className={`${style.push} ${style.enable}`} disabled={false} onClick={onPost} value='完了' />
-                                                : <input type='submit' className={`${style.push} ${style.disable}`} disabled={true} onClick={onPost} value='完了' />
-                                        }
+                                        <input type='submit' className={`${style.push} ${style.enable}`} disabled={false} value='完了' />
                                     </div>
                                 </form>
                             }
