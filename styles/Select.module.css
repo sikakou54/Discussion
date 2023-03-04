@@ -113,19 +113,19 @@
     }
 
     .detail {
-        width: 80%;
+        width: 75%;
         height: 240px;
-        margin-bottom: 64px;
+        margin-bottom: 38px;
         font-size: 24px;
     }
 
     .selectItems {
-        height: 420px;
+        height: 400px;
     }
 
     .attendees {
-        width: 60%;
-        height: 100px;
+        width: 55%;
+        height: 90px;
         padding: 0;
         border-radius: 12px;
         font-size: 18px;
@@ -149,19 +149,19 @@
     }
 
     .detail {
-        width: 70%;
+        width: 75%;
         height: 240px;
-        margin-bottom: 64px;
-        font-size: 28px;
+        margin-bottom: 38px;
+        font-size: 24px;
     }
 
     .selectItems {
-        height: 420px;
+        height: 400px;
     }
 
     .attendees {
-        width: 60%;
-        height: 100px;
+        width: 55%;
+        height: 90px;
         padding: 0;
         border-radius: 12px;
         font-size: 18px;
