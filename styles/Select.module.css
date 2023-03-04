@@ -29,7 +29,7 @@
     overflow: auto;
     border-radius: 5px;
     padding: 5px;
-    font-size: 13px;
+    font-size: 16px;
     border: 0.5px solid #00838f;
     box-shadow: 0 2px 5px gray;
 }
@@ -113,10 +113,10 @@
     }
 
     .detail {
-        width: 700px;
-        height: 190px;
+        width: 80%;
+        height: 240px;
         margin-bottom: 64px;
-        font-size: 18px;
+        font-size: 29px;
     }
 
     .selectItems {
@@ -149,10 +149,10 @@
     }
 
     .detail {
-        width: 700px;
-        height: 190px;
+        width: 70%;
+        height: 240px;
         margin-bottom: 64px;
-        font-size: 18px;
+        font-size: 29px;
     }
 
     .selectItems {
