@@ -17,64 +17,64 @@ export default function Select({ onJoin, attendees, title, detail }) {
             <div className={styles.title}>{title}</div>
             <textarea value={detail} className={styles.detail} readOnly />
             <div className={styles.selectItems}>
-                <div className={styles.selectItemBox}>
+                <div className={`${styles.selectItem}`}  >
                     {
                         'none' === attendees.positive.userId ?
                             (
                                 selectedJoinType === 1 ?
                                     (
-                                        <div className={`${styles.selectItem} ${styles.selected}`} disabled={false}>
+                                        <div className={`${styles.attendees} ${styles.selected}`} disabled={false}>
                                             <Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee>
                                         </div>
                                     ) : (
-                                        <div className={`${styles.selectItem} ${styles.enable}`} onClick={() => setSelectedJoinType(1)} disabled={false}>
+                                        <div className={`${styles.attendees} ${styles.enable}`} onClick={() => setSelectedJoinType(1)} disabled={false}>
                                             <Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee>
                                         </div>
                                     )
                             ) : (
-                                <div className={`${styles.selectItem} ${styles.disable}`} onClick={() => setSelectedJoinType(1)} disabled={true}>
+                                <div className={`${styles.attendees} ${styles.disable}`} onClick={() => setSelectedJoinType(1)} disabled={true}>
                                     <Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee>
                                 </div>
                             )
                     }
                 </div>
-                <div className={styles.selectItemBox}>
+                <div className={`${styles.selectItem}`} >
                     {
                         'none' === attendees.negative.userId ?
                             (
                                 selectedJoinType === 2 ?
                                     (
-                                        <div className={`${styles.selectItem} ${styles.selected}`} disabled={false}>
+                                        <div className={`${styles.attendees} ${styles.selected}`} disabled={false}>
                                             <Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee>
                                         </div>
                                     ) : (
-                                        <div className={`${styles.selectItem} ${styles.enable}`} onClick={() => setSelectedJoinType(2)} disabled={false}>
+                                        <div className={`${styles.attendees} ${styles.enable}`} onClick={() => setSelectedJoinType(2)} disabled={false}>
                                             <Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee>
                                         </div>
                                     )
                             ) : (
-                                <div className={`${styles.selectItem} ${styles.disable}`} onClick={() => setSelectedJoinType(2)} disabled={true}>
+                                <div className={`${styles.attendees} ${styles.disable}`} onClick={() => setSelectedJoinType(2)} disabled={true}>
                                     <Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee>
                                 </div>
                             )
                     }
                 </div>
-                <div className={styles.selectItemBox}>
+                <div className={`${styles.selectItem}`} >
                     {
                         100 > attendees.watchers.length ?
                             (
                                 selectedJoinType === 3 ?
                                     (
-                                        <div className={`${styles.selectItem} ${styles.selected}`} disabled={false}>
+                                        <div className={`${styles.attendees} ${styles.selected}`} disabled={false}>
                                             <Attendee userId={'none'}>視聴する</Attendee>
                                         </div>
                                     ) : (
-                                        <div className={`${styles.selectItem} ${styles.enable}`} onClick={() => setSelectedJoinType(3)} disabled={false}>
+                                        <div className={`${styles.attendees} ${styles.enable}`} onClick={() => setSelectedJoinType(3)} disabled={false}>
                                             <Attendee userId={'none'}>視聴する</Attendee>
                                         </div>
                                     )
                             ) : (
-                                <div className={`${styles.selectItem} ${styles.disable}`} onClick={() => setSelectedJoinType(3)} disabled={true}>
+                                <div className={`${styles.attendees} ${styles.disable}`} onClick={() => setSelectedJoinType(3)} disabled={true}>
                                     <Attendee userId={'none'}>視聴する</Attendee>
                                 </div>
                             )
