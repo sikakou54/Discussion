@@ -61,20 +61,12 @@ export default function Post() {
         event.returnValue = 'このページを離れますか？'; // Google Chrome
     }
 
-    function onPopState(event) {
-        history.pushState(null, null, null);
-        return;
-    }
-
     useEffect(() => {
 
-        history.replaceState(null, null, null);
         window.addEventListener('beforeunload', onbeforeunload, false);
-        window.addEventListener('popstate', onPopState, false);
 
         return () => {
             window.removeEventListener('beforeunload', onbeforeunload, false);
-            window.removeEventListener('popstate', onPopState, false);
         };
 
     }, []);
