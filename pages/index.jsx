@@ -58,10 +58,12 @@ export default function Home() {
           <div className={styles.about}>TalkUpは匿名の討論アプリです</div>
           <div className={styles.about}>TalkUpであなたのTalk力を試してみませんか？</div>
         </div>
-        <form onSubmit={onClick} className={styles.form}>
-          <input className={styles.name} type='text' placeholder='ニックネーム' required onChange={(e) => { setName(e.target.value) }} />
-          <input type='submit' className={styles.startButton} value='はじめる' />
-        </form>
+        <div className={styles.startSecssion}>
+          <form onSubmit={onClick} className={styles.form}>
+            <input className={styles.name} type='text' placeholder='ニックネーム' required onChange={(e) => { setName(e.target.value) }} />
+            <input type='submit' className={styles.startButton} value='はじめる' />
+          </form>
+        </div>
       </div>
 
       <div className={styles.section}>

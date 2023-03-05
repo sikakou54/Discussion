@@ -11,15 +11,22 @@
 }
 
 .bgImage {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 
 .second {
   width: 100%;
-  height: 350px;
   text-align: center;
   background-color: #e0f2f1;
+}
+
+.startSecssion {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .third {
@@ -165,10 +172,6 @@
     margin: 0 auto;
   }
 
-  .second {
-    height: 400px;
-  }
-
   .about {
     font-size: 32px;
   }
@@ -186,10 +189,6 @@
   .bgImage {
     width: 50%;
     margin: 0 auto;
-  }
-
-  .second {
-    height: 400px;
   }
 
   .about {
