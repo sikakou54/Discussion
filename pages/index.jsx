@@ -40,13 +40,13 @@ export default function Home() {
       userName: name
     });
     if (200 === response.statusCode) {
+
+      sessionStorage.setItem('talkUp', JSON.stringify({
+        userId: token
+      }));
+
       Router.push({
-        pathname: '/posts',
-        query: {
-          userId: token,
-          country: 'jpn',
-          postId: 'none'
-        }
+        pathname: '/posts'
       });
     }
   }

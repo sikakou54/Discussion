@@ -529,6 +529,7 @@ export async function setDiscussion(_country, _postId, _userId, _title, _detail,
         Key: {
             postId: _postId
         },
+        ConditionExpression: '#pub = :pub_false',
         UpdateExpression: 'set #country = :country, #createAt = :createAt, #pub = :pub, #userId = :userId, #title = :title, #detail = :detail, #progress = :progress, #limitTime = :limitTime,' +
             '#positive.#text = :positive_text, #positive.#socketId = :socketId, #positive.#state = :state, #positive.#version = :version,' +
             '#negative.#text = :negative_text, #negative.#socketId = :socketId, #negative.#state = :state, #negative.#version = :version,' +
@@ -554,6 +555,7 @@ export async function setDiscussion(_country, _postId, _userId, _title, _detail,
             ':country': _country,
             ':createAt': getUtcMsec(),
             ':pub': true,
+            ':pub_false': false,
             ':userId': _userId,
             ':title': _title,
             ':detail': _detail,

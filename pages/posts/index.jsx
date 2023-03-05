@@ -6,11 +6,12 @@ import TimeLineView from '../../components/timeLineView';
 import Loding from '../../components/loading';
 import useSWR from 'swr';
 
-export default function Posts({ userId, country, postId }) {
+export default function Posts() {
 
+    const [userId, setUserId] = useState('none');
     const fetcher = (url) => fetch(url).then((res) => res.json());
     const [items, setItems] = useState([]);
-    const { data, error } = useSWR('/api/getDiscussions/' + country + '/' + postId, fetcher, {
+    const { data, error } = useSWR('/api/getDiscussions/jpn/none', fetcher, {
         refreshInterval: 1000
     });
 
@@ -18,8 +19,7 @@ export default function Posts({ userId, country, postId }) {
         Router.push({
             pathname: '/discussion',
             query: {
-                postId: _postId,
-                userId
+                postId: _postId
             }
         });
     }
@@ -41,36 +41,48 @@ export default function Posts({ userId, country, postId }) {
     }, [error]);
 
     useEffect(() => {
+
+        const json = sessionStorage.getItem('talkUp');
+        if (null !== json) {
+            const data = JSON.parse(json);
+            if ('userId' in data) {
+                setUserId(data.userId);
+            } else {
+                Router.push({
+                    pathname: '/'
+                });
+                return;
+            }
+        } else {
+            Router.push({
+                pathname: '/'
+            });
+            return;
+        }
+
         return () => { }
+
     }, []);
 
     return (
         <Layout title={'Posts'} >
             {
-                undefined !== items && 0 < items.length ?
+                'none' !== userId ?
                     (
-                        <div className={styles.container}>
-                            <div className={styles.timeLineView}><TimeLineView country={country} postId={postId} userId={userId} items={items} onClick={onClick} /></div>
-                        </div>
+                        undefined !== items && 0 < items.length ?
+                            (
+                                <div className={styles.container}>
+                                    <div className={styles.timeLineView}><TimeLineView userId={userId} items={items} onClick={onClick} /></div>
+                                </div>
+                            ) : (
+                                <div className={styles.loading}>
+                                    <Loding />
+                                </div>
+                            )
                     ) : (
-                        <div className={styles.loading}>
-                            <Loding />
-                        </div>
+                        <></>
                     )
             }
         </Layout >
     );
-}
-
-//SSR
-export async function getServerSideProps(context) {
-
-    const { userId, country, postId } = context.query;
-    return {
-        props: {
-            userId,
-            country,
-            postId
-        }
-    }
 }

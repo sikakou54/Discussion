@@ -43,6 +43,7 @@ export const discussionErrorMsg = {
     discussionFailed: '討論が異常終了しました',
     discussionStartFailed: '討論の参加に失敗しました',
     websocketError: '通信エラーが発生しました',
+    roomMakeError: 'ROOMの作成に失敗しました。',
 }
 
 export const discussionErrorCode = {
@@ -51,4 +52,5 @@ export const discussionErrorCode = {
     discussionFailed: 3,
     discussionStartFailed: 4,
     websocketError: 5,
+    roomMakeError: 6
 }

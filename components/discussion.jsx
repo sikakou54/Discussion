@@ -502,12 +502,7 @@ export default function Discussion({ discussion, userId }) {
 
     function onReturn() {
         Router.push({
-            pathname: '/posts',
-            query: {
-                userId,
-                country: 'jpn',
-                postId: 'none'
-            }
+            pathname: '/posts'
         });
     }
 
@@ -675,40 +670,36 @@ export default function Discussion({ discussion, userId }) {
                 if (discusionStatus.discussionStartFailed === data.discusionStatus) {
 
                     Router.push({
-                        pathname: 'error',
+                        pathname: '/error',
                         query: {
-                            code: discussionErrorCode.discussionStartFailed,
-                            userId
+                            code: discussionErrorCode.discussionStartFailed
                         }
                     });
 
                 } else if (discusionStatus.discussionFailed === data.discusionStatus) {
 
                     Router.push({
-                        pathname: 'error',
+                        pathname: '/error',
                         query: {
-                            code: discussionErrorCode.discussionFailed,
-                            userId
+                            code: discussionErrorCode.discussionFailed
                         }
                     });
 
                 } else if (discusionStatus.discussionJoinFailed === data.discusionStatus) {
 
                     Router.push({
-                        pathname: 'error',
+                        pathname: '/error',
                         query: {
-                            code: discussionErrorCode.discussionJoinFailed,
-                            userId
+                            code: discussionErrorCode.discussionJoinFailed
                         }
                     });
 
                 } else if (discusionStatus.websocketDisconnect === data.discusionStatus || discusionStatus.websocketError === data.discusionStatus) {
 
                     Router.push({
-                        pathname: 'error',
+                        pathname: '/error',
                         query: {
-                            code: discussionErrorCode.websocketDisconnect,
-                            userId
+                            code: discussionErrorCode.websocketDisconnect
                         }
                     });
 
@@ -721,10 +712,9 @@ export default function Discussion({ discussion, userId }) {
 
                     // 原因不明のエラー（ブラウザによる強制ソケット切断）
                     Router.push({
-                        pathname: 'error',
+                        pathname: '/error',
                         query: {
-                            code: discussionErrorCode.websocketDisconnect,
-                            userId
+                            code: discussionErrorCode.websocketDisconnect
                         }
                     });
                 }
@@ -748,7 +738,6 @@ export default function Discussion({ discussion, userId }) {
 
                 // KeepAlive用インターバルタイマー開始
                 const timerId = setInterval(() => {
-                    console.log('keepalive');
                     sendMessage('keepalive', {
                         postId: data.postId,
                         socketId: data.socketId,

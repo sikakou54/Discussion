@@ -3,16 +3,11 @@ import Layout from '../../components/layout';
 import { discussionErrorCode, discussionErrorMsg } from '../../define/define';
 import styles from '../../styles/Error.module.css';
 
-export default function Error({ message, userId }) {
+export default function Error({ message }) {
 
     function onClick() {
         Router.push({
-            pathname: '/posts',
-            query: {
-                userId,
-                country: 'jpn',
-                postId: 'none'
-            }
+            pathname: '/posts'
         });
     }
 
@@ -30,7 +25,7 @@ export default function Error({ message, userId }) {
 export async function getServerSideProps(context) {
 
     let message = 'システムエラー';
-    const { code, userId } = context.query;
+    const { code } = context.query;
 
     switch (Number(code)) {
 
@@ -54,14 +49,17 @@ export async function getServerSideProps(context) {
             message = discussionErrorMsg.websocketError;
             break;
 
+        case discussionErrorCode.roomMakeError:
+            message = discussionErrorMsg.roomMakeError;
+            break;
+
         default:
             break;
     }
 
     return {
         props: {
-            message,
-            userId
+            message
         }
     }
 }

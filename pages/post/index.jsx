@@ -4,11 +4,12 @@ import { apiFetchPost } from '../../api/utils';
 import Layout from '../../components/layout';
 import style from '../../styles/Post.module.css';
 import Loding from '../../components/loading';
-
+import { discussionErrorCode } from '../../define/define';
 export default function Post() {
 
     const router = useRouter();
-    const { userId, country, postId } = router.query;
+    const { country, postId } = router.query;
+    const [userId, setUserId] = useState('none');
     const [title, setTitle] = useState('');
     const [detail, setDetail] = useState('');
     const [positiveText, setPositiveText] = useState('');
@@ -18,12 +19,7 @@ export default function Post() {
 
     function backPosts() {
         Router.push({
-            pathname: '/posts',
-            query: {
-                userId,
-                country: 'jpn',
-                postId: 'none'
-            }
+            pathname: '/posts'
         });
     }
 
@@ -46,14 +42,23 @@ export default function Post() {
             detail,
             positiveText,
             negativeText
-        }).then(() => {
-            Router.push({
-                pathname: '/discussion',
-                query: {
-                    postId,
-                    userId
-                }
-            });
+        }).then((response) => {
+            if (200 === response.statusCode) {
+                Router.push({
+                    pathname: '/discussion',
+                    query: {
+                        postId,
+                        userId
+                    }
+                });
+            } else {
+                Router.push({
+                    pathname: '/error',
+                    query: {
+                        code: discussionErrorCode.roomMakeError
+                    }
+                });
+            }
         });
         setLoding(true);
     }
@@ -68,6 +73,10 @@ export default function Post() {
 
     useEffect(() => {
 
+        const json = sessionStorage.getItem('talkUp');
+        const data = JSON.parse(json);
+        setUserId(data.userId);
+
         window.addEventListener('beforeunload', onbeforeunload, false);
 
         return () => {
@@ -79,7 +88,7 @@ export default function Post() {
     return (
         <Layout title={'Post'}>
             {
-                false === loading ?
+                'none' !== userId && false === loading ?
                     (
                         <div className={style.container}>
                             <div className={style.seqWrapper}>

@@ -3,7 +3,7 @@ import TimeLineItem from "./timeLineItem";
 import Router from 'next/router';
 import { useState } from 'react';
 
-export default function TimeLineView({ userId, items, onClick }) {
+export default function TimeLineView({ items, onClick }) {
 
     const [standby, setStandby] = useState(false);
     const [discussion, setDiscussion] = useState(false);
@@ -13,8 +13,7 @@ export default function TimeLineView({ userId, items, onClick }) {
             pathname: '/post',
             query: {
                 postId: _potId,
-                country: _country,
-                userId
+                country: _country
             }
         });
     }
