@@ -108,7 +108,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 99%;
   height: 40px;
   margin: 0 auto;
   margin-bottom: 12px;
@@ -128,7 +128,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   border: none;
-  background-color: white;
 }
 
 .secssionItem {
