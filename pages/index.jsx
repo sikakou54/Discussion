@@ -3,8 +3,7 @@ import Router from 'next/router';
 import Image from 'next/image';
 import bgimage from '../public/bgimage.png';
 import Footer from '../components/footer';
-import { useState } from 'react';
-import { apiFetchGet, apiFetchPost } from '../api/utils';
+import { useEffect, useState } from 'react';
 import timeline from '../public/home/timeline2@2x.png';
 import timelineNone from '../public/home/timeline1@2x.png';
 import select from '../public/home/select@2x.png';
@@ -24,32 +23,36 @@ import post4 from '../public/home/post4@2x.png';
 export default function Home() {
 
   const [name, setName] = useState('');
+  const [userId, setUserId] = useState('none');
 
   async function onClick(e) {
-
     e.preventDefault();
-
-    let response = await apiFetchGet('/api/getToken');
-    if (200 !== response.statusCode) {
-      return;
-    }
-    const { token } = response.data;
-    console.log(token);
-    response = await apiFetchPost('api/setUser', {
-      userId: token,
-      userName: name
+    fetch('/api/getToken', { method: 'GET' }).then(response => response.json()).then((data) => {
+      setUserId(data.token);
     });
-    if (200 === response.statusCode) {
+  }
 
-      sessionStorage.setItem('talkUp', JSON.stringify({
-        userId: token
-      }));
+  useEffect(() => {
 
-      Router.push({
-        pathname: '/posts'
+    if ('none' !== userId) {
+      fetch('/api/setUser', {
+        method: 'POST', body: JSON.stringify({
+          userId,
+          userName: name
+        })
+      }).then(response => response.json()).then((data) => {
+        if (data.response.result) {
+          sessionStorage.setItem('talkUp', JSON.stringify({
+            userId
+          }));
+          Router.push({
+            pathname: '/posts'
+          });
+        }
       });
     }
-  }
+
+  }, [userId]);
 
   return (
     <div className={styles.container}>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Router, { useRouter } from 'next/router';
-import { apiFetchPost } from '../../api/utils';
 import Layout from '../../components/layout';
 import style from '../../styles/Post.module.css';
 import Loding from '../../components/loading';
@@ -34,21 +33,22 @@ export default function Post() {
 
     async function onPost(e) {
         e.preventDefault();
-        apiFetchPost('/api/setDiscussion', {
-            country,
-            postId,
-            userId,
-            title,
-            detail,
-            positiveText,
-            negativeText
-        }).then((response) => {
-            if (200 === response.statusCode) {
+        fetch('/api/setDiscussion', {
+            method: 'POST', body: JSON.stringify({
+                country,
+                postId,
+                userId,
+                title,
+                detail,
+                positiveText,
+                negativeText
+            })
+        }).then(response => response.json()).then((data) => {
+            if (data.result) {
                 Router.push({
                     pathname: '/discussion',
                     query: {
-                        postId,
-                        userId
+                        postId
                     }
                 });
             } else {
@@ -152,7 +152,7 @@ export default function Post() {
                                 <form onSubmit={next}>
                                     <div className={style.frame}>
                                         <div className={style.secsionName}>概要</div>
-                                        <textarea className={style.oval} placeholder='朝食の最適解について討論しましょう！' required onChange={(e) => { setDetail(e.target.value) }} >{detail}</textarea>
+                                        <textarea className={style.oval} placeholder='朝食の最適解について討論しましょう！' required onChange={(e) => { setDetail(e.target.value) }} defaultValue={detail} />
                                         {detail.length > 140 && <div className={style.errorText}>140文字以内で入力してください</div>}
                                         {detail.length === 0 && <div className={style.errorText}>概要を入力してください</div>}
                                     </div>
@@ -180,7 +180,7 @@ export default function Post() {
                                     </div>
                                     <div className={style.frame}>
                                         <div className={style.secsionName}>概要</div>
-                                        <textarea className={style.oval} disabled={true}>{detail}</textarea>
+                                        <textarea className={style.oval} disabled={true} defaultValue={detail} />
                                     </div>
                                     <div className={style.buttonArea}>
                                         <input type='button' className={style.cancel} onClick={preview} value='戻る' />
