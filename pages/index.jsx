@@ -6,6 +6,7 @@ import Footer from '../components/footer';
 import { useState } from 'react';
 import { apiFetchGet, apiFetchPost } from '../api/utils';
 import timeline from '../public/home/timeline2@2x.png';
+import timelineNone from '../public/home/timeline1@2x.png';
 import select from '../public/home/select@2x.png';
 import join from '../public/home/join@2x.png';
 import standby from '../public/home/standby@2x.png';
@@ -15,6 +16,10 @@ import finish from '../public/home/finish@2x.png';
 import vate from '../public/home/vote2@2x.png';
 import voteFinish from '../public/home/votefinish.png';
 import result from '../public/home/result@2x.png';
+import post1 from '../public/home/post1@2x.png';
+import post2 from '../public/home/post2@2x.png';
+import post3 from '../public/home/post3@2x.png';
+import post4 from '../public/home/post4@2x.png';
 
 export default function Home() {
 
@@ -67,6 +72,7 @@ export default function Home() {
           </form>
         </div>
       </div>
+      <div className={styles.bar}>ROOMに参加する</div>
       <div className={styles.section}>
         <div className={styles.secssionItem}>
           <div className={styles.secssionText}><u>1.気になるROOMを選びます</u></div>
@@ -126,6 +132,39 @@ export default function Home() {
           <div className={styles.secssionText}><u>10.結果発表</u></div>
           <div className={styles.screenImange}>
             <Image src={result} />
+          </div>
+        </div>
+      </div>
+      <div className={styles.bar}>ROOMを作る</div>
+      <div className={styles.section}>
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>1. 空いているROOMを選びます</u></div>
+          <div className={styles.screenImange}>
+            <Image src={timelineNone} />
+          </div>
+        </div>
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>2. 議題を入力します</u></div>
+          <div className={styles.screenImange}>
+            <Image src={post1} />
+          </div>
+        </div>
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>2. 討論を入力します</u></div>
+          <div className={styles.screenImange}>
+            <Image src={post2} />
+          </div>
+        </div>
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>2. 概要を入力します</u></div>
+          <div className={styles.screenImange}>
+            <Image src={post3} />
+          </div>
+        </div>
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>2. 内容を確認し「完了」をクリック！</u></div>
+          <div className={styles.screenImange}>
+            <Image src={post4} />
           </div>
         </div>
       </div>
