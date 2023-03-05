@@ -60,7 +60,7 @@ export default function Home() {
         </div>
         <div className={styles.startSecssion}>
           <form onSubmit={onClick} className={styles.form}>
-            <input className={styles.name} type='text' placeholder='ニックネーム' required onChange={(e) => { setName(e.target.value) }} />
+            <input className={styles.name} type='text' placeholder='名前' maxLength={15} required onChange={(e) => { setName(e.target.value) }} />
             <input type='submit' className={styles.startButton} value='はじめる' />
           </form>
         </div>
