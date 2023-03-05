@@ -81,7 +81,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>2.選択して「参加」をクリック！</u></div>
+          <div className={styles.secssionText}><u>2.選択して「参加する」をクリック！</u></div>
           <div className={styles.screenImange}>
             <Image src={select} />
           </div>
@@ -93,7 +93,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>4.参加者が集まるまで待機します</u></div>
+          <div className={styles.secssionText}><u>4.参加条件を満たすまで待機します</u></div>
           <div className={styles.screenImange}>
             <Image src={standby} />
           </div>
