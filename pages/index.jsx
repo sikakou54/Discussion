@@ -134,6 +134,12 @@ export default function Home() {
             <Image src={result} />
           </div>
         </div>
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>12.討論が終わったらROOMは無くなります</u></div>
+          <div className={styles.screenImange}>
+            <Image src={timelineNone} />
+          </div>
+        </div>
       </div>
       <div className={styles.bar}>ROOMを作る</div>
       <div className={styles.section}>
@@ -150,19 +156,19 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>2. 討論を入力します</u></div>
+          <div className={styles.secssionText}><u>3. 討論を入力します</u></div>
           <div className={styles.screenImange}>
             <Image src={post2} />
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>2. 概要を入力します</u></div>
+          <div className={styles.secssionText}><u>4. 概要を入力します</u></div>
           <div className={styles.screenImange}>
             <Image src={post3} />
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>2. 内容を確認し「完了」をクリック！</u></div>
+          <div className={styles.secssionText}><u>5. 内容を確認し「完了」をクリック！</u></div>
           <div className={styles.screenImange}>
             <Image src={post4} />
           </div>

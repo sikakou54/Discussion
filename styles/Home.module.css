@@ -128,11 +128,12 @@
   flex-direction: row;
   flex-wrap: wrap;
   border: none;
+  margin: 0 auto;
   margin-bottom: 12px;
 }
 
 .secssionItem {
-  width: 350px;
+  width: 380px;
   height: 550px;
   margin: 10px;
   border: 0.5px solid gray;
@@ -236,4 +237,7 @@
     height: 350px;
   }
 
+  .section {
+    width: 90%;
+  }
 }
