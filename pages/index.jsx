@@ -55,8 +55,10 @@ export default function Home() {
       </div>
       <div className={styles.second}>
         <div className={styles.detail}>
-          <div className={styles.about}>TalkUpは匿名の討論アプリです</div>
-          <div className={styles.about}>TalkUpであなたのTalk力を試してみませんか？</div>
+          <div className={styles.aboutText}>
+            <div className={styles.about}>TalkUpは匿名の討論アプリです</div>
+            <div className={styles.about}>TalkUpであなたのTalk力を試してみませんか？</div>
+          </div>
         </div>
         <div className={styles.startSecssion}>
           <form onSubmit={onClick} className={styles.form}>
