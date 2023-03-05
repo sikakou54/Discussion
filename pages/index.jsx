@@ -25,7 +25,7 @@ export default function Home() {
   const [name, setName] = useState('');
   const [userId, setUserId] = useState('none');
 
-  async function onClick(e) {
+  function onClick(e) {
     e.preventDefault();
     fetch('/api/getToken', { method: 'GET' }).then(response => response.json()).then((data) => {
       setUserId(data.token);
