@@ -102,21 +102,31 @@
 }
 
 .section {
-  border-radius: 6px;
   width: 100%;
   height: auto;
-  margin: 0 auto;
-  margin-bottom: 24px;
-  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
-  background-color: #e0f2f1;
-  border: 0.5px solid gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: none;
+  background-color: white;
 }
 
-.label {
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.secssionItem {
+  width: 350px;
+  height: 550px;
+  margin: 10px;
+  border: 0.5px solid gray;
+  text-align: center;
+  box-shadow: 0 2px 5px gray;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.secssionText {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .appNameSction {
@@ -134,7 +144,10 @@
 }
 
 .screenImange {
-  width: 300px;
+  width: 250px;
+  border: 3px solid black;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px black;
   margin: 0 auto;
 }
 

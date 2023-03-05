@@ -5,8 +5,16 @@ import bgimage from '../public/bgimage.png';
 import Footer from '../components/footer';
 import { useState } from 'react';
 import { apiFetchGet, apiFetchPost } from '../api/utils';
-import timeline from '../public/home/timeline.png';
-import select from '../public/home/select.png';
+import timeline from '../public/home/timeline2@2x.png';
+import select from '../public/home/select@2x.png';
+import join from '../public/home/join@2x.png';
+import standby from '../public/home/standby@2x.png';
+import ready from '../public/home/ready2@2x.png';
+import discussion from '../public/home/discussion@2x.png';
+import finish from '../public/home/finish@2x.png';
+import vate from '../public/home/vote2@2x.png';
+import voteFinish from '../public/home/votefinish.png';
+import result from '../public/home/result@2x.png';
 
 export default function Home() {
 
@@ -55,48 +63,81 @@ export default function Home() {
           <input type='submit' className={styles.startButton} value='はじめる' />
         </form>
       </div>
-      <div className={styles.third}>
-        <div className={styles.bar}>討論に参加する</div>
-        <div className={styles.section}>
-          <div className={styles.label}>気になるROOMを選びます</div>
+
+      <div className={styles.section}>
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>1.気になるROOMを選びます</u></div>
           <div className={styles.screenImange}>
             <Image src={timeline} />
           </div>
         </div>
-        <div className={styles.section}>
-          <div className={styles.label}>ROOMに参加します</div>
+
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>2.選択して「参加」をクリック！</u></div>
           <div className={styles.screenImange}>
             <Image src={select} />
           </div>
         </div>
-        <div className={styles.section}>
-          <div className={styles.label}>参加者がそろったら討論開始</div>
-          <div className={styles.screenImange}></div>
+
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>3.ROOMに問い合わせを行います</u></div>
+          <div className={styles.screenImange}>
+            <Image src={join} />
+          </div>
         </div>
-        <div className={styles.section}>
-          <div className={styles.label}>投票タイム</div>
-          <div className={styles.screenImange}></div>
+
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>4.参加者が集まるまで待機します</u></div>
+          <div className={styles.screenImange}>
+            <Image src={standby} />
+          </div>
         </div>
-        <div className={styles.section}>
-          <div className={styles.label}>結果発表</div>
-          <div className={styles.screenImange}></div>
+
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>5.参加者が集まったら準備が始まります</u></div>
+          <div className={styles.screenImange}>
+            <Image src={ready} />
+          </div>
         </div>
+
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>6.討論が開始します(10分)</u></div>
+          <div className={styles.screenImange}>
+            <Image src={discussion} />
+          </div>
+        </div>
+
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>7.討論終了</u></div>
+          <div className={styles.screenImange}>
+            <Image src={finish} />
+          </div>
+        </div>
+
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>8.投票タイム(30秒)</u></div>
+          <div className={styles.screenImange}>
+            <Image src={vate} />
+          </div>
+        </div>
+
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>9.投票終了</u></div>
+          <div className={styles.screenImange}>
+            <Image src={voteFinish} />
+          </div>
+        </div>
+
+        <div className={styles.secssionItem}>
+          <div className={styles.secssionText}><u>10.結果発表</u></div>
+          <div className={styles.screenImange}>
+            <Image src={result} />
+          </div>
+        </div>
+
       </div>
-      <div className={styles.force}>
-        <div className={styles.bar}>討論を作る</div>
-        <div className={styles.section}>
-          <div className={styles.label}>空いているROOMを選択</div>
-          <div className={styles.screenImange}></div>
-        </div>
-        <div className={styles.section}>
-          <div className={styles.label}>討論内容を登録します</div>
-          <div className={styles.screenImange}></div>
-        </div>
-        <div className={styles.section}>
-          <div className={styles.label}>ROOMを作成できました</div>
-          <div className={styles.screenImange}></div>
-        </div>
-      </div>
+
+
       <div className={styles.footer}><Footer /></div>
     </div>
   );
