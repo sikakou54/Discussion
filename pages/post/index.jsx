@@ -180,7 +180,7 @@ export default function Post() {
                                     </div>
                                     <div className={style.frame}>
                                         <div className={style.secsionName}>概要</div>
-                                        <textarea className={style.oval} disabled={true} defaultValue={detail} />
+                                        <div className={style.oval} disabled={true}>{detail}</div>
                                     </div>
                                     <div className={style.buttonArea}>
                                         <input type='button' className={style.cancel} onClick={preview} value='戻る' />
