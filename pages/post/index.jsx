@@ -4,6 +4,7 @@ import Layout from '../../components/layout';
 import style from '../../styles/Post.module.css';
 import Loding from '../../components/loading';
 import { discussionErrorCode } from '../../define/define';
+
 export default function Post() {
 
     const router = useRouter();
