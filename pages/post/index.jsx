@@ -194,7 +194,6 @@ export default function Post() {
                         </div>
                     )
             }
-
         </Layout>
     );
 }

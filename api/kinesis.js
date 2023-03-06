@@ -1,7 +1,6 @@
 import AWS from 'aws-sdk';
 AWS.config.apiVersions = {
-    kinesis: '2013-12-02',
-    // other service API versions
+    kinesis: '2013-12-02'
 };
 AWS.config.credentials = new AWS.Credentials('AKIAZM7CB6TBRTQFX45K', 'ScElcNk7urEGak0unfLutQAG6Mvf2a5G/w4/1+oB', null);
 const kinesis = new AWS.Kinesis({ region: 'ap-northeast-1' });
