@@ -44,7 +44,7 @@ export default function Post() {
                 negativeText
             })
         }).then(response => response.json()).then((data) => {
-            if (data.result) {
+            if (data.response.result) {
                 Router.push({
                     pathname: '/discussion',
                     query: {
@@ -76,7 +76,6 @@ export default function Post() {
         const json = sessionStorage.getItem('talkUp');
         const data = JSON.parse(json);
         setUserId(data.userId);
-
         window.addEventListener('beforeunload', onbeforeunload, false);
 
         return () => {
