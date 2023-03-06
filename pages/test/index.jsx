@@ -1,6 +1,5 @@
 import { putRecored } from "../../api/kinesis";
 
-
 export default function Test() {
 
     async function click() {
