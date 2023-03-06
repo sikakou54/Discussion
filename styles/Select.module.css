@@ -157,18 +157,18 @@
     .detail {
         padding: 5px;
         width: 75%;
-        height: 230px;
+        height: 200px;
         margin-bottom: 18px;
         font-size: 24px;
     }
 
     .selectItems {
-        height: 390px;
+        height: 330px;
     }
 
     .attendees {
         width: 55%;
-        height: 90px;
+        height: 80px;
         padding: 0;
         border-radius: 12px;
         font-size: 18px;
