@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import styles from '../styles/Join.module.css';
+import Loding from "./loading";
 
 export default function Join() {
 
@@ -19,7 +20,7 @@ export default function Join() {
 
     return (
         <div className={styles.outer}>
-            <div className={styles.inner}>参加を問い合わせしています</div>
+            <div className={styles.inner}><Loding /></div>
         </div>
     );
 }

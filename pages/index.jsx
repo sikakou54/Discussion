@@ -84,19 +84,13 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>2.選択して「参加する」をクリック！</u></div>
+          <div className={styles.secssionText}><u>2.項目を選択して「参加する」をクリック！</u></div>
           <div className={styles.screenImange}>
             <Image src={select} />
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>3.ROOMに問い合わせを行います</u></div>
-          <div className={styles.screenImange}>
-            <Image src={join} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>4.参加条件を満たすまで待機します</u></div>
+          <div className={styles.secssionText}><u>4.参加者が集まるまで待機します</u></div>
           <div className={styles.screenImange}>
             <Image src={standby} />
           </div>
@@ -108,7 +102,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>6.討論が開始します(10分)</u></div>
+          <div className={styles.secssionText}><u>6.討論スタート！(10分)</u></div>
           <div className={styles.screenImange}>
             <Image src={discussion} />
           </div>
@@ -135,12 +129,6 @@ export default function Home() {
           <div className={styles.secssionText}><u>10.結果発表</u></div>
           <div className={styles.screenImange}>
             <Image src={result} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>12.討論が終わったらROOMは無くなります</u></div>
-          <div className={styles.screenImange}>
-            <Image src={timelineNone} />
           </div>
         </div>
       </div>
