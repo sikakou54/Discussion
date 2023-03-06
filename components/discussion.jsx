@@ -19,6 +19,7 @@ import {
 import { MeetingSessionConfiguration } from 'amazon-chime-sdk-js';
 import styles from '../styles/Discussion.module.css';
 import Loding from './loading';
+import { putRecored } from '../api/kinesis';
 
 const reducer = (state, action) => {
 
@@ -364,13 +365,22 @@ export default function Discussion({ discussion, userId }) {
         if (_type === 2) action = 'joinDiscussionNegative';
         if (_type === 3) action = 'joinDiscussionWatcher';
 
-        await sendMessage(action, {
+        await putRecored(action, {
             country: _country,
             postId: _postId,
             joinType: _type,
             userId: _userId,
             socketId: _socketId
         });
+        /**
+        await sendMessage(action, {
+            country: _country,
+            postId: _postId,
+            joinType: _type,
+            userId: _userId,
+            socketId: _socketId
+        }); 
+         */
     }
 
     async function setDiscussionState(_type, _country, _postId, _socketId, _userId, _state) {
@@ -381,7 +391,7 @@ export default function Discussion({ discussion, userId }) {
         if (_type === 2) action = 'setDiscussionNegative';
         if (_type === 3) action = 'setDiscussionWatcher';
 
-        await sendMessage(action, {
+        await putRecored(action, {
             country: _country,
             postId: _postId,
             userId: _userId,
@@ -391,7 +401,7 @@ export default function Discussion({ discussion, userId }) {
     }
 
     async function setVote(_country, _postId, _socketId, _userId, _judge) {
-        await sendMessage('setVote', {
+        await putRecored('setVote', {
             country: _country,
             postId: _postId,
             socketId: _socketId,

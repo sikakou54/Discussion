@@ -18,7 +18,7 @@ export default function Confirm() {
 
         if (undefined !== await confirm(userName, confirmCode)) {
 
-            const res = await apiFetchPost(process.env.awsApiGatewayHttpApiEndPoint + '/setUser', {
+            const res = await apiFetchPost('/api/setUser', {
                 method: 'POST',
                 body: JSON.stringify({
                     userId: userId,

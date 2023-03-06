@@ -13,7 +13,6 @@ module.exports = {
       tokenUse: 'id',
       clientId: '2beqljda3gfckjqmhmb7pf44ai',
     },
-    awsApiGatewayHttpApiEndPoint: "https://k90g35f81d.execute-api.ap-northeast-1.amazonaws.com",
     awsApiGatewayWebSocketApiEndPoint: "wss://vx92a3mpjf.execute-api.ap-northeast-1.amazonaws.com/production",
     userState: {
       none: 'none',

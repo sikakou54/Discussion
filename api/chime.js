@@ -1,4 +1,8 @@
 import AWS from 'aws-sdk';
+AWS.config.apiVersions = {
+    chime: '2018-05-01',
+    // other service API versions
+};
 AWS.config.credentials = new AWS.Credentials('AKIAZM7CB6TBRTQFX45K', 'ScElcNk7urEGak0unfLutQAG6Mvf2a5G/w4/1+oB', null);
 const chime = new AWS.Chime({ region: 'us-east-1' });
 chime.endpoint = new AWS.Endpoint('https://service.chime.aws.amazon.com');
