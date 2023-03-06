@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    height: auto;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,48 +35,31 @@
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
+
     /*　for iPad 　*/
 
+    .nav {
+        width: 30%;
+        margin: 0 auto;
+    }
+
+    .cpylight {
+        width: 30%;
+        margin: 0 auto;
+    }
 }
 
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
-    .container {
-        width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
     .nav {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
         width: 30%;
-        height: 40px;
         margin: 0 auto;
-    }
-
-    .wrap {
-        width: 100%;
     }
 
     .cpylight {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 16px;
-        color: gray;
-        height: 40px;
         width: 30%;
         margin: 0 auto;
-    }
-
-    .navItem {
-        text-align: center;
-        color: gray;
-        font-size: 16px;
     }
 }
