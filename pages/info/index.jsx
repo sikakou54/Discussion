@@ -152,7 +152,10 @@ export default function Info() {
                                                 </div>
                                                 <div className={styles.secssion}>
                                                     <div className={styles.secsionName}>お問い合わせ内容</div>
-                                                    <div className={styles.detail}>{detail}</div>
+                                                    <textarea
+                                                        className={styles.detail}
+                                                        defaultValue={detail}
+                                                        readOnly={true} />
                                                 </div>
                                             </>
                                         )

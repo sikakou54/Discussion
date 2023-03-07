@@ -171,6 +171,16 @@
         width: 650px;
         margin: 0 auto;
     }
+
+    .name,
+    .mail {
+        font-size: 24px;
+    }
+
+    .detail {
+        font-size: 24px;
+    }
+
 }
 
 @media screen and (min-width:1024px) {
@@ -181,4 +191,14 @@
         width: 650px;
         margin: 0 auto;
     }
+
+    .name,
+    .mail {
+        font-size: 24px;
+    }
+
+    .detail {
+        font-size: 24px;
+    }
+
 }
