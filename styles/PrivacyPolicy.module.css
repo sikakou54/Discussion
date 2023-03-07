@@ -5,7 +5,7 @@
 }
 
 .secssion {
-    height: 100%;
+    height: auto;
     width: 95%;
     background-color: white;
     border-radius: 5px;
@@ -36,22 +36,10 @@
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
-    .container {
-        width: 100%;
-        height: 100%;
-        margin-top: 24px;
-    }
 
     .secssion {
-        height: 100%;
         width: 60%;
-        background-color: white;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px #ccc;
-        margin: 0 auto;
-        margin-bottom: 32px;
         padding: 24px;
-        border: 1px solid #00838f;
     }
 
     .title {
@@ -63,6 +51,4 @@
         padding: 5px;
         font-size: 18px;
     }
-
-
 }
