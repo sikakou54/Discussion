@@ -11,7 +11,19 @@ export default function Info() {
 
     function onSubmit(e) {
         e.preventDefault();
-        console.log(name, mail, detail);
+        fetch('/api/pushInfomation', {
+            method: 'POST', body: JSON.stringify({
+                name,
+                mail,
+                detail
+            })
+        }).then((response) => response.json()).then((data) => {
+            if (data.response.result) {
+                Router.push({
+                    pathname: '/'
+                });
+            }
+        }).catch((e) => console.log(e));
     }
 
     function onCancel() {
