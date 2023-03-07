@@ -238,12 +238,12 @@
   }
 
 
-.bar {
-  font-size: 18px;
-  width: 80%;
-}
+  .bar {
+    font-size: 18px;
+    width: 80%;
+  }
 
   .section {
-    width: 90%;
+    width: 95%;
   }
 }
