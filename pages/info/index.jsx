@@ -48,7 +48,7 @@ export default function Info() {
     }
 
     function onbeforeunload(event) {
-        event.returnValue = 'このページを離れますか？'; // Google Chrome
+        event.returnValue = 'このページを離れますか？';
     }
 
     useEffect(() => {
