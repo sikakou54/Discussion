@@ -19,7 +19,8 @@ export default function Info() {
                 method: 'POST', body: JSON.stringify({
                     name,
                     mail,
-                    detail
+                    detail,
+                    country: 'jpn'
                 })
             }).then((response) => response.json()).then((data) => {
                 if (data.response.result) {
@@ -188,7 +189,6 @@ export default function Info() {
                                                                 <input type='submit' className={`${styles.push} `} value='次へ' />
                                                             )
                                                     }
-
                                                 </div>
                                             )
                                     }

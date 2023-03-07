@@ -1,7 +1,7 @@
 import { Put } from './dynamoDb';
 import { getToken, getUtcMsec } from './utils';
 
-export async function pushInfomation(_name, _mail, _detail) {
+export async function pushInfomation(_country, _name, _mail, _detail) {
 
     const token = getToken();
 
@@ -10,6 +10,7 @@ export async function pushInfomation(_name, _mail, _detail) {
         Item: {
             infoId: token,
             createAt: getUtcMsec(),
+            country: _country,
             name: _name,
             mail: _mail,
             detail: _detail
