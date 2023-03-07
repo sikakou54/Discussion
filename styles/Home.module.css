@@ -237,13 +237,12 @@
     height: 350px;
   }
 
-
   .bar {
     font-size: 18px;
     width: 80%;
   }
 
   .section {
-    width: 95%;
+    width: 80%;
   }
 }
