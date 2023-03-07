@@ -31,6 +31,10 @@
 @media screen and (min-width:768px) and (max-width:1024px) {
 
     /*　for iPad 　*/
+    .secssion {
+        width: 95%;
+        padding: 24px;
+    }
 }
 
 @media screen and (min-width:1024px) {
@@ -38,7 +42,7 @@
     /*　for PC　*/
 
     .secssion {
-        width: 60%;
+        width: 900px;
         padding: 24px;
     }
 
