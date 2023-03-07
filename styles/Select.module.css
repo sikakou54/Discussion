@@ -18,20 +18,20 @@
 }
 
 .detail {
-    background-color: white;
-    color: black;
-    white-space: pre-wrap;
-    width: 95%;
-    height: 140px;
-    margin: 0 auto;
     resize: none;
-    margin-bottom: 16px;
-    overflow: auto;
+    width: 95%;
+    height: 100px;
     border-radius: 5px;
     padding: 5px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: white;
+    color: black;
     font-size: 13px;
+    overflow: auto;
     border: 0.5px solid #00838f;
     box-shadow: 0 1px 1px gray;
+    white-space: pre-wrap;
 }
 
 .selectItems {
@@ -116,11 +116,10 @@
     }
 
     .detail {
+        width: 650px;
         padding: 5px;
-        width: 75%;
         height: 200px;
-        margin-bottom: 18px;
-        font-size: 18px;
+        font-size: 24px;
     }
 
     .selectItems {
@@ -156,11 +155,10 @@
     }
 
     .detail {
+        width: 650px;
         padding: 5px;
-        width: 75%;
         height: 200px;
-        margin-bottom: 18px;
-        font-size: 18px;
+        font-size: 24px;
     }
 
     .selectItems {
