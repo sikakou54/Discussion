@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
 
                 <div className={styles.secssion}>
                     <div className={styles.title}><u>サイトポリシー</u></div>
-                    <div className={styles.text}>TalkUp(https://talkup.me/）における免責事項は、下記の通りです。</div>
+                    <div className={styles.text}>TalkUp(https://talkup.me）をご利用いただくお客さまは、以下の内容を十分にお読みください。</div>
                 </div>
 
                 <div className={styles.secssion}>
@@ -25,7 +25,8 @@ export default function PrivacyPolicy() {
                 <div className={styles.secssion}>
                     <div className={styles.title}><u>▼当サイトで掲載している画像の著作権や肖像権等について</u></div>
                     <div className={styles.text}>当サイトで掲載している文章や画像などについて、無断転載を禁止します。</div>
-                    <div className={styles.text}>当サイトで掲載している画像の著作権や肖像権等は、各権利所有者に帰属します。万が一問題がある場合は、お問い合わせよりご連絡いただけますよう宜しくお願い致します。</div>
+                    <div className={styles.text}>当サイトで掲載している画像の著作権や肖像権等は、各権利所有者に帰属します。</div>
+                    <div className={styles.text}>万が一問題がある場合は、お問い合わせよりご連絡いただけますよう宜しくお願い致します。</div>
                 </div>
 
                 <div className={styles.secssion}>
@@ -38,7 +39,8 @@ export default function PrivacyPolicy() {
 
                 <div className={styles.secssion}>
                     <div className={styles.title}><u>▼転載について</u></div>
-                    <div className={styles.text}>当サイトはリンクフリーです。リンクを貼る際の許可は必要ありません。引用についても、出典元のURLを貼っていただければ問題ありません。</div>
+                    <div className={styles.text}>当サイトはリンクフリーです。リンクを貼る際の許可は必要ありません。</div>
+                    <div className={styles.text}>引用についても、出典元のURLを貼っていただければ問題ありません。</div>
                     <div className={styles.text}>ただし、インラインフレームの使用や画像の直リンクはご遠慮ください。</div>
                 </div>
 

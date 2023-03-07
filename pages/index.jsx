@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import timeline from '../public/home/timeline2@2x.png';
 import timelineNone from '../public/home/timeline1@2x.png';
 import select from '../public/home/select@2x.png';
-import join from '../public/home/join@2x.png';
 import standby from '../public/home/standby@2x.png';
 import ready from '../public/home/ready2@2x.png';
 import discussion from '../public/home/discussion@2x.png';
