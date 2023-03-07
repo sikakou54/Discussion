@@ -68,6 +68,7 @@
     overflow: auto;
     border: 0.5px solid #00838f;
     box-shadow: 0 1px 1px gray;
+    white-space: pre-wrap;
 }
 
 .buttonArea {
