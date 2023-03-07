@@ -147,7 +147,7 @@ export default function Info() {
                                         4 === seq ?
                                             (
                                                 <>
-                                                    <div className={styles.comlete}>送信しました</div>
+                                                    <div className={styles.comlete}>お問い合わせありがとうございます</div>
                                                     <div className={styles.buttonArea}>
                                                         <input type='button' className={styles.cancel} onClick={onCancel} value='戻る' />
                                                     </div>
