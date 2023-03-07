@@ -107,31 +107,32 @@
     /*　for iPad 　*/
 
     .title {
-        width: 85%;
+        width: 80%;
         height: 100px;
         margin: 0 auto;
-        font-size: 28px;
+        font-size: 24px;
         padding-top: 28px;
         margin-bottom: 28px;
     }
 
     .detail {
-        width: 80%;
-        height: 220px;
+        padding: 5px;
+        width: 75%;
+        height: 200px;
         margin-bottom: 18px;
-        font-size: 24px;
+        font-size: 18px;
     }
 
     .selectItems {
-        height: 390px;
+        height: 330px;
     }
 
     .attendees {
         width: 55%;
-        height: 90px;
+        height: 80px;
         padding: 0;
         border-radius: 12px;
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .joinButton {
