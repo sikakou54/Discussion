@@ -37,6 +37,7 @@
     font-size: 16px;
 }
 
+.name,
 .mail {
     width: 100%;
     height: 50px;
@@ -104,6 +105,17 @@
     background-color: #006064;
 }
 
+.enable {
+    border: 1px solid #00838f;
+    background-color: #00838f;
+    color: white;
+    animation: change-color-anim 2s linear infinite;
+}
+
+.enable:hover {
+    background-color: #006064;
+}
+
 .disable {
     border: 1px solid gray;
     background-color: gray;
@@ -114,6 +126,42 @@
     background-color: #e0f2f1;
 }
 
+.comlete {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.loading {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seqWrapper {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.seq {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 16px;
+}
 
 @media screen and (min-width:768px) and (max-width:1024px) {
 
