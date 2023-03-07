@@ -82,7 +82,15 @@ export default function Info() {
                                         (
                                             <div className={styles.secssion}>
                                                 <div className={styles.secsionName}>お名前</div>
-                                                <div><input className={styles.mail} type='text' placeholder='お名前を入力してください' required onChange={(e) => { setName(e.target.value) }} value={name} /></div>
+                                                <div>
+                                                    <input
+                                                        className={styles.mail}
+                                                        type='text'
+                                                        placeholder='お名前を入力してください'
+                                                        onChange={(e) => { setName(e.target.value) }}
+                                                        value={name}
+                                                        required />
+                                                </div>
                                             </div>
                                         )
                                     }
@@ -91,7 +99,14 @@ export default function Info() {
                                         (
                                             <div className={styles.secssion}>
                                                 <div className={styles.secsionName}>メールアドレス</div>
-                                                <div><input className={styles.mail} type='email' placeholder='メールアドレスを入力してください' required onChange={(e) => { setMail(e.target.value) }} value={mail} /></div>
+                                                <div><input
+                                                    className={styles.mail}
+                                                    type='email'
+                                                    placeholder='メールアドレスを入力してください'
+                                                    onChange={(e) => { setMail(e.target.value) }}
+                                                    value={mail}
+                                                    required />
+                                                </div>
                                             </div>
                                         )
                                     }
@@ -100,7 +115,12 @@ export default function Info() {
                                         (
                                             <div className={styles.secssion}>
                                                 <div className={styles.secsionName}>お問い合わせ内容</div>
-                                                <textarea className={styles.detail} placeholder='お問い合わせ内容を入力してください' required onChange={(e) => { setDetail(e.target.value) }} defaultValue={detail} />
+                                                <textarea
+                                                    className={styles.detail}
+                                                    placeholder='お問い合わせ内容を入力してください'
+                                                    onChange={(e) => { setDetail(e.target.value) }}
+                                                    defaultValue={detail}
+                                                    required />
                                             </div>
                                         )
                                     }
