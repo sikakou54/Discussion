@@ -9,7 +9,8 @@ export default function Info() {
     const [mail, setMail] = useState('');
     const [detail, setDetail] = useState('');
 
-    function onSubmit() {
+    function onSubmit(e) {
+        e.preventDefault();
         console.log(name, mail, detail);
     }
 
@@ -22,9 +23,7 @@ export default function Info() {
     return (
         <Layout title={'お問い合わせ'}>
             <div className={styles.container}>
-                <div className={styles.secssion}>
-                    <div className={styles.top}>お問い合わせ</div>
-                </div>
+                <div className={styles.top}>お問い合わせ</div>
 
                 <form onSubmit={onSubmit}>
 
