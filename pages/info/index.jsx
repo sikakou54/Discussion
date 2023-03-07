@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from '../../components/layout';
 import Loding from '../../components/loading';
 import styles from '../../styles/Info.module.css';
@@ -46,6 +46,20 @@ export default function Info() {
     function preview() {
         setSeq((seq) => seq - 1);
     }
+
+    function onbeforeunload(event) {
+        event.returnValue = 'このページを離れますか？'; // Google Chrome
+    }
+
+    useEffect(() => {
+
+        window.addEventListener('beforeunload', onbeforeunload, false);
+
+        return () => {
+            window.removeEventListener('beforeunload', onbeforeunload, false);
+        };
+
+    }, []);
 
     return (
         <Layout title={'お問い合わせ'}>

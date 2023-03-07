@@ -57,7 +57,7 @@
 
 .detail {
     width: 100%;
-    height: 200px;
+    height: auto;
     border-radius: 5px;
     padding: 5px;
     margin-top: 12px;
