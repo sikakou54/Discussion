@@ -41,10 +41,9 @@ function MyApp({ Component, pageProps }) {
               gtag('config', '${GA_ID}');
           `}
           </Script>
-          <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6975386050212014"
-            crossorigin="anonymous" />
         </>
       )}
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6975386050212014" crossorigin="anonymous" />
       <Component {...pageProps} />
     </>
   )
