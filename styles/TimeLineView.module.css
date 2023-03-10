@@ -40,7 +40,7 @@
 
 .timeLineItem {
     width: 100%;
-    min-height: 150px;
+    min-height: 200px;
     margin-top: 5px;
 }
 
@@ -50,9 +50,9 @@
 
     .timeLineItem {
         width: 600px;
-        min-height: 190px;
-        margin: 10px;
+        min-height: 220px;
         font-size: 18px;
+        margin-top: 5px;
     }
 }
 
@@ -63,7 +63,7 @@
 
     .timeLineItem {
         width: 600px;
-        min-height: 190px;
+        min-height: 240px;
         margin: 10px;
         font-size: 18px;
     }
