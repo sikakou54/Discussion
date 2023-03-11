@@ -127,10 +127,6 @@
         font-size: 20px;
     }
 
-    .selectItems {
-        height: 330px;
-    }
-
     .attendees {
         width: 480px;
         height: 90px;
@@ -157,10 +153,6 @@
     .detail {
         width: 650px;
         font-size: 20px;
-    }
-
-    .selectItems {
-        height: 320px;
     }
 
     .attendees {
