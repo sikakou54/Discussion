@@ -79,10 +79,10 @@
     width: 200px;
     height: 60px;
     margin: 16px;
-    border: 1px solid #00838f;
+    border: none;
     border-radius: 12px;
     background-color: white;
-    color: #00838f;
+    color: black;
     box-shadow: 0 2px 5px gray;
     font-size: 18px;
 }
