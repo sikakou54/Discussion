@@ -1,9 +1,9 @@
 import style from '../styles/Clock.module.css';
 
-export default function Clock() {
+export default function Clock({ sec }) {
     return (
         <div className={style.clock}>
-             <div className={style.line}></div>
+            <div className={style.line} style={{ transform: `rotate(${90}deg)` }}></div>
             <div className={style.number}>12</div>
             <div className={`${style.number} ${style.one}`}>1</div>
             <div className={`${style.number} ${style.two}`}>2</div>

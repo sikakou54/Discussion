@@ -9,7 +9,7 @@
 .line {
     animation: rotation-s 60s linear infinite;
     /* 60秒かけて一周 */
-    background-color: #999;
+    background-color: black;
     border-radius: 2px;
     height: 4px;
     /* 線幅 */
@@ -19,9 +19,8 @@
     top: calc(50% - 2px);
     /* 位置調整 線幅の半分ずらす */
     transform-origin: calc(100% - 2px) center;
-    /* アニメーションの中心軸 線幅の半分ずらす */
-    transform: rotate(90deg);
     width: 45%;
+    border: 1px solid black;
 }
 
 .number {
