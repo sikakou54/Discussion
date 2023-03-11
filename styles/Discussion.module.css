@@ -4,7 +4,7 @@
     margin-top: 5px;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0 2px 5px #ccc;
+    box-shadow: 0 2px 5px gray;
 }
 
 .loading {
