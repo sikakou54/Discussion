@@ -77,35 +77,31 @@
 }
 
 .sec,
-.text {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 72px;
-    color: #00838f;
-    font-family: "Courier New";
-}
-
-.text {
-    animation: fadein-keyframes 5s ease 0.2s 1 forwards;
-    text-shadow: 1px 1px 2px black;
-}
-
+.text,
 .message {
     width: 100%;
     height: auto;
-    font-size: 32px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: fadein-keyframes 5s ease 0.2s 1 forwards;
-    text-shadow: 1px 1px 2px black;
     font-family: "Courier New";
     color: #00838f;
+}
+
+.message,
+.text {
+    animation: fadein-keyframes 5s ease 0.2s 1 forwards;
+    text-shadow: 1px 1px 2px black;
+}
+
+.sec,
+.text {
+    font-size: 72px;
+}
+
+.message {
+    font-size: 32px;
 }
 
 @keyframes fadein-keyframes {

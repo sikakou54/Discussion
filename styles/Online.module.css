@@ -77,15 +77,14 @@
 }
 
 .sec,
-.message,
-.text {
+.text,
+.message {
     width: 100%;
     height: auto;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 72px;
     font-family: "Courier New";
     color: #00838f;
 }
@@ -94,6 +93,12 @@
 .text {
     animation: fadein-keyframes 5s ease 0.2s 1 forwards;
     text-shadow: 1px 1px 2px black;
+}
+
+.sec,
+.text,
+.message {
+    font-size: 72px;
 }
 
 @keyframes fadein-keyframes {
