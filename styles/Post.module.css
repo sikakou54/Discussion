@@ -98,7 +98,8 @@
     height: 60px;
     margin: 16px;
     border-radius: 12px;
-    box-shadow: 0 1px 1px gray;
+    box-shadow: 0 1px 1px 0 gray;
+    border: none;
     font-size: 18px;
 }
 
