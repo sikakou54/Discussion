@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import styles from '../styles/Vote.module.css';
 import Attendee from './attendee';
 import Clock from './clock';
-import ProgressBar from './progressBar';
 
 export default function Vote({ attendees, title, type, setVotindDone, limitTime, currentTime }) {
 

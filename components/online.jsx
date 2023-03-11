@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import styles from '../styles/Online.module.css';
 import user from '../public/user.svg';
 import Image from "next/image";
-import ProgressBar from './progressBar';
 import Attendee from "./attendee";
 import Clock from "./clock";
 
