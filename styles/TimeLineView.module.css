@@ -28,15 +28,17 @@
 }
 
 .selectItem:hover {
-    background-color: #CBE4DE;
+    background-color: #F5F5F5;
 }
 
 .selected {
+    border: 1px solid #00838f;
     background-color: #00838f;
     color: white;
 }
 
 .selected:hover {
+    border: 1px solid #006064;
     background-color: #006064;
 }
 
