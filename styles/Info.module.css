@@ -83,7 +83,7 @@
     border-radius: 12px;
     background-color: white;
     color: #00838f;
-    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .5);
+    box-shadow: 0 2px 5px gray;
     font-size: 18px;
 }
 
@@ -92,12 +92,11 @@
     height: 60px;
     margin: 16px;
     border-radius: 12px;
-    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .5);
+    box-shadow: 0 2px 5px gray;
     font-size: 18px;
     border: 1px solid #00838f;
     background-color: #00838f;
     color: white;
-    animation: change-color-anim 2s linear infinite;
 }
 
 .push:hover {
