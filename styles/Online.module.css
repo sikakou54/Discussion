@@ -17,12 +17,12 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 30%;
+    height: 35%;
 }
 
 .attendeesSeccsion {
     width: 100%;
-    height: 60%;
+    height: 55%;
 }
 
 .title {
@@ -63,9 +63,43 @@
     color: black;
 }
 
-.sub {
-    font-size: 14px;
-    color: gray;
+.status {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.clock {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+}
+
+.sec,
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 72px;
+    font-family: "Courier New";
+    color: #00838f;
+}
+
+.text {
+    animation: fadein-keyframes 3s ease 0.2s 1 forwards;
+    text-shadow: 1px 1px 2px black;
+}
+
+@keyframes fadein-keyframes {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 .attendeesSeccsionItems {
@@ -144,8 +178,14 @@
         font-size: 24px;
     }
 
-    .ProgressBar {
-        width: 50%;
+    .clock {
+        width: 220px;
+        height: 220px;
+    }
+
+    .sec,
+    .text {
+        font-size: 90px;
     }
 }
 
@@ -192,7 +232,13 @@
         font-size: 24px;
     }
 
-    .ProgressBar {
-        width: 50%;
+    .clock {
+        width: 220px;
+        height: 220px;
+    }
+
+    .sec,
+    .text {
+        font-size: 100px;
     }
 }

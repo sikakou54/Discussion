@@ -1,17 +1,19 @@
 .clock {
     position: relative;
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    border: 10px solid black;
+    border: 2px solid black;
+    background-color: white;
+    box-shadow: 0 2px 2px 0 gray;
 }
 
 .line {
     animation: rotation-s 60s linear infinite;
     /* 60秒かけて一周 */
-    background-color: black;
+    background-color: red;
     border-radius: 2px;
-    height: 4px;
+    height: 1px;
     /* 線幅 */
     position: absolute;
     right: calc(50% - 2px);
@@ -20,7 +22,7 @@
     /* 位置調整 線幅の半分ずらす */
     transform-origin: calc(100% - 2px) center;
     width: 45%;
-    border: 1px solid black;
+    border: 1px solid red;
 }
 
 .number {
@@ -30,6 +32,9 @@
     width: 100%;
     height: 100%;
     text-align: center;
+    color: black;
+    font-size: 18px;
+    font-family: "Courier New";
 }
 
 .one {

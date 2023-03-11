@@ -70,7 +70,7 @@
     border-radius: 5px;
     margin-top: 12px;
     background-color: white;
-    box-shadow: 0 1px 1px gray;
+    box-shadow: 0 1px 1px 0 gray;
     border: 1px solid #ccc;
 }
 
@@ -146,6 +146,7 @@
     align-items: center;
     border-radius: 50%;
     font-size: 16px;
+    box-shadow: 0 1px 1px 0 gray;
 }
 
 @media screen and (min-width:768px) and (max-width:1024px) {

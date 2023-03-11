@@ -4,6 +4,7 @@ import user from '../public/user.svg';
 import Image from "next/image";
 import ProgressBar from './progressBar';
 import Attendee from "./attendee";
+import Clock from "./clock";
 
 export default function Online({ isStart, attendees, title, finishTime, currentTime }) {
 
@@ -31,13 +32,27 @@ export default function Online({ isStart, attendees, title, finishTime, currentT
                     {
                         true === isStart
                             ? <>
-                                <div className={styles.main}>討論中</div>
-                                <div className={styles.ProgressBar}>
-                                    <ProgressBar
-                                        text={Math.floor((finishTime - currentTime) / 1000)}
-                                        percent={
-                                            (Math.floor((finishTime - currentTime) / 1000) / 600 * 100)
-                                        } />
+                                <div className={styles.status}>
+                                    <div className={styles.clock}>
+                                        <Clock sec={Math.floor((finishTime - currentTime) / 1000)} />
+                                    </div>
+                                    <div className={styles.text}>開始</div>
+                                    {
+                                        60 >= Math.floor((finishTime - currentTime) / 1000) &&
+                                        <div className={styles.text}>{Math.floor((finishTime - currentTime) / 1000)}</div>
+                                    }
+                                    {
+                                        30 >= Math.floor((finishTime - currentTime) / 1000) &&
+                                        <div className={styles.text}>{Math.floor((finishTime - currentTime) / 1000)}</div>
+                                    }
+                                    {
+                                        0 < Math.floor((finishTime - currentTime) / 1000) && 10 >= Math.floor((finishTime - currentTime) / 1000) &&
+                                        <div className={styles.sec}>{Math.floor((finishTime - currentTime) / 1000)}</div>
+                                    }
+                                    {
+                                        0 >= Math.floor((finishTime - currentTime) / 1000) &&
+                                        <div className={styles.sec}>0</div>
+                                    }
                                 </div>
                             </>
                             : <>

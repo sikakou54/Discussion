@@ -4,7 +4,7 @@ export default function Test() {
 
     return (
         <div>
-            <Clock />
+            <Clock sec={2}/>
         </div>
     );
 }

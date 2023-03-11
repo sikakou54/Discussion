@@ -17,12 +17,12 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 30%;
+    height: 35%;
 }
 
 .attendeesSeccsion {
     width: 100%;
-    height: 60%;
+    height: 55%;
 }
 
 .title {
@@ -70,7 +70,7 @@
 
 .attendeesSeccsionItems {
     width: 100%;
-    height: 120px;
+    height: 115px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,7 +88,7 @@
 
 .attendees {
     width: 90%;
-    height: 70%;
+    height: 80%;
     border: none;
     position: relative;
     font-size: 13px;
@@ -149,61 +149,6 @@
 
     /*　for iPad 　*/
 
-    .main {
-        font-size: 32px;
-    }
-
-    .sub {
-        font-size: 24px;
-        color: gray;
-    }
-
-    .attendees {
-        width: 500px;
-        font-size: 18px;
-    }
-
-    .attendeesSeccsionItems {
-        height: 160px;
-    }
-
-    .title {
-        font-size: 24px;
-    }
-
-}
-
-@media screen and (min-width:1024px) {
-
-    /*　for PC　*/
-
-    .main {
-        font-size: 32px;
-    }
-
-    .sub {
-        font-size: 24px;
-        color: gray;
-    }
-
-    .attendees {
-        width: 500px;
-        font-size: 18px;
-    }
-
-    .attendeesSeccsionItems {
-        height: 160px;
-    }
-
-    .title {
-        font-size: 24px;
-    }
-}
-
-@media screen and (min-width:480px) and (max-width:1024px) {
-
-    /*　for iPad 　*/
-
     .titleSeccsion {
         width: 70%;
         height: 15%;
@@ -222,7 +167,7 @@
 
     .attendeesSeccsionItems {
         width: 100%;
-        height: 150px;
+        height: 140px;
     }
 
     .main {
@@ -266,7 +211,7 @@
 
     .attendeesSeccsionItems {
         width: 100%;
-        height: 150px;
+        height: 140px;
     }
 
     .main {
