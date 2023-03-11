@@ -9,7 +9,8 @@
     margin-bottom: 64px;
     padding: 5px;
     border-radius: 12px;
-    box-shadow: 0 2px 5px 0 gray;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 1px 0 gray;
     font-size: 1em;
 }
 
