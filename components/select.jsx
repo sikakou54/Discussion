@@ -81,11 +81,13 @@ export default function Select({ onJoin, attendees, title, detail }) {
                     }
                 </div>
             </div>
-            {
-                undefined === selectedJoinType
-                    ? <div className={`${styles.joinButton} ${styles.buttonDisable}`} disabled={true} onClick={onClick}>参加する</div>
-                    : <div className={`${styles.joinButton} ${styles.buttonEnable}`} disabled={false} onClick={onClick}>参加する</div>
-            }
+            <div className={styles.buttonSecssion}>
+                {
+                    undefined === selectedJoinType
+                        ? <div className={`${styles.joinButton} ${styles.buttonDisable}`} disabled={true} onClick={onClick}>参加する</div>
+                        : <div className={`${styles.joinButton} ${styles.buttonEnable}`} disabled={false} onClick={onClick}>参加する</div>
+                }
+            </div>
         </div>
     );
 }
