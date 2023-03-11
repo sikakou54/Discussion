@@ -26,9 +26,17 @@
     color: #00838f;
 }
 
+.selectItem:hover {
+    background-color: #eceff1;
+}
+
 .selected {
     background-color: #00838f;
     color: white;
+}
+
+.selected:hover {
+    background-color: #006064;
 }
 
 .view {
