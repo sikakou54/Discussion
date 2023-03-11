@@ -26,8 +26,8 @@
     color: black;
     font-size: 13px;
     overflow: auto;
-    border: 0.5px solid #00838f;
-    box-shadow: 0 1px 1px gray;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 1px 0 gray;
     white-space: pre-wrap;
 }
 
@@ -77,7 +77,7 @@
     width: 200px;
     height: 60px;
     border-radius: 12px;
-    box-shadow: 0 2px 5px gray;
+    box-shadow: 0 2px 5px 0 gray;
     border: none;
     font-size: 16px;
 }

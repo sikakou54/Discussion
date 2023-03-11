@@ -6,10 +6,11 @@
     display: flex;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0 2px 5px gray;
     margin-bottom: 5px;
     font-size: 1rem;
     position: relative;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 1px 0 gray;
 }
 
 .container:hover {
