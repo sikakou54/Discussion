@@ -51,9 +51,6 @@ export default function TimeLineItem({ pub, index, country, postId, progress, ti
                             </DiscussionLabel>
                         </div>
                     </div>
-                    <div className={styles.contensFooter}>
-                        <div className={styles.date}>{getTimeStampToLocaleString(createAt)}</div>
-                    </div>
                 </div>
             </div>
         );
