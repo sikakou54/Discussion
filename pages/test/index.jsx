@@ -1,4 +1,5 @@
 import { putRecored } from "../../api/kinesis";
+import Clock from "../../components/clock";
 
 export default function Test() {
 
@@ -11,6 +12,7 @@ export default function Test() {
     return (
         <div>
             <button onClick={click}>test</button>
+            <Clock />
         </div>
     );
 }

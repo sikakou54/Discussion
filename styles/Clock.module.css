@@ -1,0 +1,89 @@
+.clock {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 10px solid black;
+}
+
+.line {
+    animation: rotation-s 60s linear infinite;
+    /* 60秒かけて一周 */
+    background-color: #999;
+    border-radius: 2px;
+    height: 4px;
+    /* 線幅 */
+    position: absolute;
+    right: calc(50% - 2px);
+    /* 位置調整 線幅の半分ずらす */
+    top: calc(50% - 2px);
+    /* 位置調整 線幅の半分ずらす */
+    transform-origin: calc(100% - 2px) center;
+    /* アニメーションの中心軸 線幅の半分ずらす */
+    transform: rotate(90deg);
+    width: 45%;
+}
+
+.number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.one {
+    transform-origin: center;
+    transform: rotate(30deg);
+}
+
+.two {
+    transform-origin: center;
+    transform: rotate(60deg);
+}
+
+.three {
+    transform-origin: center;
+    transform: rotate(90deg);
+}
+
+.four {
+    transform-origin: center;
+    transform: rotate(120deg);
+}
+
+.five {
+    transform-origin: center;
+    transform: rotate(150deg);
+}
+
+.six {
+    transform-origin: center;
+    transform: rotate(180deg);
+}
+
+.seven {
+    transform-origin: center;
+    transform: rotate(210deg);
+}
+
+.eight {
+    transform-origin: center;
+    transform: rotate(240deg);
+}
+
+.nine {
+    transform-origin: center;
+    transform: rotate(270deg);
+}
+
+.ten {
+    transform-origin: center;
+    transform: rotate(300deg);
+}
+
+.eleven {
+    transform-origin: center;
+    transform: rotate(330deg);
+}
