@@ -88,7 +88,7 @@
     border: none;
     background-color: white;
     color: black;
-    box-shadow: 0 1px 1px gray;
+    box-shadow: 0 1px 1px 0 #ccc;
     border: 1px solid #ccc;
     font-size: 18px;
 }
@@ -98,8 +98,8 @@
     height: 60px;
     margin: 16px;
     border-radius: 12px;
-    box-shadow: 0 1px 1px 0 gray;
-    border: none;
+    box-shadow: 0 1px 1px 0 #ccc;
+    border: 1px solid #ccc;
     font-size: 18px;
 }
 

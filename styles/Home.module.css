@@ -77,8 +77,8 @@
   font-size: 18px;
   border-radius: 5px;
   text-align: center;
-  border: none;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .5);
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px 0 #ccc;
 }
 
 .startButton {
@@ -87,7 +87,7 @@
   border-radius: 12px;
   border: 2px solid white;
   background-color: #00838f;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .5);
+  box-shadow: 0 2px 5px 0 #ccc;
   color: white;
   margin-top: 32px;
   margin-bottom: 32px;

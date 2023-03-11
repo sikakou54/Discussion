@@ -82,7 +82,7 @@
     border-radius: 12px;
     font-size: 13px;
     border: 1px solid #ccc;
-    box-shadow: 0 1px 1px 0 gray;
+    box-shadow: 0 1px 1px 0 #ccc;
 }
 
 .disable {
