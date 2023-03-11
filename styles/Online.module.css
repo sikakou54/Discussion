@@ -71,13 +71,16 @@
 }
 
 .clock {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     margin: 0 auto;
 }
 
 .sec,
+.message,
 .text {
+    width: 100%;
+    height: auto;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -87,8 +90,9 @@
     color: #00838f;
 }
 
+.message,
 .text {
-    animation: fadein-keyframes 3s ease 0.2s 1 forwards;
+    animation: fadein-keyframes 5s ease 0.2s 1 forwards;
     text-shadow: 1px 1px 2px black;
 }
 
@@ -129,31 +133,9 @@
     background-color: white;
 }
 
-.ProgressBar {
-    margin: 0 auto;
-    width: 80%;
-    height: 24px;
-}
-
 @media screen and (min-width:480px) and (max-width:1024px) {
 
     /*　for iPad 　*/
-
-    .titleSeccsion {
-        width: 70%;
-        height: 15%;
-        margin: 0 auto;
-    }
-
-    .statusSeccsion {
-        width: 100%;
-        height: 30%;
-    }
-
-    .attendeesSeccsion {
-        width: 100%;
-        height: 55%;
-    }
 
     .attendeesSeccsionItems {
         width: 100%;
@@ -162,11 +144,6 @@
 
     .main {
         font-size: 32px;
-    }
-
-    .sub {
-        font-size: 24px;
-        color: gray;
     }
 
     .attendees {
@@ -179,8 +156,8 @@
     }
 
     .clock {
-        width: 220px;
-        height: 220px;
+        width: 250px;
+        height: 250px;
     }
 
     .sec,
@@ -193,22 +170,6 @@
 
     /*　for PC　*/
 
-    .titleSeccsion {
-        width: 70%;
-        height: 15%;
-        margin: 0 auto;
-    }
-
-    .statusSeccsion {
-        width: 100%;
-        height: 30%;
-    }
-
-    .attendeesSeccsion {
-        width: 100%;
-        height: 55%;
-    }
-
     .attendeesSeccsionItems {
         width: 100%;
         height: 150px;
@@ -216,11 +177,6 @@
 
     .main {
         font-size: 32px;
-    }
-
-    .sub {
-        font-size: 24px;
-        color: gray;
     }
 
     .attendees {
@@ -233,8 +189,8 @@
     }
 
     .clock {
-        width: 220px;
-        height: 220px;
+        width: 250px;
+        height: 250px;
     }
 
     .sec,

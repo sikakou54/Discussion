@@ -6,7 +6,7 @@ import ProgressBar from './progressBar';
 import Attendee from "./attendee";
 import Clock from "./clock";
 
-export default function Online({ isStart, attendees, title, finishTime, currentTime }) {
+export default function Online({ isStart, attendees, title, limitTime, currentTime }) {
 
     useEffect(() => {
 
@@ -34,23 +34,23 @@ export default function Online({ isStart, attendees, title, finishTime, currentT
                             ? <>
                                 <div className={styles.status}>
                                     <div className={styles.clock}>
-                                        <Clock sec={Math.floor((finishTime - currentTime) / 1000)} />
+                                        <Clock type={'12min'} sec={Math.floor((limitTime - currentTime) / 1000)} />
                                     </div>
-                                    <div className={styles.text}>開始</div>
+                                    <div className={styles.message}>START</div>
                                     {
-                                        60 >= Math.floor((finishTime - currentTime) / 1000) &&
-                                        <div className={styles.text}>{Math.floor((finishTime - currentTime) / 1000)}</div>
+                                        60 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                        <div className={styles.text}>{Math.floor((limitTime - currentTime) / 1000)}</div>
                                     }
                                     {
-                                        30 >= Math.floor((finishTime - currentTime) / 1000) &&
-                                        <div className={styles.text}>{Math.floor((finishTime - currentTime) / 1000)}</div>
+                                        30 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                        <div className={styles.text}>{Math.floor((limitTime - currentTime) / 1000)}</div>
                                     }
                                     {
-                                        0 < Math.floor((finishTime - currentTime) / 1000) && 10 >= Math.floor((finishTime - currentTime) / 1000) &&
-                                        <div className={styles.sec}>{Math.floor((finishTime - currentTime) / 1000)}</div>
+                                        0 < Math.floor((limitTime - currentTime) / 1000) && 10 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                        <div className={styles.sec}>{Math.floor((limitTime - currentTime) / 1000)}</div>
                                     }
                                     {
-                                        0 >= Math.floor((finishTime - currentTime) / 1000) &&
+                                        0 >= Math.floor((limitTime - currentTime) / 1000) &&
                                         <div className={styles.sec}>0</div>
                                     }
                                 </div>

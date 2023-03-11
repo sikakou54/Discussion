@@ -8,18 +8,26 @@
     box-shadow: 0 2px 2px 0 gray;
 }
 
+.dot {
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    border-radius: 50%;
+
+}
+
 .line {
     animation: rotation-s 60s linear infinite;
-    /* 60秒かけて一周 */
     background-color: red;
     border-radius: 2px;
     height: 1px;
-    /* 線幅 */
     position: absolute;
     right: calc(50% - 2px);
-    /* 位置調整 線幅の半分ずらす */
     top: calc(50% - 2px);
-    /* 位置調整 線幅の半分ずらす */
     transform-origin: calc(100% - 2px) center;
     width: 45%;
     border: 1px solid red;
@@ -90,4 +98,14 @@
 .eleven {
     transform-origin: center;
     transform: rotate(330deg);
+}
+
+.unit {
+    position: absolute;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: gray;
 }

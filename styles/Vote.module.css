@@ -63,10 +63,59 @@
     color: black;
 }
 
-.sub {
-    font-size: 14px;
-    margin-bottom: 10px;
-    color: gray;
+.status {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.clock {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+}
+
+.sec,
+.text {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 72px;
+    color: #00838f;
+    font-family: "Courier New";
+}
+
+.text {
+    animation: fadein-keyframes 5s ease 0.2s 1 forwards;
+    text-shadow: 1px 1px 2px black;
+}
+
+.message {
+    width: 100%;
+    height: auto;
+    font-size: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fadein-keyframes 5s ease 0.2s 1 forwards;
+    text-shadow: 1px 1px 2px black;
+    font-family: "Courier New";
+    color: #00838f;
+}
+
+@keyframes fadein-keyframes {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 .attendeesSeccsionItems {
@@ -130,31 +179,9 @@
     color: white;
 }
 
-.ProgressBar {
-    margin: 0 auto;
-    width: 80%;
-    height: 24px;
-}
-
 @media screen and (min-width:480px) and (max-width:1024px) {
 
     /*　for iPad 　*/
-
-    .titleSeccsion {
-        width: 70%;
-        height: 15%;
-        margin: 0 auto;
-    }
-
-    .statusSeccsion {
-        width: 100%;
-        height: 30%;
-    }
-
-    .attendeesSeccsion {
-        width: 100%;
-        height: 55%;
-    }
 
     .attendeesSeccsionItems {
         width: 100%;
@@ -163,11 +190,6 @@
 
     .main {
         font-size: 32px;
-    }
-
-    .sub {
-        font-size: 24px;
-        color: gray;
     }
 
     .selectItem,
@@ -180,30 +202,24 @@
         font-size: 24px;
     }
 
-    .ProgressBar {
-        width: 60%;
+    .clock {
+        width: 220px;
+        height: 220px;
+    }
+
+    .sec,
+    .text {
+        font-size: 70px;
+    }
+
+    .message {
+        font-size: 48px;
     }
 }
 
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
-
-    .titleSeccsion {
-        width: 70%;
-        height: 15%;
-        margin: 0 auto;
-    }
-
-    .statusSeccsion {
-        width: 100%;
-        height: 30%;
-    }
-
-    .attendeesSeccsion {
-        width: 100%;
-        height: 55%;
-    }
 
     .attendeesSeccsionItems {
         width: 100%;
@@ -212,11 +228,6 @@
 
     .main {
         font-size: 32px;
-    }
-
-    .sub {
-        font-size: 24px;
-        color: gray;
     }
 
     .selectItem,
@@ -229,7 +240,17 @@
         font-size: 24px;
     }
 
-    .ProgressBar {
-        width: 60%;
+    .clock {
+        width: 220px;
+        height: 220px;
+    }
+
+    .sec,
+    .text {
+        font-size: 80px;
+    }
+
+    .message {
+        font-size: 48px;
     }
 }

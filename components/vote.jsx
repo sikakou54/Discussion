@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/Vote.module.css';
 import Attendee from './attendee';
+import Clock from './clock';
 import ProgressBar from './progressBar';
 
 export default function Vote({ attendees, title, type, setVotindDone, limitTime, currentTime }) {
@@ -37,13 +38,23 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                     isVoteDone === true ? (
                         <div className={styles.statusSeccsion}>
                             <div className={styles.inner}>
-                                <div className={styles.main}>ありがとうございます</div>
-                                <div className={styles.ProgressBar}>
-                                    <ProgressBar
-                                        text={Math.floor((limitTime - currentTime) / 1000)}
-                                        percent={
-                                            (Math.floor((limitTime - currentTime) / 1000) / 30 * 100)
-                                        } />
+                                <div className={styles.status}>
+                                    <div className={styles.clock}>
+                                        <Clock type={'1min'} sec={Math.floor((limitTime - currentTime) / 1000)} />
+                                    </div>
+                                    {
+                                        30 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                        <div className={styles.text}>{Math.floor((limitTime - currentTime) / 1000)}</div>
+                                    }
+                                    {
+                                        0 < Math.floor((limitTime - currentTime) / 1000) && 10 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                        <div className={styles.sec}>{Math.floor((limitTime - currentTime) / 1000)}</div>
+                                    }
+                                    {
+                                        0 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                        <div className={styles.sec}>0</div>
+                                    }
+                                    <div className={styles.message}>ありがとうございました</div>
                                 </div>
                             </div>
                         </div>
@@ -51,13 +62,23 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                         <>
                             <div className={styles.statusSeccsion}>
                                 <div className={styles.inner}>
-                                    <div className={styles.main}>投票中</div>
-                                    <div className={styles.ProgressBar}>
-                                        <ProgressBar
-                                            text={Math.floor((limitTime - currentTime) / 1000)}
-                                            percent={
-                                                (Math.floor((limitTime - currentTime) / 1000) / 30 * 100)
-                                            } />
+                                    <div className={styles.status}>
+                                        <div className={styles.clock}>
+                                            <Clock type={'1min'} sec={Math.floor((limitTime - currentTime) / 1000)} />
+                                        </div>
+                                        {
+                                            30 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                            <div className={styles.text}>{Math.floor((limitTime - currentTime) / 1000)}</div>
+                                        }
+                                        {
+                                            0 < Math.floor((limitTime - currentTime) / 1000) && 10 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                            <div className={styles.sec}>{Math.floor((limitTime - currentTime) / 1000)}</div>
+                                        }
+                                        {
+                                            0 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                            <div className={styles.sec}>0</div>
+                                        }
+                                        <div className={styles.message}>投票お願いします</div>
                                     </div>
                                 </div>
                             </div>
@@ -92,13 +113,23 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                 ) : (
                     <div className={styles.statusSeccsion}>
                         <div className={styles.inner}>
-                            <div className={styles.main}>投票中</div>
-                            <div className={styles.ProgressBar}>
-                                <ProgressBar
-                                    text={Math.floor((limitTime - currentTime) / 1000)}
-                                    percent={
-                                        (Math.floor((limitTime - currentTime) / 1000) / 30 * 100)
-                                    } />
+                            <div className={styles.status}>
+                                <div className={styles.clock}>
+                                    <Clock type={'1min'} sec={Math.floor((limitTime - currentTime) / 1000)} />
+                                </div>
+                                {
+                                    30 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                    <div className={styles.text}>{Math.floor((limitTime - currentTime) / 1000)}</div>
+                                }
+                                {
+                                    0 < Math.floor((limitTime - currentTime) / 1000) && 10 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                    <div className={styles.sec}>{Math.floor((limitTime - currentTime) / 1000)}</div>
+                                }
+                                {
+                                    0 >= Math.floor((limitTime - currentTime) / 1000) &&
+                                    <div className={styles.sec}>0</div>
+                                }
+                                <div className={styles.message}>投票開始</div>
                             </div>
                         </div>
                     </div>
