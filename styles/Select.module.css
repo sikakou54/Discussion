@@ -38,6 +38,7 @@
     flex-flow: column;
     justify-content: space-around;
     padding-top: 24px;
+    padding-bottom: 24px;
 }
 
 .selectItem {
