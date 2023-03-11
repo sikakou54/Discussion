@@ -27,7 +27,7 @@
     font-size: 13px;
     overflow: auto;
     border: 1px solid #ccc;
-    box-shadow: 0 1px 1px 0 gray;
+    box-shadow: 0 1px 1px 0 #ccc;
     white-space: pre-wrap;
 }
 
@@ -77,7 +77,7 @@
     align-items: center;
     margin: 0 auto;
     width: 200px;
-    height: 60px;
+    height: 70px;
     border-radius: 12px;
     border: 1px solid #ccc;
     box-shadow: 0 1px 1px 0 #ccc;

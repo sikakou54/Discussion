@@ -82,7 +82,7 @@
 
 .cancel {
     width: 200px;
-    height: 60px;
+    height: 70px;
     margin: 16px;
     border-radius: 12px;
     border: none;
@@ -95,7 +95,7 @@
 
 .push {
     width: 200px;
-    height: 60px;
+    height: 70px;
     margin: 16px;
     border-radius: 12px;
     box-shadow: 0 1px 1px 0 #ccc;

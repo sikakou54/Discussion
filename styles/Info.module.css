@@ -9,11 +9,11 @@
     width: 99%;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0 2px 5px 0 gray;
     margin: 0 auto;
     margin-bottom: 24px;
     padding: 12px;
-    border: 1px solid #00838f;
+    box-shadow: 0 1px 1px 0 #ccc;
+    border: 1px solid #ccc;
 }
 
 .top,
@@ -26,15 +26,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid white;
     background-color: #00838f;
     color: white;
-    box-shadow: 0 2px 5px 0 gray;
     margin-top: 24px;
     margin-bottom: 24px;
     padding: 5px;
     border-radius: 5px;
     font-size: 16px;
+    box-shadow: 0 1px 1px 0 #ccc;
+    border: 2px solid white;
 }
 
 .name,
@@ -77,24 +77,24 @@
 
 .cancel {
     width: 200px;
-    height: 60px;
+    height: 70px;
     margin: 16px;
-    border: none;
     border-radius: 12px;
     background-color: white;
     color: black;
-    box-shadow: 0 2px 5px 0 gray;
+    box-shadow: 0 1px 1px 0 #ccc;
+    border: 1px solid #ccc;
     font-size: 18px;
 }
 
 .push {
     width: 200px;
-    height: 60px;
+    height: 70px;
     margin: 16px;
     border-radius: 12px;
-    box-shadow: 0 2px 5px 0 gray;
     font-size: 18px;
-    border: 1px solid #00838f;
+    box-shadow: 0 1px 1px 0 #ccc;
+    border: 1px solid #ccc;
     background-color: #00838f;
     color: white;
 }
