@@ -1,10 +1,20 @@
 import styles from '../styles/DiscussionLabel.module.css';
 
-export default function DiscussionLabel({ children }) {
-
+export default function DiscussionLabel({ children, disabled }) {
     return (
-        <div className={styles.container}>
-            <div className={styles.labelText}>{children}</div>
-        </div>
+        <>
+            {
+                false == disabled ?
+                    (
+                        <div className={`${styles.container} ${styles.enable}`}>
+                            <div className={styles.labelText}>{children}</div>
+                        </div>
+                    ) : (
+                        <div className={`${styles.container} ${styles.disable}`}>
+                            <div className={styles.labelText}>{children}</div>
+                        </div>
+                    )
+            }
+        </>
     );
 }

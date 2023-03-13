@@ -29,7 +29,6 @@ export default function TimeLineView({ items, onClick }) {
                             <button className={styles.selectItem} onClick={() => { setStandby((standby) => !standby) }}>待機中</button>
                         )
                 }
-
                 {
                     discussion === true ?
                         (
@@ -38,7 +37,6 @@ export default function TimeLineView({ items, onClick }) {
                             <button className={styles.selectItem} onClick={() => { setDiscussion((discussion) => !discussion) }}>討論中</button>
                         )
                 }
-
             </div>
             <div className={styles.secssionView}>
                 <div className={styles.view}>
@@ -46,23 +44,21 @@ export default function TimeLineView({ items, onClick }) {
                         items.map((value, index) => {
                             if (standby === true && value.progress === 'standby' && value.pub === true) {
                                 return <div className={styles.timeLineItem} key={index}>
-                                    <TimeLineItem index={index} pub={value.pub} country={value.country} postId={value.postId} progress={value.progress} userId={value.userId} title={value.title} positive={value.positive} negative={value.negative} watchers={value.watchers} createAt={value.createAt} onClick={onClick} onMakeRoom={onMakeRoom} />
+                                    <TimeLineItem index={index} pub={value.pub} country={value.country} postId={value.postId} progress={value.progress} userId={value.userId} title={value.title} positive={value.positive} negative={value.negative} watchers={value.watchers} onClick={onClick} onMakeRoom={onMakeRoom} />
                                 </div>
                             } else if (discussion === true && value.progress === 'discussion' && value.pub === true) {
                                 return <div className={styles.timeLineItem} key={index}>
-                                    <TimeLineItem index={index} pub={value.pub} country={value.country} postId={value.postId} progress={value.progress} userId={value.userId} title={value.title} positive={value.positive} negative={value.negative} watchers={value.watchers} createAt={value.createAt} onClick={onClick} onMakeRoom={onMakeRoom} />
+                                    <TimeLineItem index={index} pub={value.pub} country={value.country} postId={value.postId} progress={value.progress} userId={value.userId} title={value.title} positive={value.positive} negative={value.negative} watchers={value.watchers} onClick={onClick} onMakeRoom={onMakeRoom} />
                                 </div>
                             } else if (standby === false && discussion === false) {
                                 return <div className={styles.timeLineItem} key={index}>
-                                    <TimeLineItem index={index} pub={value.pub} country={value.country} postId={value.postId} progress={value.progress} userId={value.userId} title={value.title} positive={value.positive} negative={value.negative} watchers={value.watchers} createAt={value.createAt} onClick={onClick} onMakeRoom={onMakeRoom} />
+                                    <TimeLineItem index={index} pub={value.pub} country={value.country} postId={value.postId} progress={value.progress} userId={value.userId} title={value.title} positive={value.positive} negative={value.negative} watchers={value.watchers} onClick={onClick} onMakeRoom={onMakeRoom} />
                                 </div>
                             }
                         })
                     }
                 </div >
             </div>
-
         </div>
-
     );
 }
