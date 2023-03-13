@@ -7,17 +7,18 @@
   padding-left: 5px;
   padding-right: 15px;
   box-shadow: 0 1px 1px 0 gray;
-  color: black;
   font-size: 1rem;
 }
 
 .enable {
   background-color: white;
+  color: black;
   border: 1px solid #00838f;
 }
 
 .disable {
-  background-color: #ccc;
+  color: white;
+  background-color: gray;
   border: 1px solid gray;
 }
 
