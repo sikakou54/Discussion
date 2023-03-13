@@ -19,7 +19,7 @@
 .disable {
   color: white;
   background-color: gray;
-  border: 1px solid gray;
+  border: 1px solid #ccc;
 }
 
 .labelText {
