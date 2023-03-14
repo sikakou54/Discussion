@@ -104,19 +104,17 @@
 }
 
 .enable {
-    border: 1px solid #00838f;
     background-color: #00838f;
     color: white;
 }
 
-.enable:hover {
-    background-color: #006064;
+.disable {
+    background-color: #EEEEEE;
+    color: #808080;
 }
 
-.disable {
-    border: 1px solid gray;
-    background-color: gray;
-    color: white;
+.enable:hover {
+    background-color: #006064;
 }
 
 .cancel:hover {
