@@ -158,7 +158,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>5. 内容を確認し「完了」をクリック！</u></div>
+          <div className={styles.secssionText}><u>5. 内容を確認して「完了」をクリック！</u></div>
           <div className={styles.screenImange}>
             <Image src={post4} />
           </div>
