@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import Script from 'next/script';
+import { useEffect } from 'react';
 
 export const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ''
 

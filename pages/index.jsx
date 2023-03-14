@@ -34,6 +34,10 @@ export default function Home() {
   }
 
   useEffect(() => {
+    sessionStorage.setItem('talkUp', JSON.stringify({}));
+  }, []);
+
+  useEffect(() => {
 
     if ('none' !== userId) {
       fetch('/api/setUser', {
