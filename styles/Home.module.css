@@ -11,7 +11,7 @@
 }
 
 .bgImage {
-  width: 100%;
+  width: 350px;
   margin: 0 auto;
 }
 
@@ -46,6 +46,7 @@
   font-size: 16px;
   margin-bottom: 10px;
   color: white;
+  text-shadow: 1px 1px 2px #000;
 }
 
 .detail {
@@ -116,26 +117,31 @@
   background-color: #00838f;
   color: white;
   box-shadow: 0 1px 1px 0 #ccc;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.SplideSession {
+  width: 100%;
+  height: auto;
+  background-color: #F7F1E5;
 }
 
 .SplideWrap {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  background-color: #fff;
-  padding: 0;
 }
 
 .SplideItem {
   width: 100%;
-  background-color: #F7F1E5;
+  background-color: #fff;
   border-radius: 6px;
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px 0 #ccc;
-  padding: 12px;
+  padding: 18px;
 }
 
 .Splide {
@@ -192,7 +198,7 @@
   /*　for iPad 　*/
 
   .bgImage {
-    width: 50%;
+    width: 600px;
     margin: 0 auto;
   }
 
@@ -224,7 +230,7 @@
   /*　for PC 　*/
 
   .bgImage {
-    width: 50%;
+    width: 800px;
     margin: 0 auto;
   }
 
@@ -257,13 +263,20 @@
     width: 80%;
   }
 
+  .SplideSession {
+    width: 100%;
+    height: auto;
+    background-color: #F7F1E5;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
   .SplideWrap {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    width: 1000px;
+    margin: 0 auto;
   }
 
   .SplideItem {
-    width: 650px;
-    margin: 12px;
+    width: 460px;
   }
 }
