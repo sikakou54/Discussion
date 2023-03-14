@@ -125,16 +125,17 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+  background-color: #fff;
+  padding: 0;
 }
 
 .SplideItem {
   width: 100%;
   background-color: #F7F1E5;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px 0 #ccc;
   padding: 12px;
-  margin-top: 8px;
 }
 
 .Splide {
@@ -256,8 +257,13 @@
     width: 80%;
   }
 
+  .SplideWrap {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
   .SplideItem {
-    width: 750px;
-    margin: 24px;
+    width: 650px;
+    margin: 12px;
   }
 }
