@@ -159,19 +159,18 @@
     font-size: 16px;
 }
 
+.enable {
+    background-color: #00838f;
+    color: white;
+}
+
 .disable {
     background-color: #EEEEEE;
     color: #808080;
 }
 
-.enable {
-    background-color: white;
-    color: #00838f;
-}
-
 .enable:hover {
-    background-color: #00838f;
-    color: white;
+    background-color: #006064;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {
