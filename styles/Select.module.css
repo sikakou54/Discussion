@@ -16,10 +16,18 @@
     color: black;
 }
 
+.detailSession {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .detail {
     resize: none;
     width: 95%;
-    height: 25%;
+    height: 85%;
     border-radius: 5px;
     padding: 5px;
     background-color: white;
@@ -33,19 +41,12 @@
 
 .selectItems {
     width: 100%;
-    height: 45%;
+    height: 40%;
     display: flex;
     flex-flow: column;
-    justify-content: space-around;
-    padding-top: 12px;
-}
-
-.selectItem {
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    height: 30%;
+    padding-top: 12px;
 }
 
 .attendees {
