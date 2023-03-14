@@ -100,6 +100,26 @@
     font-size: 72px;
 }
 
+.statusSeccsion {
+    animation: fadeup 0.5s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+}
+
+@keyframes fadeup {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @keyframes fadein-keyframes {
     0% {
         opacity: 1;
