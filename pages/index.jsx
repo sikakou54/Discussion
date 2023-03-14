@@ -83,7 +83,7 @@ export default function Home() {
       <div className={styles.SplideSession}>
         <div className={styles.SplideWrap}>
           <div className={styles.SplideItem}>
-            <div className={styles.bar}>ROOMに参加する</div>
+            <div className={styles.bar}>討論に参加する</div>
             <div className={styles.Splide}>
               <Splide
                 aria-label="遊び方"
@@ -166,7 +166,7 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.SplideItem}>
-            <div className={styles.bar}>ROOMを作る</div>
+            <div className={styles.bar}>討論を作る</div>
             <div className={styles.Splide}>
               <Splide
                 aria-label="遊び方"
