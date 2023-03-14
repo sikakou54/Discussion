@@ -78,7 +78,8 @@
 
 .sec,
 .text,
-.message {
+.message,
+.start {
     width: 100%;
     height: auto;
     position: absolute;
@@ -88,8 +89,9 @@
     color: #00838f;
 }
 
+.text,
 .message,
-.text {
+.start {
     animation: fadein-keyframes 5s ease 0.2s 1 forwards;
     text-shadow: 1px 1px 2px #ccc;
 }
@@ -101,7 +103,7 @@
 }
 
 .message {
-    font-size: 32px;
+    font-size: 38px;
 }
 
 @keyframes fadein-keyframes {

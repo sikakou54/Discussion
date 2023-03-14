@@ -18,6 +18,8 @@ import post1 from '../public/home/post1@2x.png';
 import post2 from '../public/home/post2@2x.png';
 import post3 from '../public/home/post3@2x.png';
 import post4 from '../public/home/post4@2x.png';
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import '@splidejs/splide/css';
 
 export default function Home() {
 
@@ -75,96 +77,136 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.bar}>ROOMに参加する</div>
-      <div className={styles.section}>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>1.ROOMを選びます</u></div>
-          <div className={styles.screenImange}>
-            <Image src={timeline} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>2.項目を選択して「参加する」をクリック！</u></div>
-          <div className={styles.screenImange}>
-            <Image src={select} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>4.参加者が集まるまで待機します</u></div>
-          <div className={styles.screenImange}>
-            <Image src={standby} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>5.参加者が揃ったら接続が始まります</u></div>
-          <div className={styles.screenImange}>
-            <Image src={ready} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>6.討論スタート！(12分)</u></div>
-          <div className={styles.screenImange}>
-            <Image src={discussion} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>7.討論終了</u></div>
-          <div className={styles.screenImange}>
-            <Image src={finish} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>8.投票タイム(1分)</u></div>
-          <div className={styles.screenImange}>
-            <Image src={vate} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>9.投票終了</u></div>
-          <div className={styles.screenImange}>
-            <Image src={voteFinish} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>10.結果発表</u></div>
-          <div className={styles.screenImange}>
-            <Image src={result} />
-          </div>
-        </div>
+      <div className={styles.Splide}>
+        <Splide
+          aria-label="遊び方"
+          options={{
+            autoplay: false // 自動再生を無効
+          }}>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>1.ROOMを選びます</u></div>
+              <div className={styles.screenImange}>
+                <Image src={timeline} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>2.項目を選択して「参加する」をクリック！</u></div>
+              <div className={styles.screenImange}>
+                <Image src={select} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>4.参加者が集まるまで待機します</u></div>
+              <div className={styles.screenImange}>
+                <Image src={standby} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>5.参加者が揃ったら接続が始まります</u></div>
+              <div className={styles.screenImange}>
+                <Image src={ready} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>6.討論スタート！(12分)</u></div>
+              <div className={styles.screenImange}>
+                <Image src={discussion} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>7.討論終了</u></div>
+              <div className={styles.screenImange}>
+                <Image src={finish} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>8.投票タイム(1分)</u></div>
+              <div className={styles.screenImange}>
+                <Image src={vate} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>9.投票終了</u></div>
+              <div className={styles.screenImange}>
+                <Image src={voteFinish} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>10.結果発表</u></div>
+              <div className={styles.screenImange}>
+                <Image src={result} />
+              </div>
+            </div>
+          </SplideSlide>
+        </Splide>
       </div>
       <div className={styles.bar}>ROOMを作る</div>
-      <div className={styles.section}>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>1. 空いているROOMを選びます</u></div>
-          <div className={styles.screenImange}>
-            <Image src={timelineNone} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>2. 議題を入力します</u></div>
-          <div className={styles.screenImange}>
-            <Image src={post1} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>3. 討論を入力します</u></div>
-          <div className={styles.screenImange}>
-            <Image src={post2} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>4. 概要を入力します</u></div>
-          <div className={styles.screenImange}>
-            <Image src={post3} />
-          </div>
-        </div>
-        <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>5. 内容を確認して「完了」をクリック！</u></div>
-          <div className={styles.screenImange}>
-            <Image src={post4} />
-          </div>
-        </div>
+      <div className={styles.Splide}>
+        <Splide
+          aria-label="遊び方"
+          options={{
+            autoplay: false // 自動再生を無効
+          }}>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>1. 空いているROOMを選びます</u></div>
+              <div className={styles.screenImange}>
+                <Image src={timelineNone} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>2. 議題を入力します</u></div>
+              <div className={styles.screenImange}>
+                <Image src={post1} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>3. 討論を入力します</u></div>
+              <div className={styles.screenImange}>
+                <Image src={post2} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>4. 概要を入力します</u></div>
+              <div className={styles.screenImange}>
+                <Image src={post3} />
+              </div>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.secssionItem}>
+              <div className={styles.secssionText}><u>5. 内容を確認して「完了」をクリック！</u></div>
+              <div className={styles.screenImange}>
+                <Image src={post4} />
+              </div>
+            </div>
+          </SplideSlide>
+        </Splide>
       </div>
       <div className={styles.footer}><Footer /></div>
-    </div>
+    </div >
   );
 }

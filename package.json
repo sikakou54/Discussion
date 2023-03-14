@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@splidejs/react-splide": "^0.7.12",
     "amazon-chime-sdk-component-library-react": "^3.3.0",
     "amazon-chime-sdk-js": "^3.8.0",
     "aws-amplify": "^4.3.46",
