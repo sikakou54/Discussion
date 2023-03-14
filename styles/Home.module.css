@@ -111,7 +111,6 @@
   width: 95%;
   height: 40px;
   margin: 0 auto;
-  margin-bottom: 12px;
   border-radius: 6px;
   border: none;
   background-color: #00838f;
@@ -160,9 +159,12 @@
 }
 
 .secssionText {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  width: 100%;
+  height: 48px;
   font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .appNameSction {
