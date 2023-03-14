@@ -4,16 +4,12 @@
 }
 
 .container {
-    animation: fadeup 1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
-}
-
-.frame {
     animation: fadeup 0.5s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
 }
 
 @keyframes fadeup {
     0% {
-        transform: translateY(30px);
+        transform: translateY(10px);
         opacity: 0;
     }
 
