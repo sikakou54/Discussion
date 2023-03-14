@@ -95,7 +95,8 @@
 }
 
 .sec,
-.text {
+.text,
+.start {
     font-size: 72px;
 }
 

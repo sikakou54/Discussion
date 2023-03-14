@@ -108,7 +108,6 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                             </div>
                         </>
                     )
-
                 ) : (
                     <div className={styles.statusSeccsion}>
                         <div className={styles.inner}>
@@ -128,7 +127,7 @@ export default function Vote({ attendees, title, type, setVotindDone, limitTime,
                                     0 >= Math.floor((limitTime - currentTime) / 1000) &&
                                     <div className={styles.sec}>0</div>
                                 }
-                                <div className={styles.message}>投票開始</div>
+                                <div className={styles.start}>投票開始</div>
                             </div>
                         </div>
                     </div>
