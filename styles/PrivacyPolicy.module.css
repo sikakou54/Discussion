@@ -5,7 +5,7 @@
 }
 
 .secssion {
-    animation: fadeup 1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+    animation: fadeup 0.5s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
 }
 
 @keyframes fadeup {
