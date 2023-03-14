@@ -4,15 +4,15 @@ import Image from 'next/image';
 import bgimage from '../public/bgimage.png';
 import Footer from '../components/footer';
 import { useEffect, useState } from 'react';
-import timeline from '../public/home/timeline2@2x.png';
-import timelineNone from '../public/home/timeline1@2x.png';
+import timeline from '../public/home/timeline1@2x.png';
+import timelineNone from '../public/home/timeline2@2x.png';
 import select from '../public/home/select@2x.png';
 import standby from '../public/home/standby@2x.png';
-import ready from '../public/home/ready2@2x.png';
+import ready from '../public/home/ready@2x.png';
 import discussion from '../public/home/discussion@2x.png';
 import finish from '../public/home/finish@2x.png';
-import vate from '../public/home/vote2@2x.png';
-import voteFinish from '../public/home/votefinish.png';
+import vate from '../public/home/vote@2x.png';
+import voteFinish from '../public/home/votedone@2x.png';
 import result from '../public/home/result@2x.png';
 import post1 from '../public/home/post1@2x.png';
 import post2 from '../public/home/post2@2x.png';
@@ -77,7 +77,7 @@ export default function Home() {
       <div className={styles.bar}>ROOMに参加する</div>
       <div className={styles.section}>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>1.気になるROOMを選びます</u></div>
+          <div className={styles.secssionText}><u>1.ROOMを選びます</u></div>
           <div className={styles.screenImange}>
             <Image src={timeline} />
           </div>
@@ -95,13 +95,13 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>5.参加者が集まったら準備が始まります</u></div>
+          <div className={styles.secssionText}><u>5.参加者が揃ったら接続が始まります</u></div>
           <div className={styles.screenImange}>
             <Image src={ready} />
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>6.討論スタート！(10分)</u></div>
+          <div className={styles.secssionText}><u>6.討論スタート！(12分)</u></div>
           <div className={styles.screenImange}>
             <Image src={discussion} />
           </div>
@@ -113,7 +113,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.secssionItem}>
-          <div className={styles.secssionText}><u>8.投票タイム(30秒)</u></div>
+          <div className={styles.secssionText}><u>8.投票タイム(1分)</u></div>
           <div className={styles.screenImange}>
             <Image src={vate} />
           </div>

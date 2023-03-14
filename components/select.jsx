@@ -33,7 +33,7 @@ export default function Select({ onJoin, attendees, title, detail }) {
                                     </div>
                                 )
                         ) : (
-                            <div className={`${styles.attendees} ${styles.disable}`} onClick={() => setSelectedJoinType(1)} disabled={true}>
+                            <div className={`${styles.attendees} ${styles.disable}`} disabled={true}>
                                 <Attendee userId={attendees.positive.userId}>{attendees.positive.text}</Attendee>
                             </div>
                         )
@@ -52,7 +52,7 @@ export default function Select({ onJoin, attendees, title, detail }) {
                                     </div>
                                 )
                         ) : (
-                            <div className={`${styles.attendees} ${styles.disable}`} onClick={() => setSelectedJoinType(2)} disabled={true}>
+                            <div className={`${styles.attendees} ${styles.disable}`} disabled={true}>
                                 <Attendee userId={attendees.negative.userId}>{attendees.negative.text}</Attendee>
                             </div>
                         )
@@ -71,7 +71,7 @@ export default function Select({ onJoin, attendees, title, detail }) {
                                     </div>
                                 )
                         ) : (
-                            <div className={`${styles.attendees} ${styles.disable}`} onClick={() => setSelectedJoinType(3)} disabled={true}>
+                            <div className={`${styles.attendees} ${styles.disable}`} disabled={true}>
                                 <Attendee userId={'none'}>視聴する</Attendee>
                             </div>
                         )
