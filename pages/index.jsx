@@ -76,7 +76,6 @@ export default function Home() {
           </form>
         </div>
       </div>
-
       <div className={styles.SplideWrap}>
         <div className={styles.SplideItem}>
           <div className={styles.bar}>ROOMに参加する</div>
