@@ -19,7 +19,7 @@ export default function TimeLineItem({ pub, index, country, postId, progress, ti
                                 <div className={styles.roomNum} >ROOM{postId}</div>
                             </div>
                             <div className={styles.contents}>
-                                <div className={styles.title}><u>{title}</u></div>
+                                <div className={styles.title}>{title}</div>
                                 <div className={styles.discussionLabelContainer}>
                                     <div className={styles.discussionLabelItems}>
                                         {
