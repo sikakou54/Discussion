@@ -200,6 +200,22 @@
 
     /*　for iPad 　*/
 
+    .titleSeccsion {
+        width: 70%;
+        height: 15%;
+        margin: 0 auto;
+    }
+
+    .statusSeccsion {
+        width: 100%;
+        height: 30%;
+    }
+
+    .attendeesSeccsion {
+        width: 100%;
+        height: 55%;
+    }
+
     .attendeesSeccsionItems {
         width: 100%;
         height: 150px;
@@ -237,6 +253,22 @@
 @media screen and (min-width:1024px) {
 
     /*　for PC　*/
+
+    .titleSeccsion {
+        width: 70%;
+        height: 15%;
+        margin: 0 auto;
+    }
+
+    .statusSeccsion {
+        width: 100%;
+        height: 30%;
+    }
+
+    .attendeesSeccsion {
+        width: 100%;
+        height: 55%;
+    }
 
     .attendeesSeccsionItems {
         width: 100%;
