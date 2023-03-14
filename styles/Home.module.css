@@ -147,7 +147,7 @@
 .about,
 .name,
 .startButton {
-  animation: fadeup 2s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+  animation: fadeup 1.5s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
 }
 
 @keyframes fadeup {
