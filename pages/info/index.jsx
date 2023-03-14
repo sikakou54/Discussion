@@ -143,15 +143,15 @@ export default function Info() {
                                         3 === seq &&
                                         (
                                             <>
-                                                <div className={styles.secssion}>
+                                                <div className={styles.secssion} onClick={() => setSeq(0)}>
                                                     <div className={styles.secsionName}>お名前</div>
                                                     <div className={styles.name}>{name}</div>
                                                 </div>
-                                                <div className={styles.secssion}>
+                                                <div className={styles.secssion} onClick={() => setSeq(1)}>
                                                     <div className={styles.secsionName}>メールアドレス</div>
                                                     <div className={styles.mail}>{mail}</div>
                                                 </div>
-                                                <div className={styles.secssion}>
+                                                <div className={styles.secssion} onClick={() => setSeq(2)}>
                                                     <div className={styles.secsionName}>お問い合わせ内容</div>
                                                     <textarea
                                                         className={styles.detail}
