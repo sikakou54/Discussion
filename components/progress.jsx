@@ -30,7 +30,7 @@ export default function Progress({ progress }) {
                 break;
 
             case 'result':
-                setText('結果発表中');
+                setText('終了中');
                 break;
 
             default:
