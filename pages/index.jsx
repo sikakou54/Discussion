@@ -108,7 +108,7 @@ export default function Home() {
                 </SplideSlide>
                 <SplideSlide>
                   <div className={styles.secssionItem}>
-                    <div className={styles.secssionText}><u>4.参加者が集まるまで待機します</u></div>
+                    <div className={styles.secssionText}><u>4.参加者が揃うまで待機します</u></div>
                     <div className={styles.screenImange}>
                       <Image src={standby} />
                     </div>
