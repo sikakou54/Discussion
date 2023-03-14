@@ -86,8 +86,8 @@
 
 .disable,
 .buttonDisable {
-    background-color: gray;
-    color: white;
+    background-color: #EEEEEE;
+    color: #808080;
 }
 
 .enable {

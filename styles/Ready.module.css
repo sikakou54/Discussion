@@ -86,8 +86,8 @@
 }
 
 .disable {
-    color: white;
-    background-color: gray;
+    background-color: #EEEEEE;
+    color: #808080;
 }
 
 .enable {

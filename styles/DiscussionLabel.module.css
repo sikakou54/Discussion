@@ -7,19 +7,18 @@
   padding-left: 5px;
   padding-right: 15px;
   box-shadow: 0 1px 1px 0 #ccc;
+  border: 1px solid #ccc;
   font-size: 1rem;
 }
 
 .enable {
-  background-color: white;
-  border: 1px solid #00838f;
-  color: black;
+  background-color: #CBE4DE;
+  color: #000;
 }
 
 .disable {
-  background-color: gray;
-  border: 1px solid #ccc;
-  color: white;
+  background-color: #EEEEEE;
+  color: #808080;
 }
 
 .labelText {
