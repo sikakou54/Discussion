@@ -112,7 +112,7 @@ export default function Post() {
                                         <div className={style.secsionName}>議題</div>
                                         <div><input className={style.title} type='text' placeholder='朝食はパン？ごはん？' required onChange={(e) => { setTitle(e.target.value) }} value={title} /></div>
                                         {title.length > 30 && <div className={style.errorText}>30文字以内で入力してください</div>}
-                                        {title.length === 0 && <div className={style.errorText}>タイトルを入力してください</div>}
+                                        {title.length === 0 && <div className={style.errorText}>議題を入力してください(30文字)</div>}
                                     </div>
                                     <div className={style.buttonArea}>
                                         <input type='button' className={style.cancel} onClick={onCancel} value='戻る' />
@@ -131,10 +131,10 @@ export default function Post() {
                                         <div className={style.secsionName}>討論</div>
                                         <div><input className={style.discussion} type='text' placeholder='ぱん' required onChange={(e) => { setPositiveText(e.target.value) }} value={positiveText} /></div>
                                         {positiveText.length > 20 && <div className={style.errorText}>20文字以内で入力してください</div>}
-                                        {positiveText.length === 0 && <div className={style.errorText}>討論を入力してください</div>}
+                                        {positiveText.length === 0 && <div className={style.errorText}>討論を入力してください(20文字)</div>}
                                         <div><input className={style.discussion} type='text' placeholder='ごはん' required onChange={(e) => { setNegativeText(e.target.value) }} value={negativeText} /></div>
                                         {negativeText.length > 20 && <div className={style.errorText}>20文字以内で入力してください</div>}
-                                        {negativeText.length === 0 && <div className={style.errorText}>討論を入力してください</div>}
+                                        {negativeText.length === 0 && <div className={style.errorText}>討論を入力してください(20文字)</div>}
                                     </div>
                                     <div className={style.buttonArea}>
                                         <input type='button' className={style.cancel} onClick={preview} value='戻る' />
@@ -154,7 +154,7 @@ export default function Post() {
                                         <div className={style.secsionName}>概要</div>
                                         <textarea className={style.oval} placeholder='朝食の最適解について討論しましょう！' required onChange={(e) => { setDetail(e.target.value) }} defaultValue={detail} />
                                         {detail.length > 140 && <div className={style.errorText}>140文字以内で入力してください</div>}
-                                        {detail.length === 0 && <div className={style.errorText}>概要を入力してください</div>}
+                                        {detail.length === 0 && <div className={style.errorText}>概要を入力してください(140文字)</div>}
                                     </div>
                                     <div className={style.buttonArea}>
                                         <input type='button' className={style.cancel} onClick={preview} value='戻る' />
@@ -169,16 +169,16 @@ export default function Post() {
                             {
                                 3 === seq &&
                                 <form onSubmit={onPost}>
-                                    <div className={style.frame}>
+                                    <div className={style.frame} onClick={() => setSeq(0)}>
                                         <div className={style.secsionName}>議題</div>
                                         <div className={style.title}>{title}</div>
                                     </div>
-                                    <div className={style.frame}>
+                                    <div className={style.frame} onClick={() => setSeq(1)}>
                                         <div className={style.secsionName}>討論</div>
                                         <div className={style.discussion}>{positiveText}</div>
                                         <div className={style.discussion}>{negativeText}</div>
                                     </div>
-                                    <div className={style.frame}>
+                                    <div className={style.frame} onClick={() => setSeq(2)}>
                                         <div className={style.secsionName}>概要</div>
                                         <div className={style.oval}>{detail}</div>
                                     </div>
