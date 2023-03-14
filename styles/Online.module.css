@@ -91,7 +91,7 @@
 .message,
 .text {
     animation: fadein-keyframes 5s ease 0.2s 1 forwards;
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 1px 1px 2px #ccc;
 }
 
 .sec,
