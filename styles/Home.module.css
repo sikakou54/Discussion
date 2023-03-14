@@ -19,7 +19,6 @@
   width: 100%;
   text-align: center;
   background-color: #00838f;
-  margin-bottom: 12px;
 }
 
 .startSecssion {
@@ -108,25 +107,45 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 99%;
+  width: 95%;
   height: 40px;
   margin: 0 auto;
   margin-bottom: 12px;
-  border-radius: 12px;
-  border: 3px solid white;
+  border-radius: 6px;
+  border: none;
   background-color: #00838f;
   color: white;
+  box-shadow: 0 1px 1px 0 #ccc;
+}
+
+.SplideWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.SplideItem {
+  width: 100%;
+  background-color: #F7F1E5;
+  border-radius: 12px;
+  border: 1px solid #ccc;
   box-shadow: 0 2px 5px 0 #ccc;
+  padding: 12px;
+  margin-top: 8px;
 }
 
 .Splide {
   width: 100%;
   margin: 0 auto;
-  margin-bottom: 12px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 .secssionItem {
-  width: 400px;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
   text-align: center;
@@ -231,14 +250,14 @@
 
   .bar {
     font-size: 18px;
-    width: 80%;
   }
 
   .section {
     width: 80%;
   }
 
-  .Splide {
-    width: 50%;
+  .SplideItem {
+    width: 750px;
+    margin: 24px;
   }
 }
