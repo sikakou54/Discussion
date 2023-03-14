@@ -11,9 +11,6 @@
     position: relative;
     border: 1px solid #ccc;
     box-shadow: 0 1px 1px 0 gray;
-}
-
-.container {
     animation: fadeup 1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
 }
 
@@ -126,12 +123,6 @@
     align-items: center;
     min-height: 15%;
     text-align: right;
-}
-
-.date {
-    margin-right: 10px;
-    font-size: 10px;
-    color: gray;
 }
 
 .roomNum {
