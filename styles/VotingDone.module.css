@@ -53,7 +53,7 @@
 
 @keyframes fadeup {
     0% {
-        transform: translateY(30px);
+        transform: translateY(15px);
         opacity: 0;
     }
 
