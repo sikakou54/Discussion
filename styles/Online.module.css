@@ -85,7 +85,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: "Courier New";
     color: #00838f;
 }
 
@@ -129,13 +128,13 @@
 }
 
 .disable {
-    color: white;
-    background-color: gray;
+    background-color: #EEEEEE;
+    color: #808080;
 }
 
 .enable {
-    color: black;
     background-color: white;
+    color: #00838f;
 }
 
 @media screen and (min-width:480px) and (max-width:1024px) {

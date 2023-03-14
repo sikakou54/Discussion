@@ -85,7 +85,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: "Courier New";
     color: #00838f;
 }
 
@@ -161,17 +160,17 @@
 }
 
 .disable {
-    background-color: gray;
-    color: white;
+    background-color: #EEEEEE;
+    color: #808080;
 }
 
 .enable {
-    background-color: #00838f;
-    color: white;
+    background-color: white;
+    color: #00838f;
 }
 
 .enable:hover {
-    background-color: #006064;
+    background-color: #00838f;
     color: white;
 }
 
