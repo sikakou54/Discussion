@@ -13,16 +13,16 @@ const handle = app.getRequestHandler()
 let discussions = null
 let flg = false;
 
-setInterval(async () => {
-    //console.log('setInterval', flg);
-    if (!flg) {
-        flg = !flg;
-        discussions = await getDiscussions('jpn', null);
-        flg = !flg;
-    }
-}, 1000);
-
 app.prepare().then(() => {
+
+    setInterval(async () => {
+        //console.log('setInterval', flg);
+        if (!flg) {
+            flg = !flg;
+            discussions = await getDiscussions('jpn', null);
+            flg = !flg;
+        }
+    }, 500);
 
     createServer(async (req, res) => {
 
@@ -38,6 +38,7 @@ app.prepare().then(() => {
             } else {
                 await handle(req, res, parsedUrl);
             }
+
         } catch (err) {
             console.error('Error occurred handling', req.url, err);
             res.statusCode = 500;
