@@ -22,7 +22,7 @@ app.prepare().then(() => {
             discussions = await getDiscussions('jpn', null);
             flg = !flg;
         }
-    }, 500);
+    }, 1000);
 
     createServer(async (req, res) => {
 
