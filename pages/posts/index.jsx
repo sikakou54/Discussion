@@ -11,7 +11,7 @@ export default function Posts() {
     const [userId, setUserId] = useState('none');
     const fetcher = (url) => fetch(url).then((res) => res.json());
     const [items, setItems] = useState([]);
-    const { data, error } = useSWR('/api/getDiscussions/jpn/none', fetcher, {
+    const { data, error } = useSWR('/api/getDiscussions', fetcher, {
         refreshInterval: 1000
     });
 

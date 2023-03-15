@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server/index.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server/index.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -15,16 +15,19 @@
     "aws-amplify": "^4.3.46",
     "aws-jwt-verify": "^3.4.0",
     "aws-sdk": "^2.1333.0",
+    "http": "^0.0.1-security",
     "next": "12.3.1",
     "nookies": "^2.5.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.7.1",
     "socket.io-client": "^4.5.3",
-    "swr": "^2.0.0"
+    "swr": "^2.0.0",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "eslint": "8.26.0",
     "eslint-config-next": "12.3.1"
-  }
+  },
+  "type": "module"
 }

@@ -1,4 +1,4 @@
-exports.progress = {
+export const progress = {
     none: 'none',
     standby: 'standby',
     ready: 'ready',
@@ -7,7 +7,7 @@ exports.progress = {
     result: 'result'
 };
 
-exports.userState = {
+export const userState = {
     none: 'none',
     join: 'join',
     standby: 'standby',
@@ -18,19 +18,19 @@ exports.userState = {
     votingDone: 'votingDone'
 };
 
-exports.userJoinType = {
+export const userJoinType = {
     positive: 'positive',
     negative: 'negative',
     watcher: 'watcher',
 };
 
-exports.userResultType = {
+export const userResultType = {
     win: 0,
     lose: 1,
     draw: 2
 };
 
-exports.userNorify = {
+export const userNorify = {
     notifyStandbyRequest: 'notifyStandbyRequest',
     notifyReadyRequest: 'notifyReadyRequest',
     notifyStartRequest: 'notifyStartRequest',

@@ -2,7 +2,7 @@ import AWS from 'aws-sdk';
 AWS.config.update({ region: 'ap-northeast-1' });
 AWS.config.credentials = new AWS.Credentials('AKIAZM7CB6TBRTQFX45K', 'ScElcNk7urEGak0unfLutQAG6Mvf2a5G/w4/1+oB', null);
 const dynamo = new AWS.DynamoDB.DocumentClient();
-import { sleep } from './utils';
+import { sleep } from './utils.js';
 const type = {
     put: 0,
     update: 1,

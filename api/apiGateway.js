@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk';
 AWS.config.credentials = new AWS.Credentials('AKIAZM7CB6TBRTQFX45K', 'ScElcNk7urEGak0unfLutQAG6Mvf2a5G/w4/1+oB', null);
-import { sleep } from './utils';
+import { sleep } from './utils.js';
 const apiGateway = new AWS.ApiGatewayManagementApi({
     apiVersion: '2018-11-29',
     endpoint: 'vx92a3mpjf.execute-api.ap-northeast-1.amazonaws.com/production'

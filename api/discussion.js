@@ -1,8 +1,8 @@
-import { Query, Update, Delete, TransWrite, Put } from './dynamoDb';
-import { getUtcMsec } from './utils';
-import { notify } from './apiGateway';
-import { createMeeting, createAttendee, deleteMeeting } from './chime';
-import { progress, userJoinType, userNorify } from './define';
+import { Query, Update, Delete, TransWrite, Put } from './dynamoDb.js';
+import { getUtcMsec } from './utils.js';
+import { notify } from './apiGateway.js';
+import { createMeeting, createAttendee, deleteMeeting } from './chime.js';
+import { progress, userJoinType, userNorify } from './define.js';
 const discussionWatcherMax = 100;
 
 export async function getDiscussion(_postId) {
