@@ -11,9 +11,15 @@ const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
 
 let discussions = null
+let flg = false;
 
 setInterval(async () => {
-    discussions = await getDiscussions('jpn', null);
+    //console.log('setInterval', flg);
+    if (!flg) {
+        flg = !flg;
+        discussions = await getDiscussions('jpn', null);
+        flg = !flg;
+    }
 }, 1000);
 
 app.prepare().then(() => {
