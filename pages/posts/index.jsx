@@ -21,7 +21,7 @@ export default function Posts() {
 
     useEffect(() => {
 
-        if (undefined !== userId) {
+        if ('none' !== userId) {
             fetch('/api/getDiscussions/jpn/none', { method: 'GET' }).then((res) => res.json()).then((data) => setItems(data.Items))
         }
 
