@@ -54,20 +54,15 @@ export default function Posts() {
     return (
         <Layout title={'Posts'} >
             {
-                'none' !== userId ?
+                'none' !== userId && undefined !== items && 0 < items.length ?
                     (
-                        undefined !== items && 0 < items.length ?
-                            (
-                                <div className={styles.container}>
-                                    <div className={styles.timeLineView}><TimeLineView userId={userId} items={items} onClick={onClick} /></div>
-                                </div>
-                            ) : (
-                                <div className={styles.loading}>
-                                    <Loding />
-                                </div>
-                            )
+                        <div className={styles.container}>
+                            <div className={styles.timeLineView}><TimeLineView userId={userId} items={items} onClick={onClick} /></div>
+                        </div>
                     ) : (
-                        <></>
+                        <div className={styles.loading}>
+                            <Loding />
+                        </div>
                     )
             }
         </Layout >
