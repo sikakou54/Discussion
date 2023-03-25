@@ -4,16 +4,11 @@ import { useEffect, useState } from 'react';
 import styles from '../../styles/Posts.module.css';
 import TimeLineView from '../../components/timeLineView';
 import Loding from '../../components/loading';
-import useSWR from 'swr';
 
 export default function Posts() {
 
     const [userId, setUserId] = useState('none');
-    const fetcher = (url) => fetch(url).then((res) => res.json());
     const [items, setItems] = useState([]);
-    const { data, error } = useSWR('/api/getDiscussions/jpn/none', fetcher, {
-        refreshInterval: 1000
-    });
 
     function onClick(_postId) {
         Router.push({
@@ -26,19 +21,11 @@ export default function Posts() {
 
     useEffect(() => {
 
-        if (undefined !== data) {
-            setItems(data.Items);
+        if (undefined !== userId) {
+            fetch('/api/getDiscussions/jpn/none', { method: 'GET' }).then((res) => res.json()).then((data) => setItems(data.Items))
         }
 
-    }, [data]);
-
-    useEffect(() => {
-
-        if (undefined !== error) {
-            console.error('posts', error);
-        }
-
-    }, [error]);
+    }, [userId]);
 
     useEffect(() => {
 
