@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: spin .5s linear infinite;
+    animation: spin .6s linear infinite;
 }
 
 @keyframes spin {

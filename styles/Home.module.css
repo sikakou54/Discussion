@@ -104,9 +104,22 @@
   text-align: center;
 }
 
+
+.SplideSession {
+  width: 100%;
+  height: auto;
+  background-color: #F8F4EA;
+  padding-top: 24px;
+}
+
 .nav {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: #006064;
+  text-align: center;
 }
 
 .navText {
@@ -119,13 +132,11 @@
   box-shadow: 0 1px 1px 0 #ccc;
   padding-top: 12px;
   padding-bottom: 12px;
+  background-color: #fff;
 }
 
-.SplideSession {
-  width: 100%;
-  height: auto;
-  background-color: #fff;
-  padding-top: 24px;
+.talkIcon {
+  display: none;
 }
 
 .SplideItems {
@@ -236,7 +247,7 @@
   }
 
   .about {
-    font-size: 32px;
+    font-size: 42px;
   }
 
   .startSecssion {
@@ -252,7 +263,7 @@
   .screenImange {
     width: 350px;
   }
-  
+
 
   .SplideSession {
     padding-bottom: 48px;
@@ -281,6 +292,7 @@
     border: none;
     box-shadow: none;
     font-size: 70px;
+    background-color: transparent;
   }
 
   .Splide {
@@ -288,7 +300,8 @@
   }
 
   .talkIcon {
-    width: 600px;
+    display: block;
+    width: 200px;
   }
 
 }

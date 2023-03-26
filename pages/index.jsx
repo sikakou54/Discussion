@@ -85,6 +85,9 @@ export default function Home() {
       <div className={styles.SplideSession}>
         <div className={`${styles.SplideItems} ${styles.reverse}`}>
           <div className={styles.nav}>
+            <div className={styles.talkIcon}>
+              <Image src={talkIcon2} />
+            </div>
             <div className={styles.navText}>討論する</div>
           </div>
           <div className={styles.Splide}>
@@ -170,6 +173,9 @@ export default function Home() {
         </div>
         <div className={styles.SplideItems}>
           <div className={styles.nav}>
+            <div className={styles.talkIcon}>
+              <Image src={talkIcon1} />
+            </div>
             <div className={styles.navText}>討論を作る</div>
           </div>
           <div className={styles.Splide}>
